@@ -2,6 +2,12 @@ body {
   font-family: 'Ubuntu', sans-serif;
   background-color:#dddddd
 }
+#page-wrap {
+  min-height: 100%;
+position: relative;
+padding-bottom: 55px;
+min-width: 1170px;
+}
 .logo {
   background-image: url(/images/logo.gif);
   height:67px;
@@ -113,4 +119,53 @@ position: absolute;
 .footer {
   position: absolute;bottom:0;background: #001726;width:100%;
   color:#fff;
+}
+.box {
+  border:1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px rgba(0,0,0,.5)
+}
+.box.meview {
+  background-image: url(/images/me/view_1.png);
+  background-position: center;
+  padding-top:148px;
+  position: relative;
+  border:0;
+}
+.box.meview .plate {
+  position: absolute;
+top: 48px;
+left: 15px;
+background: url(/images/me/info_habbo_plate.png) no-repeat 2px -162px;
+text-align: center;
+height: 138px;
+position: absolute;
+width: 96px;
+}
+.box.meview .habbo-info {
+  background-color: #7b7b71;
+  padding:13px;
+}
+.box.meview .habbo-info .motto {
+  margin-left: 120px;
+  border-radius: 5px;
+  background-color: #fff;
+  height: 18px;
+padding: 2px 3px 4px;
+font-size: 11px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+}
+.grid-3 .box {
+  margin:3px;
+  position: relative;
+  height:200px;
+  overflow: hidden;
+}
+.grid-3 .box .thumbnail {
+  position: absolute;
+  right:0;
+  top:-50px
 }
