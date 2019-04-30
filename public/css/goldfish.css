@@ -6,7 +6,6 @@ body {
   min-height: 100%;
 position: relative;
 padding-bottom: 55px;
-min-width: 1170px;
 }
 .logo {
   background-image: url(/images/logo.gif);
@@ -39,8 +38,9 @@ a.logo {
   width:100%;
   background-color:rgba(0,0,0,.7);
   box-shadow: none;
-  position: relative;
+  position:fixed;
   color:#fff;
+  z-index: 4;
 }
 .header .users_online {
   background: #fff;
@@ -51,6 +51,9 @@ a.logo {
   background-color:#fff;
   box-shadow: 0 4px rgba(0,0,0,.2);
   position: relative;
+}
+.navbar>.container {
+  display: block;
 }
 .dropbtn {
   font-size: 16px;
@@ -65,7 +68,7 @@ a.logo {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #fff;
+  background-color: #069;
   min-width: 160px;
   box-shadow:0 4px rgba(0,0,0,.2);
   z-index: 1;
@@ -73,7 +76,7 @@ a.logo {
 }
 
 .dropdown-content a {
-  color: black;
+  color: #fff;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -116,14 +119,35 @@ position: absolute;
   -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,.3));
     filter: drop-shadow(0 0 4px rgba(0,0,0,.3));
 }
+.right {
+  float: right;
+
+}
+.left {
+  float:left;
+}
 .footer {
-  position: absolute;bottom:0;background: #001726;width:100%;
+  position: absolute;
+  bottom:0;
+  background: #001726;
+  width:100%;
   color:#fff;
+  height:70px;
+  line-height: 60px;
+}
+.footer .left,.footer .right {
+  padding-top: 8px;
+}
+.footer .right {
+  background-image: url(/images/goldfish.png);
+  background-repeat: no-repeat;
+  background-position:left center;
+  padding-left:55px;
 }
 .box {
   border:1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 4px rgba(0,0,0,.5)
+  box-shadow: 0 4px rgba(0,0,0,.2)
 }
 .box.meview {
   background-image: url(/images/me/view_1.png);
@@ -157,15 +181,46 @@ font-size: 11px;
 .grid-3 {
   display: grid;
   grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+  margin-top:-10px;
 }
-.grid-3 .box {
-  margin:3px;
+.grid-3 .box.news {
+  margin:10px;
   position: relative;
   height:200px;
   overflow: hidden;
+  border:1px solid #000;
 }
-.grid-3 .box .thumbnail {
-  position: absolute;
-  right:0;
-  top:-50px
+.grid-3 .box.news figure.thumbnail {
+  border-radius: 4px;
+  box-shadow: inset 0 5px rgba(255,255,255,.3);
+  position: relative;
+  height: 100%;
+  background-position: right center;
+  image-rendering:pixelated;
+}
+.grid-3 .box.news .shade {
+  position:absolute;
+  color:#fff;
+  bottom:0;
+  padding:3px 5px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: 0.5s ease;
+  background: rgba(0,0,0,.4);
+}
+.grid-3 .box.news:hover {
+  cursor: pointer;
+  filter: brightness(1.115);
+}
+.grid-3 .box.news:hover .shade {
+  background: rgba(0,0,0,.6);
+}
+.caret {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

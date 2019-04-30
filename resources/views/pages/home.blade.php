@@ -10,6 +10,11 @@
         </div>
         <div class="habbo-info">
           <div class="motto"><strong>{{ Auth::user()->username }}:</strong> {{ Auth::user()->motto }}</div>
+          @if($data['sae'] =='1')
+          <div class="alert">
+            <img src="{{$data['c_images']}}/album1584/{{$data['sa_badge']}}.gif"/>  {{$data['sa']}}
+          </div>
+          @endif
         </div>
       </div>
     </div>

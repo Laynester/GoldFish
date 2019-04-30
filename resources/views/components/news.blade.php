@@ -1,8 +1,11 @@
 <div class="grid-3">
 @foreach ($news as $article)
 <div class="box news">
-  <img class="thumbnail" src="{{$article->image}}">
+  <figure class="thumbnail" style="background-image:url({{$article->image}});">
+</figure>
+  <div class="shade">
   {{$article->caption}}
+  </div>
 </div>
 @endforeach
 </div>
