@@ -12,10 +12,10 @@
           <div class="motto"><strong>{{ Auth::user()->username }}:</strong> {{ Auth::user()->motto }}</div>
         </div>
         <div class="feed-items">
-          @if($data['sae'] =='1')
+          @if(CMSHelper::settings('site_alert_enabled') =='1')
           <div class="alert item">
-            <img src="{{$data['c_images']}}/album1584/{{$data['sa_badge']}}.gif"/>
-            <span>{{$data['sa']}}<span>
+            <img src="{{CMSHelper::settings('c_images')}}/album1584/{{CMSHelper::settings('site_alert_badge')}}.gif"/>
+            <span>{{CMSHelper::settings('site_alert')}}<span>
           </div>
           @endif
           <div class="item login">

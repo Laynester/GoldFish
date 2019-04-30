@@ -1,6 +1,6 @@
 <div class="footer">
   <div class="container">
-    <span class="left">{{$data['hotelname']}}</span>
-    <span class="right">GoldFishCMS {{$data['gfv']}}</span>
+    <span class="left">{{CMSHelper::settings('hotelname')}}</span>
+    <span class="right">GoldFishCMS {{CMSHelper::settings('version')}}</span>
   </div>
 </div>

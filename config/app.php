@@ -226,7 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Theme' => Igaster\LaravelTheme\Facades\Theme::class,
+        'CMSHelper' => App\Helpers\CMS::class,
 
     ],
 

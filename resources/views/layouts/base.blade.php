@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$data['hotelname']}} - @yield('title')</title>
+    <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="{{ asset('css/goldfish.css') }}" rel="stylesheet">
@@ -15,11 +15,11 @@
     <div class="header">
       <div class="navbar">
         <ul class="navbar-nav mr-auto">
-        <span>0 Online Now</span>
+        <span>{{CMSHelper::online()}} Online Now</span>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item diamonds">
-              {{ Auth()->User()->credits }} Diamonds
+              {{ Auth()->User()->diamonds->amount }} Diamonds
           </li>
           <li class="nav-item credits">
               {{ Auth()->User()->credits }} Credits
