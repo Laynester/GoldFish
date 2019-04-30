@@ -150,6 +150,7 @@ position: absolute;
   box-shadow: 0 4px rgba(0,0,0,.2)
 }
 .box.meview {
+  box-shadow:  0 4px #a0a097;
   background-image: url(/images/me/view_1.png);
   background-position: center;
   padding-top:148px;
@@ -223,4 +224,16 @@ font-size: 11px;
   padding: 3px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+.feed-items {
+  background-color: #a0a097;
+}
+.feed-items .item {
+  padding:5px;
+  border-top:1px dotted #7b7b73;
+}
+.feed-items .alert {
+  font-weight: normal;
+  margin-bottom:0;
+  font-size: 12px;
 }
