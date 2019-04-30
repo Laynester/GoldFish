@@ -1,0 +1,116 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-color:#dddddd
+}
+.logo {
+  background-image: url(/images/logo.gif);
+  height:67px;
+  width:270px;
+  background-repeat: no-repeat;
+}
+a.logo {
+  top: 80px;
+    left: 80px;
+    position: absolute;
+}
+.header {
+  background: #069;
+  height:200px;position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content:'';
+  position: absolute;
+  display: block;
+  height: 512px;
+  right: -50px;
+  position: absolute;
+  width: 849px;
+  background-image: url(/images/hotel.png);
+  bottom:-30px;
+}
+.header .navbar {
+  width:100%;
+  background-color:rgba(0,0,0,.7);
+  box-shadow: none;
+  position: relative;
+  color:#fff;
+}
+.header .users_online {
+  background: #fff;
+  border-radius: 5px;
+}
+.navbar {
+  width:100%;
+  background-color:#fff;
+  box-shadow: 0 4px rgba(0,0,0,.2);
+  position: relative;
+}
+.dropbtn {
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow:0 4px rgba(0,0,0,.2);
+  z-index: 1;
+  border-radius: 0 0 4px 4px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color:rgba(0,0,0,.03)}
+
+.dropdown:hover .dropdown-content {display: block;}
+.header .navbar ul{
+  display: inline;
+}
+.header .navbar ul li {
+  position: relative;padding-left:25px;
+  image-rendering:pixelated;
+  display: inline-block;
+}
+.header .navbar ul li:before {
+  width: 20px;
+    display: block;
+    left: 0;
+    content: '';
+    top: 50%;
+    background-image: url(/images/sprite.png);
+    background-repeat: : no-repeat;
+}
+.header .navbar  ul li.credits:before {
+  background-position: -44px -487px;
+  height: 20px;
+  margin-top: -10px;
+  position: absolute;
+  background-position: -44px -487px;
+}
+.header .navbar  ul li.diamonds:before {
+  background-position: -22px -487px;
+height: 20px;
+margin-top: -10px;
+position: absolute;
+}
+.shadowed {
+  -webkit-filter: drop-shadow(0 0 4px rgba(0,0,0,.3));
+    filter: drop-shadow(0 0 4px rgba(0,0,0,.3));
+}
+.footer {
+  position: absolute;bottom:0;background: #001726;width:100%;
+  color:#fff;
+}
