@@ -1,3 +1,4 @@
-![alt text](https://imgur.com/TUv8HNu.png)
-
+<p align="center">
+<img src="https://imgur.com/TUv8HNu.png">
+</p>
 ### GoldFishCMS
