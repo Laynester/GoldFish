@@ -19,7 +19,11 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item diamonds">
-              {{ Auth()->User()->diamonds->amount }} Diamonds
+            @empty($currency->where("type", 5)->first()->amount)
+            0
+            @else
+              {{$currency->where("type", 5)->first()->amount}}
+            @endempty Diamonds
           </li>
           <li class="nav-item credits">
               {{ Auth()->User()->credits }} Credits

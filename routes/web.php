@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', '/login', 301);
+Route::get('/', 'Index@render')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('client', 'HomeController@renderClient')->name('client');
+Route::get('/home', 'Session\Home@render')->name('home');
+Route::get('client', 'Session\Client@render')->name('client');
