@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class HomeController extends Controller
 {
@@ -24,5 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('pages.home');
+    }
+    public function renderClient() {
+      $user = auth()->user();
+      $user->auth_ticket = Str::uuid();
+      $user->save();
+      return view('pages.client');
     }
 }

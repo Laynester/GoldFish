@@ -147,7 +147,8 @@ position: absolute;
 .box {
   border:1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 4px rgba(0,0,0,.2)
+  box-shadow: 0 4px rgba(0,0,0,.2);
+  margin-bottom:10px;
 }
 .box.meview {
   box-shadow:  0 4px #a0a097;
@@ -182,10 +183,10 @@ font-size: 11px;
 .grid-3 {
   display: grid;
   grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-  margin-top:-10px;
+  grid-row-gap: 5px;
+  grid-column-gap: 10px;
 }
 .grid-3 .box.news {
-  margin:10px;
   position: relative;
   height:200px;
   overflow: hidden;

@@ -1,0 +1,1 @@
+<iframe src="https://discordapp.com/widget?id={{CMSHelper::settings('discord_id')}}&theme=dark" width="100%" style="margin-bottom:10px;box-shadow:0 4px rgba(0,0,0,.2);border-radius:4px;" height="350" allowtransparency="true" frameborder="0"></iframe>

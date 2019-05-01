@@ -1,4 +1,3 @@
-<div class="grid-3">
 @foreach ($news as $article)
 <div class="box news">
   <figure class="thumbnail" style="background-image:url({{$article->image}});">
@@ -8,4 +7,3 @@
   </div>
 </div>
 @endforeach
-</div>

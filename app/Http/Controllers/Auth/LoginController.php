@@ -36,4 +36,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    protected function authenticated()
+{
+    $user = auth()->user();
+    $user->last_login = time();
+    $user->save();
+}
 }

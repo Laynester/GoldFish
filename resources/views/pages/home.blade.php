@@ -8,6 +8,9 @@
         <div class="plate">
           <img src="https://habbo.com.br/habbo-imaging/avatarimage?figure={{ Auth::user()->look }}">
         </div>
+        <a class="enter_hotel" href="{{ route('client') }}">
+          Enter {{CMSHelper::settings('hotelname')}}
+        </a>
         <div class="habbo-info">
           <div class="motto"><strong>{{ Auth::user()->username }}:</strong> {{ Auth::user()->motto }}</div>
         </div>
@@ -19,13 +22,22 @@
           </div>
           @endif
           <div class="item login">
-            Last Logged in:
+            Last Logged in: {{date('F d, Y', Auth::user()->last_login)}}
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-7">
+      <div class="grid-3">
           @include('components.news')
+        </div>
+        <div class="row">
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-6">
+          @include('partials.discord')
+        </div>
+      </div>
     </div>
   </div>
 </div>

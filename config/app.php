@@ -227,7 +227,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'CMSHelper' => App\Helpers\CMS::class,
+        'UserHelper' => App\Helpers\gfUser::class,
 
     ],
+    'version_number' => '1.0.0'
 
 ];
