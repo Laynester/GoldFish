@@ -1,3 +1,3 @@
-![alt text](https://imgur.com/TUv8HNu)
+![alt text](https://imgur.com/TUv8HNu.png)
 
 ### GoldFishCMS
