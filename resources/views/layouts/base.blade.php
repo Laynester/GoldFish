@@ -14,45 +14,29 @@
   <div id="page-wrap">
     <div class="header">
       <div class="navbar">
-        <ul class="navbar-nav mr-auto">
-        <span>{{CMSHelper::online()}} Online Now</span>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item diamonds">
-            @empty($currency->where("type", 5)->first()->amount)
-            0
-            @else
-              {{$currency->where("type", 5)->first()->amount}}
-            @endempty Diamonds
-          </li>
-          <li class="nav-item credits">
+        <div class="container relative">
+          <ul class="navbar-nav mr-auto">
+            <span>{{CMSHelper::online()}} Online Now</span>
+          </ul>
+          <ul class="right">
+            <li class="nav-item diamonds">
+              {{ (!empty(Auth()->User()->diamonds->amount) ? Auth()->User()->diamonds->amount : '0') }} Diamonds
+            </li>
+            <li class="nav-item credits">
               {{ Auth()->User()->credits }} Credits
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      <a href="#" class="logo"></a>
+      <div class="container relative">
+        <a href="#" class="logo"></a>
+      </div>
     </div>
-  <div class="navbar">
-    <div class="container">
-      <div class="dropdown">
-    <button class="dropbtn"><img class="shadowed" src="https://habbo.com.br/habbo-imaging/avatarimage?figure={{ Auth()->User()->look }}&headonly=1">{{ Auth()->User()->username }} <span class="caret"></span></button>
-    <div class="dropdown-content">
-      <a class="dropdown-item" href="{{ route('logout') }}"
-         onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-          {{ __('Logout') }}
-      </a>
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-      </form>
-    </div>
-  </div>
-  </div>
-</div>
+  @include('partials.navbar')
     <main class="py-4">
         @yield('content')
     </main>
-    @include('partials.footer')
   </div>
+  @include('partials.footer')
 </body>
 </html>

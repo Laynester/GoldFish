@@ -10,6 +10,7 @@
     <script src="{{ asset('js/flash_detect_min.js') }}"></script>
     <script src="{{ asset('js/flashclient.js') }}"></script>
     <link href="{{ asset('css/client.css') }}" rel="stylesheet">
+    <title>{{CMSHelper::settings('hotelname')}} - Hotel</title>
   </head>
   <body>
     <div id="client-ui">

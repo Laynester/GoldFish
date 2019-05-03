@@ -19,7 +19,8 @@ class Home extends Controller
       [
         'badges' => $badges,
         'news' => $news,
-        'currency' => Auth::user()->currency
+        'currency' => Auth::user()->currency,
+        'group' => 'home'
       ]);
   }
 }

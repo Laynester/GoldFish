@@ -2,10 +2,14 @@ body {
   font-family: 'Ubuntu', sans-serif;
   background-color:#dddddd
 }
-#page-wrap {
+
+#page-wrap, html {
   min-height: 100%;
 position: relative;
 padding-bottom: 55px;
+}
+.relative {
+  position: relative;
 }
 .logo {
   background-image: url(/images/logo.gif);
@@ -15,12 +19,11 @@ padding-bottom: 55px;
 }
 a.logo {
   top: 80px;
-    left: 80px;
     position: absolute;
 }
 .header {
   background: #069;
-  height:200px;position: relative;
+  height:192px;position: relative;
   overflow: hidden;
 }
 .header::before {
@@ -32,7 +35,7 @@ a.logo {
   position: absolute;
   width: 849px;
   background-image: url(/images/hotel.png);
-  bottom:-30px;
+  bottom:0px;
 }
 .header .navbar {
   width:100%;
@@ -41,6 +44,8 @@ a.logo {
   position:fixed;
   color:#fff;
   z-index: 4;
+  padding:5px;
+  font-size: 14px;
 }
 .header .users_online {
   background: #fff;
@@ -51,6 +56,7 @@ a.logo {
   background-color:#fff;
   box-shadow: 0 4px rgba(0,0,0,.2);
   position: relative;
+  padding:0;
 }
 .navbar>.container {
   display: block;
@@ -87,6 +93,7 @@ a.logo {
 .dropdown:hover .dropdown-content {display: block;}
 .header .navbar ul{
   display: inline;
+  margin: 0;
 }
 .header .navbar ul li {
   position: relative;padding-left:25px;
@@ -293,4 +300,57 @@ right: 30px;
   bottom:0;
   left:0;
   right:0;
+}
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+   position: relative;
+   width: 100%;
+   padding-right: 5px;
+   padding-left: 5px;
+}
+.row .row {
+  margin-left:-5px;
+  margin-right:-5px
+}
+.box.blue .heading {
+  background: #1DA1F2;
+}
+ul.navigation {
+  list-style: none;
+  padding:0;
+  margin:0;
+  height: 55px;
+
+}
+ul.navigation li {
+  display: inline;
+  line-height: 55px;
+  padding-right: 48px;
+}
+ul.navigation li a {
+  color:#036;
+  font-size: 20px;
+}
+ul.navigation li a.selected {
+  color:#9c9c9c;
+}
+.sub-navigation {
+  background: #001726;
+  color:#fff;
+  padding:0 12px;
+  height:50px;
+}
+.sub-navigation ul.navigation {
+  height:50px;
+}
+.sub-navigation ul.navigation li {
+  display: inline-block;
+    height: 50px;
+    line-height: 50px
+}
+.sub-navigation ul.navigation li a {
+  line-height: 50px;color:#fff;
+  font-size: 18px
+}
+.sub-navigation ul.navigation li a.selected {
+  color:#6796b1;
 }

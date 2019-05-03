@@ -37,8 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'mail_verified' => 'datetime',
     ];
-    public function currency()
+    public function diamonds()
     {
-        return $this->hasMany('App\Models\User\User_Currency', 'user_id');
+        return $this->hasOne('App\Models\User\User_Currency', 'user_id', 'id')->where('type', '5');
     }
+    protected $with = ['diamonds'];
 }
