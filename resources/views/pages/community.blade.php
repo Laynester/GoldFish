@@ -3,8 +3,8 @@
 @section('title', 'Community')
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <div class="grid-3">
+    <div class="col-sm-12">
+      <div class="grid-200">
           @include('components.news')
         </div>
     </div>

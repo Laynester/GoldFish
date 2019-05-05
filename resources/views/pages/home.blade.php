@@ -8,7 +8,7 @@
       @include('components.personalbadges')
     </div>
     <div class="col-lg-7">
-      <div class="grid-3">
+      <div class="grid-200">
           @include('components.news')
         </div>
         <div class="row">

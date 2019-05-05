@@ -3,10 +3,9 @@ namespace App\Http\Controllers\Session;
 
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Models\CMS\News;
 use App\Models\User\User;
 
-class Community extends Controller
+class Staff extends Controller
 {
   public function __construct()
   {
@@ -14,13 +13,11 @@ class Community extends Controller
   }
   public function render()
   {
-      $news = News::orderBy('date', 'DESC')->take(5)->get();
-      $users = User::inRandomOrder()->take(16)->get();
-      return view('pages.community',
+      $users = User::where('rank', '>', 3)->get();
+      return view('pages.staff',
       [
-        'news' => $news,
         'group' => 'community',
-        'users' => $users
+        'staff' => $users
       ]);
   }
 }

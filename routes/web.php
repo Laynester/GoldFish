@@ -15,5 +15,7 @@ Route::get('/', 'Index@render')->name('index');
 Auth::routes();
 
 Route::get('home', 'Session\Home@render')->name('home');
-Route::get('community', 'Session\Community@render')->name('community');
 Route::get('client', 'Session\Client@render')->name('client');
+
+Route::get('community', 'Session\Community@render')->name('community');
+Route::get('community/staff', 'Session\Staff@render')->name('staff');
