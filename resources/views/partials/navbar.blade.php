@@ -8,14 +8,9 @@
      </a>
   </li>
 @endforeach
-<li>
-<a class="right" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-    {{ __('Logout') }}
-</a>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-</form>
-</li>
+  <a href="/client" target="_blank" class="right relative enter_hotel">
+  Enter {{CMSHelper::settings('hotelname')}}
+  </a>
 </ul>
 </div>
 </div>

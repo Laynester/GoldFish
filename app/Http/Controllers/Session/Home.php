@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\Session;
 
-use Auth;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CMS\News;
+use App\Models\User\User;
 
 class Home extends Controller
 {
@@ -11,16 +11,19 @@ class Home extends Controller
   {
       $this->middleware('auth');
   }
-  public function render()
+  public function showProfile($username)
   {
-      $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->get();
-          $news = News::orderBy('date', 'DESC')->take(3)->get();
-      return view('pages.home',
-      [
-        'badges' => $badges,
-        'news' => $news,
-        'currency' => Auth::user()->currency,
-        'group' => 'home'
-      ]);
+    $user = User::where('username', $username)->first();
+    if(empty($user))
+    {
+      return redirect()->back();
+    }
+    $badges = \App\Models\User\User_Badges::where('user_id', $user->id)->take(50)->inRandomOrder()->get();
+    return view('pages.home',[
+      'user' => $user,
+      'badges' => $badges,
+      'group' => 'me'
+    ]);
   }
+
 }
