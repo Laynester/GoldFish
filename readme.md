@@ -3,7 +3,7 @@
 </p>
 <h3>Planned Pages</h3>
 - Me<br>
--- Home<br>
+-- Home✅<br>
 -- Settings<br>
 -- Profile<br>
 - Community<br>
