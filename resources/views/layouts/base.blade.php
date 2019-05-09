@@ -13,23 +13,25 @@
   <body>
   <div id="page-wrap">
     <div class="header">
-      <div class="navbar">
-        <div class="container relative">
-          <ul class="navbar-nav mr-auto">
-            <span>{{CMSHelper::online()}} Online Now</span>
-          </ul>
-          <ul class="right">
-            <li class="nav-item diamonds">
-              {{ (!empty(Auth()->User()->diamonds->amount) ? Auth()->User()->diamonds->amount : '0') }} Diamonds
-            </li>
-            <li class="nav-item credits">
-              {{ Auth()->User()->credits }} Credits
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="container relative">
-        <a href="#" class="logo"></a>
+        <a href="#" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
+        <div class="online">{{CMSHelper::online()}} Online Now</div>
+        <div class="right">
+            <ul class="header_options">
+              <li class="settings" onclick="window.location.href='/settings'"></li>
+              <li class="logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();"></li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+            </ul>
+          <div class="userinfo no-mobile">
+            <div class="purse">
+              <p class="credits currency">{{ Auth()->User()->credits }}</p>
+              <p class="diamonds currency">{{ (!empty(Auth()->User()->diamonds->amount) ? Auth()->User()->diamonds->amount : '0') }}</p>
+            </div>
+            <div class="cut_avatar"><img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}&action=wav&direction=3&head_direction=3"></div>
+        </div>
+        </div>
       </div>
     </div>
   @include('partials.navbar')
