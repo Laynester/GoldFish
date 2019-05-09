@@ -1,30 +1,27 @@
-<p align="center">
-<img src="https://imgur.com/TUv8HNu.png">
-</p>
-<h3>Planned Pages</h3>
-- Me<br>
--- Home✅<br>
--- Settings<br>
--- Profile<br>
-- Community<br>
--- Community<br>
--- Articles<br>
--- Staff<br>
--- Leaderboard<br>
-- Admin<br>
--- Dashboard<br>
--- News<br>
--- CMS Settings/Client<br>
--- Emulator settings<br>
-
-<h3>Planned Features</h3>
-- Client<br>
--- Loader<br>
--- Custom SWF (minor)<br><br>
--- News popup<br>
--- Flash Event support<br>
-- Site<br>
--- RCON Support<br>
--- Leaderboards<br>
--- Discord Widget<br>
--- Twitter Widget<br>
+![GoldFish](https://imgur.com/TUv8HNu.png)
+### Planned Pages
+#### Me
+- [x] Home
+- [ ] Settings
+- [ ] Profile
+#### Community
+- [x] Community
+- [ ] Articles
+- [x] Staff
+- [x] Leaderboard
+#### Admin
+- [ ] Dashboard
+- [ ] News
+- [ ] CMS Settings/Client
+- [ ] Emulator settings
+### Planned Features
+#### Client
+- [ ] Loader
+- [ ] Custom SWF (minor)
+- [ ] News popup
+- [x] Flash Event support
+#### Site
+- [ ] RCON Support
+- [x] Leaderboards
+- [x] Discord Widget
+- [x] Twitter Widget
