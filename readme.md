@@ -16,7 +16,7 @@
 - [ ] Emulator settings
 ### Planned Features
 #### Client
-- [ ] Loader
+- [x] Loader
 - [ ] Custom SWF (minor)
 - [ ] News popup
 - [x] Flash Event support

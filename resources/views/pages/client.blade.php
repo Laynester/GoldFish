@@ -65,5 +65,14 @@
 </div>
 </div>
 </habbo-client-error>
+<div class="loader" id="loader">
+  <div class="loading">
+    <img src="{{CMSHelper::settings('site_logo')}}"/>
+    <div class="loading_bar">
+      <div class="loading_bar_inner" id="loader_bar"></div>
+    </div>
+    <span>Please wait! {{CMSHelper::settings('hotelname')}} is starting up.</span>
+  </div>
+</div>
   </body>
 </html>
