@@ -18,7 +18,7 @@
   <div class="container">
     <ul class="navigation">
       @foreach(App\Models\CMS\Menu::children(strtolower($group))->orderBy('order','asc')->Get() as $item)
-        <li><a href="/{{$item->url}}" {{ (Request::is($item->url) ? 'class=selected' : '') }}>{{ $item->title}}</a></li>
+        <li><a href="/{!! str_replace('%username%', Auth()->User()->username, $item->url) !!}" {{ (Request::is($item->url) ? 'class=selected' : '') }}>{{ $item->title}}</a></li>
       @endforeach
     </ul>
   </div>

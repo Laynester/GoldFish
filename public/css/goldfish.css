@@ -550,3 +550,76 @@ margin-left: 5px;
   height:313px;
   padding:0;
 }
+.widget_default_skin {
+	background: #ffc300;
+	background: -moz-linear-gradient(top, #ffc300 0%, #ffc300 57%, #ffa500 91%);
+	background: -webkit-linear-gradient(top, #ffc300 0%, #ffc300 57%, #ffa500 91%);
+	background: linear-gradient(to bottom, #ffc300 0%, #ffc300 57%, #ffa500 91%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc300', endColorstr='#ffa500', GradientType=0);
+	border: 1px solid #000;
+	border-radius: 7px;
+	padding: 5px;
+	box-shadow: inset 0px 1px 0px 0px #ffc300, inset 0px 2px 0px 0px #ffff99;
+	margin-top: 10px;
+}
+
+h2.default_title {
+	border-radius: 5px;
+	border: 1px solid #000;
+	background-color: #676767;
+	color: #fff;
+	font-size: 13px;
+	padding: 5px;
+	text-transform: uppercase;
+	box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, .3), 0px 2px #bd6800;
+}
+
+h2.default_title:after {
+	content: " ";
+	position: absolute;
+	right: 13px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQYV2NctGjR/7i4OEYGKAAzfHx8/m/ZsgXMhsugqIBxQDQArB0IBa4ERKAAAAAASUVORK5CYII=);
+	height: 18px;
+	width: 100px;
+}
+
+.widget_default_skin_content {
+	background-image: linear-gradient(90deg, #d8d8c5 16.67%, #ebebdd 16.67%, #ebebdd 50%, #d8d8c5 50%, #d8d8c5 66.67%, #ebebdd 66.67%, #ebebdd 100%);
+	background-size: 6.00px 6.00px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	box-shadow: inset 0px -2px #a1a18d, inset 0 0 0 2px #d8d8c5, inset 0 0 0 3px #fff, 0px 2px #bd6800;
+	padding: 3px 7px;
+	overflow: hidden;
+	color: #000;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.widget_default_skin_content:after {
+	content: " ";
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: url(/images/shine.png);
+}
+#badges {
+  width: 228px;
+}
+#profile {
+  width: 275px;
+}
+#profile .user_info {
+  width:160px;
+  font-size: 12px;
+}
+#profile .user_info b {
+  display: block;
+}
+@media (min-width: 992px) {
+  .home_widget {
+    position: absolute;
+  }
+}

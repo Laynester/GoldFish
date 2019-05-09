@@ -18,7 +18,7 @@ class Home extends Controller
     {
       return redirect()->back();
     }
-    $badges = \App\Models\User\User_Badges::where('user_id', $user->id)->take(50)->inRandomOrder()->get();
+    $badges = \App\Models\User\User_Badges::where('user_id', $user->id)->take(16)->inRandomOrder()->get();
     return view('pages.home',[
       'user' => $user,
       'badges' => $badges,
