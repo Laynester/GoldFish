@@ -23,7 +23,7 @@ float: left;
   background-image: url(/images/header.gif);
   animation: slide 60s linear infinite;
 }
-.header:before {
+.header .container.relative:before {
   position: absolute;
   content: '';
   background-image: url(/images/hotel.png);
@@ -155,6 +155,7 @@ p.duckets {
 }
 .right {
   float: right;
+  right:0;
 }
 .left {
   float:left;
@@ -229,7 +230,7 @@ font-size: 11px;
   grid-row-gap: 5px;
   grid-column-gap: 10px;
 }
-.grid-200 .box.news {
+.box.news {
   border-radius: 7px;
   padding:0;
   position: relative;
@@ -237,15 +238,18 @@ font-size: 11px;
   overflow: hidden;
   border:1px solid #000;
 }
-.grid-200 .box.news figure.thumbnail {
+.box.news figure.thumbnail {
   border-radius: 6px;
   box-shadow: inset 0 7px rgba(255,255,255,.3);
   position: relative;
   height: 100%;
-  background-position: right center;
+  background-position:247px 240px;
   image-rendering:pixelated;
 }
-.grid-200 .box.news .shade {
+.box.news.newsArticle figure.thumbnail {
+  background-position:right center;
+}
+.box.news .shade {
   position:absolute;
   color:#fff;
   bottom:0;
@@ -256,20 +260,12 @@ font-size: 11px;
   transition: 0.5s ease;
   background: rgba(0,0,0,.4);
 }
-.grid-200 .box.news:hover {
+.box.news:hover {
   cursor: pointer;
   filter: brightness(1.115);
 }
-.grid-200 .box.news:hover .shade {
+.box.news:hover .shade {
   background: rgba(0,0,0,.6);
-}
-.caret {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
 }
 .feed-items {
   background-color: #a0a097;
@@ -378,6 +374,9 @@ right: 30px;
 }
 .box.pink .heading {
   background-color: #E066BC;
+}
+.box.discord .heading {
+  background-color: #7289da;
 }
 ul.navigation {
   list-style: none;
@@ -501,4 +500,53 @@ margin-left: 5px;
 .staff.leaderboard:nth-of-type(3) {
   background: #965A38;
   color:#fff;
+}
+.newsList {
+  display: block;
+  overflow: auto
+}
+.newsList h4 {
+  margin-top:0;
+}
+.newsList p {
+  min-width: 100%;
+  max-width: 400px;
+  margin:0;
+}
+.newsList .box.news{
+  width:150px;
+  height:150px;
+  margin-right:10px;
+}
+.newsArticle.box.news {
+  width: 100%;
+  height:302px;
+  display: block;
+}
+.newsArticle h3{
+  color:#fff;
+  padding:10px 10px;
+  margin-bottom:0;
+  padding-bottom:5px;
+}
+.newsArticle i {
+  color:#999;
+  padding:0 10px;
+}
+.newsArticle i a {
+  color:#fff;
+}
+.newsArticle figure p {
+  width:330px;
+  color:#fff;
+  padding:0 10px;
+}
+.bottom {
+  position: absolute;
+  bottom:0;
+}
+#discord-widget {
+  position: relative;
+  height:313px;
+  padding:0;
 }

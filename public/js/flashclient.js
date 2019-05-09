@@ -47,3 +47,12 @@ if (b === "client.init.config.loaded") {
           }, 5000);
 }
 }
+function closeNews(){
+  $( "#news" ).hide();
+}
+$( function() {
+    $( "#news" ).draggable({
+  containment: "#client-ui",
+  cursor: "crosshair"
+});
+  } );

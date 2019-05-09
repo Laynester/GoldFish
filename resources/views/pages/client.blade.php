@@ -5,6 +5,7 @@
   src="https://code.jquery.com/jquery-3.4.0.min.js"
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ asset('js/browse.js') }}"></script>
     <script src="{{ asset('js/client.js') }}"></script>
     <script src="{{ asset('js/flash_detect_min.js') }}"></script>
@@ -46,11 +47,18 @@
        Client.addParam('wmode', "opaque");
        Client.write('client');
        FlashExternalInterface.signoutUrl = "{{env('APP_URL')}}/logout";
+       FlashExternalInterface.openNews = function() {
+           $( "#news" ).show();
+           window.location.href='/me';
+       }
        $(document).ready(function() {
        if (FlashDetect.installed) {
        $("#noflash").remove(); }
+       if (!FlashDetect.installed) {
+       $("#loader").remove(); }
         });
     </script>
+    @include('components.client-article')
   </div>
   <habbo-client-error id="noflash">
 <div class="client-error__background-frank">

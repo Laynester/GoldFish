@@ -1,1 +1,14 @@
-<iframe src="https://discordapp.com/widget?id={{CMSHelper::settings('discord_id')}}&theme=dark" width="100%" style="margin-bottom:10px;box-shadow:0 4px rgba(0,0,0,.2);border-radius:4px;" height="350" allowtransparency="true" frameborder="0"></iframe>
+<div class="box discord">
+  <div class="heading">Discord</div>
+  <div class="content" id="discord-widget"></div>
+</div>
+<script>window.GLOBAL_ENV = {
+  API_ENDPOINT: '//discordapp.com/api',
+  WEBAPP_ENDPOINT: '//discordapp.com',
+  CDN_HOST: 'cdn.discordapp.com',
+  MARKETING_ENDPOINT: '//discordapp.com',
+  RELEASE_CHANNEL: 'stable',
+};
+var serverid = "{{CMSHelper::settings('discord_id')}}";
+</script>
+<script src="{{ asset('js/discord.js') }}" defer></script>

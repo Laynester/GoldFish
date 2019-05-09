@@ -15,7 +15,7 @@
         @include('components.discord')
       </div>
       <div class="col-lg-6">
-        @include('components.randomhabbos')
+        @include('components.community.randomhabbos')
       </div>
   </div>
 </div>

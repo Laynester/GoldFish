@@ -6,7 +6,7 @@
 - [ ] Profile
 #### Community
 - [x] Community
-- [ ] Articles
+- [x] Articles
 - [x] Staff
 - [x] Leaderboard
 #### Admin
