@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body {
-  font-family: "Ubuntu Condensed","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-color:#dddddd
 }
 
 #page-wrap, html {
   min-height: 100%;
 position: relative;
-padding-bottom: 55px;
+padding-bottom: 25px;
 }
 .relative {
   position: relative;
@@ -276,6 +277,9 @@ font-size: 11px;
 .feed-items .item {
   padding:5px;
   border-top:1px dotted #7b7b73;
+}
+.feed-items .item.login {
+  font-size: 12px;
 }
 .feed-items .alert {
   font-weight: normal;
