@@ -15,7 +15,7 @@ class Articles extends Controller
   public function render()
   {
       $news = News::orderBy('date', 'DESC')->paginate(5);
-      return view('pages.articles',
+      return view('pages.community.articles',
       [
         'group' => 'community',
         'news' => $news
@@ -32,7 +32,7 @@ class Articles extends Controller
     {
       return redirect()->back();
     }
-    return view('pages.article',
+    return view('pages.community.article',
     [
       'group' => 'community',
       'news' => $news

@@ -3,9 +3,9 @@ namespace App\Http\Controllers\Session;
 
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Models\User\User;
-
-class Staff extends Controller
+use App\Models\CMS\Camera_web;
+use \Carbon\Carbon;
+class Photos extends Controller
 {
   public function __construct()
   {
@@ -13,11 +13,11 @@ class Staff extends Controller
   }
   public function render()
   {
-      $users = User::where('rank', '>', 3)->get();
-      return view('pages.community.staff',
+      $photos = Camera_web::orderBy('timestamp', 'DESC')->paginate(16);
+      return view('pages.community.photos',
       [
         'group' => 'community',
-        'staff' => $users
+        'photos' => $photos
       ]);
   }
 }

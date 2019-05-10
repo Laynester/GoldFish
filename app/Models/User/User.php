@@ -41,9 +41,12 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\User\User_Currency', 'user_id', 'id')->where('type', '5');
     }
+    public function duckets()
+    {
+        return $this->hasOne('App\Models\User\User_Currency', 'user_id', 'id')->where('type', '0');
+    }
     public function getRouteKeyName()
     {
         return 'username';
     }
-    protected $with = ['diamonds'];
 }

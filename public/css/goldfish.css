@@ -23,15 +23,6 @@ float: left;
   background-image: url(/images/header.gif);
   animation: slide 60s linear infinite;
 }
-.header .container.relative:before {
-  position: absolute;
-  content: '';
-  background-image: url(/images/hotel.png);
-  top:-60px;
-  width:760px;
-  height:500px;
-  right:230px;
-}
 .navbar {
   width:100%;
   background-color:#4C4C4C;
@@ -46,6 +37,10 @@ float: left;
   position: relative;
   padding:0;
 }
+.userinfo {
+  position: absolute;
+  right:50px;
+}
 .cut_avatar {
   position: relative;
   top:55px;
@@ -53,7 +48,7 @@ float: left;
   float: left;
 }
 .purse {
-  top:20px;
+  top:0px;
   float: left;
   color:#fff;
   font-weight: bold;
@@ -90,7 +85,7 @@ p.duckets {
   height: 0;
   right: -8px;
   position: absolute;
-  top: 8px;
+  bottom: 18px;
   width: 0;
 }
 .header .online {
@@ -191,7 +186,7 @@ p.duckets {
 .box.meview {
   padding:0;
   box-shadow:  0 4px #a0a097;
-  background-position:center 350px;
+  background-position:-50px -240px;
   padding-top:148px;
   position: relative;
   border:0;
@@ -224,6 +219,12 @@ font-size: 11px;
   grid-row-gap: 5px;
   grid-column-gap: 10px;
 }
+.grid-275 {
+  display: grid;
+  grid-template-columns:repeat(auto-fill, minmax(275px, 1fr));
+  grid-row-gap: 5px;
+  grid-column-gap: 10px;
+}
 .grid-300 {
   display: grid;
   grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
@@ -249,7 +250,7 @@ font-size: 11px;
 .box.news.newsArticle figure.thumbnail {
   background-position:right center;
 }
-.box.news .shade {
+.shade {
   position:absolute;
   color:#fff;
   bottom:0;
@@ -383,7 +384,6 @@ ul.navigation {
   padding:0;
   margin:0;
   height: 45px;
-
 }
 ul.navigation li {
   display: inline;
@@ -404,11 +404,11 @@ ul.navigation li a.selected {
   box-shadow:0 4px rgba(0,0,0,.2)
 }
 .sub-navigation ul.navigation {
-  height:45px;
+  height:auto;
 }
 .sub-navigation ul.navigation li {
   display: inline-block;
-    line-height: 45px
+    line-height: 44px
 }
 .sub-navigation ul.navigation li a {
   line-height: 45px;
@@ -622,4 +622,68 @@ h2.default_title:after {
   .home_widget {
     position: absolute;
   }
+  .header .container.relative:before {
+    position: absolute;
+    content: '';
+    background-image: url(/images/hotel.png);
+    top:-60px;
+    width:760px;
+    height:500px;
+    right:0px;
+    left:0px;
+  }
+}
+.grid-275 figure.photo {
+  background-color: #fff;
+  padding:18px 8px 3px 8px;
+  border:1px solid #000;
+  position: relative;
+}
+.grid-275 figure.photo:before {
+  content:'';
+  z-index: 2;
+  position: absolute;
+  bottom:-1px;
+  right:-2px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 15px 15px;
+  border-color: transparent transparent #dddddd transparent;
+}
+.grid-275 figure.photo:after {
+  content:'';
+  box-shadow: -1px -1px;
+  position: absolute;
+  bottom:-1px;
+  right:-1px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 15px 0 0;
+  border-color: #fff transparent transparent transparent;
+}
+.grid-275 figure.photo p {margin:0;padding:0;}
+.grid-275 figure.photo p.end:before {
+
+  content:'';
+  position: absolute;
+  bottom:-1px;
+  right:-1px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 15px 15px;
+  border-color: transparent transparent #000 transparent;
+}
+.grid-275 figure.photo .image {
+  position: relative;
+  height:253px;
+  background-position: center;
+  image-rendering:pixelated;
+  border:1px solid #000;
+  color:#fff;
+}
+.grid-275 figure.photo .image .bottom {
+  right:5px;
 }

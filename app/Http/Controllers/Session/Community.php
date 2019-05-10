@@ -16,7 +16,7 @@ class Community extends Controller
   {
       $news = News::orderBy('date', 'DESC')->take(5)->get();
       $users = User::inRandomOrder()->take(16)->get();
-      return view('pages.community',
+      return view('pages.community.community',
       [
         'news' => $news,
         'group' => 'community',

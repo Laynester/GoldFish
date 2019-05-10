@@ -13,9 +13,9 @@ class Me extends Controller
   }
   public function render()
   {
-      $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->get();
-          $news = News::orderBy('date', 'DESC')->take(3)->get();
-      return view('pages.me',
+      $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->take(32)->get();
+      $news = News::orderBy('date', 'DESC')->take(3)->get();
+      return view('pages.me.me',
       [
         'badges' => $badges,
         'news' => $news,

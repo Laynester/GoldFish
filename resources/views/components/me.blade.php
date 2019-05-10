@@ -1,4 +1,4 @@
-<div class="box meview" style="background-image:url(/images/me/views/{{CMSHelper::settings('mepage_view')}});">
+<div class="box meview" style="background-image:url(/images/me/views/{{Auth()->User()->hotelview}});">
   <div class="plate">
     <img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}">
   </div>
@@ -16,7 +16,7 @@
     </div>
     @endif
     <div class="item login">
-      Last Logged in: {{date('F d, Y', Auth::user()->last_login)}}
+      Last Logged in: {{date('F d, Y h:ia', Auth::user()->last_login)}}
     </div>
   </div>
 </div>

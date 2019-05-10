@@ -19,14 +19,13 @@
         <div class="right">
             <ul class="header_options">
               <li class="settings" onclick="window.location.href='/settings'"></li>
-              <li class="logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();"></li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
+              <li class="logout" onclick="window.location.href='/logout'"></li>
+
             </ul>
           <div class="userinfo no-mobile">
             <div class="purse">
               <p class="credits currency">{{ Auth()->User()->credits }}</p>
+              <p class="duckets currency">{{ (!empty(Auth()->User()->duckets->amount) ? Auth()->User()->duckets->amount : '0') }}</p>
               <p class="diamonds currency">{{ (!empty(Auth()->User()->diamonds->amount) ? Auth()->User()->diamonds->amount : '0') }}</p>
             </div>
             <div class="cut_avatar"><img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}&action=wav&direction=3&head_direction=3"></div>
