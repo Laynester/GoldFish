@@ -13,6 +13,7 @@
 
 // Guest
 Route::get('/', 'Index@render')->name('index');
+Route::get('/index', function () {return redirect('/');});
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 Auth::routes();
@@ -22,6 +23,7 @@ Route::get('me', 'Session\Me@render')->name('me');
 Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
 Route::get('client', 'Session\Client@render')->name('client');
 Route::any('settings', 'Session\Settings@render')->name('settings');
+Route::get('api','Session\API@return');
 
 // Community
 Route::get('community', 'Session\Community@render')->name('community');

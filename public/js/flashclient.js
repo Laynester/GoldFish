@@ -55,4 +55,191 @@ $( function() {
   containment: "#client-ui",
   cursor: "crosshair"
 });
-  } );
+});
+
+window.FlashExternalInterface.openNews = function() {
+    $( "#news" ).show();
+}
+window.addEventListener("message", processMessage);
+
+function processMessage(data) {
+    var client = document.getElementsByName('client')[0];
+    if (data && data.data) {
+        var call = data.data.call;
+        var target = data.data.target;
+
+									if(call == 'navigator-tab')
+				            {
+				                // official_view, hotel_view, roomads_view, myworld_view etc (any custom tab)
+				                return client.openlink('navigator/tab/' + target);
+				            }
+				            else if(call === 'home-room')
+				            {
+				                return client.openlink('navigator/goto/home');
+				            }
+				            else if(call === 'open-room')
+				            {
+				                // room id
+				                return client.openlink('navigator/goto/' + target);
+				            }
+				            else if(call === 'navigator-search')
+				            {
+				                // searches hotel_view
+				                return client.openlink('navigator/search/' + target);
+				            }
+				            else if(call === 'navigator-tag')
+				            {
+				                // searches hotel_view
+				                return client.openlink('navigator/tag/' + target);
+				            }
+				            else if(call === 'navigator-report')
+				            {
+				                // room id
+				                // reason code??
+				                return client.openlink('navigator/report/' + target + '/reasoncode');
+				            }
+				            else if(call === 'open-friends')
+				            {
+				                return client.openlink('friendlist/open')
+				            }
+				            else if(call === 'open-chat')
+				            {
+				                // user id
+				                return client.openlink('friendlist/openchat' + target);
+				            }
+				            else if(call === 'open-group')
+				            {
+				                // group id
+				                return client.openlink('group/' + target);
+				            }
+				            else if(call == 'inventory-tab')
+				            {
+				                // furni, badges
+				                return client.openlink('inventory/open/' + target);
+				            }
+				            else if(call === 'avatar-editor')
+				            {
+				                return client.openlink('avatareditor/open');
+				            }
+				            else if(call === 'find-friends')
+				            {
+				                return client.openlink('friendbar/friendfriends');
+				            }
+				            else if(call === 'open-link')
+				            {
+				                return client.openlink(target);
+				            }
+				            else if(call === 'open-achievements')
+				            {
+				                return client.openlink('questengine/achievements');
+				            }
+				            else if(call === 'open-guest-calendar')
+				            {
+				                return client.openlink('questengine/calendar');
+				            }
+				            else if(call === 'open-quests')
+				            {
+				                return client.openlink('questengine/quests');
+				            }
+				            else if(call === 'open-room-thumbnail')
+				            {
+				                // some string
+				                return client.openlink('roomThumbnailCamera/' + target);
+				            }
+				            else if(call === 'open-tour')
+				            {
+				                // some string
+				                return client.openlink('help/tour');
+				            }
+				            else if(call === 'open-tour')
+				            {
+				                // some string
+				                return client.openlink('help/tour');
+				            }
+				            else if(call === 'report-room')
+				            {
+				                // room id
+				                return client.openlink('help/report/room/' + target);
+				            }
+				            else if(call === 'open-memenu')
+				            {
+				                // room id
+				                return client.openlink('toolbar/memenu');
+				            }
+				            else if(call === 'highlight-toolbar')
+				            {
+				                // catalog, navigator, memenu
+				                return client.openlink('toolbar/hightlight/' + target);
+				            }
+				            else if(call === 'open-game')
+				            {
+				                // some game
+				                return client.openlink('games/open/' + target);
+				            }
+				            else if(call === 'play-game')
+				            {
+				                // some game
+				                return client.openlink('games/play/' + target);
+				            }
+				            else if(call === 'open-catalog')
+				            {
+				                // open catalog
+				                return client.openlink('catalog/open');
+				            }
+				            else if(call === 'open-catalog-page')
+				            {
+				                // some page
+				                return client.openlink('catalog/open/' + target);
+				            }
+				            else if(call === 'open-warehouse')
+				            {
+				                // open catalog
+				                return client.openlink('catalog/warehouse');
+				            }
+				            else if(call === 'open-warehouse-page')
+				            {
+				                // some page
+				                return client.openlink('catalog/warehouse/' + target);
+				            }
+				            else if(call === 'club-buy')
+				            {
+				                // some page
+				                return client.openlink('catalog/club_buy');
+				            }
+				            else if(call === 'open-nux-lobbyoffer')
+				            {
+				                // something
+				                return client.openlink('nux/lobbyoffer');
+				            }
+				            else if(call === 'open-nux-lobbyoffer-show')
+				            {
+				                // something
+				                return client.openlink('nux/lobbyoffer/show');
+				            }
+				            else if(call === 'open-friendbar-user')
+				            {
+				                // username or id ???
+				                return client.openlink('friendbar/open/' + target);
+				            }
+				            else if(call === 'open-hccenter')
+				            {
+				                return client.openlink('habboUI/open/hccenter');
+				            }
+				            else if(call === 'open-habbopages')
+				            {
+				                return client.openlink('habbopages/' + target);
+				            }
+				            else if(call === 'open-calendar')
+				            {
+				                return client.openlink('openView/calendar');
+				            }
+				            else if(call === 'open-habblet')
+				            {
+				                // credits else something else..
+				                return client.openlink('habblet/open/' + target);
+				            }
+                    else if (call == 'show-interstitial') {
+                      return openInterstitial();
+                    }
+    }
+}

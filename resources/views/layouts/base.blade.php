@@ -9,18 +9,18 @@
     <link href="{{ asset('css/discord.css') }}" rel="stylesheet">
     <link href="{{ asset('css/goldfish.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/goldfish.js') }}" defer></script>
   </head>
   <body>
   <div id="page-wrap">
     <div class="header">
       <div class="container relative">
         <a href="#" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
-        <div class="online">{{CMSHelper::online()}} Online Now</div>
+        <div class="online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
         <div class="right">
             <ul class="header_options">
-              <li class="settings" onclick="window.location.href='/settings'"></li>
-              <li class="logout" onclick="window.location.href='/logout'"></li>
-
+              <li class="settings left" onclick="window.location.href='/settings'"></li>
+              <li class="logout left" onclick="window.location.href='/logout'"></li>
             </ul>
           <div class="userinfo no-mobile">
             <div class="purse">

@@ -119,30 +119,27 @@ p.duckets {
   right:0;
   height:47px;
   padding: 0;
-
+  z-index: 5;
 }
 .header .header_options li{
   display: inline-block;
+  height:45px;
+  width:45px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 .header .header_options li:hover,
 .enter_hotel:hover {
   filter: brightness(1.2);
+  cursor: pointer;
 }
 .header .header_options li.logout{
-  height:45px;
-  width:45px;
   background-image: url(/images/logout.gif);
-  background-repeat: no-repeat;
-  background-position: center;
   border-left:2px solid #565656;
 }
 .header .header_options li.settings {
-  height:45px;
-  width:45px;
   background-image: url(/images/settings.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
 }
 .navigation {
   display: block;
@@ -210,8 +207,8 @@ width: 96px;
   border-radius: 5px;
   background-color: #fff;
   height: 18px;
-padding: 2px 3px 4px;
-font-size: 11px;
+padding: 2px 3px 4px 6px;
+font-size: 11px;line-height: 13px;
 }
 .grid-200 {
   display: grid;
@@ -272,7 +269,7 @@ font-size: 11px;
   background-color: #a0a097;
 }
 .feed-items .item {
-  padding:5px;
+  padding:5px 5px 5px 10px;
   border-top:1px dotted #7b7b73;
 }
 .feed-items .item.login {
@@ -292,6 +289,10 @@ font-size: 11px;
               inset 0 0 0 1px rgba(0,0,0,.3),
               inset 3px -3px #50c60f;
   border-radius: 5px;
+}
+.enter_hotel.offline {
+  filter: saturate(0)brightness(0.8);
+
 }
 .enter_hotel:hover {
   color:#fff;

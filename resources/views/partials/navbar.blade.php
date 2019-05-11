@@ -8,9 +8,15 @@
      </a>
   </li>
 @endforeach
-  <a href="/client" target="_blank" class="right relative enter_hotel">
+@if(CMSHelper::hotelstatus() == '1')
+<a class="enter_hotel right relative offline" href="#" target="_blank">
+  Hotel is offline
+</a>
+@else
+<a class="enter_hotel right relative" href="{{ route('client') }}" target="_blank">
   Enter {{CMSHelper::settings('hotelname')}}
-  </a>
+</a>
+@endif
 </ul>
 </div>
 </div>
