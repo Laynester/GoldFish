@@ -18,7 +18,7 @@
 #### Client
 - [x] Loader
 - [ ] Custom SWF (minor)
-- [ ] News popup
+- [x] News popup
 - [x] Flash Event support
 #### Site
 - [ ] RCON Support
