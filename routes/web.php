@@ -23,3 +23,4 @@ Route::get('community/photos', 'Session\Photos@render')->name('photos');
 // Admin
 Route::get('housekeeping', function () {return redirect('/housekeeping/dashboard');});
 Route::get('housekeeping/dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
+Route::get('housekeeping/news', 'Housekeeping\News@render')->name('hknews');

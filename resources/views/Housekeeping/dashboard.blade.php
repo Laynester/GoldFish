@@ -1,6 +1,8 @@
 @extends('layouts.hk')
 @section('content')
 @section('title', CMSHelper::settings('hotelname').' Hotel Housekeeping')
+<div class="body_content">
+  <h3>@yield('title')</h3>
 <div class="row">
   <div class="col-md-8">
     <div class="box_1">
@@ -37,5 +39,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 @endsection

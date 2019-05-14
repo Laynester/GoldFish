@@ -10,15 +10,20 @@
     <link href="{{ asset('css/goldfish.css') }}" rel="stylesheet">
     <link href="{{ asset('css/housekeeping.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="hk_navigation">
         <ul>
-          <li @if($group == 'dashboard') class="active" @endif><a href="">Dashboard</a></li>
-          <li @if($group == 'server') class="active" @endif><a href="">Server</a></li>
-          <li @if($group == 'site') class="active" @endif><a href="">Site & Content</a></li>
-          <li><a href="">Users & Moderation</a></li>
+          <li id="dashboard" @if($group == 'dashboard') class="active" @endif><a href="{{ route('dashboard') }}">Dashboard</a></li>
+          <li id="server" @if($group == 'server') class="active" @endif><a href="">Server</a></li>
+          <li id="site" @if($group == 'site') class="active" @endif><a href="{{ route('hknews') }}">Site & Content</a></li>
+          <li id="user"><a href="">Users & Moderation</a></li>
         </ul>
       </div>
       <div class="hk_welcome">
@@ -26,9 +31,9 @@
         <span class="right">Welcome {{Auth()->User()->username}} ({{Auth()->User()->id}})</span>
       </div>
       <div class="hk_body">
-        <h3>@yield('title')</h3>
-          @yield('content')
+            @yield('content')
       </div>
     </div>
+    @yield('javascript')
   </body>
 </html>

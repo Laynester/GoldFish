@@ -5,7 +5,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 
-class Dashboard extends Controller
+class News extends Controller
 {
   public function __construct()
   {
@@ -13,10 +13,12 @@ class Dashboard extends Controller
   }
   public function render()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('dashboard')){
-      return view('housekeeping.dashboard',
+    if(auth()->user()->rank >= CMS::fuseRights('news')){
+      $images = \File::allFiles(public_path('images/news'));
+      return view('housekeeping.news',
       [
-        'group' => 'dashboard'
+        'group' => 'site',
+        'images' => $images
       ]);
     }
     else {
