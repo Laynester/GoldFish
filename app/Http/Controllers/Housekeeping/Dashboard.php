@@ -7,11 +7,6 @@ use App\Helpers\CMS;
 
 class Dashboard extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-      $this->middleware('setTheme:Admin');
-  }
   public function render()
   {
     if(auth()->user()->rank >= CMS::fuseRights('dashboard')){

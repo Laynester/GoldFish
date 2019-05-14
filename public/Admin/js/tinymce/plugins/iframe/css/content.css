@@ -1,0 +1,7 @@
+.mceItemIframe {
+	border: 1px dotted #000000;
+	background-image: url('../images/iframe_large.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #cccccc;
+}

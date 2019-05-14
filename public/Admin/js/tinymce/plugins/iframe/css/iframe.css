@@ -1,0 +1,24 @@
+.panel_wrapper div.current {
+	height: 200px;
+}
+#width, #height {
+	vertical-align: middle;
+	width: 50px;
+	text-align: center;
+}
+
+#vspace, #hspace, #border {
+	vertical-align: middle;
+	width: 30px;
+	text-align: center;
+}
+input {
+	vertical-align: middle;
+}
+
+#constrain, #onmousemovecheck {
+	width: auto;
+}
+#id, #longdesc, #src, #name {
+	width: 250px;
+}

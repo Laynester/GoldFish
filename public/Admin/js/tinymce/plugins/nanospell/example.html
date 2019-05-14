@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.4.3/tinymce.min.js"></script>
+      
+      <script>
+         var nanospell_directory  = location.href.substring(0,location.href.lastIndexOf("/")+1);
+         //nanospell_directory is an absolute url for the nanospell plugin folder.  
+         //In this example we use JS to cheat ;)
+         
+          tinymce.init({
+             selector:'textarea',
+             external_plugins: {"nanospell": nanospell_directory+"plugin.js"},
+             nanospell_server: "php", // choose "php" "asp" "asp.net" or "java"
+             nanospell_autostart:true,
+             }); 
+      </script>
+
+   </head>
+   <body>
+      <textarea>Easy! You should check out TinyMceSpellCheck.com!</textarea>
+      <br>
+      <textarea>And Here is anothwer Editor for Fun</textarea>
+   </body>
+</html>

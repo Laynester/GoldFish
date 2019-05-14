@@ -1,0 +1,168 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{$lang_iframe_title}</title>
+	<script language="javascript" type="text/javascript" src="../../tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="jscripts/iframe.js"></script>
+	<script language="javascript" type="text/javascript" src="../../utils/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="../../utils/form_utils.js"></script>
+	<link href="css/iframe.css" rel="stylesheet" type="text/css" />
+	<base target="_self" />
+</head>
+<body onLoad="tinyMCEPopup.executeOnLoad('init();');" style="display: none">
+    <form onSubmit="insertIFrame();return false;" action="#">
+		<div class="tabs">
+			<ul>
+				<li id="general_tab" class="current"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onMouseDown="return false;">{$lang_iframe_general}</a></span></li>
+				<li id="advanced_tab"><span><a href="javascript:mcTabs.displayTab('advanced_tab','advanced_panel');" onMouseDown="return false;">{$lang_iframe_advanced}</a></span></li>
+			</ul>
+		</div>
+
+		<div class="panel_wrapper">
+			<div id="general_panel" class="panel current">
+				<fieldset>
+					<legend>{$lang_iframe_desc}</legend>
+
+					<table class="properties">
+							<tr>
+							<td nowrap="nowrap"><label for="file">{$lang_iframe_file}</label></td>
+							  <td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="src" name="src" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+							<td nowrap="nowrap"><label for="file">{$lang_iframe_name}</label></td>
+							  <td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="name" name="name" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_size}</label></td>
+								<td nowrap="nowrap" colspan="3">
+									<table border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td><input type="text" id="width" name="width" value="100" onChange="changeHeight();updateStyle();" /> x <input type="text" id="height" name="height" value="100" onChange="changeWidth();updateStyle();" /></td>
+										<input name="tmp_width" type="hidden" id="tmp_width" value="100"  />
+										<input name="tmp_height" type="hidden" id="tmp_height" value="100" />
+										<td>&nbsp;&nbsp;<input id="constrain" type="checkbox" name="constrain" class="checkbox" checked="checked" /></td>
+										<td><label id="constrainlabel" for="constrain">{$lang_iframe_constrain}</label></td>
+										<td><div id="dim_loader"></div></td>
+									</tr>
+								</table>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_hspace}</label></td>
+                                <td><input id="hspace" name="hspace" type="text"  value="" style="width: 50px" onChange="updateStyle();" /></td>
+                                <td nowrap="nowrap"><label>{$lang_iframe_vspace}</label></td>
+                                <td><input id="vspace" name="vspace" type="text"  value="" style="width: 50px" onChange="updateStyle();" /></td>
+                                <td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_scrolling}</label></td>
+								<td nowrap="nowrap">
+									<select name="scrolling" id="scrolling" style="width: 50px">
+										<option value="yes">{$lang_iframe_yes}</option>
+										<option value="no">{$lang_iframe_no}</option>
+										<option value="auto">{$lang_iframe_auto}</option>
+									</select>
+								</td>
+								<td nowrap="nowrap"><label>{$lang_iframe_frameborder}</label></td>
+								<td nowrap="nowrap">
+									<input id="frameborder" name="frameborder" type="text"  value="" style="width: 50px" />
+								</td>
+								<td>&nbsp;</td>
+							</tr>
+                            <tr>
+                                <td nowrap="nowrap"><label>{$lang_iframe_margin_width}</label></td>
+								<td nowrap="nowrap">
+									<input id="marginwidth" name="marginwidth" type="text"  value="" style="width: 50px" />
+								</td>
+								<td nowrap="nowrap"><label>{$lang_iframe_margin_height}</label></td>
+								<td nowrap="nowrap">
+									<input id="marginheight" name="marginheight" type="text"  value="" style="width: 50px" />
+								</td>
+								<td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td nowrap="nowrap"><label>{$lang_iframe_align}</label></td>
+								<td nowrap="nowrap" colspan="4">
+								    <select name="align" id="align" onChange="updateStyle();">
+                                        <option value="">{$lang_iframe_def}</option>
+										<option value="top">{$lang_iframe_top}</option>
+										<option value="middle">{$lang_iframe_middle}</option>
+										<option value="bottom">{$lang_iframe_bottom}</option>
+										<option value="left">{$lang_iframe_left}</option>
+										<option value="right">{$lang_iframe_right}</option>
+									</select>
+								</td>
+                            </tr>
+					</table>
+				</fieldset>
+			</div>
+			<div id="advanced_panel" class="panel">
+			<fieldset>
+					<legend>{$lang_iframe_advanced}</legend>
+					<table class="properties">
+						<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_id}</label></td>
+								<td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="id" name="id" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_title}</label></td>
+								<td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="title" name="title" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_style}</label></td>
+								<td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="style" name="style" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td nowrap="nowrap"><label>{$lang_iframe_long_desc}</label></td>
+								<td nowrap="nowrap" colspan="4">
+									<table border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+										<td><input id="longdesc" name="longdesc" type="text" value="" style="width: 250px" /></td>
+									  </tr>
+									</table>
+								</td>
+							</tr>
+					</table>
+			</fieldset>
+			</div>
+		</div>
+		<div class="mceActionPanel">
+			<div style="float: left">
+				<input type="button" id="insert" name="insert" value="{$lang_insert}" onClick="insertIFrame();" />
+			</div>
+
+			<div style="float: right">
+				<input type="button" id="cancel" name="cancel" value="{$lang_cancel}" onClick="tinyMCEPopup.close();" />
+			</div>
+		</div>
+	</form>
+</body>
+</html>

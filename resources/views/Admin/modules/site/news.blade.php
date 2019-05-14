@@ -28,6 +28,12 @@
                   </figure>
                </div>
             </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="long">LongStory</label>
+                <textarea id="editor1" name="long"></textarea>
+              </div>
+            </div>
          </div>
       </div>
       <div class="end">

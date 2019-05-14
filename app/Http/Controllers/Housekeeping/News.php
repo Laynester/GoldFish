@@ -2,19 +2,27 @@
 namespace App\Http\Controllers\Housekeeping;
 
 use Auth;
+use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
+use App\Models\CMS\News as Insert;
 
 class News extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-      $this->middleware('setTheme:Admin');
-  }
   public function render()
   {
     if(auth()->user()->rank >= CMS::fuseRights('news')){
+      if (Request::isMethod('post'))
+      {
+        Insert::create([
+          'caption' => request()->get('title'),
+          'desc' => request()->get('short'),
+          'body' => request()->get('long'),
+          'image' => '/images/news/'.request()->get('image'),
+          'author' => auth()->user()->id,
+          'date' => time()
+        ]);
+      }
       $images = \File::allFiles(public_path('images/news'));
       return view('news',
       [
@@ -23,7 +31,7 @@ class News extends Controller
       ]);
     }
     else {
-      return redirect('me');
+      return redirect('dashboard');
     }
   }
 }
