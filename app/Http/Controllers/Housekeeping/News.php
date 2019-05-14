@@ -10,12 +10,13 @@ class News extends Controller
   public function __construct()
   {
       $this->middleware('auth');
+      $this->middleware('setTheme:Admin');
   }
   public function render()
   {
     if(auth()->user()->rank >= CMS::fuseRights('news')){
       $images = \File::allFiles(public_path('images/news'));
-      return view('housekeeping.news',
+      return view('news',
       [
         'group' => 'site',
         'images' => $images
