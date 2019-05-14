@@ -8,10 +8,6 @@ use App\Models\User\User;
 
 class Community extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function render()
   {
       $news = News::orderBy('date', 'DESC')->take(5)->get();

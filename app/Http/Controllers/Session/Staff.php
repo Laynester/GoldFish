@@ -7,10 +7,6 @@ use App\Models\User\User;
 
 class Staff extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function render()
   {
       $users = User::where('rank', '>', 3)->get();

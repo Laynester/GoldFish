@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Helpers\CMS;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/me';
 
     /**
      * Create a new controller instance.
@@ -70,7 +71,8 @@ class RegisterController extends Controller
             'ip_register' => request()->ip(),
             'ip_current' => request()->ip(),
             'last_login' => time(),
-            'account_created' => time()
+            'account_created' => time(),
+            'motto' => CMS::settings('default_motto')
         ]);
     }
 }

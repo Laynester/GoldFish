@@ -42,7 +42,6 @@
        Client.addVariable("flash.client.url", "{{CMSHelper::settings('swfdir')}}");
        Client.addVariable("flash.client.origin", "popup");
        Client.addVariable("ads.domain", "");
-       Client.addVariable("client.news.embed.enabled","1");
        Client.addVariable("spaweb","1");
        Client.addParam('base', "{{CMSHelper::settings('swfdir')}}");
        Client.addParam('allowScriptAccess', 'always');

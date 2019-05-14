@@ -7,10 +7,6 @@ use App\Models\CMS\Camera_web;
 use \Carbon\Carbon;
 class Photos extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function render()
   {
       $photos = Camera_web::orderBy('timestamp', 'DESC')->paginate(16);

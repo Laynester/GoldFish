@@ -7,10 +7,6 @@ use App\Models\User\User;
 
 class Home extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function showProfile($username)
   {
     $user = User::where('username', $username)->first();

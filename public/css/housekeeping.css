@@ -1,0 +1,98 @@
+.hk_body {
+  border:1px solid #7D97B5;
+  box-shadow:0 4px rgba(0,0,0,.2);
+  background: #FFFFFF;
+  padding:3px 5px 5px 5px;
+}
+.hk_navigation ul {
+  padding:0;
+  list-style: none;
+  margin:0;
+  margin-top:30px;
+}
+.row {
+	margin-left:0;
+	margin-right:0
+}
+.hk_navigation ul li {
+  display:table-cell;
+  background: #97b4d7;
+  background: -moz-linear-gradient(top, #97b4d7 0%, #b6cae6 100%);
+  background: -webkit-linear-gradient(top, #97b4d7 0%,#b6cae6 100%);
+  background: linear-gradient(to bottom, #97b4d7 0%,#b6cae6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#97b4d7', endColorstr='#b6cae6',GradientType=0 );
+  padding:5px 10px;
+  border:1px solid #7F95B3;
+  border-left:1px solid #7F95B3;
+  font-size: 12px;
+  border-right:0;
+}
+.hk_navigation ul li:last-child {
+  border-right: 1px solid #7F95B3;
+}
+.hk_navigation ul li.active {
+  background: #385d88;
+background: -moz-linear-gradient(top, #385d88 0%, #83a1c6 100%);
+background: -webkit-linear-gradient(top, #385d88 0%,#83a1c6 100%);
+background: linear-gradient(to bottom, #385d88 0%,#83a1c6 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#385d88', endColorstr='#83a1c6',GradientType=0 );
+border-bottom:#83A1C6;
+position: relative;
+}
+.hk_navigation ul li.active a {
+  color:#fff;
+}
+a {
+color:#3F5C88;
+}
+.hk_welcome {
+  padding:3px 10px;
+  background: #83a1c6;
+  background: -moz-linear-gradient(top, #83a1c6 0%, #385d88 100%);
+  background: -webkit-linear-gradient(top, #83a1c6 0%,#385d88 100%);
+  background: linear-gradient(to bottom, #83a1c6 0%,#385d88 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83a1c6', endColorstr='#385d88',GradientType=0 );
+  color:#fff;
+  border:1px solid #7F95B3;
+  margin-top:-1px;
+  font-size:13px;
+}
+.box_1 {
+  background: #E2E2E0;
+  border:1px solid #58697F;
+  padding:5px;
+}
+.right {
+  float: right;
+}
+.box_1 .heading {
+  padding:4px 5px;
+  font-size: 12px;
+  background: #334964;
+  color: #fff;
+  margin-bottom:5px;
+}
+.box_2 {
+  background: #E6EBF0;
+  border:1px solid #A8AFBC;
+  margin-bottom:5px;
+}
+.box_2 .heading {
+  background: #A8AFBC;
+  color:#334964;
+}
+.box_2 .content {
+  padding:5px;
+}
+table.full {
+  width:100%;
+}
+table tr td {
+  padding:0 7px;
+}
+table tr td:last-child {
+  text-align: right;
+}
+table tr:not(:last-child) {
+  border-bottom:1px solid rgba(0,0,0,.1);
+}

@@ -9,15 +9,38 @@
     <link href="{{ asset('css/discord.css') }}" rel="stylesheet">
     <link href="{{ asset('css/goldfish.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/goldfish.js') }}" defer></script>
   </head>
   <body>
   <div id="page-wrap">
     <div class="header">
+      @if (!Auth::user())
+      <body class="guest">
+      <div class="login-section">
+        <div class="container">
+          <div class="login-inputs">
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+              <div class="login-input">
+              <input id="username" type="text" class="form-control input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+            </div>
+            <div class="login-input">
+              <input id="password" type="password" class="form-control input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+            </div>
+              <button type="submit" class="btn btn-primary">
+                  {{ __('Login') }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      @endif
       <div class="container relative">
-        <a href="#" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
-        <div class="online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
-        <div class="right">
+        <div class="logo">
+          <a href="#" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
+          <div class="online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
+        </div>
+        <div class="right @guest regbutton @endguest">
+          @if (Auth::user())
             <ul class="header_options">
               <li class="settings left" onclick="window.location.href='/settings'"></li>
               <li class="logout left" onclick="window.location.href='/logout'"></li>
@@ -30,6 +53,9 @@
             </div>
             <div class="cut_avatar"><img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}&action=wav&direction=3&head_direction=3"></div>
         </div>
+        @else
+        <a class="register_button" href="{{ route('register') }}">Join now!</a>
+        @endif
         </div>
       </div>
     </div>
@@ -39,5 +65,8 @@
     </main>
   </div>
   @include('partials.footer')
+  @if (Auth::user())
+  <script src="{{ asset('js/goldfish.js') }}" defer></script>
+  @endif
 </body>
 </html>

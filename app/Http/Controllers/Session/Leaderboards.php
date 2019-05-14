@@ -8,10 +8,6 @@ use App\Models\User\User_currency;
 
 class Leaderboards extends Controller
 {
-  public function __construct()
-  {
-      $this->middleware('auth');
-  }
   public function render()
   {
       $coins = User::where('rank', '<', 3)->orderBy('credits','desc')->take(5)->get();

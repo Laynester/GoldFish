@@ -9,6 +9,7 @@
 - [x] Articles
 - [x] Staff
 - [x] Leaderboard
+- [x] Photos
 #### Admin
 - [ ] Dashboard
 - [ ] News

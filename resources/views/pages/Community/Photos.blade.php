@@ -1,9 +1,12 @@
 @extends('layouts.base')
 @section('content')
-@section('title', 'Photo')
+@section('title', 'Photos')
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
+      @if($photos->isEmpty())
+      <h3 class="center">No photos posted.</h3>
+      @else
       <div class="grid-275">
         @foreach ($photos as $photo)
         <figure class="photo">
@@ -20,6 +23,7 @@
         </figure>
         @endforeach
       </div>
+      @endif
     </div>
   </div>
 </div>

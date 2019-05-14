@@ -1,13 +1,26 @@
 <div class="navbar">
   <div class="container">
     <ul class="navigation">
-@foreach(App\Models\CMS\Menu::orderBy('order','asc')->where('group', null)->get() as $menuItem)
+      @if (!Auth::user())
+      <li>
+        <a href="/" @if($group == 'home') class="selected" @endif>
+           Home
+        </a>
+     </li>
+      <li>
+        <a href="/register"  @if($group == 'register') class="selected" @endif>
+           Register
+        </a>
+     </li>
+      @endif
+@foreach(CMSHelper::getMenu() as $menuItem)
    <li {{ $menuItem->url ? '' : "class=dropdown" }}>
      <a href="/{{$menuItem->url}}" {{ (str_contains(strtolower($menuItem->url), strtolower($group)) ? 'class=selected' : '' ) }}>
         {{ $menuItem->title }}
      </a>
   </li>
 @endforeach
+@if (Auth::user())
 @if(CMSHelper::hotelstatus() == '1')
 <a class="enter_hotel right relative offline" href="#" target="_blank">
   Hotel is offline
@@ -17,6 +30,7 @@
   Enter {{CMSHelper::settings('hotelname')}}
 </a>
 @endif
+@endif
 </ul>
 </div>
 </div>
@@ -24,7 +38,7 @@
   <div class="container">
     <ul class="navigation">
       @foreach(App\Models\CMS\Menu::children(strtolower($group))->orderBy('order','asc')->Get() as $item)
-        <li><a href="/{!! str_replace('%username%', Auth()->User()->username, $item->url) !!}" {{ (Request::is($item->url) ? 'class=selected' : '') }}>{{ $item->title}}</a></li>
+        <li><a @if (Auth::user()) href="/{!! str_replace('%username%',Auth()->User()->username, $item->url) !!}"@else href="/{{ $item->url }}" @endif {{ (Request::is($item->url) ? 'class=selected' : '') }}>{{ $item->title}}</a></li>
       @endforeach
     </ul>
   </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use App\Models\CMS\News;
 
 class Index extends Controller
 {
@@ -13,6 +14,10 @@ class Index extends Controller
         //This condition will run if the user is logged in !
         return redirect('me');
     }
-        return view('auth.login');
+        $news = News::orderBy('date', 'DESC')->take(9)->get();
+        return view('auth.login',[
+          'group' => 'home',
+          'news' => $news
+        ]);
     }
 }
