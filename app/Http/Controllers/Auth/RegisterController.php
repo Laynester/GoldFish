@@ -75,4 +75,9 @@ class RegisterController extends Controller
             'motto' => CMS::settings('default_motto')
         ]);
     }
+    public static function showRegistrationForm() {
+      return view('auth.register',[
+        'group' => 'register',
+      ]);
+    }
 }

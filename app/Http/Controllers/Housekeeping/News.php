@@ -14,14 +14,16 @@ class News extends Controller
     if(auth()->user()->rank >= CMS::fuseRights('news')){
       if (Request::isMethod('post'))
       {
-        Insert::create([
-          'caption' => request()->get('title'),
-          'desc' => request()->get('short'),
-          'body' => request()->get('long'),
-          'image' => '/images/news/'.request()->get('image'),
-          'author' => auth()->user()->id,
-          'date' => time()
-        ]);
+        if(empty(request()->get('title'))) {
+          Insert::create([
+            'caption' => request()->get('title'),
+            'desc' => request()->get('short'),
+            'body' => request()->get('long'),
+            'image' => '/images/news/'.request()->get('image'),
+            'author' => auth()->user()->id,
+            'date' => time()
+          ]);
+      }
       }
       $images = \File::allFiles(public_path('images/news'));
       return view('news',

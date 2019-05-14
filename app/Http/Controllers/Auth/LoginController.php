@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\CMS\News;
 
 class LoginController extends Controller
 {
@@ -41,5 +42,16 @@ class LoginController extends Controller
     $user = auth()->user();
     $user->last_login = time();
     $user->save();
+}
+public static function showLoginForm() {
+  $news = News::orderBy('date', 'DESC')->take(9)->get();
+  return view('auth.login',[
+    'group' => 'home',
+    'news' => $news
+  ]);
+}
+public function username()
+{
+    return 'username';
 }
 }
