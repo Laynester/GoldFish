@@ -8,5 +8,5 @@ class Settings extends Model
 {
   public $timestamps = false;
   protected $table = 'cms_settings';
-  protected $fillable = [];
+  protected $fillable = ['key','value'];
 }

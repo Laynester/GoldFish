@@ -181,6 +181,9 @@ table tr:not(:last-child) {
 .form-group label {
   display: block;
 }
+.form-group input {
+  width:100%;
+}
 @media (min-width: 992px) {
   .hk_navigation ul li {
     display:table-cell;

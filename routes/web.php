@@ -33,5 +33,10 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'setTheme:Admin'])->group(function () {
   Route::get('housekeeping', function () { return redirect('/housekeeping/dashboard'); });
   Route::get('housekeeping/dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
-  Route::any('housekeeping/news', 'Housekeeping\News@render')->name('hknews');
+
+  //site and content
+  Route::any('housekeeping/site/settings1', 'Housekeeping\Site\Settings1@render')->name('hksettings1');
+  Route::any('housekeeping/site/settings2', 'Housekeeping\Site\Settings2@render')->name('hksettings2');
+  Route::any('housekeeping/site/news', 'Housekeeping\Site\News@render')->name('hknews');
+  Route::any('housekeeping/site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
 });
