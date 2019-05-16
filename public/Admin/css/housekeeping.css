@@ -171,6 +171,7 @@ table tr:not(:last-child) {
   border:1px solid #7F95B3;
   font-size:13px;
 }
+.box_4 .heading a{ color:#fff;}
 .box_4 .content{
   padding:5px;
   background:  #F9F2F7;
@@ -183,6 +184,12 @@ table tr:not(:last-child) {
 }
 .form-group input {
   width:100%;
+}
+table.full.normal button.link {
+  border:0;
+  background: transparent;
+  text-decoration: underline;
+  width: 100%;
 }
 @media (min-width: 992px) {
   .hk_navigation ul li {

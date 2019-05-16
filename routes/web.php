@@ -3,7 +3,7 @@
 // Guest
 Route::middleware([])->group(function () {
   Route::get('/', function () {return redirect('login');});
-  Route::get('index', function () {return redirect('login');});
+  Route::get('index', function () {return redirect('login');})->name('index');
   Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
   Auth::routes();
   Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -18,8 +18,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
   Route::get('client', 'Session\Client@render')->name('client');
   Route::any('settings', 'Session\Settings@render')->name('settings');
+  Route::any('settings/account', 'Session\Settings@account')->name('settings_account');
   });
-Route::middleware(['auth'])->group(function () {
+Route::middleware([])->group(function () {
   Route::get('/api','Session\API@return');
   Route::get('community', 'Session\Community@render')->name('community');
   Route::get('community/articles', 'Session\Articles@render')->name('articles');
@@ -35,8 +36,11 @@ Route::middleware(['auth', 'setTheme:Admin'])->group(function () {
   Route::get('housekeeping/dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
 
   //site and content
-  Route::any('housekeeping/site/settings1', 'Housekeeping\Site\Settings1@render')->name('hksettings1');
-  Route::any('housekeeping/site/settings2', 'Housekeeping\Site\Settings2@render')->name('hksettings2');
-  Route::any('housekeeping/site/news', 'Housekeeping\Site\News@render')->name('hknews');
+  Route::any('housekeeping/site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');
+  Route::any('housekeeping/site/settings2', 'Housekeeping\Site\Settings2@render')->name('hk_settings2');
+  Route::any('housekeeping/site/news/list', 'Housekeeping\Site\News@List')->name('hk_newslist');
+  Route::any('housekeeping/site/news/create', 'Housekeeping\Site\News@Create')->name('hk_createnews');
+  Route::any('housekeeping/site/news/edit/{id}', 'Housekeeping\Site\News@Edit')->name('hk_editnews');
+  Route::any('housekeeping/site/news/delete/{id}', 'Housekeeping\Site\News@Delete')->name('hk_newsdelete');
   Route::any('housekeeping/site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
 });

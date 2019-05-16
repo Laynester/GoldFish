@@ -26,4 +26,18 @@ class Settings extends Controller
         'group' => 'me'
       ]);
   }
+  public function account()
+  {
+    if (Request::isMethod('post'))
+    {
+      User::where('id', Auth()->User()->id)->update([
+        'hotelview' => request()->get('hotelview')
+      ]);
+      return redirect('me');
+    }
+      return view('pages.me.settings.account',
+      [
+        'group' => 'me'
+      ]);
+  }
 }

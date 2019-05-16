@@ -282,6 +282,25 @@ p.duckets {
 	font-size: 11px;
 	line-height: 13px;
 }
+.box ul {
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+.box ul li a{
+	color:#333;
+}
+.box .form-group {
+	text-align: center
+}
+.box form button{
+	margin: auto;
+	display: block;
+}
+.box .form-group  input,
+.box .form-group  select{
+width:100%;
+}
 .grid-200 {
 	display: grid;
 	grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
@@ -452,12 +471,12 @@ ul.navigation {
 	list-style: none;
 	padding:0;
 	margin:0;
-	height: 45px;
 }
 ul.navigation li {
 	display: inline;
 	line-height: 45px;
 	padding-right: 15px;
+	text-align: center;
 }
 ul.navigation li a {
 	color:#fff;
@@ -551,6 +570,15 @@ ul.navigation li a.selected {
 @media only screen and (max-width: 600px) {
 	.no-mobile {
 		display: none;
+	}
+	ul.navigation li {
+		display: block;
+	}
+	ul.navigation a.enter_hotel {
+		width:100%;
+		float: none;
+		text-align: center;
+		display: block;
 	}
 }
 .staff.leaderboard {

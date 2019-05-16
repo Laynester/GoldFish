@@ -16,6 +16,10 @@ class Settings2 extends Controller
       {
         Settings::where('key', 'discord_id')->update(['value' => request()->get('discord_id')]);
         Settings::where('key', 'twitter_handle')->update(['value' => request()->get('twitter_handle')]);
+        return view('site.settings2',
+        [
+          'group' => 'site',
+        ])->withErrors(['Saved changes.']);
       }
       return view('site.settings2',
       [

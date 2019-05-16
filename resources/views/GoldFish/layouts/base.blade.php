@@ -37,7 +37,7 @@
       <div class="container relative">
         <div class="logo">
           <a href="#" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
-          <div class="online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
+          <div class="online no-mobile"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
         </div>
         <div class="right @guest regbutton @endguest">
           @if (Auth::user())
@@ -66,7 +66,7 @@
   </div>
   @include('partials.footer')
   @if (Auth::user())
-  <script src="{{ asset('js/goldfish.js') }}" defer></script>
+  <script src="{{ asset('goldfish/js/goldfish.js') }}" defer></script>
   @endif
 </body>
 </html>

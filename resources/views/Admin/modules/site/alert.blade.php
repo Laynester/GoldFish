@@ -3,6 +3,11 @@
     <div class="heading">@yield('title')</div>
     <form method="post">
       <div class="content">
+        @if($errors->any())
+        <div class="alert alert-success" role="alert">
+          {{$errors->first()}}
+        </div>
+        @endif
         <div class="row justify-content-center">
           <div class="col-md-3">
             <div class="form-group">

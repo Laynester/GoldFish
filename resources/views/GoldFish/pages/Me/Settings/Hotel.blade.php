@@ -4,15 +4,16 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <div class="box black">
-        <div class="heading">Settings</div>
-      </div>
+      @include('components.settings.navigation')
     </div>
     <div class="col-lg-8">
       <div class="box black">
         <div class="heading">Hotel Settings</div>
+        <div class="row justify-content-center">
+          <div class="col-md-5">
           <form method="post">
-            <label>Me page Hotel View</label>
+            <div class="form-group">
+            <label for="hotelview">Me page Hotel View</label></br>
             <select name="hotelview">
               <option value="{{Auth()->User()->hotelview}}">Hotel View</option>
               <option disabled></option>
@@ -36,9 +37,12 @@
               <option value="view_ru_wide.png">Russia</option>
               <option value="view_beta_wide.png">Beta</option>
             </select>
+            </div>
             <button type="submit" name="submit">Save Settings</button>
             @csrf
           </form>
+        </div>
+        </div>
       </div>
     </div>
   </div>
