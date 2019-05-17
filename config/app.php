@@ -228,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'CMSHelper' => App\Helpers\CMS::class,
         'HKHelper' => App\Helpers\Housekeeping::class,
+        'Banned' => App\Http\Middleware\Banned::class,
 
     ],
     'version_number' => '1.0.0'

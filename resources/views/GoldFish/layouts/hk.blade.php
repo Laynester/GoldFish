@@ -22,7 +22,7 @@
           <li id="dashboard" @if($group == 'dashboard') class="active" @endif><a href="{{ route('dashboard') }}">Dashboard</a></li>
           <li id="server" @if($group == 'server') class="active" @endif><a href="">Server</a></li>
           <li id="site" @if($group == 'site') class="active" @endif><a href="{{ route('hk_newslist') }}">Site & Content</a></li>
-          <li id="user"><a href="">Users & Moderation</a></li>
+          <li id="user" @if($group == 'user') class="active" @endif><a href="{{ route('hk_chat_list') }}">Users & Moderation</a></li>
           <li id="back"><a href="{{ route('me') }}">Back to Site</a></li>
         </ul>
       </div>

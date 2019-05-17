@@ -124,6 +124,9 @@ table tr td {
 table tr td:last-child {
   text-align: right;
 }
+table.normal tr td:last-child {
+  text-align: left;
+}
 table tr:not(:last-child) {
   border-bottom:1px solid rgba(0,0,0,.1);
 }

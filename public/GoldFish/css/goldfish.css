@@ -803,3 +803,10 @@ h2.default_title:after {
 .pt-4, .py-4 {
 	padding-top:15px;
 }
+.alert-danger {
+	background: red;
+	color:#fff;
+	border: 0;
+	border-radius: 7px;
+	box-shadow:0 4px rgba(0,0,0,.2);
+}

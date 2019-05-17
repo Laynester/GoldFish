@@ -19,3 +19,12 @@
   </ul>
 </div>
 @endif
+@if($group == 'user')
+<div class="box_3">
+  <div class="heading">Moderation</div>
+  <ul>
+    <li><a href="{{ route('hk_chat_list') }}">Chatlog</a></li>
+    <li><a href="{{ route('hk_user_lookup') }}">Lookup User</a></li>
+  </ul>
+</div>
+@endif

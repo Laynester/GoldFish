@@ -12,7 +12,8 @@ Route::middleware([])->group(function () {
 });
 
 // Authenticated
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','Banned'])->group(function () {
+  Route::get('banned', 'Session\Banned@render')->name('banned');
   // Home
   Route::get('me', 'Session\Me@render')->name('me');
   Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
@@ -31,16 +32,20 @@ Route::middleware([])->group(function () {
 });
 
 // Admin
-Route::middleware(['auth', 'setTheme:Admin'])->group(function () {
-  Route::get('housekeeping', function () { return redirect('/housekeeping/dashboard'); });
-  Route::get('housekeeping/dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
+Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
+  Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
+  Route::get('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
+
+  // user & moderation
+  Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
+  Route::any('moderation/lookup/user/{id?}', 'Housekeeping\UserMod\User@render')->name('hk_chat_list');
 
   //site and content
-  Route::any('housekeeping/site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');
-  Route::any('housekeeping/site/settings2', 'Housekeeping\Site\Settings2@render')->name('hk_settings2');
-  Route::any('housekeeping/site/news/list', 'Housekeeping\Site\News@List')->name('hk_newslist');
-  Route::any('housekeeping/site/news/create', 'Housekeeping\Site\News@Create')->name('hk_createnews');
-  Route::any('housekeeping/site/news/edit/{id}', 'Housekeeping\Site\News@Edit')->name('hk_editnews');
-  Route::any('housekeeping/site/news/delete/{id}', 'Housekeeping\Site\News@Delete')->name('hk_newsdelete');
-  Route::any('housekeeping/site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
+  Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');
+  Route::any('site/settings2', 'Housekeeping\Site\Settings2@render')->name('hk_settings2');
+  Route::any('site/news/list', 'Housekeeping\Site\News@List')->name('hk_newslist');
+  Route::any('site/news/create', 'Housekeeping\Site\News@Create')->name('hk_createnews');
+  Route::any('site/news/edit/{id}', 'Housekeeping\Site\News@Edit')->name('hk_editnews');
+  Route::any('site/news/delete/{id}', 'Housekeeping\Site\News@Delete')->name('hk_newsdelete');
+  Route::any('site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
 });

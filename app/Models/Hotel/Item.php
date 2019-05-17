@@ -4,7 +4,7 @@ namespace App\Models\Hotel;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Items extends Model
+class Item extends Model
 {
   public $timestamps = false;
   protected $table = 'items';

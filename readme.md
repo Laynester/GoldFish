@@ -12,13 +12,12 @@
 - [x] Photos
 #### Admin
 - [ ] Dashboard
-- [ ] News
-- [ ] CMS Settings/Client
+- [x] News
+- [x] CMS Settings/Client
 - [ ] Emulator settings
 ### Planned Features
 #### Client
 - [x] Loader
-- [ ] Custom SWF (minor)
 - [x] News popup
 - [x] Flash Event support
 #### Site

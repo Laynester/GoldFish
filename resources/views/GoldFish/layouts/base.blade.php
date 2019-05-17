@@ -9,6 +9,11 @@
     <link href="{{ asset('goldfish/css/discord.css') }}" rel="stylesheet">
     <link href="{{ asset('goldfish/css/goldfish.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.0.min.js"
+  integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
   <div id="page-wrap">

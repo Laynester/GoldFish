@@ -41,6 +41,7 @@ class LoginController extends Controller
 {
     $user = auth()->user();
     $user->last_login = time();
+    $user->ip_current = Request::ip();
     $user->save();
 }
 public static function showLoginForm() {
