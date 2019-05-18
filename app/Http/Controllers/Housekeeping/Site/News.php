@@ -17,9 +17,9 @@ class News extends Controller
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([
-          'caption'   => 'required',
-          'desc' => 'required',
-          'body' => 'required',
+          'title'   => 'required',
+          'short' => 'required',
+          'long' => 'required',
           'image' => 'required'
         ]);
         Insert::create([
