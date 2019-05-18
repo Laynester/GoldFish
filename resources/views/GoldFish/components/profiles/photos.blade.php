@@ -1,6 +1,11 @@
 @if($photos->isEmpty())
+<hr>
 <h3 class="center">No photos posted.</h3>
+<hr>
 @else
+<hr>
+<h3 class="center">My Photos</h3>
+<hr>
 <div class="grid-275">
   @foreach ($photos as $photo)
   <figure class="photo profile">

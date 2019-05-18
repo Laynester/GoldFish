@@ -17,13 +17,19 @@ class Settings extends Controller
     if (Request::isMethod('post'))
     {
       User::where('id', Auth()->User()->id)->update([
-        'hotelview' => request()->get('hotelview')
+        'hotelview' => request()->get('hotelview'),
+        'profile_background' => request()->get('background')
       ]);
       return redirect('me');
     }
+
+      $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
+      $hview = \File::allFiles(public_path('goldfish/images/me/views'));
       return view('pages.me.settings.hotel',
       [
-        'group' => 'me'
+        'group' => 'me',
+        'pbg' => $pbg,
+        'hview' => $hview
       ]);
   }
   public function account()

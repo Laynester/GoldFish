@@ -16,13 +16,14 @@ body {
       <p>ur nan</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row profile">
     <div class="col-lg-6">
       @include('components.profiles.badges')
       @include('components.profiles.rooms')
     </div>
     <div class="col-lg-6">
       @include('components.profiles.friends')
+      @include('components.profiles.groups')
     </div>
     <div class="col-lg-12">@include('components.profiles.photos')</div>
   </div>

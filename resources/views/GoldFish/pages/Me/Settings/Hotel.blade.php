@@ -10,38 +10,26 @@
       <div class="box black">
         <div class="heading">Hotel Settings</div>
         <div class="row justify-content-center">
-          <div class="col-md-5">
           <form method="post">
             <div class="form-group">
             <label for="hotelview">Me page Hotel View</label></br>
-            <select name="hotelview">
-              <option value="{{Auth()->User()->hotelview}}">Hotel View</option>
-              <option disabled></option>
-              <option value="view_fi_wide.gif">Finland</option>
-              <option value="view_uk_wide.gif">United Kingdom</option>
-              <option value="view_ch_wide.gif">Switzerland</option>
-              <option value="view_jp_wide.png">Japan</option>
-              <option value="view_es_wide.gif">Spain</option>
-              <option value="view_it_wide.png">Italy</option>
-              <option value="view_se_wide.png">Sweden</option>
-              <option value="view_nl_wide.png">Netherlands</option>
-              <option value="view_de_wide.png">Germany</option>
-              <option value="view_ca_wide.png">Canada</option>
-              <option value="view_no_wide.gif">Norway</option>
-              <option value="view_us_wide.png">United States</option>
-              <option value="view_fr_wide.png">France</option>
-              <option value="view_au_wide.png">Australia</option>
-              <option value="view_sg_wide.png">Singapore</option>
-              <option value="view_dk_wide.png">Denmark</option>
-              <option value="view_br_wide.png">Brazil</option>
-              <option value="view_ru_wide.png">Russia</option>
-              <option value="view_beta_wide.png">Beta</option>
-            </select>
+              <div class="options hotelview">
+                @foreach ($hview as $view)
+                  <input type="radio" id="{{$view->getFilename()}}" name="hotelview" @if(Auth()->User()->hotelview == $view->getFilename()) checked @endif value="{{$view->getFilename()}}"/>
+                  <label for="{{$view->getFilename()}}" style="background-image:url(/goldfish/images/me/views/{{$view->getFilename()}});"></label>
+                @endforeach
+              </div>
+              <label for="hotelview">Profile Background</label>
+              <div class="options hotelview">
+                @foreach ($pbg as $bg)
+                  <input type="radio" id="{{$bg->getFilename()}}" name="background" @if(Auth()->User()->profile_background == $bg->getFilename()) checked @endif value="{{$bg->getFilename()}}"/>
+                  <label for="{{$bg->getFilename()}}" style="background-image:url(/images/profile_backgrounds/{{$bg->getFilename()}});"></label>
+                @endforeach
+              </div>
             </div>
             <button type="submit" name="submit">Save Settings</button>
             @csrf
           </form>
-        </div>
         </div>
       </div>
     </div>

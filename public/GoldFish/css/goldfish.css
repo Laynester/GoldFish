@@ -93,6 +93,7 @@ body {
 	text-transform: uppercase;
 	padding:10px 48px 13px 48px !important;
 	text-align: center;
+	width:262px;
 }
 .navbar {
 	width:100%;
@@ -842,7 +843,8 @@ figure.room {
 	    overflow: hidden;
 			text-align: center;
 }
-figure.friend {
+figure.friend,
+figure.group {
 	border:1px dashed rgba(0,0,0,.4);
 	width: 110px;
 	padding-top: 50px;
@@ -853,7 +855,40 @@ figure.friend {
 			float: left;
 			margin:13.5px;
 }
+figure.group {
+	background-position:center 5px;
+}
 figure.photo.profile:before,
 figure.photo.profile:after  {
 	display: none;
+}
+.row.profile hr {
+	border-top:1px solid #fff;
+	border-bottom:1px solid rgba(0,0,0,.5);
+}
+.row.profile h4,
+.row.profile h3,
+.row.profile h2,
+.row.profile h1{
+	color:#fff;
+}
+.form-group .options {
+	overflow-y: scroll;
+	max-height: 325px
+}
+.form-group .options.hotelview input[type=radio]{
+	display:none;
+}
+.form-group .options.hotelview input[type=radio]+label{
+	display: inline-block;
+  width:230px;
+  height: 150px;
+	margin:5px;
+	background-position:-50px center;
+	box-shadow: 0 4px rgba(0,0,0,.5);
+	border-radius: 7px
+}
+.form-group .options.hotelview input[type=radio]:checked+label {
+	filter:saturate(0);
+	border:2px solid #000;
 }
