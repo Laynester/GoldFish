@@ -9,7 +9,7 @@
         </div>
         @endif
         <div class="row justify-content-center">
-          <div class="col-md-5">
+          <div class="col-md-6">
             <div class="form-group">
                <label for="title">Hotel Name</label>
                <input type="text" placeholder="Hotel Name" value="{{CMSHelper::settings('hotelname')}}" name="hotelname"/>
@@ -29,6 +29,10 @@
              <div class="form-group">
                <label for="title">Default Motto</label>
                <input type="text" placeholder="Motto" value="{{CMSHelper::settings('default_motto')}}" name="motto"/>
+             </div>
+             <div class="form-group">
+               <label for="title">Group Badge Location</label>
+               <input type="text" value="{{CMSHelper::settings('group_badges')}}" name="groupbadges"/>
              </div>
           </div>
         </div>

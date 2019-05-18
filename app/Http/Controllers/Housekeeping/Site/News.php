@@ -3,17 +3,25 @@ namespace App\Http\Controllers\Housekeeping\Site;
 
 use Auth;
 use Request;
+use Illuminate\Http\Request as Req;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\News as Insert;
+use Validate;
 
 class News extends Controller
 {
-  public function Create()
+  public function Create(Req $request)
   {
     if(auth()->user()->rank >= CMS::fuseRights('news')){
       if (Request::isMethod('post'))
       {
+        $validatedData = $request->validate([
+          'caption'   => 'required',
+          'desc' => 'required',
+          'body' => 'required',
+          'image' => 'required'
+        ]);
         Insert::create([
           'caption' => request()->get('title'),
           'desc' => request()->get('short'),

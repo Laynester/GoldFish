@@ -38,7 +38,7 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
 
   // user & moderation
   Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
-  Route::any('moderation/lookup/user/{id?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
+  Route::any('moderation/lookup/user/{user?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
 
   //site and content
   Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');

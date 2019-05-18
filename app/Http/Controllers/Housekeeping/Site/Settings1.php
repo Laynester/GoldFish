@@ -19,6 +19,7 @@ class Settings1 extends Controller
         Settings::where('key', 'habbo_imager')->update(['value' => request()->get('imager')]);
         Settings::where('key', 'c_images')->update(['value' => request()->get('c_images')]);
         Settings::where('key', 'default_motto')->update(['value' => request()->get('motto')]);
+        Settings::where('key', 'group_badges')->update(['value' => request()->get('groupbadges')]);
         return view('site.settings1',
         [
           'group' => 'site',
