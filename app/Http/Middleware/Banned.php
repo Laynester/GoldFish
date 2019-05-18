@@ -14,6 +14,9 @@ class Banned
     {
       if (!empty(Auth()->User()->id)){
         $ban = Bans::where('user_id', Auth()->User()->id)->orWhere('ip', Auth()->User()->ip_current)->orderBy('id','desc')->first();
+        if(Request::is(['banned']) && empty($ban)) {
+          return redirect('me');
+        }
         if(empty($ban) || $ban->ban_expire <= time()){
             return $next($request);
         }

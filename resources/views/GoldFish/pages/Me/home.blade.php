@@ -1,25 +1,30 @@
 @extends('layouts.base')
 @section('content')
 @section('title',$user->username)
+<style>
+body {
+  background-image: url(/images/profile_backgrounds/{{ $user->profile_background }})
+}
+</style>
 <div class="container">
+  <div class="whoIS">
+    <div class="avatar">
+      <img src="{{CMSHelper::settings('habbo_imager')}}{{ $user->look }}&direction=4&head_direction=4">
+    </div>
+    <div class="info">
+      <h3>{{$user->username}}</h3>
+      <p>ur nan</p>
+    </div>
+  </div>
   <div class="row">
     <div class="col-lg-6">
-      <div class="widget_default_skin home_widget" id="profile">
-        <h2 class="default_title">My Profile</h2>
-        <div class="widget_default_skin_content">
-          <div class="user_info left">
-            <b>{{$user->username}}</b>
-            <span>{{CMSHelper::settings('hotelname')}} Created on:<br> {{date('F d, Y', $user->account_created)}}</span>
-          </div>
-          <div class="left">
-            <img src="{{CMSHelper::settings('habbo_imager')}}{{ $user->look }}&direction=4&head_direction=4">
-          </div>
-        </div>
-      </div>
+      @include('components.profiles.badges')
+      @include('components.profiles.rooms')
     </div>
     <div class="col-lg-6">
-      @include('components.profiles.badges')
+      @include('components.profiles.friends')
     </div>
+    <div class="col-lg-12">@include('components.profiles.photos')</div>
   </div>
 </div>
 @endsection

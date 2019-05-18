@@ -12,7 +12,7 @@
         <tr>
           <td style="width:25%;">{{$chat->habbo->username}}</td>
           <td style="width:45%;">{{$chat->message}}</td>
-          <td style="width:25%;">{{date('F d, Y', $chat->timestamp)}}</td>
+          <td style="width:25%;">{{date('d/m/y h:ia', $chat->timestamp)}}</td>
         </tr>
         @endforeach
       </table>
