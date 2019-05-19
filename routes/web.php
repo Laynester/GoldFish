@@ -19,7 +19,7 @@ Route::middleware(['auth','Banned'])->group(function () {
   Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
   Route::get('client', 'Session\Client@render')->name('client');
   Route::any('settings', 'Session\Settings@render')->name('settings');
-  Route::any('settings/account', 'Session\Settings@account')->name('settings_account');
+  Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
   });
 Route::middleware([])->group(function () {
   Route::get('/api','Session\API@return');
