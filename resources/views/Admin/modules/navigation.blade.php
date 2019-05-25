@@ -8,16 +8,18 @@
   </ul>
 </div>
 @endif
+@if(auth()->user()->rank >= CMSHelper::fuseRights('news'))
 <div class="box_3">
   <div class="heading">Content</div>
   <ul>
-    @if(auth()->user()->rank >= CMSHelper::fuseRights('news'))
     <li><a href="{{ route('hk_newslist') }}">News</a></li>
     <li><a href="{{ route('hk_createnews') }}">Create a News Article</a></li>
-    @endif
+    @if(auth()->user()->rank >= CMSHelper::fuseRights('site_alert'))
     <li><a href="{{ route('salert') }}">Site Alert</a></li>
+    @endif
   </ul>
 </div>
+@endif
 @endif
 @if($group == 'user')
 <div class="box_3">

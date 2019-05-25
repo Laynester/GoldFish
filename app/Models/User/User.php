@@ -50,4 +50,8 @@ class User extends Authenticatable
     {
         return 'username';
     }
+    public function rank_name()
+    {
+          return $this->belongsTo(Permissions::class, 'rank');
+    }
 }

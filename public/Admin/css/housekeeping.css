@@ -129,6 +129,10 @@ table.normal tr td:last-child {
 }
 table tr:not(:last-child) {
   border-bottom:1px solid rgba(0,0,0,.1);
+  border-right:1px solid rgba(0,0,0,.1);
+}
+table td:not(:last-child) {
+  border-right:1px solid rgba(0,0,0,.1);
 }
 .box_3 {
   border:1px solid #98AABF;
@@ -162,6 +166,7 @@ table tr:not(:last-child) {
 .box_4 {
   background:#AABFD6;
   border:1px solid #98AABF;
+  margin-bottom:5px;
 }
 .box_4 .heading {
   padding:3px 10px;
@@ -193,6 +198,15 @@ table.full.normal button.link {
   background: transparent;
   text-decoration: underline;
   width: 100%;
+}
+.box_4 table tr th {
+  color:#3E68A0;
+  padding:4px;
+  text-align: center;
+  background: #83a1c6;
+}
+.box_4 table tr {
+  background: #F9F2F7;
 }
 @media (min-width: 992px) {
   .hk_navigation ul li {
