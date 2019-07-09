@@ -20,7 +20,7 @@ class Chatlog extends Controller
       ]);
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
 }

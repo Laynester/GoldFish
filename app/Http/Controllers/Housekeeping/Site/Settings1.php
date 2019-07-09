@@ -20,6 +20,7 @@ class Settings1 extends Controller
         Settings::where('key', 'c_images')->update(['value' => request()->get('c_images')]);
         Settings::where('key', 'default_motto')->update(['value' => request()->get('motto')]);
         Settings::where('key', 'group_badges')->update(['value' => request()->get('groupbadges')]);
+        Settings::where('key', 'findretros')->update(['value' => request()->get('findretros')]);
         return view('site.settings1',
         [
           'group' => 'site',
@@ -31,7 +32,7 @@ class Settings1 extends Controller
       ]);
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
 }

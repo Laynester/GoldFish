@@ -13,7 +13,7 @@ body {
     </div>
     <div class="info">
       <h3>{{$user->username}}</h3>
-      <p>ur nan</p>
+      <p>{{$user->motto}}</p>
     </div>
   </div>
   <div class="row profile">

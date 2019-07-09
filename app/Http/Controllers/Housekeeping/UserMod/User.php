@@ -10,6 +10,8 @@ use App\Helpers\CMS;
 use App\Models\User\User as Users;
 use Redirect;
 use App\Models\Hotel\Chatlog;
+use App\Models\Hotel\SanctionStatus as Sanction;
+use Carbon\Carbon;
 
 
 class User extends Controller
@@ -40,15 +42,17 @@ class User extends Controller
         }
       }
       if(empty($user)) {
+        $users = Users::orderBy('id','DESC')->paginate(15);
         return view('lookup.user',
         [
           'group' => 'user',
+          'users' => $users
         ]);
       }
       else {
         $userdata = Users::where('username', 'LIKE', $user)->first();
         $alt = Users::where('ip_register' , $userdata->ip_register)->get();
-        $chats = Chatlog::where('user_from_id', $userdata->id)->take(25)->get();
+        $chats = Chatlog::where('user_from_id', $userdata->id)->orderBy('timestamp','DESC')->paginate(25);
         return view('lookup.user',
         [
           'group' => 'user',
@@ -59,7 +63,7 @@ class User extends Controller
       }
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
 }

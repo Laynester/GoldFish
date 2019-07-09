@@ -229,6 +229,7 @@ return [
         'CMSHelper' => App\Helpers\CMS::class,
         'HKHelper' => App\Helpers\Housekeeping::class,
         'Banned' => App\Http\Middleware\Banned::class,
+        'Findretros' => App\Http\Middleware\Findretros::class,
 
     ],
     'version_number' => '1.0.0'

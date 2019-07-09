@@ -17,10 +17,7 @@ class Alert extends Controller
         Settings::where('key', 'site_alert_enabled')->update(['value' => request()->get('enabled')]);
         Settings::where('key', 'site_alert_badge')->update(['value' => request()->get('badge')]);
         Settings::where('key', 'site_alert')->update(['value' => request()->get('alert')]);
-        return view('site.alert',
-        [
-          'group' => 'site',
-        ])->withErrors(['Saved changes.']);
+        return redirect()->back()->withErrors(['Saved changes.']);
       }
       return view('site.alert',
       [
@@ -28,7 +25,7 @@ class Alert extends Controller
       ]);
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
 }

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request as Req;
 use Validator;
 use Redirect;
+use App\Models\CMS\ProfileBackgrounds;
 
 class Settings extends Controller
 {
@@ -20,21 +21,27 @@ class Settings extends Controller
   {
     if (Request::isMethod('post'))
     {
-      User::where('id', Auth()->User()->id)->update([
-        'hotelview' => request()->get('hotelview'),
-        'profile_background' => request()->get('background')
-      ]);
-      return redirect('me');
+      $pbg = ProfileBackgrounds::where('background',request()->get('background'))->first();
+      if (!file_exists(public_path() . '/goldfish/images/me/views/' . request()->get('hotelview'))) {
+        return redirect()->back()->withErrors('Selected hotelview doesnt exist.');
+      }
+      if(!empty($pbg)) {
+        User::where('id', Auth()->User()->id)->update([
+          'hotelview' => request()->get('hotelview'),
+          'profile_background' => request()->get('background')
+        ]);
+        return redirect()->back()->withSuccess('Changed!');
+      }
+      return redirect()->back()->withErrors(['Selected background doesnt exist!']);
     }
-
-      $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
-      $hview = \File::allFiles(public_path('goldfish/images/me/views'));
-      return view('pages.me.settings.hotel',
-      [
-        'group' => 'me',
-        'pbg' => $pbg,
-        'hview' => $hview
-      ]);
+    $pbg = ProfileBackgrounds::get();
+    $hview = \File::allFiles(public_path('goldfish/images/me/views'));
+    return view('pages.me.settings.hotel',
+    [
+      'group' => 'me',
+      'pbg' => $pbg,
+      'hview' => $hview,
+    ]);
   }
   public function admin_credential_rules(array $data)
   {

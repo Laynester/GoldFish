@@ -1,7 +1,7 @@
 <div class="body_content">
+  @if(empty($user))
   <div class="box_4">
     <div class="heading">@yield('title')</div>
-    @if(empty($user))
     <form method="post">
       <div class="content">
         <div class="row justify-content-center">
@@ -21,7 +21,38 @@
       @csrf
     </form>
   </div>
+  <div class="box_4">
+    <div class="heading">User List</div>
+    <table class="full normal">
+      <thead>
+        <th style="width:5%">ID</th>
+        <th style="width:20%">Name</th>
+        <th style="width:25%">E-Mail</th>
+        <th style="width:30%">Join Date</th>
+        <th style="width:30%;">Latest Activity</th>
+        <th style="width:5%;">Edit</th>
+      </thead>
+      @foreach($users as $row)
+      <tr>
+        <td class="id">{{$row->id}}</td>
+        <td>
+          <b>{{$row->username}}</b>
+          <small>({{$row->ip_current}})</small>
+        </td>
+        <td class="text-center">{{$row->mail}}</td>
+        <td class="text-center">{{date('d/m/y h:ia',$row->account_created)}}</td>
+        <td>{{date('d/m/y h:ia',$row->last_login)}}</td>
+        <td><a href="/housekeeping/moderation/lookup/user/{{$row->username}}">Edit</a></td>
+      </tr>
+      @endforeach
+    </table>
+    <div class="end">
+      {{ $users->links() }}
+    </div>
+  </div>
     @else
+    <div class="box_4">
+      <div class="heading">@yield('title')</div>
     <form method="post">
       <input hidden name="edit">
     <div class="content">
@@ -75,17 +106,17 @@
     </div>
     @csrf
   </form>
-    @endif
 </div>
+    @endif
 @if(!empty($user))
 <div class="box_4">
   <div class="heading">Recent Chats</div>
   <table class="full normal">
     <thead>
-    <th style="width:25%">When</th>
-    <th style="width:50%">Message</th>
-    <th style="width:25%">Room</th>
-  </thead>
+      <th style="width:25%">When</th>
+      <th style="width:50%">Message</th>
+      <th style="width:25%">Room</th>
+    </thead>
   @foreach($chats as $chat)
   <tr>
     <td>{{date('d/m/y h:ia', $chat->timestamp)}}</td>
@@ -96,3 +127,4 @@
   </table>
 </div>
 @endif
+</div>

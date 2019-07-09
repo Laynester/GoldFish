@@ -13,7 +13,7 @@ class Banned extends Controller
   }
   public function render()
   {
-      $ban = Bans::where('user_id', Auth()->User()->id)->orderBy('id','desc')->first();
+      $ban = Bans::where('user_id', Auth()->User()->id)->orWhere('ip',Auth()->User()->ip_current)->orderBy('id','desc')->first();
       return view('pages.banned',
       [
         'group' => 'me',

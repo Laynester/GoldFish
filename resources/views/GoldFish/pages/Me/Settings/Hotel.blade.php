@@ -9,6 +9,16 @@
     <div class="col-lg-8">
       <div class="box black">
         <div class="heading">Hotel Settings</div>
+        @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+          {{$errors->first()}}
+        </div>
+        @endif
+        @if(session('success'))
+        <div class="alert alert-success" role="alert">
+          {{session('success')}}
+        </div>
+        @endif
         <div class="row justify-content-center">
           <form method="post">
             <div class="form-group">
@@ -22,8 +32,8 @@
               <label for="hotelview">Profile Background</label>
               <div class="options hotelview">
                 @foreach ($pbg as $bg)
-                  <input type="radio" id="{{$bg->getFilename()}}" name="background" @if(Auth()->User()->profile_background == $bg->getFilename()) checked @endif value="{{$bg->getFilename()}}"/>
-                  <label for="{{$bg->getFilename()}}" style="background-image:url(/images/profile_backgrounds/{{$bg->getFilename()}});"></label>
+                  <input type="radio" id="{{$bg->background}}" name="background" @if(Auth()->User()->profile_background == $bg->background) checked @endif value="{{$bg->background}}"/>
+                  <label for="{{$bg->background}}" style="background-image:url(/images/profile_backgrounds/{{$bg->background}});"></label>
                 @endforeach
               </div>
             </div>

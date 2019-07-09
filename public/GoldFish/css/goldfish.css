@@ -421,7 +421,7 @@ width:100%;
 	background: rgba(255,255,255,.4);
 }
 .box .content {
-	padding:5px;
+	padding:3px;
 }
 .habbo_badge {
 	width:50px;
@@ -569,6 +569,15 @@ ul.navigation li a.selected {
 	}
 }
 @media only screen and (max-width: 600px) {
+	.guest .header .login-section .login-input {
+		display: block;
+	}
+	.guest .header .login-section .login-inputs {
+		width:auto;
+	}
+	.guest .header .login-section .login-inputs .input {
+		width:98%;
+	}
 	.no-mobile {
 		display: none;
 	}
@@ -853,7 +862,7 @@ figure.group {
 			background-repeat: no-repeat;
 			background-position:top  center;
 			float: left;
-			margin:13.5px;
+			margin:7px 13.5px;
 }
 figure.group {
 	background-position:center 5px;

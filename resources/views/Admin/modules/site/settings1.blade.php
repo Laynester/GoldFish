@@ -34,6 +34,10 @@
                <label for="title">Group Badge Location</label>
                <input type="text" value="{{CMSHelper::settings('group_badges')}}" name="groupbadges"/>
              </div>
+             <div class="form-group">
+               <label for="title">FindRetros</label>
+               <input type="text" placeholder="Account username" value="{{CMSHelper::settings('findretros')}}" name="findretros"/>
+             </div>
           </div>
         </div>
       </div>

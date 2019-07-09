@@ -12,7 +12,7 @@ Route::middleware([])->group(function () {
 });
 
 // Authenticated
-Route::middleware(['auth','Banned'])->group(function () {
+Route::middleware(['auth','Banned','Findretros'])->group(function () {
   Route::get('banned', 'Session\Banned@render')->name('banned');
   // Home
   Route::get('me', 'Session\Me@render')->name('me');
@@ -21,7 +21,7 @@ Route::middleware(['auth','Banned'])->group(function () {
   Route::any('settings', 'Session\Settings@render')->name('settings');
   Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
   });
-Route::middleware([])->group(function () {
+Route::middleware(['Banned','Findretros'])->group(function () {
   Route::get('/api','Session\API@return');
   Route::get('community', 'Session\Community@render')->name('community');
   Route::get('community/articles', 'Session\Articles@render')->name('articles');
@@ -36,9 +36,20 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
   Route::get('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
 
+  //server
+  Route::any('server/client', 'Housekeeping\Server\Client@render')->name('hk_server_client');
+  Route::any('server/emulator', 'Housekeeping\Server\Emulator@render')->name('hk_server_emulator');
+  Route::any('server/publics', 'Housekeeping\Server\Publics@render')->name('hk_server_publics');
+  Route::any('server/publiccats/{id?}', 'Housekeeping\Server\Publics@categories')->name('hk_server_publiccats');
+  Route::any('server/publiccats/delete/{id}', 'Housekeeping\Server\Publics@categoriesremove')->name('hk_server_publiccats_delete');
+  Route::any('server/vouchers', 'Housekeeping\Server\Vouchers@render')->name('hk_server_vouchers');
+  Route::any('server/rcon/{key?}', 'Housekeeping\Server\Rcon@render')->name('hk_server_rcon');
+
   // user & moderation
   Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
   Route::any('moderation/lookup/user/{user?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
+  Route::any('moderation/bans', 'Housekeeping\UserMod\Bans@render')->name('hk_user_bans');
+  Route::any('moderation/badges', 'Housekeeping\UserMod\Badges@render')->name('hk_user_badges');
 
   //site and content
   Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');

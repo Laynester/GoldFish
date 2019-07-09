@@ -11,7 +11,7 @@ class Chatlog extends Model
   protected $fillable = [];
   public function room()
   {
-      return $this->belongsTo('App\Models\Hotel\Room', 'room_id');
+    return $this->belongsTo('App\Models\Hotel\Room', 'room_id');
   }
   public function habbo()
   {

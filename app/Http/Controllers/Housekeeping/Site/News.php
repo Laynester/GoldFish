@@ -40,7 +40,7 @@ class News extends Controller
       ]);
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
   public function List()
@@ -54,7 +54,7 @@ class News extends Controller
       ]);
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
   public function Edit($id)
@@ -83,14 +83,14 @@ class News extends Controller
       }
     }
     else {
-      return redirect('dashboard');
+      return redirect('housekeeping/dashboard');
     }
   }
   public function Delete($id)
   {
     if(auth()->user()->rank >= CMS::fuseRights('news')){
       Insert::where('id', $id)->delete();
-      return redirect('housekeeping/site/news/list')->withErrors(['Deleted']);
+      return redirect()->back()->withErrors(['Deleted']);
     }
   }
 }

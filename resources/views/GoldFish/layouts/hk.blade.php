@@ -20,7 +20,9 @@
       <div class="hk_navigation">
         <ul>
           <li id="dashboard" @if($group == 'dashboard') class="active" @endif><a href="{{ route('dashboard') }}">Dashboard</a></li>
-          <li id="server" @if($group == 'server') class="active" @endif><a href="">Server</a></li>
+          @if(auth()->user()->rank >= CMSHelper::fuseRights('server'))
+          <li id="server" @if($group == 'server') class="active" @endif><a href="{{ route('hk_server_client')}}">Server</a></li>
+          @endif
           @if(auth()->user()->rank >= CMSHelper::fuseRights('news'))
           <li id="site" @if($group == 'site') class="active" @endif><a href="{{ route('hk_newslist') }}">Site & Content</a></li>
           @endif
@@ -37,6 +39,11 @@
       <div class="hk_body">
             @yield('content')
       </div>
+      <footer class="text-center">
+        <span>Made by <a href="http://layne.cf">Laynester</a></span>
+        <span>GoldFishCMS v{{config('app.version_number')}}</span>
+        <span>Need help? Join the discord server <a href="https://discordapp.com/invite/eVAYDUp">here</a></span>
+      </footer>
     </div>
     @yield('javascript')
   </body>

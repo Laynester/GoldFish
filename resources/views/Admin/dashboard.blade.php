@@ -73,7 +73,7 @@
           <img style="margin:auto;display:block;" src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}&action=wav&gesture=sml&direction=4&head_direction=3">
         </div>
         <div class="col-md-6">
-          <table class="full">
+          <table class="full small">
             <tr>
               <td>Motto:</td>
               <td>{{ Auth::user()->motto }}</td>
