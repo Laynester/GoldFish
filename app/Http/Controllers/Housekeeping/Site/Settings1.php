@@ -11,7 +11,7 @@ class Settings1 extends Controller
 {
   public function render()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('site_settings_general')){
+    if(CMS::fuseRights('site_settings_general')){
       if (Request::isMethod('post'))
       {
         Settings::where('key', 'hotelname')->update(['value' => request()->get('hotelname')]);

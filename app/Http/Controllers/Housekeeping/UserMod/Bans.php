@@ -15,7 +15,7 @@ class Bans extends Controller
 {
   public function render(Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('moderation_banlist')){
+    if(CMS::fuseRights('moderation_banlist')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([

@@ -11,7 +11,7 @@ class Chatlog extends Controller
 {
   public function List()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('moderation_chatlog')){
+    if(CMS::fuseRights('moderation_chatlog')){
       $chatlog = Chats::orderBy('timestamp', 'DESC')->paginate(30);
       return view('usermod.chatlog_list',
       [

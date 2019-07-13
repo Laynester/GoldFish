@@ -12,7 +12,7 @@ class Client extends Controller
 {
   public function render(Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('server_client')){
+    if(CMS::fuseRights('server_client')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([
@@ -25,7 +25,11 @@ class Client extends Controller
           'productdata' => 'required',
           'furnidata' => 'required',
           'figuremap' => 'required',
-          'figuredata' => 'required'
+          'figuredata' => 'required',
+          'emuhost'   => 'required',
+          'emuport' => 'required',
+          'rconip' => 'required',
+          'rconport' => 'required'
         ]);
         Settings::where('key', 'swfdir')->update(['value' => request()->get('swfdir')]);
         Settings::where('key', 'swf')->update(['value' => request()->get('swf')]);
@@ -37,6 +41,10 @@ class Client extends Controller
         Settings::where('key', 'furnidata')->update(['value' => request()->get('furnidata')]);
         Settings::where('key', 'figuremap')->update(['value' => request()->get('figuremap')]);
         Settings::where('key', 'figuredata')->update(['value' => request()->get('figuredata')]);
+        Settings::where('key', 'emuhost')->update(['value' => request()->get('emuhost')]);
+        Settings::where('key', 'emuport')->update(['value' => request()->get('emuport')]);
+        Settings::where('key', 'rconip')->update(['value' => request()->get('rconip')]);
+        Settings::where('key', 'rconport')->update(['value' => request()->get('rconport')]);
         return redirect()->back()->withSuccess('Updated client settings!');
       }
       return view('server.client',

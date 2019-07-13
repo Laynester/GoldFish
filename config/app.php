@@ -230,6 +230,7 @@ return [
         'HKHelper' => App\Helpers\Housekeeping::class,
         'Banned' => App\Http\Middleware\Banned::class,
         'Findretros' => App\Http\Middleware\Findretros::class,
+        'installer' => App\Http\Middleware\installer::class
 
     ],
     'version_number' => '1.0.0'

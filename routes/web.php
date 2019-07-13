@@ -1,7 +1,13 @@
 <?php
+// Installer
+Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
+  Route::get('installer',function () {return redirect('installer/index');});
+  Route::get('index', 'Installation\Index@render')->name('installer');
+  Route::any('step/{id}', 'Installation\Index@steps')->name('steps');
+});
 
 // Guest
-Route::middleware([])->group(function () {
+Route::middleware(['installer'])->group(function () {
   Route::get('/', function () {return redirect('login');});
   Route::get('index', function () {return redirect('login');})->name('index');
   Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);

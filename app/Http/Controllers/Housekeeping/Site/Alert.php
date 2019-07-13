@@ -11,7 +11,7 @@ class Alert extends Controller
 {
   public function render()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('site_alert')){
+    if(CMS::fuseRights('site_alert')){
       if (Request::isMethod('post'))
       {
         Settings::where('key', 'site_alert_enabled')->update(['value' => request()->get('enabled')]);

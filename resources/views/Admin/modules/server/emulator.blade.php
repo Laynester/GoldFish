@@ -15,22 +15,13 @@
         @endif
         <div class="row justify-content-center">
           <div class="col-md-7">
+            @foreach($form as $row)
             <div class="form-group">
-              <label>Emu Host</label>
-              <input type="text" name="emuhost" value="{{CMSHelper::settings('emuhost')}}">
+              <label>{{str_replace(".", " ", "$row->key")}}</label>
+              <input type="hidden" name="key[{{$row->key}}][name]" value="{{$row->key}}">
+              <input type="text" name="key[{{$row->key}}][value]" value="{{$row->value}}">
             </div>
-            <div class="form-group">
-              <label>Emu Port</label>
-              <input type="text" name="emuport" value="{{CMSHelper::settings('emuport')}}">
-            </div>
-            <div class="form-group">
-              <label>Rcon IP</label>
-              <input type="text" name="rconip" value="{{CMSHelper::settings('rconip')}}">
-            </div>
-            <div class="form-group">
-              <label>Rcon Port</label>
-              <input type="text" name="rconport" value="{{CMSHelper::settings('rconport')}}">
-            </div>
+            @endforeach
           </div>
         </div>
       </div>

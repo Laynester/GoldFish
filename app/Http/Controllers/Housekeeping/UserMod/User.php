@@ -18,12 +18,12 @@ class User extends Controller
 {
   public function render($user = null, Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('site_alert')){
+    if(CMS::fuseRights('site_alert')){
       if (Request::isMethod('post'))
       {
         if (request()->has('edit')) {
           Users::where('username', $user)->update(['motto' => request()->get('motto')]);
-          if(auth()->user()->rank >= CMS::fuseRights('moderation_user_admin')){
+          if(CMS::fuseRights('moderation_user_admin')){
             Users::where('username', $user)->update([
               'rank' => request()->get('rank'),
               'credits' => request()->get('coins')

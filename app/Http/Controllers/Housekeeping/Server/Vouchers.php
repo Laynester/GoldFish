@@ -13,7 +13,7 @@ class Vouchers extends Controller
 {
   public function render(Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('server_vouchers')){
+    if(CMS::fuseRights('server_vouchers')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([

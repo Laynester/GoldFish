@@ -13,7 +13,7 @@ class News extends Controller
 {
   public function Create(Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('news')){
+    if(CMS::fuseRights('site_news')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([
@@ -45,7 +45,7 @@ class News extends Controller
   }
   public function List()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('news')){
+    if(CMS::fuseRights('site_news')){
       $news = Insert::orderBy('date', 'DESC')->paginate(10);
       return view('site.newslist',
       [
@@ -59,7 +59,7 @@ class News extends Controller
   }
   public function Edit($id)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('news')){
+    if(CMS::fuseRights('site_news')){
       $news = Insert::where('id', $id)->first();
       if(!empty($news)) {
         if (Request::isMethod('post'))
@@ -88,7 +88,7 @@ class News extends Controller
   }
   public function Delete($id)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('news')){
+    if(CMS::fuseRights('site_news')){
       Insert::where('id', $id)->delete();
       return redirect()->back()->withErrors(['Deleted']);
     }

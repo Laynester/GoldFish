@@ -11,7 +11,7 @@ class Settings2 extends Controller
 {
   public function render()
   {
-    if(auth()->user()->rank >= CMS::fuseRights('site_settings_social')){
+    if(CMS::fuseRights('site_settings_social')){
       if (Request::isMethod('post'))
       {
         Settings::where('key', 'discord_id')->update(['value' => request()->get('discord_id')]);

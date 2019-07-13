@@ -15,7 +15,7 @@ class Publics extends Controller
 {
   public function render($id = null, Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('server_publics')){
+    if(CMS::fuseRights('server_publics')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([
@@ -76,7 +76,7 @@ class Publics extends Controller
   }
   public function categories($id = '',Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('server_publiccats')) {
+    if(CMS::fuseRights('server_publiccats')) {
       if (Request::isMethod('post'))
       {
         if(request()->get('id')) {
@@ -127,7 +127,7 @@ class Publics extends Controller
     }
   }
   public static function categoriesremove($id) {
-    if(auth()->user()->rank >= CMS::fuseRights('server_publiccats')) {
+    if(CMS::fuseRights('server_publiccats')) {
       Navigator_Pubcat::where('id', $id)->delete();
       return redirect()->back()->withErrors('Deleted');
     }

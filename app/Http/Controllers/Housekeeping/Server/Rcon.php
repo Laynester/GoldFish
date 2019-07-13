@@ -13,7 +13,7 @@ class Rcon extends Controller
 {
   public function render($key = '', Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('server_rcon')){
+    if(CMS::fuseRights('server_rcon')){
       if(!empty($key)) {
         if(auth()->user()->online = '1') {
           DoRcon::execCommand(auth()->user()->id,':update_'.$key);

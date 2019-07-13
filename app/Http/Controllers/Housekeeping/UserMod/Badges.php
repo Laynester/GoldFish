@@ -15,7 +15,7 @@ class Badges extends Controller
 {
   public function render(Req $request)
   {
-    if(auth()->user()->rank >= CMS::fuseRights('moderation_badges')){
+    if(CMS::fuseRights('moderation_badges')){
       if (Request::isMethod('post'))
       {
         $validatedData = $request->validate([

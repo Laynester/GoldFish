@@ -32,8 +32,8 @@
               <label for="hotelview">Profile Background</label>
               <div class="options hotelview">
                 @foreach ($pbg as $bg)
-                  <input type="radio" id="{{$bg->background}}" name="background" @if(Auth()->User()->profile_background == $bg->background) checked @endif value="{{$bg->background}}"/>
-                  <label for="{{$bg->background}}" style="background-image:url(/images/profile_backgrounds/{{$bg->background}});"></label>
+                  <input type="radio" id="{{$bg->getFilename()}}" name="background" @if(Auth()->User()->profile_background == $bg->getFilename()) checked @endif value="{{$bg->getFilename()}}"/>
+                  <label for="{{$bg->getFilename()}}" style="background-image:url(/images/profile_backgrounds/{{$bg->getFilename()}});"></label>
                 @endforeach
               </div>
             </div>

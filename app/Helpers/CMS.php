@@ -30,7 +30,13 @@ class CMS
     }
   }
   public static function fuseRights($right) {
-    return \App\Models\CMS\FuseRight::where('right', $right)->pluck('min_rank')->first();
+    $query = \App\Models\CMS\FuseRight::where('right', $right)->pluck('min_rank')->first();;
+    if(auth()->user()->rank >= $query && !empty($query)) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
   public static function userData($id, $key = '') {
     if(!empty($key)) {
