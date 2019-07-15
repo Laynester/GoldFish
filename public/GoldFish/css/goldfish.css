@@ -901,3 +901,11 @@ figure.photo.profile:after  {
 	filter:saturate(0);
 	border:2px solid #000;
 }
+.alert.item{
+	position: relative;
+}
+.alert.item a.close{
+	right: 5px;
+	position: absolute;
+	font-size: 13px;
+}

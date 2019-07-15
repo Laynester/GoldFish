@@ -13,6 +13,9 @@ class Me extends Controller
   }
   public function render()
   {
+    if(isset($_GET['delete'])) {
+      \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id',$_GET['delete'])->delete();
+    }
       $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->take(32)->get();
       $news = News::orderBy('date', 'DESC')->take(3)->get();
       return view('pages.me.me',

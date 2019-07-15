@@ -12,12 +12,18 @@ class Alert extends Controller
   public function render()
   {
     if(CMS::fuseRights('site_alert')){
+      if(isset($_GET['delete'])) {
+        \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id',$_GET['delete'])->delete();
+        return redirect()->back()->withSuccess('Deleted Alert');
+      }
       if (Request::isMethod('post'))
       {
-        Settings::where('key', 'site_alert_enabled')->update(['value' => request()->get('enabled')]);
-        Settings::where('key', 'site_alert_badge')->update(['value' => request()->get('badge')]);
-        Settings::where('key', 'site_alert')->update(['value' => request()->get('alert')]);
-        return redirect()->back()->withErrors(['Saved changes.']);
+        \App\Models\CMS\Alerts::Create([
+          'message' => request()->get('message'),
+          'icon' => request()->get('icon'),
+          'userid' => request()->get('userid')
+        ]);
+        return redirect()->back()->withSuccess('Sent alert');
       }
       return view('site.alert',
       [

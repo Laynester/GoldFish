@@ -15,12 +15,15 @@
     <div class="motto"><strong>{{ Auth::user()->username }}:</strong> {{ Auth::user()->motto }}</div>
   </div>
   <div class="feed-items">
-    @if(CMSHelper::settings('site_alert_enabled') =='1')
+    @foreach(App\Models\CMS\Alerts::orderBy('id','DESC')->get() as $row)
     <div class="alert item">
-      <img src="{{CMSHelper::settings('c_images')}}album1584/{{CMSHelper::settings('site_alert_badge')}}.gif"/>
-      <span>{{CMSHelper::settings('site_alert')}}<span>
+      <img src="{{CMSHelper::settings('c_images')}}album1584/{{$row->icon}}.gif"/>
+      <span>{{$row->message}}</span>
+        @if($row->userid == Auth::user()->id)
+        <a class="close" href="?delete={{$row->id}}">X</a>
+        @endif
     </div>
-    @endif
+    @endforeach
     <div class="item login">
       Last Logged in: {{date('F d, Y h:ia', Auth::user()->last_login)}}
     </div>

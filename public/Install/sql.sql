@@ -1,8 +1,10 @@
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `cms_fuserights`;
 DROP TABLE IF EXISTS `cms_settings`;
 DROP TABLE IF EXISTS `cms_menu`;
 DROP TABLE IF EXISTS `cms_news`;
+DROP TABLE IF EXISTS `cms_alerts`;
 CREATE TABLE `cms_fuserights` (
   `right` varchar(255) NOT NULL DEFAULT '',
   `min_rank` int(25) NOT NULL,
@@ -30,6 +32,13 @@ CREATE TABLE `cms_settings` (
   `key` varchar(20) NOT NULL DEFAULT '',
   `value` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `cms_alerts`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `icon` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'ADM',
+  `userid` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 INSERT INTO `cms_fuserights` VALUES ('dashboard', '4');
 INSERT INTO `cms_fuserights` VALUES ('moderation', '5');
 INSERT INTO `cms_fuserights` VALUES ('moderation_badges', '7');
@@ -68,9 +77,6 @@ INSERT INTO `cms_menu` VALUES ('9', 'community', 'Photos', 'community/photos', '
 INSERT INTO `cms_menu` VALUES ('10', 'me', 'Settings', 'settings', '2');
 INSERT INTO `cms_news` VALUES ('1', 'GoldFish Installation complete', 'GoldFish Installation complete', '<p>Welcome to your freshly installed version of GoldFishCMS!</p>', '/images/news/wpid-lpromo_atcg.png', '1', '1563049338');
 INSERT INTO `cms_settings` VALUES ('hotelname', 'Habbo');
-INSERT INTO `cms_settings` VALUES ('site_alert_enabled', '1');
-INSERT INTO `cms_settings` VALUES ('site_alert', 'GoldFish Installed.');
-INSERT INTO `cms_settings` VALUES ('site_alert_badge', 'ADM');
 INSERT INTO `cms_settings` VALUES ('c_images', '/swfs/c_images/');
 INSERT INTO `cms_settings` VALUES ('discord_id', '509801583991848972');
 INSERT INTO `cms_settings` VALUES ('swfdir', '/swfs/gordon/PRODUCTION-201601012205-226667486/');
@@ -95,3 +101,4 @@ INSERT INTO `cms_settings` VALUES ('rconip', '127.0.0.1');
 INSERT INTO `cms_settings` VALUES ('installed', '0');
 ALTER TABLE `users` ADD `profile_background` varchar(50) NOT NULL DEFAULT 'bg_colour_03.gif';
 ALTER TABLE `users` ADD `hotelview` varchar(50) NOT NULL DEFAULT 'view_us_wide.png';
+SET FOREIGN_KEY_CHECKS = 1;

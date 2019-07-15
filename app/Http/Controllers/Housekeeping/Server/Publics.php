@@ -51,11 +51,11 @@ class Publics extends Controller
         return redirect()->back()->withSuccess('Made room visible room');
       }
       if(isset($_GET['remove'])) {
-        if($_GET['type'] = 'category') {
+        if(isset($_GET['type']) && $_GET['type'] = 'category') {
           Navigator_Publics::where('room_id', $_GET['remove'])->delete();
           return redirect()->back()->withErrors(['Deleted']);
         } else {
-          Room::where('id', request()->get('room'))->update([
+          Room::where('id', $_GET['remove'])->update([
             'is_public' => '0'
           ]);
           return redirect()->back()->withErrors(['Deleted']);
@@ -63,11 +63,13 @@ class Publics extends Controller
       }
       $categories = Navigator_Pubcat::get();
       $rooms1 = Navigator_Publics::paginate(10);
+      $publics = Room::where('is_public','1')->paginate(10);
       return view('server.publics',
       [
         'group' => 'server',
         'categories' => $categories,
-        'rooms1' => $rooms1
+        'rooms1' => $rooms1,
+        'publics' => $publics
       ]);
     }
     else {

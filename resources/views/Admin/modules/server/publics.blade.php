@@ -52,8 +52,20 @@
   </div>
   <div class="box_4">
     <div class="heading">@yield('title')</div>
-    <div class="content">
-    </div>
+    <table class="full normal">
+      <thead>
+        <th>Room</th>
+        <th>Options</th>
+      </thead>
+      @foreach($publics as $row)
+      <tr>
+        <td style="width:25%;">{{$row->name}}</td>
+        <td style="width:25%;">
+          <a href="/housekeeping/server/publics?remove={{$row->id}}">Remove</a>
+        </td>
+      </tr>
+      @endforeach
+    </table>
   </div>
   <div class="box_4">
     <div class="heading">Categorized</div>

@@ -8,5 +8,5 @@ class Room extends Model
 {
   public $timestamps = false;
   protected $table = 'rooms';
-  protected $fillable = [];
+  protected $fillable = ['is_public'];
 }
