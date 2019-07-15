@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
         <label>Confirm Password:</label>
-        <input class="inputs" type="password" name="c_password" placeholder="Confirm password">
+        <input class="inputs" type="password" name="password_confirmation" placeholder="Confirm password">
       </div>
       <div class="form-group">
         <label>Email:</label>

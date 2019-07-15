@@ -23,6 +23,7 @@
         </figure>
         @endforeach
       </div>
+      {{$photos->links}}
       @endif
     </div>
   </div>

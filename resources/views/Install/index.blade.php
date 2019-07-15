@@ -4,12 +4,12 @@
 <div class="col-lg-9">
   @if(!empty(env('DB_DATABASE')))
   <div class="box grey text-center">
-    <p>Hello and welcome to <b>GoldFish</b>, To begin, press continue! Please note, If you incorectly install GoldFish, you can get help by joining the <a href="https://discordapp.com/invite/eVAYDUp">Discord Server</a></p>
-    <p>WARNING: Clicking continue will insert information into your database, So if you have not already, please fill out the information in the .env in your root folder.<small>(No hotel data will be lost!)</small></p>
+    <p>Welcome to GoldFish! To begin, please press continue, please note, this will not remove any existing hotel data, this will only insert new database tables relating to GoldFish. If you need some help or are confused, you can join the <a href="https://discordapp.com/invite/eVAYDUp">Discord Server</a></p>
+    <p>Remember, all information you input, can be changed later through the database or through your hotel housekeeping.</p>
   </div>
   <span class="controls">
     <form method="post">
-      <button class="green" type="submit">Continue</button>
+      <button class="green right" type="submit">Continue</button>
       @csrf
     </form>
   </span>

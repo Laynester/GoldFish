@@ -8,6 +8,7 @@ use App\Models\CMS\Settings;
 use App\Models\User\User;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\CMS;
+use App\Models\User\Permissions;
 
 class Index extends Controller
 {
@@ -70,24 +71,23 @@ class Index extends Controller
     if($id == 5) {
       if (Request::isMethod('post'))
       {
-        if(request()->get('password') == request()->get('c_password')) {
           $validatedData = $request->validate([
             'username' => 'required|max:255|unique:users',
             'mail' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed'
           ]);
+          $rank = Permissions::orderBy('id', 'DESC')->pluck('id')->first();
           User::create([
-              'username' => $data['username'],
-              'mail' => $data['mail'],
-              'password' => Hash::make($data['password']),
+              'username' => request()->get('username'),
+              'mail' => request()->get('mail'),
+              'password' => Hash::make(request()->get('password')),
               'ip_register' => request()->ip(),
               'ip_current' => request()->ip(),
               'last_login' => time(),
               'account_created' => time(),
-              'motto' => CMS::settings('default_motto')
+              'motto' => CMS::settings('default_motto'),
+              'rank' => $rank
           ]);
-          return redirect('/installer/step/6');
-        }
         return redirect('/installer/step/6');
       }
       return view('step5');
@@ -98,7 +98,10 @@ class Index extends Controller
         Settings::where('key', 'installed')->update(['value' => '0']);
         return redirect('/installer/index');
       }
-      Settings::where('key', 'installed')->update(['value' => '1']);
+      if(isset($_GET['success'])) {
+        Settings::where('key', 'installed')->update(['value' => '1']);
+        return redirect('/index');
+      }
       return view('step6');
     }
   }
