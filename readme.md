@@ -2,8 +2,8 @@
 ### Planned Pages
 #### Me
 - [x] Home
-- [ ] Settings
-- [ ] Profile
+- [x] Settings
+- [x] Profile
 #### Community
 - [x] Community
 - [x] Articles
@@ -11,17 +11,23 @@
 - [x] Leaderboard
 - [x] Photos
 #### Admin
-- [ ] Dashboard
+- [x] Dashboard
 - [x] News
 - [x] CMS Settings/Client
-- [ ] Emulator settings
-### Planned Features
+- [x] Emulator settings
+- [x] User lookup
+- [x] Chatlogs
+- [x] Ban List (RCON)
+- [x] WordFilter (RCON)
+- [x] Credit Giver (RCON)
+- [x] Public room creator
+### Other Features
 #### Client
 - [x] Loader
 - [x] News popup
 - [x] Flash Event support
 #### Site
-- [ ] RCON Support
+- [x] RCON Support
 - [x] Leaderboards
 - [x] Discord Widget
 - [x] Twitter Widget
