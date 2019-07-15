@@ -92,5 +92,14 @@ class Index extends Controller
       }
       return view('step5');
     }
+    if($id == 6 ) {
+      if (Request::isMethod('post'))
+      {
+        Settings::where('key', 'installed')->update(['value' => '0']);
+        return redirect('/installer/index');
+      }
+      Settings::where('key', 'installed')->update(['value' => '1']);
+      return view('step6');
+    }
   }
 }

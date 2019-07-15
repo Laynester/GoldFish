@@ -26,7 +26,7 @@ class installer
       } catch (\Exception $e) {
         $connection = false;
       }
-      $disabled = array('installer','installer/index','installer/step/2','installer/step/3','installer/step/4','installer/step/5');
+      $disabled = array('installer','installer/index','installer/step/2','installer/step/3','installer/step/4','installer/step/5','installer/step/6');
       if($connection == false && !Request::is($disabled)) {
         return redirect('installer/index');
       }

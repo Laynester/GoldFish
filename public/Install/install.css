@@ -53,12 +53,15 @@ footer p {
   margin-bottom:5px;
 }
 .box.grey {
-  background: #b0b0a5;
-  padding:4px;
-  border:2px solid #777;
+  background: #7B7B71;
+  padding:8px;
+  box-shadow: 0 3px rgba(0,0,0,.2)
 }
 .box.red {
   background:red;
+}
+.box.green {
+  background: #3ba800;
 }
 .controls a,
 .controls button {
@@ -77,9 +80,11 @@ footer p {
   text-decoration: none;
   filter: brightness(1.1);
 }
+.box.grey a {
+  color:#000;
+}
 .box a {
-  font-weight: bold;
-  color:#777;
+  color:#fc6204;
   text-decoration: underline;
 }
 .controls a.green,
@@ -119,4 +124,8 @@ h2 {
   font-size: 11px;
   border: 1px solid white;
   width: 100%
+}
+footer a {
+  color:#000000;
+  text-decoration: underline;
 }
