@@ -39,21 +39,21 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     protected function authenticated()
-{
-    $user = auth()->user();
-    $user->last_login = time();
-    $user->ip_current = Request::ip();
-    $user->save();
-}
-public static function showLoginForm() {
-  $news = News::orderBy('date', 'DESC')->take(9)->get();
-  return view('auth.login',[
-    'group' => 'home',
-    'news' => $news
-  ]);
-}
-public function username()
-{
-    return 'username';
-}
+    {
+      $user = auth()->user();
+      $user->last_login = time();
+      $user->ip_current = Request::ip();
+      $user->save();
+    }
+    public static function showLoginForm() {
+      $news = News::orderBy('date', 'DESC')->take(9)->get();
+      return view('auth.login',[
+        'group' => 'home',
+        'news' => $news
+      ]);
+    }
+    public function username()
+    {
+      return 'username';
+    }
 }

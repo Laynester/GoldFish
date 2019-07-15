@@ -3,8 +3,7 @@
 @section('step', '3')
 <div class="col-lg-6">
   <div class="box grey">
-    <p>Please fill in information about the database GoldFish will connect to, please note any existing website data will be lost (no hotel data will be touched)</p>
-    <p>WARNING: You must have an existing arcturus database already.</p>
+    <p>Fill in your hotels social platform information, this will display tweets from your account, and display a discord widget with your hotel server.</p>
   </div>
 </div>
 <div class="col-lg-6">
@@ -15,30 +14,19 @@
   @endif
   <form method="post">
     <div class="box">
-      <h2>Database</h2>
+      <h2>Social Configuration</h2>
       <div class="form-group">
-        <label>Host:</label>
-        <input class="inputs" type="text" name="host" value="localhost">
+        <label for="title">Discord Widget ID:</label>
+        <input class="inputs"type="text" value="{{CMSHelper::settings('discord_id')}}" name="discord_id"/>
       </div>
       <div class="form-group">
-        <label>Database Port:</label>
-        <input class="inputs" type="text" name="port" value="3306">
-      </div>
-      <div class="form-group">
-        <label>Database Username:</label>
-        <input class="inputs" type="text" name="username" value="root">
-      </div>
-      <div class="form-group">
-        <label>Database Password:</label>
-        <input class="inputs" type="password" name="password" value="">
-      </div>
-      <div class="form-group">
-        <label>Database Name:</label>
-        <input class="inputs" type="text" name="dbname" value="">
+        <label for="title">Twitter Handle:</label>
+        <input class="inputs"type="text" value="{{CMSHelper::settings('twitter_handle')}}" name="twitter_handle"/>
       </div>
     </div>
     <span class="controls">
-      <button type="submit">Save</button>
+      <button class="green" type="submit">Continue</button>
+      <a class="red" href="/installer/step/2">Back</a>
     </span>
     @csrf
   </form>

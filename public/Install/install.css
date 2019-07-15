@@ -32,6 +32,10 @@ body {
   position: absolute;
   right:15px;
 }
+.left {
+  position: absolute;
+  left:15px;
+}
 footer {
   padding:16px;
   text-align: center;
@@ -56,7 +60,8 @@ footer p {
 .box.red {
   background:red;
 }
-.controls a {
+.controls a,
+.controls button {
   font-weight: bold;
   color:#fff;
   font-size: 12px;
@@ -64,15 +69,30 @@ footer p {
   border-bottom-width: 4px;
   padding:4px 6px;
   line-height: 12px;
+  position: absolute;
+  font: 400 13.3333px Arial;
+}
+.controls a:hover,
+.controls button:hover {
+  text-decoration: none;
+  filter: brightness(1.1);
 }
 .box a {
   font-weight: bold;
   color:#777;
   text-decoration: underline;
 }
-.controls a.green {
+.controls a.green,
+.controls button.green {
   background: #3ba800;
   border-color:#194800;
+  left:0;
+}
+.controls a.red,
+.controls button.red {
+  background: #FF0000;
+  border-color: #800000;
+  right:0;
 }
 .controls {
   position: relative;

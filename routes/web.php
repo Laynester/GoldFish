@@ -1,8 +1,8 @@
 <?php
 // Installer
 Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
-  Route::get('installer',function () {return redirect('installer/index');});
-  Route::get('index', 'Installation\Index@render')->name('installer');
+  Route::get('/',function () {return redirect('installer/index');});
+  Route::any('index', 'Installation\Index@render')->name('installer');
   Route::any('step/{id}', 'Installation\Index@steps')->name('steps');
 });
 

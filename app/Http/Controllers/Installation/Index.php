@@ -1,8 +1,13 @@
 <?php
 namespace App\Http\Controllers\Installation;
-
 use App\Http\Controllers\Controller;
 use Request;
+use Illuminate\Http\Request as Req;
+use App\Helpers\Installation;
+use App\Models\CMS\Settings;
+use App\Models\User\User;
+use Illuminate\Support\Facades\Hash;
+use App\Helpers\CMS;
 
 class Index extends Controller
 {
@@ -12,47 +17,80 @@ class Index extends Controller
   }
   public function render()
   {
+    if (Request::isMethod('post'))
+    {
+      Installation::stepOne();
+      return redirect('/installer/step/2');
+    }
     return view('index');
   }
-  public static function steps($id = '')
+  public static function steps($id = '',Req $request)
   {
     if($id == 2) {
       if (Request::isMethod('post'))
       {
-        $envPath = base_path('.env');
-        $env = file_get_contents($envPath);
-        $host = request()->get('host');
-        $port = request()->get('port');
-        $db = request()->get('dbname');
-        $username = request()->get('username');
-        $password = request()->get('password');
-        $databaseSetting = 'DB_HOST=' . $host . '
-DB_PORT=' . $port . '
-DB_DATABASE=' . $db . '
-DB_USERNAME=' . $username . '
-DB_PASSWORD=' . $password . '
-';
-        // @ignoreCodingStandard
-        $rows       = explode("\n", $env);
-        $unwanted   = "DB_HOST|DB_PORT|DB_DATABASE|DB_USERNAME|DB_PASSWORD";
-        $cleanArray = preg_grep("/$unwanted/i", $rows, PREG_GREP_INVERT);
-        $cleanString = implode("\n", $cleanArray);
-        $env = $cleanString.$databaseSetting;
-        try {
-          $conn = new \PDO('mysql:host='.$host, $username, $password);
-          $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-          file_put_contents($envPath, $env);
-
-          return redirect('/installer/step/3');
-          }
-        catch (\PDOException $e) {
-          return redirect()->back()->withErrors('Database connection failed..'. $e->getMessage());
-        }
+        Settings::where('key', 'hotelname')->update(['value' => request()->get('hotelname')]);
+        Settings::where('key', 'site_logo')->update(['value' => request()->get('logo')]);
+        Settings::where('key', 'habbo_imager')->update(['value' => request()->get('imager')]);
+        Settings::where('key', 'default_motto')->update(['value' => request()->get('motto')]);
+        Settings::where('key', 'group_badges')->update(['value' => request()->get('groupbadges')]);
+        return redirect('/installer/step/3');
       }
       return view('step2');
     }
     if($id == 3) {
+      if (Request::isMethod('post'))
+      {
+        Settings::where('key', 'discord_id')->update(['value' => request()->get('discord_id')]);
+        Settings::where('key', 'twitter_handle')->update(['value' => request()->get('twitter_handle')]);
+        return redirect('/installer/step/4');
+      }
       return view('step3');
+    }
+    if($id == 4) {
+      if(Request::isMethod('post')) {
+        Settings::where('key', 'swfdir')->update(['value' => request()->get('swfdir')]);
+        Settings::where('key', 'swf')->update(['value' => request()->get('swf')]);
+        Settings::where('key', 'variables')->update(['value' => request()->get('variables')]);
+        Settings::where('key', 'override_variables')->update(['value' => request()->get('override_variables')]);
+        Settings::where('key', 'texts')->update(['value' => request()->get('texts')]);
+        Settings::where('key', 'override_texts')->update(['value' => request()->get('override_texts')]);
+        Settings::where('key', 'productdata')->update(['value' => request()->get('productdata')]);
+        Settings::where('key', 'furnidata')->update(['value' => request()->get('furnidata')]);
+        Settings::where('key', 'figuremap')->update(['value' => request()->get('figuremap')]);
+        Settings::where('key', 'figuredata')->update(['value' => request()->get('figuredata')]);
+        Settings::where('key', 'emuhost')->update(['value' => request()->get('emuhost')]);
+        Settings::where('key', 'emuport')->update(['value' => request()->get('emuport')]);
+        Settings::where('key', 'rconip')->update(['value' => request()->get('rconip')]);
+        Settings::where('key', 'rconport')->update(['value' => request()->get('rconport')]);
+        return redirect('/installer/step/5');
+      }
+      return view('step4');
+    }
+    if($id == 5) {
+      if (Request::isMethod('post'))
+      {
+        if(request()->get('password') == request()->get('c_password')) {
+          $validatedData = $request->validate([
+            'username' => 'required|max:255|unique:users',
+            'mail' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed'
+          ]);
+          User::create([
+              'username' => $data['username'],
+              'mail' => $data['mail'],
+              'password' => Hash::make($data['password']),
+              'ip_register' => request()->ip(),
+              'ip_current' => request()->ip(),
+              'last_login' => time(),
+              'account_created' => time(),
+              'motto' => CMS::settings('default_motto')
+          ]);
+          return redirect('/installer/step/6');
+        }
+        return redirect('/installer/step/6');
+      }
+      return view('step5');
     }
   }
 }

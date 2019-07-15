@@ -26,10 +26,11 @@ class installer
       } catch (\Exception $e) {
         $connection = false;
       }
-      if($connection == false && !Request::is(['installer','installer/index','installer/step/2'])) {
+      $disabled = array('installer','installer/index','installer/step/2','installer/step/3','installer/step/4','installer/step/5');
+      if($connection == false && !Request::is($disabled)) {
         return redirect('installer/index');
       }
-      elseif($connection == true && Request::is(['installer','installer/index','installer/step/2'])) {
+      elseif($connection == true && Request::is($disabled)) {
         return redirect('index');
       }
       else{
