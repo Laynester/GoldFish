@@ -75,6 +75,7 @@ footer p {
   line-height: 12px;
   position: absolute;
   font: 400 13.3333px Arial;
+  text-align: center;
 }
 .controls a:hover,
 .controls button:hover {

@@ -3,12 +3,12 @@ namespace App\Http\Controllers\Installation;
 use App\Http\Controllers\Controller;
 use Request;
 use Illuminate\Http\Request as Req;
-use App\Helpers\Installation;
 use App\Models\CMS\Settings;
 use App\Models\User\User;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\CMS;
 use App\Models\User\Permissions;
+use DB;
 
 class Index extends Controller
 {
@@ -20,10 +20,33 @@ class Index extends Controller
   {
     if (Request::isMethod('post'))
     {
-      Installation::stepOne();
+      $host = env('DB_HOST');
+      $username = env('DB_USERNAME');
+      $password = env('DB_PASSWORD');
+      $db = env('DB_DATABASE');
+      try {
+        $conn = new \PDO('mysql:host='.$host.';dbname='.$db, $username, $password);
+        $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $sql = file_get_contents(public_path('/install/sql.sql'));
+        $conn->query($sql);
+        }
+      catch (\PDOException $e) {
+        return redirect()->back()->withErrors('Database connection failed..'. $e->getMessage());
+      }
       return redirect('/installer/step/2');
     }
-    return view('index');
+    try {
+        DB::connection()->getPdo();
+        $connection = true;
+        $user = User::get();
+    } catch (\Exception $e) {
+        $connection = false;
+        $user = false;
+    }
+    return view('index',[
+      'connection' => $connection,
+      'user' => $user
+    ]);
   }
   public static function steps($id = '',Req $request)
   {
