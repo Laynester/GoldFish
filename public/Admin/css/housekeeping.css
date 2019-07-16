@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+* {
+  font-family: 'Open Sans', sans-serif;
+}
 .hk_body {
   border:1px solid #385d88;
   box-shadow:0 4px rgba(0,0,0,.2);
@@ -99,6 +103,7 @@ color:#3F5C88;
   background: #E2E2E0;
   border:1px solid #58697F;
   padding:5px;
+  margin-bottom:5px;
 }
 .right {
   float: right;
@@ -118,6 +123,7 @@ color:#3F5C88;
 .box_2 .heading {
   background: #A8AFBC;
   color:#334964;
+  margin:0;
 }
 .box_2 .content {
   padding:5px;
@@ -126,7 +132,7 @@ color:#3F5C88;
   width:100%;
 }
 table tr td {
-  padding:0 7px;
+  padding:4px 7px;
 }
 table tr td:last-child {
   text-align: right;
@@ -307,4 +313,41 @@ footer a:hover {
 }
 .box_4 .content button{
   margin-bottom:3px;
+}
+.box_2 .content {
+  padding:5px;
+}
+.box_2 textarea {
+  width:100%;
+  display: block;
+  resize: none;
+  padding:3px;
+  font-size: 11px;
+  margin-bottom:5px;
+  background-color:#F9FFA2;
+  border:1px solid #CCC;
+}
+button {
+  border:1px solid #999;
+  background-color: #E7E7E7;
+  font-family:Verdana, Arial;
+  font-size:10px;
+  font-weight:bold;
+  padding: 3px 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+p.small {
+  font-size: 10px;
+  padding:10px 3px 0 3px;
+}
+button.donate {
+  color:#334964;
+  font-weight: bold;
+  font-style: italic;
+  background: #FFC439;
+  box-shadow: 0 1px #DAA730, inset 0 1px rgba(255,255,255,.3);
+  border-color:#EBB534;
+  border-radius: 3px;
+  margin:auto;
+  display: block;
 }

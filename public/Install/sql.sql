@@ -28,10 +28,10 @@ CREATE TABLE `cms_news` (
   `date` varchar(30) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-CREATE TABLE `cms_settings` (
-  `key` varchar(20) NOT NULL DEFAULT '',
-  `value` varchar(255) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `cms_settings`  (
+  `key` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+  `value` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_alerts`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `message` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -65,6 +65,7 @@ INSERT INTO `cms_fuserights` VALUES ('site_alert', '5');
 INSERT INTO `cms_fuserights` VALUES ('site_news', '6');
 INSERT INTO `cms_fuserights` VALUES ('site_settings_general', '7');
 INSERT INTO `cms_fuserights` VALUES ('site_settings_social', '7');
+INSERT INTO `cms_fuserights` VALUES ('moderation_online', '5');
 INSERT INTO `cms_menu` VALUES ('1', null, 'Home', 'me', '1');
 INSERT INTO `cms_menu` VALUES ('2', 'me', 'Home', 'me', '1');
 INSERT INTO `cms_menu` VALUES ('3', null, 'Community', 'community', '2');
@@ -99,6 +100,7 @@ INSERT INTO `cms_settings` VALUES ('rconport', '3001');
 INSERT INTO `cms_settings` VALUES ('group_badges', '/swfs/c_images/Badgeparts/generated/');
 INSERT INTO `cms_settings` VALUES ('rconip', '127.0.0.1');
 INSERT INTO `cms_settings` VALUES ('installed', '0');
+INSERT INTO `cms_settings` VALUES ('hk_notes', 'This housekeeping owns. ^^\r\n\r\n-Laynester');
 ALTER TABLE `users` ADD `profile_background` varchar(50) NOT NULL DEFAULT 'bg_colour_03.gif';
 ALTER TABLE `users` ADD `hotelview` varchar(50) NOT NULL DEFAULT 'view_us_wide.png';
 SET FOREIGN_KEY_CHECKS = 1;

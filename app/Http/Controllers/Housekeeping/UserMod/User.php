@@ -10,7 +10,6 @@ use App\Helpers\CMS;
 use App\Models\User\User as Users;
 use Redirect;
 use App\Models\Hotel\Chatlog;
-use App\Models\Hotel\SanctionStatus as Sanction;
 use Carbon\Carbon;
 
 
@@ -18,7 +17,7 @@ class User extends Controller
 {
   public function render($user = null, Req $request)
   {
-    if(CMS::fuseRights('site_alert')){
+    if(CMS::fuseRights('moderation_user')){
       if (Request::isMethod('post'))
       {
         if (request()->has('edit')) {
@@ -65,5 +64,14 @@ class User extends Controller
     else {
       return redirect('housekeeping/dashboard');
     }
+  }
+  public function online()
+  {
+    $users = Users::orderBy('id','DESC')->where('online', '1')->paginate(15);
+    return view('usermod.online',
+    [
+      'group' => 'user',
+      'users' => $users
+    ]);
   }
 }

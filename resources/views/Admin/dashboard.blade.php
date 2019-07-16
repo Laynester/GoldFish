@@ -1,6 +1,6 @@
 @extends('layouts.hk')
 @section('content')
-@section('title', CMSHelper::settings('hotelname').' Hotel Housekeeping')
+@section('title', 'Dashboard')
 <div class="body_content">
   <h3>@yield('title')</h3>
 <div class="row">
@@ -64,6 +64,38 @@
         </div>
       </div>
     </div>
+    <div class="box_1">
+      <div class="heading">Communications</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box_2">
+            <div class="heading">Housekeeping Notes</div>
+            <div class="content center">
+              <form method="post">
+                <textarea name="notes" rows="8">{{CMSHelper::settings('hk_notes')}}</textarea>
+                @if (auth()->user()->rank >= CMSHelper::fuseRights('moderation_user_admin'))
+                <button type="submit">Save</button>
+                @endif
+                @csrf
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box_2">
+            <div class="heading">Staff Info</div>
+            <table class="full">
+            @foreach(App\Models\User\User::where('rank', '>=','3')->orderBy('id','ASC')->get() as $habbo)
+            <tr>
+              <td class="text-center"><a href="/home/{{$habbo->username}}">{{$habbo->username}}</a> (ID:{{$habbo->id}})</td>
+              <td class="text-center">{{$habbo->ip_current}}</td>
+            </tr>
+            @endforeach
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-md-4">
     <div class="box_1">
@@ -80,6 +112,13 @@
             </tr>
           </table>
         </div>
+      </div>
+    </div>
+    <div class="box_1">
+      <div class="heading">Support GoldFish</div>
+      <div class="content">
+        <p class="small"> GoldFish is, and always will be, free software. To help keep the developer happy and allow him to buy a coffee <i>every now and then</i>, you can make a donation. This is completely optional, and if you decide not to donate, you won't miss out on any advantages, besides the developer's gratitude. All donations are processed by PayPal.</p>
+        <button onclick="window.location.href='https://paypal.me/laynester?locale.x=en_US'" class="donate">Make a donation</button>
       </div>
     </div>
   </div>

@@ -15,6 +15,6 @@ class Chatlog extends Model
   }
   public function habbo()
   {
-        return $this->belongsTo('App\Models\User\User', 'user_from_id');
+    return $this->belongsTo('App\Models\User\User', 'user_from_id');
   }
 }

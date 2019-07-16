@@ -1,4 +1,34 @@
 <div class="body_content">
+  @if($errors->any())
+  <div class="alert alert-danger" role="alert">
+    {{$errors->first()}}
+  </div>
+  @endif
+  @if(session('success'))
+  <div class="alert alert-success" role="alert">
+    {{session('success')}}
+  </div>
+  @endif
+  <div class="box_4">
+    <div class="heading">Lookup Room</div>
+    <form method="post">
+    <div class="content">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="room" placeholder="Room Name">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="end">
+      <div class="center">
+        <button type="submit">Search</button>
+      </div>
+    </div>
+    @csrf
+  </form>
+  </div>
   <div class="box_4">
     <div class="heading">@yield('title')<a class="right" href="{{ route('hk_createnews') }}">Search For a Room</a></div>
     <table class="full normal">

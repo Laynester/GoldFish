@@ -40,7 +40,7 @@ Route::middleware(['Banned','Findretros'])->group(function () {
 // Admin
 Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
   Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
-  Route::get('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
+  Route::any('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
 
   //server
   Route::any('server/client', 'Housekeeping\Server\Client@render')->name('hk_server_client');
@@ -52,10 +52,11 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::any('server/rcon/{key?}', 'Housekeeping\Server\Rcon@render')->name('hk_server_rcon');
 
   // user & moderation
-  Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
+  Route::any('moderation/chatlog/list/{id?}', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
   Route::any('moderation/lookup/user/{user?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
   Route::any('moderation/bans', 'Housekeeping\UserMod\Bans@render')->name('hk_user_bans');
   Route::any('moderation/badges', 'Housekeeping\UserMod\Badges@render')->name('hk_user_badges');
+  Route::any('moderation/online', 'Housekeeping\UserMod\User@online')->name('hk_users_online');
 
   //site and content
   Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');

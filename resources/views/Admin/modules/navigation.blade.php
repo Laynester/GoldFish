@@ -82,6 +82,9 @@
     @if(CMSHelper::fuseRights('moderation_banlist'))
     <li><a href="{{ route('hk_user_bans') }}">Bans</a></li>
     @endif
+    @if(CMSHelper::fuseRights('moderation_online'))
+    <li><a href="{{ route('hk_users_online') }}">Online Users</a></li>
+    @endif
   </ul>
 </div>
 @endif
