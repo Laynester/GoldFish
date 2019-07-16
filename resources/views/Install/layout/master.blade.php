@@ -22,7 +22,7 @@
           <div class="processor">
             <div class="row header">
               <div class="col-lg-4">
-                <img class="logo" src="https://i.imgur.com/TUv8HNu.png">
+                <img class="logo" src="/images/goldfish.png">
               </div>
               <div class="col-lg-4">
               </div>

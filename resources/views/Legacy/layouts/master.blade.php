@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ asset('goldfish/css/discord.css') }}" rel="stylesheet">
     <link href="{{ asset('legacy/css/legacy.css') }}" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,7 +21,10 @@
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="legacy-body">
-            @include('components.header')
+            <header style="background-image:url(/goldfish/images/me/views/{{Auth()->User()->hotelview}});">
+              <a href="#" class="left logo"><img src="{{CMSHelper::settings('site_logo')}}"/><span class="legacy-online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</span></a>
+              @include('components.navbar')
+            </header>
             @yield('content')
           </div>
           @include('components.footer')

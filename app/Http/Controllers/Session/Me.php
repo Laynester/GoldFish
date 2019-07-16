@@ -18,12 +18,14 @@ class Me extends Controller
     }
       $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->take(32)->get();
       $news = News::orderBy('date', 'DESC')->take(3)->get();
+      $friends = \App\Models\Hotel\Friendship::where('user_one_id',Auth()->User()->id)->inRandomOrder()->take(5)->get();
       return view('pages.me.me',
       [
         'badges' => $badges,
         'news' => $news,
         'currency' => Auth::user()->currency,
-        'group' => 'me'
+        'group' => 'me',
+        'friends' => $friends
       ]);
   }
 }
