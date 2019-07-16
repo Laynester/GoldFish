@@ -7,7 +7,7 @@ Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () 
 });
 
 // Guest
-Route::middleware(['installer'])->group(function () {
+Route::middleware(['changeTheme','installer'])->group(function () {
   Route::get('/', function () {return redirect('login');});
   Route::get('index', function () {return redirect('login');})->name('index');
   Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
@@ -18,7 +18,7 @@ Route::middleware(['installer'])->group(function () {
 });
 
 // Authenticated
-Route::middleware(['auth','Banned','Findretros'])->group(function () {
+Route::middleware(['changeTheme','auth','Banned','Findretros'])->group(function () {
   Route::get('banned', 'Session\Banned@render')->name('banned');
   // Home
   Route::get('me', 'Session\Me@render')->name('me');
@@ -27,7 +27,7 @@ Route::middleware(['auth','Banned','Findretros'])->group(function () {
   Route::any('settings', 'Session\Settings@render')->name('settings');
   Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
   });
-Route::middleware(['Banned','Findretros'])->group(function () {
+Route::middleware(['changeTheme','Banned','Findretros'])->group(function () {
   Route::get('/api','Session\API@return');
   Route::get('community', 'Session\Community@render')->name('community');
   Route::get('community/articles', 'Session\Articles@render')->name('articles');
