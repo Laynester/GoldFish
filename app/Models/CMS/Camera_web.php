@@ -12,6 +12,6 @@ class Camera_web extends Model
   protected $fillable = ['id','user_id','room_id','timestamp','url'];
   public function habbo()
   {
-        return $this->belongsTo(User::class, 'user_id');
+    return $this->belongsTo(User::class, 'user_id');
   }
 }

@@ -7,7 +7,7 @@ Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () 
 });
 
 // Guest
-Route::middleware(['changeTheme','installer'])->group(function () {
+Route::middleware(['installer','changeTheme'])->group(function () {
   Route::get('/', function () {return redirect('login');});
   Route::get('index', function () {return redirect('login');})->name('index');
   Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);

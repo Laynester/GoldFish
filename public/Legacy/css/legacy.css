@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 *,body,html,button,input {
-  font-family: 'Ubuntu', sans-serif;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
   image-rendering:pixelated;
 }
 body {
@@ -369,6 +369,9 @@ figure.topStory-slider span.meta a{
 	float:right;
 	font-size: 13px;
 }
+.alert.item span {
+  color:#ccc;
+}
 .feed-items .mass{
   border:1px solid red;
 }
@@ -447,10 +450,17 @@ figure {
   margin:0;
 }
 .habbo_badge {
-	width:49px;
-	height:49px;
+	width: 47px;
+	height:47px;
 	display: inline-block;
 	position: relative;
+}
+.widget_badge {
+  width: 50px;
+  height: 45px;
+	position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .habbo_badge img {
 	position: absolute;
@@ -459,300 +469,4 @@ figure {
 	bottom:0;
 	left:0;
 	right:0;
-}
-.absolute {
-  position: absolute;
-}
-.widget_default_skin {
-	background: #ffc300;
-	background: -moz-linear-gradient(top, #ffc300 0%, #ffc300 57%, #ffa500 91%);
-	background: -webkit-linear-gradient(top, #ffc300 0%, #ffc300 57%, #ffa500 91%);
-	background: linear-gradient(to bottom, #ffc300 0%, #ffc300 57%, #ffa500 91%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc300', endColorstr='#ffa500', GradientType=0);
-	border: 1px solid #000;
-	border-radius: 7px;
-	padding: 5px;
-	box-shadow: inset 0px 1px 0px 0px #ffc300, inset 0px 2px 0px 0px #ffff99;
-	margin-top: 10px;
-}
-
-h2.default_title {
-	border-radius: 5px;
-	border: 1px solid #000;
-	background-color: #676767;
-	color: #fff;
-	font-size: 13px;
-	padding: 5px;
-	text-transform: uppercase;
-	box-shadow: inset 0px 1px 0px 1px rgba(255, 255, 255, .3), 0px 2px #bd6800;
-}
-
-h2.default_title:after {
-	content: " ";
-	position: absolute;
-	right: 13px;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQYV2NctGjR/7i4OEYGKAAzfHx8/m/ZsgXMhsugqIBxQDQArB0IBa4ERKAAAAAASUVORK5CYII=);
-	height: 18px;
-	width: 100px;
-}
-
-.widget_default_skin_content {
-	background-image: linear-gradient(90deg, #d8d8c5 16.67%, #ebebdd 16.67%, #ebebdd 50%, #d8d8c5 50%, #d8d8c5 66.67%, #ebebdd 66.67%, #ebebdd 100%);
-	background-size: 6.00px 6.00px;
-	border: 1px solid #000;
-	border-radius: 5px;
-	box-shadow: inset 0px -2px #a1a18d, inset 0 0 0 2px #d8d8c5, inset 0 0 0 3px #fff, 0px 2px #bd6800;
-	padding: 3px 7px;
-	overflow: hidden;
-	color: #000;
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.widget_default_skin_content:after {
-	content: " ";
-	position: absolute;
-	display: block;
-	width: 100%;
-	height: 100%;
-	background: url(/templates/flat/client/images/shine.png);
-}
-
-.widget_bubble_skin {
-	position: relative;
-	background: #ffffff;
-	border: 2px solid #000000;
-	padding: 5px;
-	border-radius: 7px;
-}
-
-h2.bubble_title {
-	padding: 0;
-	margin: 3px;
-	font-weight: bolder;
-	font-size: 16px;
-}
-
-.widget_bubble_skin:after,
-.widget_bubble_skin:before {
-	top: 100%;
-	right: 30px;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.widget_bubble_skin:after {
-	border-color: rgba(255, 255, 255, 0);
-	border-top-color: #ffffff;
-	border-width: 7px;
-}
-
-.widget_bubble_skin:before {
-	border-color: rgba(0, 0, 0, 0);
-	border-top-color: #000000;
-	border-width: 10px;
-	right: 27px;
-}
-
-.usermotto {
-	padding: 5px;
-	display: block;
-	flex: 100%;
-	border-top: 1px dashed #000;
-}
-
-.widget_note_skin {
-	background-color: #91BFEF;
-	border: 1px solid #000;
-}
-
-h2.note_title {
-	background-color: #749DC6;
-	font-size: 16px;
-	padding: 3px;
-	margin: 0;
-}
-
-.widget_note_skin_content {
-	padding: 3px;
-	margin: 2px;
-	margin-bottom: 16px;
-	border-bottom: 1px dashed #000;
-}
-
-.widget_note_skin:after,
-.widget_note_skin:before {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	border-width: 12px 12px 0 0;
-	border-style: solid;
-	border-color: #a5cff8 #749DC6;
-}
-
-.widget_note_skin:after {
-	right: 0;
-}
-
-.widget_note_skin:before {
-	right: 1px;
-	bottom: 1px;
-	border-color: #000 #91BFEF;
-}
-
-.home-widget {
-	margin: 5px 0;
-}
-
-.home-friends .friend_content .widget_friend {
-	display: inline-block;
-	width: 95px;
-	height: 90px;
-	border: 1px dashed #999;
-	margin: 2px;
-	padding: 3px;
-}
-
-.home-friends .friend_content .widget_friend a {
-	text-align: center
-}
-
-.home-friends .friend_content .widget_friend img {
-	margin: auto;
-	display: block;
-}
-
-.home-friends .friend_content .widget_friend b {
-	display: block;
-}
-
-.home-rooms .room {
-	display: block;
-	width: 100%;
-	padding: 5px;
-	padding-left: 50px;
-	background: url(/swfs/c_images/static/room_icon.png) no-repeat;
-	border-bottom: 1px dashed rgba(0, 0, 0, .3);
-	margin-bottom: 5px;
-	z-index: 3;
-}
-
-.home-rooms .room_content {
-	max-height: 260px;
-	overflow-y: scroll;
-}
-
-.home-rooms .room_content p.room_title {
-	padding: 0;
-	margin: 0;
-	font-style: 16px;
-	font-weight: bolder;
-	text-decoration: underline;
-}
-
-.home-rooms .room_content .room a {
-	color: #333;
-	font-weight: bold;
-	text-decoration: underline;
-	cursor: pointer;
-}
-
-.home-rooms .room_content .room a:hover {
-	color: #000;
-}
-
-.stickers {
-	display: none;
-}
-.widget_grey_skin {
-	background: #e2e2e2;
-	border: 1px solid #000;
-	border-radius: 7px;
-	padding: 5px;
-	position: relative;
-}
-@media (min-width: 980px) {
-	.stickers {
-		display: block;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-	}
-	.stickers img {
-		position: absolute;
-	}
-	.stickers img.sticker_cactus {
-		right: 30px;
-		top: 290px;
-	}
-	.stickers img.sticker_arrow {
-		right: 91px;
-		top: 40px;
-		z-index: 5
-	}
-	.home-col-1 {
-		left: 0;
-		position: absolute;
-		width: 50%;
-		display: inline;
-		flex: none;
-		max-width: none;
-	}
-	.home-col-2 {
-		right: 0;
-		position: absolute;
-		width: 50%;
-		display: inline;
-		flex: none;
-		max-width: none;
-	}
-	.home-widget {
-		position: absolute;
-	}
-	.home-me {
-		right: 30px;
-		top: 30px;
-		width: 275px;
-	}
-	.home-badges {
-		width: 228px;
-		top: 300px;
-		right: 50px;
-	}
-	.home-relationships {
-		top: 605px;
-		right: 430px;
-		width: 410px;
-	}
-	.home-friends {
-		top: 256px;
-		right: 472px;
-	}
-	.home-rooms {
-		top: 900px;
-		right: 90px;
-		width: 285px;
-	}
-	.homepages {
-		min-height: 1360px;
-		width: 100%;
-		margin-top: 10px;
-		position: relative;
-	}
-	.home-friends .widget_note_skin_content {
-		width: 318px;
-		height: 195px;
-		overflow-y: scroll;
-		display: flex;
-		flex-wrap: wrap;
-	}
-}
-.userfirst {
-  float: left;
-    width: 70%;
 }

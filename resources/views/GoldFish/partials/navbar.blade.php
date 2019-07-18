@@ -9,7 +9,7 @@
           <li {{ $menuItem->url ? '' : "class=dropdown" }}><a href="/{{$menuItem->url}}" {{ (str_contains(strtolower($menuItem->url), strtolower($group)) ? 'class=selected' : '' ) }}>{{ $menuItem->title }}</a></li>
          @endforeach
          @if (Auth::user())
-          @if(auth()->user()->rank >= CMSHelper::fuseRights('dashboard'))
+          @if(CMSHelper::fuseRights('dashboard'))
             <li><a href="/housekeeping">Housekeeping</a></li>
           @endif
           @if(CMSHelper::hotelstatus() == '1')

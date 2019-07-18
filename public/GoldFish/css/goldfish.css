@@ -552,6 +552,8 @@ ul.navigation li a.selected {
 .staff i {
 	margin: 0;
 	font-size: 12px;
+	max-width: 160px;
+	display: block;
 }
 .staff .right img {
 	position: absolute;

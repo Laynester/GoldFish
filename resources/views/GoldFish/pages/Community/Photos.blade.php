@@ -23,7 +23,7 @@
         </figure>
         @endforeach
       </div>
-      {{$photos->links}}
+      {{$photos->links()}}
       @endif
     </div>
   </div>

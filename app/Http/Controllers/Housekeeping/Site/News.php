@@ -64,10 +64,14 @@ class News extends Controller
       if(!empty($news)) {
         if (Request::isMethod('post'))
         {
+          $image = '/images/news/'.request()->get('image');
+          if(request()->get('image') == $news->image) {
+            $image = $news->image;
+          }
           Insert::where('id', $id)->update([
             'caption' => request()->get('title'),
             'desc' => request()->get('short'),
-            'image' => '/images/news/'.request()->get('image'),
+            'image' => $image,
             'body' => request()->get('long'),
             'date' => time(),
           ]);

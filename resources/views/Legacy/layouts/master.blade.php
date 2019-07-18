@@ -9,6 +9,7 @@
     <link href="{{ asset('goldfish/css/discord.css') }}" rel="stylesheet">
     <link href="{{ asset('legacy/css/legacy.css') }}" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    @yield('css')
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script
   src="https://code.jquery.com/jquery-3.4.0.min.js"

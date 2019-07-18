@@ -9,11 +9,17 @@
   }
 </style>
 <div class="row homepages">
-  <div class="col-md-6 home-col-1">
-  </div>
-  <div class="col-md-6 home-col-2">
+  <div class="col-md-6">
     @include('components.homes.habbo')
+    @include('components.homes.rooms')
+    @include('components.homes.groups')
+  </div>
+  <div class="col-md-6">
     @include('components.homes.badges')
+    @include('components.homes.friends')
   </div>
 </div>
+@endsection
+@section('css')
+<link href="{{ asset('legacy/css/homes.css') }}" rel="stylesheet">
 @endsection
