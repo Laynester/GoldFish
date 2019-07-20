@@ -1,12 +1,22 @@
 <div class="widget_golden_skin home-widget friends" style="left:60px;top:700px">
-  <div class="heading"><span>{{$user->username}}'s Badges</span></div>
+  <div class="heading"><span>{{$user->username}}'s Groups</span></div>
   <div class="body">
-    <div class="badge-grid">
-      @forelse($groups as $badge)
-      <span class="widget_badge" style="background-image:url({{CMSHelper::settings('c_images')}}album1584/{{$badge->badge_code}}.gif);"></span>
-      @empty
-      {{$user->username}} has no badges yet.
-      @endforelse
+    @if($groups->count() > 0)
+    <div class="friend-grid">
+      @foreach($friends as $row)
+      <span class="friend">
+        <figure style="background-image:url({{CMSHelper::settings('group_badges')}}{{$row->guild->badge}}.png);"></figure>
+        <span class="username">
+          <a href="#">{{$row->guild->name}}</a>
+        </span>
+        <span class="date">
+          <i>{{date('d-m-y',$row->guild->date_created)}}</i>
+        </span>
+      </span>
+      @endforeach
     </div>
+    @else
+    {{$user->username}} is not apart of any groups yet.
+    @endif
   </div>
 </div>
