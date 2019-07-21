@@ -8,5 +8,6 @@
 </div>
 <article class="newsArticle">
   <p>{!! $article->body !!}</p>
+  <b>-{{$article->habbo->username}}</b>
 </article>
 @endforeach

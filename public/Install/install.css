@@ -131,3 +131,9 @@ footer a {
   color:#000000;
   text-decoration: underline;
 }
+.habblet {
+  border-radius:5px;
+  border:1px solid #ccc;
+  background-position:center;
+  image-rendering:pixelated;
+}
