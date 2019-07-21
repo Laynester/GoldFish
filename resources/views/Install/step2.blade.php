@@ -6,7 +6,7 @@
     <p>This is your website configuration, this can later be changed through the databse, or through your hotel housekeeping!</p>
     <p>WARNING: You must have an existing SWF Directory, otherwise your hotel will not function properly.</p>
   </div>
-  <div class="habblet" style="display:none;">
+  <div class="habblet" id="habblet" style="display:none;">
   </div>
 </div>
 <div class="col-lg-6">
@@ -40,7 +40,7 @@
        </div>
        <div class="form-group">
          <label for="title">Site Theme</label>
-         <select name="theme">
+         <select name="theme" onkeypress="changePreview(this.value)" onchange="changePreview(this.value)">
            <option value="goldfish">Goldfish</option>
            <option value="legacy">Legacy</option>
          </select>
@@ -53,4 +53,9 @@
     @csrf
   </form>
 </div>
+<script>
+function changePreview(input) {
+  $('#habblet').css("background-image", "url('/install/"+input+"_preview.png')").css("display", "block");
+}
+</script>
 @endsection

@@ -58,6 +58,7 @@ class Index extends Controller
         Settings::where('key', 'habbo_imager')->update(['value' => request()->get('imager')]);
         Settings::where('key', 'default_motto')->update(['value' => request()->get('motto')]);
         Settings::where('key', 'group_badges')->update(['value' => request()->get('groupbadges')]);
+        Settings::where('key', 'theme')->update(['value' => request()->get('theme')]);
         return redirect('/installer/step/3');
       }
       return view('step2');

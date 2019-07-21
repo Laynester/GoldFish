@@ -136,4 +136,10 @@ footer a {
   border:1px solid #ccc;
   background-position:center;
   image-rendering:pixelated;
+  height:184px;
+  width:310px;
+  margin: auto;
+}
+.form-group select {
+  width: 100%;
 }

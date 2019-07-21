@@ -26,7 +26,7 @@
           @endif
           <div class="processor-body">
             <div class="top">
-              <a href="#" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
+              <a href="#"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
             </div>
             <div class="row justify-content-center" id="processor">
               <div class="col-md-4">
