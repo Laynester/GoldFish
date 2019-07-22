@@ -243,3 +243,6 @@ function processMessage(data) {
                     }
     }
 }
+window.FlashExternalInterface.disconnect=function(){
+  $('body').addClass('error');
+}

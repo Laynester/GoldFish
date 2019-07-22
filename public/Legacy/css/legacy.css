@@ -206,7 +206,7 @@ footer a {
   border-color: #000;
   background: #fff;
   height: 30px;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
 }
 .legacy-body header ul li a {
   color:#fff;
@@ -334,7 +334,7 @@ figure.topStory-slider span.meta a{
 	position: absolute;
 	width: 96px;
 }
-.legacy-box.meview .row .col-lg-6:first-child {
+.legacy-box.meview .row .col-sm-6:first-child {
   padding-top:148px;
 }
 .legacy-box .content {

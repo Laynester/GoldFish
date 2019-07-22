@@ -105,5 +105,5 @@ INSERT INTO `cms_settings` VALUES ('theme', 'goldfish');
 ALTER TABLE `users` ADD `profile_background` varchar(50) NOT NULL DEFAULT 'bg_colour_03.gif';
 ALTER TABLE `users` ADD `hotelview` varchar(50) NOT NULL DEFAULT 'view_us_wide.png';
 ALTER TABLE `users` MODIFY `mail` VARCHAR(255) ;
-UPDATE `emulator_settings` SET value = '0' WHERE key = 'debug.show.headers' AND value = null;
+UPDATE `emulator_settings` SET value = '0' WHERE `key` = 'debug.show.headers';
 SET FOREIGN_KEY_CHECKS = 1;

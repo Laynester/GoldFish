@@ -2,12 +2,12 @@
   <div class="heading">{{ Auth::user()->username }}<small class="right">Last signed in: {{date('F d, Y h:ia', Auth::user()->last_login)}}</small></div>
   <div class="content">
     <div class="row justify-content-center">
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         <div class="plate">
           <img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-sm-6">
         @if(CMSHelper::hotelstatus() == '1')
         <a class="faux-button green offline" href="#" target="_blank">
           Hotel is offline

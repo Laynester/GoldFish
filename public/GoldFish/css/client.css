@@ -139,3 +139,38 @@ transition:all ease 2s;
 .news .band .close:hover {
   background-position: 0 -39px;
 }
+body.error .disconnected {
+  display: block;
+}
+.disconnected {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(0,0,0,.7);
+  z-index: 1000000000;
+}
+.disconnected .alert {
+  height: 130px;
+  position: absolute;
+  padding: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 338px;
+  color: #fff;
+  text-align: center;
+}
+.disconnected .alert p:last-child {
+  color: #fff;
+  border: 2px solid #000;
+  background: #3ba800;
+  padding: 10px 20px;
+  box-shadow: 0 0 0 2px #fff, inset 0 0 0 1px rgba(0,0,0,.3), inset 3px -3px #50c60f;
+  border-radius: 5px;
+  text-align: center;
+  width:min-content;
+  margin: auto;
+}

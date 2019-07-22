@@ -70,5 +70,11 @@
     </div>
   </div>
 </div>
+<div class="disconnected">
+  <div class="alert">
+    <h2>Disconnected</h2>
+    <p class="right" onclick="window.location.reload();">Reload</p>
+  </div>
+</div>
   </body>
 </html>

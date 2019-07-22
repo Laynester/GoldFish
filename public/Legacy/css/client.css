@@ -151,3 +151,36 @@ embed {
 .news .band .close:hover {
   background-position: 0 -39px;
 }
+body.error .disconnected {
+  display: block;
+}
+.disconnected {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(0,0,0,.7);
+  z-index: 1000000000;
+}
+.disconnected .alert {
+  height: 130px;
+  position: absolute;
+  padding: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 338px;
+  color: #fff;
+  text-align: center;
+}
+.disconnected .alert p:last-child {
+  color: #fff;
+  border: 2px solid #9c0000;
+  background: linear-gradient(0deg, rgba(181,0,0,1) 0%, rgba(181,0,0,1) 50%, rgba(222,0,0,1) 50%, rgba(222,0,0,1) 100%);
+  width: min-content;
+  margin: auto;
+  font-size: 16px;
+  padding:5px 15px;
+}

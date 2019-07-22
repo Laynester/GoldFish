@@ -57,27 +57,33 @@
     </script>
     @include('components.client-article')
   </div>
-  <habbo-client-error id="noflash">
-<div class="client-error__background-frank">
-<div class="client-error__text-contents">
-<h1 class="client-error__title">You're nearly in {{CMSHelper::settings('hotelname')}}!</h1>
-<p>Click the yellow Hotel button below, then click 'run Flash' when prompted to. See you in the Hotel!</p>
-</div>
-<div class="client-error__hotel-button-div">
-<a href="https://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer" class="hotel-button">
-<span class="hotel-button__text">Hotel</span>
-</a>
-</div>
-</div>
-</habbo-client-error>
-<div class="loader" id="loader">
-  <div class="loading">
-    <img src="{{CMSHelper::settings('site_logo')}}"/>
-    <div class="loading_bar">
-      <div class="loading_bar_inner" id="loader_bar"></div>
+    <habbo-client-error id="noflash">
+      <div class="client-error__background-frank">
+        <div class="client-error__text-contents">
+          <h1 class="client-error__title">You're nearly in {{CMSHelper::settings('hotelname')}}!</h1>
+          <p>Click the yellow Hotel button below, then click 'run Flash' when prompted to. See you in the Hotel!</p>
+        </div>
+        <div class="client-error__hotel-button-div">
+          <a href="https://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer" class="hotel-button">
+            <span class="hotel-button__text">Hotel</span>
+          </a>
+        </div>
+      </div>
+    </habbo-client-error>
+    <div class="loader" id="loader">
+      <div class="loading">
+        <img src="{{CMSHelper::settings('site_logo')}}"/>
+        <div class="loading_bar">
+          <div class="loading_bar_inner" id="loader_bar"></div>
+        </div>
+        <span>Please wait! {{CMSHelper::settings('hotelname')}} is starting up.</span>
+      </div>
     </div>
-    <span>Please wait! {{CMSHelper::settings('hotelname')}} is starting up.</span>
-  </div>
-</div>
+    <div class="disconnected">
+      <div class="alert">
+        <h2>Disconnected</h2>
+        <p class="right" onclick="window.location.reload();">Reload</p>
+      </div>
+    </div>
   </body>
 </html>
