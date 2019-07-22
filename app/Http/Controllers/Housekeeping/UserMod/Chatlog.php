@@ -20,7 +20,7 @@ class Chatlog extends Controller
         }
         return redirect('housekeeping/moderation/chatlog/list/'.$room);
       }
-      $chatlog = Chats::orderBy('timestamp', 'DESC')->paginate(30);
+      $chatlog = Chats::whereHas('room')->orderBy('timestamp', 'DESC')->paginate(30);
       if(!empty($id)) {
         $chatlog = Chats::where('room_id',$id)->orderBy('timestamp', 'DESC')->paginate(30);
       }

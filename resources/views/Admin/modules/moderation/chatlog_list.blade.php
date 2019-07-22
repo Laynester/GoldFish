@@ -45,7 +45,7 @@
         <td style="width:25%;">{{$chat->message}}</td>
         <td style="width:25%;">{{date('d/m/y h:ia', $chat->timestamp)}}</td>
       </tr>
-    @endforeach
+      @endforeach
     </table>
     <div class="end">
       {{ $chatlog->links() }}

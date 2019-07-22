@@ -51,7 +51,7 @@ class User extends Controller
       else {
         $userdata = Users::where('username', 'LIKE', $user)->first();
         $alt = Users::where('ip_register' , $userdata->ip_register)->get();
-        $chats = Chatlog::where('user_from_id', $userdata->id)->orderBy('timestamp','DESC')->paginate(25);
+        $chats = Chatlog::whereHas('room')->where('user_from_id', $userdata->id)->orderBy('timestamp','DESC')->paginate(25);
         return view('lookup.user',
         [
           'group' => 'user',
