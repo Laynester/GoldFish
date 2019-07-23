@@ -8,7 +8,7 @@ class Photos extends Controller
 {
   public function render()
   {
-      $photos = Camera_web::orderBy('timestamp', 'DESC')->paginate(16);
+      $photos = Camera_web::whereHas('habbo')->orderBy('timestamp', 'DESC')->paginate(16);
       return view('pages.community.photos',
       [
         'group' => 'community',

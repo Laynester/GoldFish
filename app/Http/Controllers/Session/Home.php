@@ -18,7 +18,7 @@ class Home extends Controller
     }
     $badges = \App\Models\User\User_Badges::where('user_id', $user->id)->take(50)->inRandomOrder()->get();
     $rooms = \App\Models\Hotel\Room::where('owner_id', $user->id)->take(10)->inRandomOrder()->get();
-    $friend_data = \App\Models\Hotel\Friendship::where('user_one_id', $user->id)->take(12)->inRandomOrder()->get();
+    $friend_data = \App\Models\Hotel\Friendship::whereHas('habbo')->where('user_one_id', $user->id)->take(12)->inRandomOrder()->get();
     $photos = Camera_web::where('user_id', $user->id)->take(12)->inRandomOrder()->get();
     $groups = GroupMembership::where('user_id', $user->id)->take(12)->inRandomOrder()->get();
     return view('pages.me.home',[
