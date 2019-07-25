@@ -1,6 +1,6 @@
 <div class="body_content">
   <div class="box_4">
-    <div class="heading">Ban user</div>
+    <div class="heading">Give a Badge</div>
     <form method="post">
       <div class="content">
         @if($errors->any())
@@ -36,7 +36,7 @@
       </div>
       <div class="end">
         <div class="center">
-          <button type="submit">Ban</button>
+          <button type="submit">Give</button>
         </div>
       </div>
       @csrf
