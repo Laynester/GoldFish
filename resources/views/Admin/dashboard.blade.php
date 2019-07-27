@@ -3,6 +3,11 @@
 @section('title', 'Dashboard')
 <div class="body_content">
   <h3>@yield('title')</h3>
+  <div id="update_notification" style="display:none;" class="alert alert-info">
+    <button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>   
 <div class="row">
   <div class="col-md-8">
     <div class="box_1">
@@ -124,4 +129,35 @@
   </div>
 </div>
 </div>
+<script>
+    $(document).ready(function() {  
+        $.ajax({
+            type: 'GET',   
+            url: 'update/check',
+            async: false,
+            success: function(response) {
+                if(response != ''){
+                    $('#update_notification').append('<strong>Update Available <span class="badge badge-pill badge-info">v. '+response+'</span></strong><a role="button"  class="btn btn-sm btn-info pull-right right" onclick="update()">Update Now</a>');
+                    $('#update_notification').show();
+                }
+            }
+        });
+    });
+    function update() {
+      $.ajax({
+            type: 'GET',   
+            url: 'update/update',
+            async: false,
+            success: function(response) {
+                if(response != ''){
+                    $('#update_notification').html('');
+                    $('#update_notification').removeClass('alert-info')
+                    $('#update_notification').addClass('alert-success<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>')
+                    $('#update_notification').append(response);
+                    $('#update_notification').show();
+                }
+            }
+        });
+    }
+</script>
 @endsection

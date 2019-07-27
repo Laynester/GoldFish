@@ -41,6 +41,8 @@ Route::middleware(['changeTheme','Banned','Findretros'])->group(function () {
 Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
   Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
   Route::any('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
+  Route::get('update/check','Housekeeping\Updater@check')->name('update_checker');
+  Route::get('update/update','Housekeeping\Updater@update')->name('updater');
 
   //server
   Route::any('server/client', 'Housekeeping\Server\Client@render')->name('hk_server_client');

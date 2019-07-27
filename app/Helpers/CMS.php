@@ -14,13 +14,15 @@ class CMS
   public static function hotelstatus() {
     $host       = CMS::settings('emuhost');
     $port       = CMS::settings('emuport');
-    $socket     = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    $connection = @socket_connect($socket, $host, $port);
+    $connection = @fsockopen($host, $port, $errno, $errstr, 1);
     if ($connection) {
+      fclose($connection);
       return '0';
     } else {
+      fclose($connection);
       return '1';
     }
+    fclose($connection);
   }
   public static function getMenu() {
     if (Auth::user()) {

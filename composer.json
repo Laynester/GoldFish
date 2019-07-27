@@ -13,7 +13,8 @@
         "igaster/laravel-theme": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "nesbot/carbon": "^2.17"
+        "nesbot/carbon": "^2.17",
+        "symfony/process": "^4.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

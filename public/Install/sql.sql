@@ -66,6 +66,7 @@ INSERT INTO `cms_fuserights` VALUES ('site_news', '6');
 INSERT INTO `cms_fuserights` VALUES ('site_settings_general', '7');
 INSERT INTO `cms_fuserights` VALUES ('site_settings_social', '7');
 INSERT INTO `cms_fuserights` VALUES ('moderation_online', '5');
+INSERT INTO `cms_fuserights` VALUES ('updater', '7');
 INSERT INTO `cms_menu` VALUES ('1', null, 'Home', 'me', '1');
 INSERT INTO `cms_menu` VALUES ('2', 'me', 'Home', 'me', '1');
 INSERT INTO `cms_menu` VALUES ('3', null, 'Community', 'community', '2');
