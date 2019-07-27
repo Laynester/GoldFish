@@ -50,6 +50,9 @@
     @if(CMSHelper::fuseRights('site_settings_social'))
     <li><a href="{{ route('hk_settings2') }}">Social</a></li>
     @endif
+    @if(CMSHelper::fuseRights('site_rights'))
+    <li><a href="{{ route('hk_rights') }}">FuseRights</a></li>
+    @endif
   </ul>
 </div>
 @endif

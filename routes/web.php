@@ -68,4 +68,5 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::any('site/news/edit/{id}', 'Housekeeping\Site\News@Edit')->name('hk_editnews');
   Route::any('site/news/delete/{id}', 'Housekeeping\Site\News@Delete')->name('hk_newsdelete');
   Route::any('site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
+  Route::any('site/rights', 'Housekeeping\Site\Rights@render')->name('hk_rights');
 });
