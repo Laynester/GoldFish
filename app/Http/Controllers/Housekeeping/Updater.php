@@ -42,9 +42,10 @@ class Updater extends Controller
           if($json['sql'] == 1){
             $sqlLink = $json['sqlLink'];
           }
+          self::extractZip('http://layne.cf/goldfish/updates/'.$json['zipName']);
           $arr = array(
             "version" => $json['version'],
-            "message" => "Zip Downloaded, copy over new files!",
+            "message" => "Updated!",
             "link" => $sqlLink,
             "zip" => $json['zipName']
           );
@@ -54,5 +55,31 @@ class Updater extends Controller
     }else {
         return null;
     } 
+  }
+  public function extractZip($zip) {
+    $url = $zip;
+    $zipFile = public_path()."\install\update.zip"; // Local Zip File Path
+    $zipResource = fopen($zipFile, "w");
+    // Get The Zip File From Server
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+    curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+    curl_setopt($ch, CURLOPT_FILE, $zipResource);
+    $page = curl_exec($ch);
+    curl_close($ch);
+    $zip = new \ZipArchive;
+    if($zip->open($zipFile) != "true"){
+    echo "Error :- Unable to open the Zip File";
+    } 
+    /* Extract Zip File */
+    $zip->extractTo(base_path());
+    $zip->close();
   }
 }

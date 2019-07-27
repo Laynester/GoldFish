@@ -135,7 +135,7 @@
             success: function(response) {
                 if(response != ''){
                   $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                    $('#update_notification').append('<strong>Update Available <span class="badge badge-pill badge-info">v'+response+'</span></strong><a role="button"  class="btn btn-sm btn-info pull-right right" onclick="update()">Download now</a>');
+                    $('#update_notification').append('<strong>Update Available <span class="badge badge-pill badge-info">v'+response+'</span></strong><a role="button"  class="btn btn-sm btn-info pull-right right" onclick="update()">Update Now</a>');
                     $('#update_notification').show();
                 }
             }
@@ -152,9 +152,9 @@
                     $('#update_notification').html('');
                     $('#update_notification').removeClass('alert-info')
                     $('#update_notification').addClass('alert-success')
+                    $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
                     $('#update_notification').append(response.message);
                     if(response.link != null) {
-                      window.open('http://layne.cf/goldfish/updates/'+response.zip);
                       $('#update_notification').append('</br>Sql updates are needed:');
                       $('#update_notification').append('</br><a href="'+response.link+'">'+response.link+'</a>');
                     }
