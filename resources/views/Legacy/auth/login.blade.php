@@ -4,7 +4,7 @@
 <div class="legacy-box blue">
   <div class="heading">Sign in</div>
   <div class="content">
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" id="loginForm" action="{{ route('login') }}">
       @csrf
       <div class="form-group">
         <input id="username" placeholder="Username" type="text" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>

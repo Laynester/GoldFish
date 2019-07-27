@@ -56,4 +56,17 @@
       @csrf
     </form>
   </div>
+  <div class="box_4">
+    <div class="heading">@yield('title')</div>
+    <div class="content">
+      <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="form-group text-center">
+              <label>Current cache variable: {{CMSHelper::settings('cacheVar')}}</label>
+              <button class="full" onclick="window.location.href='/housekeeping/site/settings1?cache'">Clear Cache</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

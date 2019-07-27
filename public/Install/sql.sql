@@ -108,6 +108,7 @@ INSERT INTO `cms_settings` VALUES ('installed', '0');
 INSERT INTO `cms_settings` VALUES ('hk_notes', 'This housekeeping owns. ^^\r\n\r\n-Laynester');
 INSERT INTO `cms_settings` VALUES ('theme', 'goldfish');
 INSERT INTO `cms_settings` VALUES ('findretros', null);
+INSERT INTO `cms_settings` VALUES ('cacheVar', null);
 ALTER TABLE `users` ADD `profile_background` varchar(50) NOT NULL DEFAULT 'bg_colour_03.gif';
 ALTER TABLE `users` ADD `hotelview` varchar(50) NOT NULL DEFAULT 'view_us_wide.png';
 ALTER TABLE `users` MODIFY `mail` VARCHAR(255) ;

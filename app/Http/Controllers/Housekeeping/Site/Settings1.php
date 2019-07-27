@@ -12,6 +12,9 @@ class Settings1 extends Controller
   public function render()
   {
     if(CMS::fuseRights('site_settings_general')){
+      if(isset($_GET['cache'])){
+        Settings::where('key', 'cacheVar')->update(['value' => sha1(time())]);
+      }
       if (Request::isMethod('post'))
       {
         Settings::where('key', 'hotelname')->update(['value' => request()->get('hotelname')]);

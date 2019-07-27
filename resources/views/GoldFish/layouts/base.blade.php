@@ -6,9 +6,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{ asset('goldfish/css/discord.css') }}" rel="stylesheet">
-    <link href="{{ asset('goldfish/css/goldfish.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('goldfish/css/goldfish.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('goldfish/css/goldfish_overwrite.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
     <script
   src="https://code.jquery.com/jquery-3.4.0.min.js"
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
@@ -23,7 +24,7 @@
       <div class="login-section">
         <div class="container">
           <div class="login-inputs">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" id="loginForm" action="{{ route('login') }}">
               @csrf
               <div class="login-input">
               <input id="username" type="text" class="form-control input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -31,7 +32,7 @@
             <div class="login-input">
               <input id="password" type="password" class="form-control input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
             </div>
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" id="login" class="btn btn-primary">
                   {{ __('Login') }}
               </button>
             </form>
@@ -71,7 +72,7 @@
   </div>
   @include('partials.footer')
   @if (Auth::user())
-  <script src="{{ asset('goldfish/js/goldfish.js') }}" defer></script>
+  <script src="{{ asset('goldfish/js/goldfish.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
   @endif
 </body>
 </html>
