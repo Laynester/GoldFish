@@ -52,6 +52,7 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::any('server/publiccats/delete/{id}', 'Housekeeping\Server\Publics@categoriesremove')->name('hk_server_publiccats_delete');
   Route::any('server/vouchers', 'Housekeeping\Server\Vouchers@render')->name('hk_server_vouchers');
   Route::any('server/rcon/{key?}', 'Housekeeping\Server\Rcon@render')->name('hk_server_rcon');
+  Route::any('server/wordfilter', 'Housekeeping\Server\Wordfilter@render')->name('hk_wordfilter');
 
   // user & moderation
   Route::any('moderation/chatlog/list/{id?}', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');

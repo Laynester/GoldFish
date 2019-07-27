@@ -38,12 +38,21 @@ class Updater extends Controller
         curl_close($ch);
         $json = json_decode($result, true);
         if (version_compare(config('app.version_number'),$json['version'],'!=')) {
-            $data = shell_exec( '(cd '. base_path() .' && git pull origin master)' );
-            return $data;
+          $sqlLink = null;
+          if($json['sql'] == 1){
+            $sqlLink = $json['sqlLink'];
+          }
+          $arr = array(
+            "version" => $json['version'],
+            "message" => "Zip Downloaded, copy over new files!",
+            "link" => $sqlLink,
+            "zip" => $json['zipName']
+          );
+          $myJSON = json_encode($arr);
+          return response($myJSON, 200)->header('Content-Type', 'application/json');
         }
-    }
-    else {
+    }else {
         return null;
-      }
+    } 
   }
 }
