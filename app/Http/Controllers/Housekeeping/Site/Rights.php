@@ -21,14 +21,18 @@ class Rights extends Controller
             }
             return redirect()->back()->withSuccess('Saved permissions!');
         }
-        $form = Fuseright::all()->sortBy('right');
+        $tabs = Fuseright::where('type',1)->get();
+        $subnavi = Fuseright::where('type',2)->get();
+        $links = Fuseright::where('type',3)->get();
         $permissions = Permissions::all();
         
         return view('site.rights',
         [
             'group' => 'site',
-            'form' => $form,
-            'permissions' => $permissions
+            'tabs' => $tabs,
+            'permissions' => $permissions,
+            'subnavi' => $subnavi,
+            'links' => $links
         ]);
     } else {
         return redirect('housekeeping/dashboard');

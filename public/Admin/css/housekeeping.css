@@ -249,15 +249,18 @@ table {
     border-right: 1px solid #7F95B3;
   }
 }
-.pagination {
+.pagination,
+ul.nav.nav-pills {
   margin: auto;
   width: max-content;
   display: block;
 }
-.pagination .page-item{
+.pagination .page-item,
+ul.nav.nav-pills li{
   display: inline-block;
 }
-.pagination .page-link {
+.pagination .page-link,
+ul.nav.nav-pills li a {
   padding:6px !important;
   background: #fff;
   color:#3E68A0;
@@ -273,7 +276,9 @@ table {
   line-height: 14px;
 }
 .pagination .page-item.active .page-link,
-.pagination .page-item:hover .page-link{
+.pagination .page-item:hover .page-link,
+ul.nav.nav-pills li a:hover,
+ul.nav.nav-pills li.active a{
   color:#fff;
   background: #83a1c6;
   border:1px solid #3E68A0;
@@ -350,4 +355,7 @@ button.donate {
   border-radius: 3px;
   margin:auto;
   display: block;
+}
+ul.nav.nav-pills {
+  margin: 5px auto;
 }
