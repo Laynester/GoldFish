@@ -24,4 +24,16 @@ class Dashboard extends Controller
       return redirect('me');
     }
   }
+  public function credits()
+  {
+    if(CMS::fuseRights('dashboard')) {
+      return view('credits',
+      [
+        'group' => 'credits'
+      ]);
+    }
+    else {
+      return redirect('me');
+    }
+  }
 }

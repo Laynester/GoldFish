@@ -67,6 +67,9 @@
 .hk_navigation ul li#user:before {
   background-image: url(/admin/images/admin.png);
 }
+.hk_navigation ul li#credits:before {
+  background-image: url(/admin/images/components.png);
+}
 .hk_navigation ul li#back:before {
   background-repeat: no-repeat;
   background-position: center;

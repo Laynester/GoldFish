@@ -43,6 +43,7 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::any('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
   Route::get('update/check','Housekeeping\Updater@check')->name('update_checker');
   Route::get('update/update','Housekeeping\Updater@update')->name('updater');
+  Route::get('credits','Housekeeping\Dashboard@credits')->name('credits');
 
   //server
   Route::any('server/client', 'Housekeeping\Server\Client@render')->name('hk_server_client');

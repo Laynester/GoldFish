@@ -30,6 +30,7 @@
           @if(CMSHelper::fuseRights('moderation'))
           <li id="user" @if($group == 'user') class="active" @endif><a href="{{ route('hk_chat_list') }}">Users & Moderation</a></li>
           @endif
+          <li id="credits" @if($group == 'credits') class="active" @endif><a href="{{ route('credits') }}">GoldFishCMS</a></li>
           <li id="back"><a href="{{ route('me') }}">Back to Site</a></li>
         </ul>
       </div>

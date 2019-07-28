@@ -120,48 +120,74 @@
       <div class="heading">Support GoldFish</div>
       <div class="content">
         <p class="small"> GoldFish is, and always will be, free software. To help keep the developer happy and allow him to buy a coffee <i>every now and then</i>, you can make a donation. This is completely optional, and if you decide not to donate, you won't miss out on any advantages, besides the developer's gratitude. All donations are processed by PayPal.</p>
-        <button onclick="window.location.href='https://paypal.me/laynester?locale.x=en_US'" class="donate">Make a donation</button>
+        <form class="text-center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_donations" />
+          <input type="hidden" name="business" value="28XMV2LTAUWKY" />
+          <input type="hidden" name="currency_code" value="CAD" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+          <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
+        </form>
       </div>
     </div>
   </div>
 </div>
 </div>
 <script>
-    $(document).ready(function() {  
-        $.ajax({
-            type: 'GET',   
-            url: 'update/check',
-            async: false,
-            success: function(response) {
-                if(response != ''){
-                  $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                    $('#update_notification').append('<strong>Update Available <span class="badge badge-pill badge-info">v'+response+'</span></strong><a role="button"  class="btn btn-sm btn-info pull-right right" onclick="update()">Update Now</a>');
-                    $('#update_notification').show();
-                }
-            }
-        });
+  $(document).ready(function() {
+    $.ajax({
+      type: 'GET',
+      url: 'update/check',
+      async: false,
+      dataType: 'json',
+      success: function(response) {
+        if (response != '') {
+          $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+          if (response.message != null) {
+            $('#update_notification').removeClass('alert-info')
+            $('#update_notification').addClass('alert-danger');
+            $('#update_notification').append(response.message);
+          } else {
+            $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $('#update_notification').append('<strong>Update Available <span class="badge badge-pill badge-info">v' + response.version + '</span></strong><a role="button"  class="btn btn-sm btn-info pull-right right" onclick="update()">Update Now</a>');
+          }
+          $('#update_notification').show();
+        }
+      }
     });
-    function update() {
-      $.ajax({
-            type: 'GET',   
-            url: 'update/update',
-            async: false,
-            dataType: 'json',
-            success: function(response) {
-                if(response != ''){
-                    $('#update_notification').html('');
-                    $('#update_notification').removeClass('alert-info')
-                    $('#update_notification').addClass('alert-success')
-                    $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                    $('#update_notification').append(response.message);
-                    if(response.link != null) {
-                      $('#update_notification').append('</br>Sql updates are needed:');
-                      $('#update_notification').append('</br><a href="'+response.link+'">'+response.link+'</a>');
-                    }
-                    $('#update_notification').show();
-                }
+  });
+
+  function update() {
+    $.ajax({
+      type: 'GET',
+      url: 'update/update',
+      async: false,
+      dataType: 'json',
+      success: function(response) {
+        if (response != '') {
+          $('#update_notification').html('');
+          $('#update_notification').removeClass('alert-info')
+          if (response.error != null) {
+            $('#update_notification').addClass('alert-danger');
+            $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $('#update_notification').append(response.message);
+            $('#update_notification').append('</br><a style="color:#fff;" href="' + response.releaseLink + '">' + response.releaseLink + '</a>');
+            if (response.link != null) {
+              $('#update_notification').append('</br>Sql updates are needed aswell:');
+              $('#update_notification').append('</br><a style="color:#fff;" href="' + response.link + '">' + response.link + '</a>');
             }
-        });
-    }
+          } else {
+            $('#update_notification').addClass('alert-success')
+            $('#update_notification').append('<button type="button" style="margin-left: 20px" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+            $('#update_notification').append(response.message);
+            if (response.link != null) {
+              $('#update_notification').append('</br>Sql updates are needed:');
+              $('#update_notification').append('</br><a href="' + response.link + '">' + response.link + '</a>');
+            }
+            $('#update_notification').show();
+          }
+        }
+      }
+    });
+  }
 </script>
 @endsection

@@ -19,8 +19,20 @@ class Updater extends Controller
         $result=curl_exec($ch);
         curl_close($ch);
         $json = json_decode($result, true);
-        if (version_compare(config('app.version_number'),$json['version'],'!=')) {
-            return $json['version'];
+        if (version_compare(config('app.version_number'),$json['version'],'<')) {
+          if (version_compare(config('app.version_number'),$json['last'],'==')) {
+            $arr = array(
+              "message" => null,
+              "version" => $json['version'],
+            );
+          }
+          else {
+            $arr = array(
+              "message" => "You are a couple versions behind, visit <a href=\"http://layne.cf/goldfish/updates/index.php\"><b>here</b></a> to get caught up..."
+            );
+          }
+          $myJSON = json_encode($arr);
+          return response($myJSON, 200)->header('Content-Type', 'application/json');
         }
         return null;
     }
@@ -42,7 +54,6 @@ class Updater extends Controller
           if($json['sql'] == 1){
             $sqlLink = $json['sqlLink'];
           }
-          self::extractZip('http://layne.cf/goldfish/updates/'.$json['zipName']);
           $arr = array(
             "version" => $json['version'],
             "message" => "Updated!",
@@ -50,36 +61,42 @@ class Updater extends Controller
             "zip" => $json['zipName']
           );
           $myJSON = json_encode($arr);
+          $url = 'http://layne.cf/goldfish/updates/'.$json['zipName'];
+          $zipFile = public_path()."\install\update.zip"; // Local Zip File Path
+          $zipResource = fopen($zipFile, "w");
+          // Get The Zip File From Server
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, $url);
+          curl_setopt($ch, CURLOPT_FAILONERROR, true);
+          curl_setopt($ch, CURLOPT_HEADER, 0);
+          curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+          curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+          curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
+          curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
+          curl_setopt($ch, CURLOPT_FILE, $zipResource);
+          $page = curl_exec($ch);
+          curl_close($ch);
+          $zip = new \ZipArchive;
+          if($zip->open($zipFile) == "true"){
+            $zip->extractTo(base_path());
+            $zip->close();
+          } 
+          else {
+            $arr = array(
+              "error" => true,
+              "message" => "Could not update, manually install updates, and fix your folder permissions to prevent this in the future!",
+              "releaseLink" => $url,
+              "link" => $sqlLink,
+              "zip" => $json['zipName']
+            );
+          }
+          $myJSON = json_encode($arr);
           return response($myJSON, 200)->header('Content-Type', 'application/json');
         }
     }else {
         return null;
     } 
-  }
-  public function extractZip($zip) {
-    $url = $zip;
-    $zipFile = public_path()."\install\update.zip"; // Local Zip File Path
-    $zipResource = fopen($zipFile, "w");
-    // Get The Zip File From Server
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_FAILONERROR, true);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-    curl_setopt($ch, CURLOPT_BINARYTRANSFER,true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
-    curl_setopt($ch, CURLOPT_FILE, $zipResource);
-    $page = curl_exec($ch);
-    curl_close($ch);
-    $zip = new \ZipArchive;
-    if($zip->open($zipFile) != "true"){
-    echo "Error :- Unable to open the Zip File";
-    } 
-    /* Extract Zip File */
-    $zip->extractTo(base_path());
-    $zip->close();
   }
 }

@@ -32,6 +32,9 @@
     @if(CMSHelper::fuseRights('server_vouchers'))
     <li><a href="{{ route('hk_server_vouchers') }}">Voucher Codes</a></li>
     @endif
+    @if(CMSHelper::fuseRights('server_wordfilter'))
+    <li><a href="{{ route('hk_wordfilter') }}">WordFilter</a></li>
+    @endif
     @if(CMSHelper::fuseRights('server_rcon'))
     <li><a href="{{ route('hk_server_rcon') }}">RCON</a></li>
     @endif
