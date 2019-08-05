@@ -42,7 +42,7 @@
       @endif
       <div class="container relative">
         <div class="logo">
-          <a href="#" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
+          <a href="/index" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
           <div class="online no-mobile"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
         </div>
         <div class="right @guest regbutton @endguest">
