@@ -7,8 +7,7 @@ class Housekeeping
 {
   public static function getCount(string $stat)
   {
-    $thing = $stat::get();
-    $count = $thing->count();
+    $count = $stat::count();
     return $count;
   }
   public static function emuSettings($name)
