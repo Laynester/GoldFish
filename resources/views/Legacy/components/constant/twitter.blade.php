@@ -1,3 +1,4 @@
+@if(!is_null(CMSHelper::settings('twitter_handle')))
 <div class="legacy-box blue">
   <div class="heading">Twitter</div>
   <div class="content">
@@ -5,3 +6,4 @@
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </div>
+@endif

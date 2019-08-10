@@ -322,7 +322,7 @@ figure.topStory-slider span.meta a{
   text-align: left;
 }
 .legacy-box.grey.preload {
-  background-image: url(/legacy/images/preload.png),url(/legacy/images/grid.png);
+  background-image: url(/legacy/images/grid.png);
 }
 .legacy-box.meview .plate {
 	position: absolute;
@@ -334,7 +334,8 @@ figure.topStory-slider span.meta a{
 	position: absolute;
 	width: 96px;
 }
-.legacy-box.meview .row .col-sm-6:first-child {
+.legacy-box.meview .row .col-sm-6:first-child,
+.legacy-box.staff .row .col-lg-6:first-child {
   padding-top:148px;
 }
 .legacy-box .content {
@@ -696,6 +697,9 @@ article.newsList a {
 	width: 100%;
 	height:302px;
 	display: block;
+}
+article.newsArticle {
+  height:100%
 }
 .newsArticle figure.thumbnail {
   border:1px solid #000;

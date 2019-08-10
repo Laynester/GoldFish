@@ -11,17 +11,6 @@ class CMS
   public static function online() {
     return \App\Models\User\User::where('online', '1')->count();
   }
-  public static function hotelstatus() {
-    $host       = CMS::settings('emuhost');
-    $port       = CMS::settings('emuport');
-    $socket     = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    $connection = @socket_connect($socket, $host, $port);
-    if ($connection) {
-      return 0;
-    } else {
-      return 1;
-    }
-  }
   public static function getMenu() {
     if (Auth::user()) {
       return Menu::orderBy('order', 'asc')->where('group', null)->get();

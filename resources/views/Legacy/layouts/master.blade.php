@@ -23,7 +23,7 @@
         <div class="col-lg-10">
           <div class="legacy-body">
             <header style="background-image:url(/goldfish/images/me/views/{{Auth()->User()->hotelview}});">
-              <a href="#" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/><span class="legacy-online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</span></a>
+              <a href="/me" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/><span class="legacy-online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</span></a>
               @include('components.navbar')
             </header>
             @yield('content')

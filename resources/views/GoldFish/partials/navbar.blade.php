@@ -12,11 +12,7 @@
           @if(CMSHelper::fuseRights('dashboard'))
             <li><a href="/housekeeping">Housekeeping</a></li>
           @endif
-          @if(CMSHelper::hotelstatus() == '1')
-            <a class="enter_hotel right relative offline" href="#" target="_blank">Hotel is offline</a>
-          @else
             <a class="enter_hotel right relative" href="{{ route('client') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}}</a>
-          @endif
          @endif
       </ul>
    </div>

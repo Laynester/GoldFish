@@ -6,9 +6,9 @@
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
   crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('goldfish/js/flashclient.js') }}"></script>
-    <script src="{{ asset('legacy/js/client.js') }}"></script>
-    <link href="{{ asset('legacy/css/client.css') }}" rel="stylesheet">
+    <script src="{{ asset('goldfish/js/flashclient.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
+    <script src="{{ asset('legacy/js/client.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
+    <link href="{{ asset('legacy/css/client.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <title>{{CMSHelper::settings('hotelname')}} - Hotel</title>
   </head>
   <body>
@@ -25,14 +25,14 @@
        Client.addVariable("client.reload.url", "{{env('APP_URL')}}/me");
        Client.addVariable("client.fatal.error.url", "{{env('APP_URL')}}/me");
        Client.addVariable("client.connection.failed.url", "{{env('APP_URL')}}/me");
-       Client.addVariable("external.override.texts.txt", "{{CMSHelper::settings('override_texts')}}?v={{time()}}");
-       Client.addVariable("external.override.variables.txt", "{{CMSHelper::settings('override_variables')}}?v={{time()}}");
-       Client.addVariable("external.variables.txt", "{{CMSHelper::settings('variables')}}?v={{time()}}");
-       Client.addVariable("external.texts.txt", "{{CMSHelper::settings('texts')}}?v={{time()}}");
-       Client.addVariable("external.figurepartlist.txt", "{{CMSHelper::settings('figuredata')}}?v={{time()}}");
-       Client.addVariable("flash.dynamic.avatar.download.configuration", "{{CMSHelper::settings('figuremap')}}?v={{time()}}");
-       Client.addVariable("productdata.load.url", "{{CMSHelper::settings('productdata')}}?v={{time()}}");
-       Client.addVariable("furnidata.load.url", "{{CMSHelper::settings('furnidata')}}?v={{time()}}");
+       Client.addVariable("external.override.texts.txt", "{{CMSHelper::settings('override_texts')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("external.override.variables.txt", "{{CMSHelper::settings('override_variables')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("external.variables.txt", "{{CMSHelper::settings('variables')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("external.texts.txt", "{{CMSHelper::settings('texts')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("external.figurepartlist.txt", "{{CMSHelper::settings('figuredata')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("flash.dynamic.avatar.download.configuration", "{{CMSHelper::settings('figuremap')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("productdata.load.url", "{{CMSHelper::settings('productdata')}}?v={{CMSHelper::settings('cacheVar')}}");
+       Client.addVariable("furnidata.load.url", "{{CMSHelper::settings('furnidata')}}?v={{CMSHelper::settings('cacheVar')}}");
        Client.addVariable("use.sso.ticket", "1");
        Client.addVariable("sso.ticket", "{{ Auth::user()->auth_ticket }}");
        Client.addVariable("processlog.enabled", "1");

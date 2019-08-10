@@ -238,5 +238,5 @@ return [
         'changeTheme' => App\Http\Middleware\changeTheme::class
 
     ],
-    'version_number' => '1.1.3'
+    'version_number' => '1.1.4'
 ];

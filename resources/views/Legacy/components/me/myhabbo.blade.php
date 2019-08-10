@@ -8,15 +8,9 @@
         </div>
       </div>
       <div class="col-sm-6">
-        @if(CMSHelper::hotelstatus() == '1')
-        <a class="faux-button green offline" href="#" target="_blank">
-          Hotel is offline
-        </a>
-        @else
         <a class="faux-button green" href="{{ route('client') }}" target="_blank">
           Enter {{CMSHelper::settings('hotelname')}}
         </a>
-        @endif
       </div>
     </div>
     <div class="feed-items">

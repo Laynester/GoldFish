@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Session;
 use Auth;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
-use Illuminate\Http\Request;;
+use Illuminate\Http\Request;
 
 class API extends Controller
 {
@@ -12,22 +12,16 @@ class API extends Controller
   {
       $this->middleware('auth');
   }
+
   public function return(Request $request)
   {
-    if($request->ajax()){
-      $arr = array(
-             "hotel" => array(
-                        "online" => CMS::online()
-                      ),
-             "user" => array(
-                       "username" => Auth()->User()->username
-                      ),
-                  );
-      $myJSON = json_encode($arr);
-      return response($myJSON, 200)->header('Content-Type', 'application/json');
-    }
-    else {
-      return redirect('/me');
-    }
+    return [
+      'hotel' => [
+        'online' => CMS::online()
+      ],
+      'user' => [
+        'username' => Auth()->User()->username
+      ]
+      ];
   }
 }

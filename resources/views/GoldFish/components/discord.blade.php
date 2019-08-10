@@ -1,3 +1,4 @@
+@if(!is_null(CMSHelper::settings('discord_id')))
 <div class="box discord">
   <div class="heading">Discord</div>
   <div class="content" id="discord-widget"></div>
@@ -12,3 +13,4 @@
 var serverid = "{{CMSHelper::settings('discord_id')}}";
 </script>
 <script src="{{ asset('js/discord.js') }}" defer></script>
+@endif
