@@ -20,7 +20,7 @@ class Home extends Controller
     $rooms = \App\Models\Hotel\Room::where('owner_id', $user->id)->take(10)->inRandomOrder()->get();
     $friend_data = \App\Models\Hotel\Friendship::whereHas('habbo')->where('user_one_id', $user->id)->take(12)->inRandomOrder()->get();
     $photos = Camera_web::where('user_id', $user->id)->take(12)->inRandomOrder()->get();
-    $groups = GroupMembership::where('user_id', $user->id)->take(12)->inRandomOrder()->get();
+    $groups = GroupMembership::where('user_id', $user->id)->whereHas('guild')->take(12)->inRandomOrder()->get();
     return view('pages.me.home',[
       'user' => $user,
       'badges' => $badges,

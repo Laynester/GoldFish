@@ -6,6 +6,7 @@ use Request;
 use App\Helpers\CMS;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use App\Models\CMS\Settings;
 
 class Updater extends Controller
 {
@@ -93,6 +94,7 @@ class Updater extends Controller
             );
           }
           $myJSON = json_encode($arr);
+          Settings::where('key', 'cacheVar')->update(['value' => sha1(time())]);
           return response($myJSON, 200)->header('Content-Type', 'application/json');
         }
     }else {

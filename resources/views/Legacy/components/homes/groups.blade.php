@@ -3,7 +3,7 @@
   <div class="body">
     @if($groups->count() > 0)
     <div class="friend-grid">
-      @foreach($friends as $row)
+      @foreach($groups as $row)
       <span class="friend">
         <figure style="background-image:url({{CMSHelper::settings('group_badges')}}{{$row->guild->badge}}.png);"></figure>
         <span class="username">

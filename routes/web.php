@@ -7,7 +7,7 @@ Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () 
 });
 
 // Guest
-Route::middleware(['installer','changeTheme'])->group(function () {
+Route::middleware(['installer','changeTheme','Maintenance'])->group(function () {
   Route::get('/', function () {return redirect('login');});
   Route::get('index', function () {return redirect('login');})->name('index');
   Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
@@ -15,19 +15,24 @@ Route::middleware(['installer','changeTheme'])->group(function () {
   Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
   Route::post('login', 'Auth\LoginController@login');
   Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+  Route::get('maintenance','Session\Maintenance@render')->name('maintenance');
+  Route::get('maintenance/login','Session\Maintenance@login')->name('maintenance_login');
+  Route::post('maintenance','Auth\LoginController@login');
+  Route::post('maintenance/login','Auth\LoginController@login');
 });
 
 // Authenticated
-Route::middleware(['changeTheme','auth','Banned','Findretros'])->group(function () {
+Route::middleware(['changeTheme','auth','Banned','Maintenance','Findretros'])->group(function () {
   Route::get('banned', 'Session\Banned@render')->name('banned');
   // Home
   Route::get('me', 'Session\Me@render')->name('me');
+  Route::get('me/delete/{id}', 'Session\Me@delete')->name('alertdelete');
   Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
   Route::get('client', 'Session\Client@render')->name('client');
   Route::any('settings', 'Session\Settings@render')->name('settings');
   Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
   });
-Route::middleware(['changeTheme','Banned','Findretros'])->group(function () {
+Route::middleware(['changeTheme','Banned','Maintenance','Findretros'])->group(function () {
   Route::get('/api','Session\API@return');
   Route::get('community', 'Session\Community@render')->name('community');
   Route::get('community/articles', 'Session\Articles@render')->name('articles');

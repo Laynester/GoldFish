@@ -6,6 +6,7 @@ use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\Settings;
+use App\Models\User\Permissions;
 
 class Settings1 extends Controller
 {
@@ -25,14 +26,15 @@ class Settings1 extends Controller
         Settings::where('key', 'group_badges')->update(['value' => request()->get('groupbadges')]);
         Settings::where('key', 'findretros')->update(['value' => request()->get('findretros')]);
         Settings::where('key', 'theme')->update(['value' => request()->get('theme')]);
-        return view('site.settings1',
-        [
-          'group' => 'site',
-        ])->withErrors(['Saved changes.']);
+        Settings::where('key', 'maintenance')->update(['value' => request()->get('maintenance')]);
+        Settings::where('key', 'maintenance_rank')->update(['value' => request()->get('maintenance_rank')]);
+        return redirect()->back()->withErrors(['Saved changes.']);
       }
+      $permissions = Permissions::get();
       return view('site.settings1',
       [
         'group' => 'site',
+        'permissions' => $permissions
       ]);
     }
     else {

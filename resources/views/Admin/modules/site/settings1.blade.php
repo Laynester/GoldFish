@@ -45,6 +45,21 @@
                  <option @if(CMSHelper::settings('theme') == 'legacy') selected @endif value="legacy">Legacy</option>
                </select>
              </div>
+             <div class="form-group">
+                <label for="title">Site Maintenance</label>
+                <select name="maintenance">
+                  <option @if(CMSHelper::settings('maintenance') == 1) selected @endif value="1">True</option>
+                  <option @if(CMSHelper::settings('maintenance') == 0) selected @endif value="0">False</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="title">Maintenance Minimum Rank</label>
+                <select name="maintenance_rank">
+                    @foreach($permissions as $row)
+                    <option value="{{$row->id}}" @if(CMSHelper::settings('maintenance_rank') == $row->id) selected @endif>{{$row->rank_name}}</option>
+                    @endforeach
+                  <select>
+             </div>
           </div>
         </div>
       </div>

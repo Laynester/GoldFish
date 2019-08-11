@@ -235,8 +235,9 @@ return [
         'Banned' => App\Http\Middleware\Banned::class,
         'Findretros' => App\Http\Middleware\Findretros::class,
         'installer' => App\Http\Middleware\installer::class,
-        'changeTheme' => App\Http\Middleware\changeTheme::class
+        'changeTheme' => App\Http\Middleware\changeTheme::class,
+        'Maintenance' => App\Http\Middleware\Maintenance::class
 
     ],
-    'version_number' => '1.1.4'
+    'version_number' => '1.1.5'
 ];

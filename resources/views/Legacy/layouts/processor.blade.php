@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
+    <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{ asset('legacy/css/legacy.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="{{ asset('legacy/css/legacy_overwrite.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
@@ -30,9 +31,7 @@
               <a href="#"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
             </div>
             <div class="row justify-content-center" id="processor">
-              <div class="col-md-4">
                 @yield('content')
-              </div>
             </div>
             @include('components.footer')
           </div>

@@ -184,3 +184,43 @@ body.error .disconnected {
   font-size: 16px;
   padding:5px 15px;
 }
+.onlineCounter {
+  background-color: rgba(40,40,40,0.65);
+  height: 26px;
+  width: 170px;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: rgba(255,255,255,0.20);
+  border-style: solid;
+  left:2px;
+  top:2px;
+  position: absolute;
+  z-index: 5;
+  padding-left: 35px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.70), 1px 0px 0px 0px rgba(0,0,0,0.70), -1px 0px 0px 0px rgba(0,0,0,0.70);
+  -moz-box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.70),1px 0px 0px 0px rgba(0,0,0,0.70),-1px 0px 0px 0px rgba(0,0,0,0.70);
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.70), 1px 0px 0px 0px rgba(0,0,0,0.70), 0px 0px 0px 1px rgba(0,0,0,0.70);
+}
+.onlineCounter span{
+color: white;
+font-family: Ubuntu,sans-serif;
+line-height: 24px;
+}
+.onlineCounter:before {
+top: -2px;
+bottom: 0;
+left: -2px;
+right: 0;
+position: absolute;
+content: '';
+background-color: #3ba800;
+background-image:url('/images/icon.gif');
+background-repeat: no-repeat;
+background-position: center;
+image-rendering:pixelated;
+width: 24px;
+border-radius: 5px;
+height: 100%;
+border: 2px solid #349400;
+}

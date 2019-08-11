@@ -1,4 +1,4 @@
-@if(!is_null(CMSHelper::settings('discord_id')))
+@if(CMSHelper::settings('discord_id') != '')
 <div class="legacy-box discord">
   <div class="heading">Discord</div>
   <div class="content" id="discord-widget"></div>

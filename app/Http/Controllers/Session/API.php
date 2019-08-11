@@ -15,13 +15,17 @@ class API extends Controller
 
   public function return(Request $request)
   {
-    return [
-      'hotel' => [
-        'online' => CMS::online()
-      ],
-      'user' => [
-        'username' => Auth()->User()->username
-      ]
+    if($request->ajax()){
+      return [
+        'hotel' => [
+          'online' => CMS::online()
+        ],
+        'user' => [
+          'username' => Auth()->User()->username
+        ]
       ];
+    } else {
+      return redirect('/me');
+    }
   }
 }

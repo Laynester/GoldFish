@@ -15,7 +15,7 @@ $(document).ready(function(e) {
     });
     setInterval(function() {
       updateStatic();
-    }, 1500);
+    }, 2000);
     $( "#onlinecount").click(function() {
       updateStatic();
     });

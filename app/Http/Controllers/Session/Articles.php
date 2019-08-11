@@ -23,7 +23,7 @@ class Articles extends Controller
     {
       return redirect()->back();
     }
-    $news = News::where('id', $id)->get();
+    $news = News::where('id', $id)->first();
     if(empty($news))
     {
       return redirect()->back();

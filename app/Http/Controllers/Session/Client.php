@@ -14,7 +14,7 @@ class Client extends Controller
   public function render()
   {
     $user = auth()->user();
-    $user->auth_ticket = 'gOlDfIsH-'.Str::uuid();
+    $user->auth_ticket = 'GoldFish-'.Str::uuid();
     $user->save();
     return view('pages.client');
   }

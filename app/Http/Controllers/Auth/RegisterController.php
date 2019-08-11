@@ -64,16 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => Hash::make($data['password']),
-            'ip_register' => request()->ip(),
-            'ip_current' => request()->ip(),
-            'last_login' => time(),
-            'account_created' => time(),
-            'motto' => CMS::settings('default_motto')
-        ]);
+      return User::create([
+        'username' => $data['username'],
+        'mail' => $data['mail'],
+        'password' => Hash::make($data['password']),
+        'ip_register' => request()->ip(),
+        'ip_current' => request()->ip(),
+        'last_login' => time(),
+        'account_created' => time(),
+        'motto' => CMS::settings('default_motto')
+      ]);
     }
     public static function showRegistrationForm() {
       return view('auth.register',[

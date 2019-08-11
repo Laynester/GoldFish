@@ -910,4 +910,12 @@ figure.photo.profile:after  {
 	right: 5px;
 	position: absolute;
 	font-size: 13px;
+	top:5px;
+}
+.alert.item img {
+	float:left;
+}
+.alert.item span{
+	display:block;
+	width:98%;
 }

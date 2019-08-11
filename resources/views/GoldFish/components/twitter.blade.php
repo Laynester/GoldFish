@@ -1,4 +1,4 @@
-@if(!is_null(CMSHelper::settings('twitter_handle')))
+@if(CMSHelper::settings('twitter_handle') != '')
 <div class="box blue">
   <div class="heading">Twitter</div>
   <div class="content">

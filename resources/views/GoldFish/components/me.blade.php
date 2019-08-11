@@ -14,7 +14,7 @@
       <img src="{{CMSHelper::settings('c_images')}}album1584/{{$row->icon}}.gif"/>
       <span>{{$row->message}}</span>
         @if($row->userid == Auth::user()->id)
-        <a class="close" href="?delete={{$row->id}}">X</a>
+        <a class="close" href="me/delete/{{$row->id}}">X</a>
         @endif
     </div>
     @endforeach

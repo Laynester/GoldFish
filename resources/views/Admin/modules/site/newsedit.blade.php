@@ -43,7 +43,7 @@
       </div>
       <div class="end">
          <div class="center">
-            <button type="submit">Create</button>
+            <button type="submit">Update</button>
          </div>
       </div>
       @csrf

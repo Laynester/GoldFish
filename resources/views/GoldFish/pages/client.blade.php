@@ -10,11 +10,13 @@
     <script src="{{ asset('goldfish/js/client.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script src="{{ asset('goldfish/js/flash_detect_min.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script src="{{ asset('goldfish/js/flashclient.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
+    <script src="{{ asset('goldfish/js/goldfish.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <link href="{{ asset('goldfish/css/client.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <title>{{CMSHelper::settings('hotelname')}} - Hotel</title>
   </head>
   <body>
     <div id="client-ui">
+      <div class="onlineCounter"><span><b id="onlinecount">{{CMSHelper::online()}}</b> Online Now</span></div>
     <div class="client" id="client"></div>
     <script>
        var Client = new SWFObject("{{CMSHelper::settings('swf')}}?{{time()}}", "client", "100%", "100%", "10.0.0");

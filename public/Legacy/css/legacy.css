@@ -386,6 +386,9 @@ figure.topStory-slider span.meta a{
 .legacy-box.discord .heading {
   background-color: #7289da;
 }
+.processor-body #discord-widget {
+  height:200px;
+}
 #discord-widget {
 	position: relative;
 	height:313px;
