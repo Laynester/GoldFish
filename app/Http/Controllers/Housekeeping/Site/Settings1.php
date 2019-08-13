@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Housekeeping\Site;
 
-use Auth;
 use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
@@ -12,12 +12,11 @@ class Settings1 extends Controller
 {
   public function render()
   {
-    if(CMS::fuseRights('site_settings_general')){
-      if(isset($_GET['cache'])){
+    if (CMS::fuseRights('site_settings_general')) {
+      if (isset($_GET['cache'])) {
         Settings::where('key', 'cacheVar')->update(['value' => sha1(time())]);
       }
-      if (Request::isMethod('post'))
-      {
+      if (Request::isMethod('post')) {
         Settings::where('key', 'hotelname')->update(['value' => request()->get('hotelname')]);
         Settings::where('key', 'site_logo')->update(['value' => request()->get('logo')]);
         Settings::where('key', 'habbo_imager')->update(['value' => request()->get('imager')]);
@@ -31,13 +30,12 @@ class Settings1 extends Controller
         return redirect()->back()->withErrors(['Saved changes.']);
       }
       $permissions = Permissions::get();
-      return view('site.settings1',
-      [
-        'group' => 'site',
-        'permissions' => $permissions
-      ]);
-    }
-    else {
+      return view('site.settings1', [
+          'group'       => 'site',
+          'permissions' => $permissions
+        ]
+      );
+    } else {
       return redirect('housekeeping/dashboard');
     }
   }

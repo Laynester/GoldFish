@@ -3,6 +3,9 @@ namespace App\Helpers;
 use App\Models\CMS\Settings;
 use App\Models\CMS\Menu;
 use Auth;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+
 class CMS
 {
   public static function settings($name) {
@@ -40,5 +43,12 @@ class CMS
     } else {
       return \App\Models\User\User::where('username',$id)->first();
     }
+  }
+  public static function secondsToTime($value) {
+      $dt = Carbon::now();
+      $days = $dt->diffInDays($dt->copy()->addSeconds($value));
+      $hours = $dt->diffInHours($dt->copy()->addSeconds($value)->subDays($days));
+      $minutes = $dt->diffInMinutes($dt->copy()->addSeconds($value)->subDays($days)->subHours($hours));
+      return CarbonInterval::days($days)->hours($hours)->minutes($minutes)->forHumans();
   }
 }

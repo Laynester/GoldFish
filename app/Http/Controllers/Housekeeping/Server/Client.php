@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Housekeeping\Server;
 
-use Auth;
 use Request;
 use Illuminate\Http\Request as Req;
 use App\Http\Controllers\Controller;
@@ -12,24 +12,23 @@ class Client extends Controller
 {
   public function render(Req $request)
   {
-    if(CMS::fuseRights('server_client')){
-      if (Request::isMethod('post'))
-      {
+    if (CMS::fuseRights('server_client')) {
+      if (Request::isMethod('post')) {
         $validatedData = $request->validate([
-          'swfdir'   => 'required',
-          'swf' => 'required',
-          'variables' => 'required',
+          'swfdir'             => 'required',
+          'swf'                => 'required',
+          'variables'          => 'required',
           'override_variables' => 'required',
-          'texts' => 'required',
-          'override_texts' => 'required',
-          'productdata' => 'required',
-          'furnidata' => 'required',
-          'figuremap' => 'required',
-          'figuredata' => 'required',
-          'emuhost'   => 'required',
-          'emuport' => 'required',
-          'rconip' => 'required',
-          'rconport' => 'required'
+          'texts'              => 'required',
+          'override_texts'     => 'required',
+          'productdata'        => 'required',
+          'furnidata'          => 'required',
+          'figuremap'          => 'required',
+          'figuredata'         => 'required',
+          'emuhost'            => 'required',
+          'emuport'            => 'required',
+          'rconip'             => 'required',
+          'rconport'           => 'required'
         ]);
         Settings::where('key', 'swfdir')->update(['value' => request()->get('swfdir')]);
         Settings::where('key', 'swf')->update(['value' => request()->get('swf')]);
@@ -47,12 +46,11 @@ class Client extends Controller
         Settings::where('key', 'rconport')->update(['value' => request()->get('rconport')]);
         return redirect()->back()->withSuccess('Updated client settings!');
       }
-      return view('server.client',
-      [
-        'group' => 'server',
-      ]);
-    }
-    else {
+      return view('server.client',[ 
+          'group' => 'server',
+        ]
+      );
+    } else {
       return redirect('housekeeping/dashboard');
     }
   }

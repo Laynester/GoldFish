@@ -30,7 +30,7 @@
   </form>
   </div>
   <div class="box_4">
-    <div class="heading">@yield('title')<a class="right" href="{{ route('hk_createnews') }}">Search For a Room</a></div>
+    <div class="heading">@yield('title')</div>
     <table class="full normal">
       <thead>
         <th>Room</th>

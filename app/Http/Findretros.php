@@ -1,10 +1,15 @@
 <?php
+
 namespace App\Http;
+
 use App\Helpers\CMS;
-class FindRetros {
+
+class FindRetros
+{
     private $pageName, $callTimeout, $usingCloudFlare, $apiPath;
 
-    function __construct() {
+    function __construct()
+    {
         $this->pageName        = CMS::settings('findretros');
         $this->requestTimeout  = 2;
         $this->usingCloudFlare = true;
@@ -18,15 +23,12 @@ class FindRetros {
                 $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
             else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
                 $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-
         }
-
     }
 
     public function hasClientVoted()
     {
-        if (!$this->_isVoteCookieSet())
-        {
+        if (!$this->_isVoteCookieSet()) {
             $urlRequest = $this->apiPath . 'validate.php?user=' . $this->pageName . '&ip=' . $_SERVER['REMOTE_ADDR'];
             $dataRequest = $this->_makeCurlRequest($urlRequest);
 
@@ -40,7 +42,6 @@ class FindRetros {
                 $this->_setVoteCookie();
                 return true;
             }
-
         }
 
         return true;
@@ -91,7 +92,6 @@ class FindRetros {
                 setcookie('voting_stamp', '');
                 return false;
             }
-
         }
 
         return false;

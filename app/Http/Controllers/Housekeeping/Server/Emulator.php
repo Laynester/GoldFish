@@ -5,7 +5,6 @@ use Request;
 use Illuminate\Http\Request as Req;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
-use App\Helpers\Rcon;
 use App\Models\Hotel\EmuSettings;
 
 class Emulator extends Controller
@@ -23,11 +22,11 @@ class Emulator extends Controller
       }
       $form = EmuSettings::all();
 
-      return view('server.emulator',
-      [
-        'group' => 'server',
-        'form' => $form
-      ]);
+      return view('server.emulator', [
+          'group' => 'server',
+          'form'  => $form
+        ]
+      );
     }
     else {
       return redirect('housekeeping/dashboard');

@@ -145,6 +145,21 @@ p.duckets {
 	background-position:0px -113px;
 	height: 23px;
 }
+p.achievement {
+	background-image: url(/goldfish/images/achievements.gif);
+	background-size: 17px 28px;
+	height:28px;
+}
+p.timeon {
+	background-image: url(/goldfish/images/onlinetime.gif);
+	height:28px;
+	padding-left:30px;
+}
+p.respects {
+	background-image: url(/goldfish/images/respects.gif);
+	background-position: 5px 5px;
+	height:28px;
+}
 .header .purse:before {
 	border-color: transparent transparent transparent rgba(0,0,0,.6);
 	border-style: solid;
@@ -918,4 +933,35 @@ figure.photo.profile:after  {
 .alert.item span{
 	display:block;
 	width:98%;
+}
+.habbos {
+    overflow: unset;
+}
+span.ahabbo {
+    display: block;
+    position: relative;
+}
+span.ahabbo .legacy-tooltip {
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #000;
+    background: #fff;
+    display: none;
+    padding: 10px;
+    left: 100%;
+    font-size: 11px;
+    width: 170px;
+    z-index: 10;
+}
+span.ahabbo .legacy-tooltip span:nth-child(1) {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+span.ahabbo:hover .legacy-tooltip {
+    display: block;
+}
+.content.habbogrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
 }
