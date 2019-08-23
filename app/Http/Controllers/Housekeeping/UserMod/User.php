@@ -48,6 +48,12 @@ class User extends Controller
         $userdata = Users::where('username', 'LIKE', $user)->first();
         $alt = Users::where('ip_register', $userdata->ip_register)->get();
         $chats = Chatlog::whereHas('room')->where('user_from_id', $userdata->id)->orderBy('timestamp', 'DESC')->paginate(25);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Viewed '.$user,
+          'timestamp' => time()
+        ]);
         return view(
           'lookup.user',
           [

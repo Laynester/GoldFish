@@ -52,6 +52,6 @@ class User extends Authenticatable
     }
     public function rank_name()
     {
-          return $this->belongsTo(Permissions::class, 'rank');
+        return $this->belongsTo(Permissions::class, 'rank');
     }
 }

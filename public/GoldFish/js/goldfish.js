@@ -1,6 +1,6 @@
 function updateStatic() {
   $.ajax({
-      url: '/api',
+      url: '/api/hotel',
       dataType: "text",
       type: 'GET',
       success: function(data){
@@ -15,7 +15,7 @@ $(document).ready(function(e) {
     });
     setInterval(function() {
       updateStatic();
-    }, 2000);
+    }, 15000);
     $( "#onlinecount").click(function() {
       updateStatic();
     });

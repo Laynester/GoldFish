@@ -18,6 +18,12 @@ class Rights extends Controller
                 foreach ($key as $row) {
                     Fuseright::where('right', $row['name'])->update(['min_rank' => $row['value']]);
                 }
+                \App\Models\CMS\Hk::create([
+                    'user_id' => auth()->user()->id,
+                    'ip' => request()->ip(),
+                    'action' => 'Made changes to the HK Fuserights',
+                    'timestamp' => time()
+                  ]);
                 return redirect()->back()->withSuccess('Saved permissions!');
             }
             $tabs        = Fuseright::where('type', 1)->get();

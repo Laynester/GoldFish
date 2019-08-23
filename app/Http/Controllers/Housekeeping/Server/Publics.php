@@ -34,6 +34,12 @@ class Publics extends Controller
           ]);
         }
         Rcon::execCommand(auth()->user()->id, ':update_navigator');
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Created a public room ('.request()->get('room').')',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Created public room!');
       }
       if (isset($_GET['hide'])) {

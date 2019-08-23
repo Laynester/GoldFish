@@ -21,6 +21,12 @@ class Alert extends Controller
           'icon'    => request()->get('icon'),
           'userid'  => request()->get('userid')
         ]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Sent a site alert('.request()->get('message').')',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Sent alert');
       }
       return view('site.alert',[

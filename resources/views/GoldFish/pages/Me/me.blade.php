@@ -5,7 +5,9 @@
   <div class="row">
     <div class="col-lg-5">
       @include('components.me')
+      @include('components.search')
       @include('components.personalbadges')
+      @include('components.friends')
     </div>
     <div class="col-lg-7">
       <div class="grid-200">

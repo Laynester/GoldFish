@@ -1,7 +1,4 @@
-<div class="widget_notepad_skin home-widget friends" style="right:60px;top:500px">
-  <div class="heading"><span>{{$user->username}}'s Friends</span></div>
-  <div class="body">
-    @if($friends->count() > 0)
+@if($friends->count() > 0)
     <div class="friend-grid">
       @foreach($friends as $row)
       <span class="friend">
@@ -18,5 +15,3 @@
     @else
     {{$user->username}} has no friends yet.
     @endif
-  </div>
-</div>

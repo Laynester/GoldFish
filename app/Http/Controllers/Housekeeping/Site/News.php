@@ -28,6 +28,12 @@ class News extends Controller
           'author'  => auth()->user()->id,
           'date'    => time()
         ]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Created news article '.request()->get('title'),
+          'timestamp' => time()
+        ]);
         return redirect('housekeeping/site/news/list')->withErrors(['Created ' . request()->get('title')]);
       }
       $images = \File::allFiles(public_path('images/news'));
@@ -70,6 +76,12 @@ class News extends Controller
             'body'    => request()->get('long'),
             'date'    => time(),
           ]);
+          \App\Models\CMS\Hk::create([
+            'user_id' => auth()->user()->id,
+            'ip' => request()->ip(),
+            'action' => 'Modified news article '.request()->get('title'),
+            'timestamp' => time()
+          ]);
           return redirect('housekeeping/site/news/list')->withErrors(['Saved changes.']);
         }
         $images = \File::allFiles(public_path('images/news'));
@@ -87,6 +99,13 @@ class News extends Controller
   public function Delete($id)
   {
     if (CMS::fuseRights('site_news')) {
+      $article = Insert::where('id', $id)->first();
+      \App\Models\CMS\Hk::create([
+        'user_id' => auth()->user()->id,
+        'ip' => request()->ip(),
+        'action' => 'Deleted news article '.$article->caption,
+        'timestamp' => time()
+      ]);
       Insert::where('id', $id)->delete();
       return redirect()->back()->withErrors(['Deleted']);
     }

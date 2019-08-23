@@ -28,6 +28,12 @@ class Wordfilter extends Controller
           'report'      => request()->get('report'),
           'mute'        => request()->get('mute')
         ]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Filtered the word  ('.request()->get('key').')',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Added word');
       }
       $words = Insert::paginate(20);

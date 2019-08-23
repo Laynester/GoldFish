@@ -1,4 +1,5 @@
 <?php
+
 // Installer
 Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
   Route::get('/',function () {return redirect('installer/index');});
@@ -26,14 +27,14 @@ Route::middleware(['changeTheme','auth','Banned','Maintenance','Findretros'])->g
   Route::get('banned', 'Session\Banned@render')->name('banned');
   // Home
   Route::get('me', 'Session\Me@render')->name('me');
+  Route::post('search', 'Session\Me@search')->name('me_search');
   Route::get('me/delete/{id}', 'Session\Me@delete')->name('alertdelete');
-  Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
+  Route::post('home/{username}/note','Session\Home@note')->name('home_note');
   Route::get('client', 'Session\Client@render')->name('client');
   Route::any('settings', 'Session\Settings@render')->name('settings');
   Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
   });
 Route::middleware(['changeTheme','Banned','Maintenance','Findretros'])->group(function () {
-  Route::get('/api','Session\API@return');
   Route::get('community', 'Session\Community@render')->name('community');
   Route::get('community/articles', 'Session\Articles@render')->name('articles');
   Route::get('community/articles/{id}', 'Session\Articles@renderNews')->name('articles');
@@ -41,7 +42,15 @@ Route::middleware(['changeTheme','Banned','Maintenance','Findretros'])->group(fu
   Route::get('community/leaderboards', 'Session\Leaderboards@render')->name('leaderboards');
   Route::get('community/photos', 'Session\Photos@render')->name('photos');
 });
-
+Route::middleware(['changeTheme','auth'])->group(function() {
+  Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
+  Route::get('home/{username}/edit', 'Session\Home@showProfile')->name('home_edit');
+  Route::post('home/{username}/save', 'Session\Home@save')->name('home_save');
+  Route::post('home/{username}/delete', 'Session\Home@delete')->name('home_delete');
+  Route::post('home/{username}/add', 'Session\Home@add')->name('home_add');
+  Route::post('home/{username}/buy', 'Session\Home@buy')->name('home_buy');
+  Route::get('habblet/store','Session\Home@store')->name('home_store');
+});
 // Admin
 Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
   Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
@@ -59,13 +68,18 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
   Route::any('server/vouchers', 'Housekeeping\Server\Vouchers@render')->name('hk_server_vouchers');
   Route::any('server/rcon/{key?}', 'Housekeeping\Server\Rcon@render')->name('hk_server_rcon');
   Route::any('server/wordfilter', 'Housekeeping\Server\Wordfilter@render')->name('hk_wordfilter');
+  Route::get('server/log/{type}', 'Housekeeping\Server\Logs@render')->name('hk_server_logs');
 
   // user & moderation
-  Route::any('moderation/chatlog/list/{id?}', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
+  Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
+  Route::get('moderation/chatlog/list/room/{id}', 'Housekeeping\UserMod\Chatlog@room')->name('hk_chat_list_room');
+  Route::get('moderation/chatlog/list/user/{id}', 'Housekeeping\UserMod\Chatlog@user')->name('hk_chat_list_user');
   Route::any('moderation/lookup/user/{user?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
   Route::any('moderation/bans', 'Housekeeping\UserMod\Bans@render')->name('hk_user_bans');
   Route::any('moderation/badges', 'Housekeeping\UserMod\Badges@render')->name('hk_user_badges');
   Route::any('moderation/online', 'Housekeeping\UserMod\User@online')->name('hk_users_online');
+  Route::get('moderation/passwords', 'Housekeeping\UserMod\Password@render')->name('hk_users_password');
+  Route::post('moderation/passwords', 'Housekeeping\UserMod\Password@post')->name('hk_users_password');
 
   //site and content
   Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');

@@ -18,6 +18,12 @@ class Emulator extends Controller
         foreach($key as $row) {
           EmuSettings::where('key', $row['name'])->update(['value' => $row['value']]);
         }
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Made changes to the EMU Settings',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Saved settings!');
       }
       $form = EmuSettings::all();

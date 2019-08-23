@@ -1,4 +1,4 @@
-<div class="box blue profile rooms">
+<div class="box blue profile groups">
   <div class="heading">My Groups</div>
     @if(!$groups->isEmpty())
     @foreach($groups as $group)

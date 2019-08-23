@@ -28,6 +28,12 @@ class Vouchers extends Controller
           'points_type'     => request()->get('type'),
           'catalog_item_id' => request()->get('item')
         ]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Created a new voucher ('.request()->get('code').')',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Added Voucher');
       }
       $vouchers = Insert::paginate(20);

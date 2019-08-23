@@ -44,6 +44,12 @@ class Client extends Controller
         Settings::where('key', 'emuport')->update(['value' => request()->get('emuport')]);
         Settings::where('key', 'rconip')->update(['value' => request()->get('rconip')]);
         Settings::where('key', 'rconport')->update(['value' => request()->get('rconport')]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Made changes to Client Settings',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Updated client settings!');
       }
       return view('server.client',[ 

@@ -9,6 +9,7 @@
     <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="{{ asset('goldfish/css/goldfish.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="{{ asset('goldfish/css/goldfish_overwrite.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
     <script
   src="https://code.jquery.com/jquery-3.4.0.min.js"
@@ -71,8 +72,5 @@
     </main>
   </div>
   @include('partials.footer')
-  @if (Auth::user())
-  <script src="{{ asset('goldfish/js/goldfish.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
-  @endif
 </body>
 </html>

@@ -31,4 +31,13 @@ class Me extends Controller
     \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id', $id)->delete();
     return redirect()->back();
   }
+  public function search()
+  {
+    $user = \App\Models\User\User::where('username', request()->get('search'))->first();
+    if($user) {
+      return redirect('/home/'.request()->get('search'));
+    } else {
+      return redirect()->back()->withErrors('User not Found.');
+    }
+  }
 }

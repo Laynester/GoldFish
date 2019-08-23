@@ -617,7 +617,8 @@ figure {
     border: 2px solid #000;
 }
 
-button[type="submit"] {
+button[type="submit"],
+button.silver {
     color: #000;
     font-weight: bold;
     box-shadow: inset 0 0 0 1px #ccc;
@@ -630,7 +631,8 @@ button[type="submit"] {
         rgba(255, 255, 255, 1) 100%
     );
 }
-button:hover[type="submit"] {
+button:hover[type="submit"],
+button.silver:hover {
     filter: brightness(1.05);
     background: linear-gradient(
         0deg,

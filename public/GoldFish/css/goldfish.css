@@ -6,7 +6,6 @@ body {
 #page-wrap, html {
 	min-height: 100%;
 	position: relative;
-	padding-bottom: 25px;
 }
 .relative {
 	position: relative;
@@ -239,23 +238,18 @@ p.respects {
 .left {
 	float:left;
 }
-.footer {
-	position: absolute;
-	bottom:0;
-	background: #001726;
-	width:100%;
-	color:#fff;
-	height:70px;
-	line-height: 60px;
+footer.home {
+    background-color: #b6b6b6;
+    background-image: url(/goldfish/images/goldfish.png);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px 0;
 }
-.footer .left,.footer .right {
-	padding-top: 8px;
-}
-.footer .right {
-	background-image: url(/goldfish/images/goldfish.png);
-	background-repeat: no-repeat;
-	background-position:left center;
-	padding-left:55px;
+footer.home a {
+    color: #666;
 }
 .box {
 	border:1px solid rgba(0,0,0,.3);
@@ -853,6 +847,9 @@ width:100%;
 .box.profile.profile.friends:before {
 	background-image:url(/goldfish/images/profile/friends.png);
 }
+.box.profile.profile.groups:before {
+	background-image:url(/goldfish/images/profile/groups.png);
+}
 .box.profile.profile{
 	height:315px;
 }
@@ -920,6 +917,7 @@ figure.photo.profile:after  {
 }
 .alert.item{
 	position: relative;
+	min-height: 50px;
 }
 .alert.item a.close{
 	right: 5px;

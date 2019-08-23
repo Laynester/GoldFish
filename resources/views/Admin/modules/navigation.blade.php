@@ -41,6 +41,19 @@
   </ul>
 </div>
 @endif
+@if(CMSHelper::fuseRights('navi_server_logging'))
+<div class="box_3">
+  <div class="heading">Users</div>
+  <ul>
+    @if(CMSHelper::fuseRights('server_logging'))
+    <li><a href="{{ route('hk_server_logs', ['hk']) }}">Housekeeping</a></li>
+    @endif
+    @if(CMSHelper::fuseRights('server_logging'))
+    <li><a href="{{ route('hk_server_logs', ['commands']) }}">Commands</a></li>
+    @endif
+  </ul>
+</div>
+@endif
 @endif
 @if($group == 'site')
 @if(CMSHelper::fuseRights('navi_site_settings'))
@@ -100,6 +113,9 @@
   <ul>
     @if(CMSHelper::fuseRights('moderation_badges'))
     <li><a href="{{ route('hk_user_badges') }}">Give a Badge</a></li>
+    @endif
+    @if(CMSHelper::fuseRights('moderation_password'))
+    <li><a href="{{ route('hk_users_password') }}">Reset Password</a></li>
     @endif
   </ul>
 </div>

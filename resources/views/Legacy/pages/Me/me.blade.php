@@ -4,6 +4,7 @@
 <div class="row">
   <div class="col-md-5">
     @include('components.me.myhabbo')
+    @include('components.constant.search')
     @include('components.me.friends')
     @include('components.me.badges')
   </div>

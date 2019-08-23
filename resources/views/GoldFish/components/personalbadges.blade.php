@@ -1,4 +1,4 @@
-<div class="box badges">
+<div class="box badges red">
   <div class="heading">My Badges</div>
   <div class="content">
     @if(!$badges->isEmpty())

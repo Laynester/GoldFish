@@ -15,6 +15,12 @@ class Settings2 extends Controller
       if (Request::isMethod('post')) {
         Settings::where('key', 'discord_id')->update(['value' => request()->get('discord_id')]);
         Settings::where('key', 'twitter_handle')->update(['value' => request()->get('twitter_handle')]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Made changes to the CMS Social Settings',
+          'timestamp' => time()
+        ]);
         return view('site.settings2', [
           'group' => 'site',
         ])->withErrors(['Saved changes.']);

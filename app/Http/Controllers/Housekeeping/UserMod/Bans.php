@@ -50,6 +50,12 @@ class Bans extends Controller
           ]);
           Rcon::disconnect(CMS::userData($username, 'id'));
         }
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Banned '.$username.' for '. request()->get('reason'),
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withSuccess('Banned ' . $username);
       }
       $bans = BanList::orderBy('timestamp', 'DESC')->paginate(30);

@@ -1,5 +1,5 @@
 <div class="legacy-box grey preload meview">
-  <div class="heading">{{ Auth::user()->username }}<small class="right">Last signed in: {{date('F d, Y h:ia', Auth::user()->last_login)}}</small></div>
+  <div class="heading">{{ Auth::user()->username }}<small class="right">Last signed in: {{date('d/m/y h:ia', Auth::user()->last_login)}}</small></div>
   <div class="content">
     <div class="row justify-content-center">
       <div class="col-sm-6">

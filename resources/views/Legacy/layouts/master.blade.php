@@ -9,20 +9,23 @@
     <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="{{ asset('legacy/css/legacy.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    @yield('css')
-    <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
+    <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script
   src="https://code.jquery.com/jquery-3.4.0.min.js"
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
   crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script
+  src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"
+  integrity="sha256-lnH4vnCtlKU2LmD0ZW1dU7ohTTKrcKP50WA9fa350cE="
+  crossorigin="anonymous"></script>
+    @yield('css')
   </head>
   <body>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="legacy-body">
-            <header style="background-image:url(/goldfish/images/me/views/{{Auth()->User()->hotelview}});">
+            <header style="background-image:url(/goldfish/images/me/views/{{(Auth()->User() ? Auth()->User()->hotelview  : 'view_ca_wide.png')}});">
               <a href="/me" class="logo"><img src="{{CMSHelper::settings('site_logo')}}"/><span class="legacy-online"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</span></a>
               @include('components.navbar')
             </header>

@@ -27,6 +27,12 @@ class Settings1 extends Controller
         Settings::where('key', 'theme')->update(['value' => request()->get('theme')]);
         Settings::where('key', 'maintenance')->update(['value' => request()->get('maintenance')]);
         Settings::where('key', 'maintenance_rank')->update(['value' => request()->get('maintenance_rank')]);
+        \App\Models\CMS\Hk::create([
+          'user_id' => auth()->user()->id,
+          'ip' => request()->ip(),
+          'action' => 'Made changes to the CMS Settings',
+          'timestamp' => time()
+        ]);
         return redirect()->back()->withErrors(['Saved changes.']);
       }
       $permissions = Permissions::get();
