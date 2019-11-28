@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Session;
 
 use App\Http\Controllers\Controller;
 use App\Models\User\User;
-use App\Models\User\User_currency;
+use App\Models\User\User_Currency;
 use App\Models\User\User_Setting;
 
 class Leaderboards extends Controller

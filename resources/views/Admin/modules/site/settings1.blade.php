@@ -41,8 +41,8 @@
              <div class="form-group">
                <label for="title">Site Theme</label>
                <select name="theme" onkeypress="changePreview(this.value)" onchange="changePreview(this.value)">
-                 <option @if(CMSHelper::settings('theme') == 'goldfish') selected @endif value="goldfish">Goldfish</option>
-                 <option @if(CMSHelper::settings('theme') == 'legacy') selected @endif value="legacy">Legacy</option>
+                 <option @if(CMSHelper::settings('theme') == 'GoldFish') selected @endif value="GoldFish">Goldfish</option>
+                 <option @if(CMSHelper::settings('theme') == 'Legacy') selected @endif value="Legacy">Legacy</option>
                </select>
              </div>
              <div class="form-group">
