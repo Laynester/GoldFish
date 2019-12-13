@@ -8,11 +8,13 @@ class LogFailedAuthenticationAttempt {
 
     public function handle(Failed $event)
     {
-        \App\Models\CMS\Login::create([
-            'user_id'    => $event->user->id,
-            'ip'         => Request::ip(),
-            'timestamp'  => time(),
-            'successful' => '0'
-        ]);
+        if($event->user) {
+            \App\Models\CMS\Login::create([
+                'user_id'    => $event->user->id,
+                'ip'         => Request::ip(),
+                'timestamp'  => time(),
+                'successful' => '0'
+            ]);
+        }
     }
 }

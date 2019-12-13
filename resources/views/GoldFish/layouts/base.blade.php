@@ -25,7 +25,7 @@
       <div class="login-section">
         <div class="container">
           <div class="login-inputs">
-            <form method="POST" id="loginForm">
+            <form method="POST" id="loginForm"{{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login') : '')}}>
               @csrf
               <div class="login-input">
               <input id="username" type="text" class="form-control input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
