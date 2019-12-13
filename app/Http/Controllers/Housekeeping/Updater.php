@@ -11,7 +11,7 @@ class Updater extends Controller
   public function check()
   {
     if (CMS::fuseRights('updater')) {
-      $url = "http://layne.cf/goldfish/updates/laraupdater.json";
+      $url = "http://leenster.tk/layne/goldfish/updates/laraupdater.json";
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_URL, $url);
