@@ -57,6 +57,14 @@ class CMS
 		$minutes = $dt->diffInMinutes($dt->copy()->addSeconds($value)->subDays($days)->subHours($hours));
 		return CarbonInterval::days($days)->hours($hours)->minutes($minutes)->forHumans();
 	}
+	public static function minsToTime($value)
+	{
+		$dt      = Carbon::now();
+		$days    = $dt->diffInDays($dt->copy()->addMinutes($value));
+		$hours   = $dt->diffInHours($dt->copy()->addMinutes($value)->subDays($days));
+		$minutes = $dt->diffInMinutes($dt->copy()->addMinutes($value)->subDays($days)->subHours($hours));
+		return CarbonInterval::days($days)->hours($hours)->minutes($minutes)->forHumans();
+	}
 	public static function stripScript($unfiltered) {
 		$open = str_replace('<script>',"&#60;script&#62;",$unfiltered);
 		$close = str_replace('</script>',"&#60;/script&#62;",$open);

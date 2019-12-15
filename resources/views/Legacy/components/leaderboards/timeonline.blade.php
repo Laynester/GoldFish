@@ -6,7 +6,7 @@
       <img class="avatar" src="{{CMSHelper::settings('habbo_imager')}}{{$row->habbo->look}}&headonly=1&head_direction=3"/>
       <div class="left">
         <span>{{$row->habbo->username}}</span>
-        <p class="currency timeon">{{CMSHelper::secondsToTime($row->online_time)}}</p>
+        <p class="currency timeon">{{CMSHelper::minsToTime($row->progress)}}</p>
       </div>
     </a>
     @empty

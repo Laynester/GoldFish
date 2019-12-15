@@ -52,13 +52,20 @@
                   <option @if(CMSHelper::settings('maintenance') == 0) selected @endif value="0">False</option>
                 </select>
              </div>
-             <div class="form-group">
+              <div class="form-group">
                 <label for="title">Maintenance Minimum Rank</label>
                 <select name="maintenance_rank">
                     @foreach($permissions as $row)
                     <option value="{{$row->id}}" @if(CMSHelper::settings('maintenance_rank') == $row->id) selected @endif>{{$row->rank_name}}</option>
                     @endforeach
                   <select>
+              </div>
+              <div class="form-group">
+                <label for="title">GoldFish Theme News box</label>
+                <select name="gf_news">
+                  <option @if(CMSHelper::settings('goldfish_cards') == 1) selected @endif value="1">Cards</option>
+                  <option @if(CMSHelper::settings('goldfish_cards') == 0) selected @endif value="0">Slider</option>
+               </select>
              </div>
           </div>
         </div>

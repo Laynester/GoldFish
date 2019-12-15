@@ -10,10 +10,8 @@
       @include('components.friends')
     </div>
     <div class="col-lg-7">
-      <div class="grid-200">
-          @include('components.news')
-        </div>
-        <div class="row">
+      @include('components.news')
+      <div class="row">
         <div class="col-lg-6">
           @include('components.twitter')
         </div>

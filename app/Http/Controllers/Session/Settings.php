@@ -19,19 +19,6 @@ class Settings extends Controller
   }
   public function render()
   {
-    if (Request::isMethod('post')) {
-      if (!file_exists(public_path() . '/images/profile_backgrounds/' . request()->get('background'))) {
-        return redirect()->back()->withErrors('Selected Background doesnt exist.');
-      }
-      if (!file_exists(public_path() . '/goldfish/images/me/views/' . request()->get('hotelview'))) {
-        return redirect()->back()->withErrors('Selected hotelview doesnt exist.');
-      }
-      User::where('id', Auth()->User()->id)->update([
-        'hotelview'          => request()->get('hotelview'),
-        'profile_background' => request()->get('background')
-      ]);
-      return redirect()->back()->withSuccess('Changed!');
-    }
     $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
     $hview = \File::allFiles(public_path('goldfish/images/me/views'));
     return view('pages.me.settings.hotel', [
@@ -56,10 +43,25 @@ class Settings extends Controller
 
     return $validator;
   }
-  public function account(Req $request)
+  public function account()
   {
-    if (Request::isMethod('post')) {
-      $request_data = $request->All();
+    return view('pages.me.settings.account', ['group' => 'me']);
+  }
+  public function postHotel(){
+    if (!file_exists(public_path() . '/images/profile_backgrounds/' . request()->get('background'))) {
+      return redirect()->back()->withErrors('Selected Background doesnt exist.');
+    }
+    if (!file_exists(public_path() . '/goldfish/images/me/views/' . request()->get('hotelview'))) {
+      return redirect()->back()->withErrors('Selected hotelview doesnt exist.');
+    }
+    User::where('id', Auth()->User()->id)->update([
+      'hotelview'          => request()->get('hotelview'),
+      'profile_background' => request()->get('background')
+    ]);
+    return redirect()->back()->withSuccess('Changed!');
+  }
+  public function postAccount(Req $request){
+    $request_data = $request->All();
       $validator = $this->admin_credential_rules($request_data);
       if ($validator->fails()) {
         return Redirect::back()->withErrors($validator->getMessageBag()->toArray());
@@ -77,7 +79,5 @@ class Settings extends Controller
           return Redirect::back()->withErrors($error);
         }
       }
-    }
-    return view('pages.me.settings.account', ['group' => 'me']);
   }
 }

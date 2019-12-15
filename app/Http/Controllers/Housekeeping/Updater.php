@@ -26,7 +26,7 @@ class Updater extends Controller
           );
         } else {
           $arr = array(
-            "message" => "You are a couple versions behind, visit <a href=\"http://layne.cf/goldfish/updates/index.php\"><b>here</b></a> to get caught up..."
+            "message" => "You are a couple versions behind, visit <a href=\"http://leenster.tk/layne/goldfish/updates/index.php\"><b>here</b></a> to get caught up..."
           );
         }
         $myJSON = json_encode($arr);
@@ -40,7 +40,7 @@ class Updater extends Controller
   public function update()
   {
     if (CMS::fuseRights('updater')) {
-      $url = "http://layne.cf/goldfish/updates/laraupdater.json";
+      $url = "http://leenster.tk/layne/goldfish/updates/laraupdater.json";
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_URL, $url);
@@ -59,7 +59,7 @@ class Updater extends Controller
           "zip"     => $json['zipName']
         );
         $myJSON = json_encode($arr);
-        $url = 'http://layne.cf/goldfish/updates/' . $json['zipName'];
+        $url = 'http://leenster.tk/layne/goldfish/updates/' . $json['zipName'];
         $zipFile = public_path() . "\install\update.zip"; // Local Zip File Path
         $zipResource = fopen($zipFile, "w");
         // Get The Zip File From Server

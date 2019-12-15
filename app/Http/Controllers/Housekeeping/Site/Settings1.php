@@ -27,6 +27,7 @@ class Settings1 extends Controller
         Settings::where('key', 'theme')->update(['value' => request()->get('theme')]);
         Settings::where('key', 'maintenance')->update(['value' => request()->get('maintenance')]);
         Settings::where('key', 'maintenance_rank')->update(['value' => request()->get('maintenance_rank')]);
+        Settings::where('key', 'goldfish_cards')->update(['value' => request()->get('gf_cards')]);
         \App\Models\CMS\Hk::create([
           'user_id' => auth()->user()->id,
           'ip' => request()->ip(),

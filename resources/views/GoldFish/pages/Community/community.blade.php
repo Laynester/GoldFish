@@ -3,19 +3,13 @@
 @section('title', 'Community')
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <div class="grid-200">
-        @include('components.news')
-      </div>
+    <div class="col-lg-8">
+      @include('components.community.randomhabbos')
+      @include('components.news')
     </div>
-    <div class="col-lg-6">
-        @include('components.community.randomhabbos')
-      </div>
-    <div class="col-lg-3">
-      @include('components.twitter')
-    </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
       @include('components.discord')
+      @include('components.twitter')
     </div>
   </div>
 </div>

@@ -31,8 +31,10 @@ Route::middleware(['changeTheme','auth','Banned','Maintenance','Findretros'])->g
   Route::get('me/delete/{id}', 'Session\Me@delete')->name('alertdelete');
   Route::post('home/{username}/note','Session\Home@note')->name('home_note');
   Route::get('client', 'Session\Client@render')->name('client');
-  Route::any('settings', 'Session\Settings@render')->name('settings');
-  Route::any('settings/password', 'Session\Settings@account')->name('settings_password');
+  Route::get('settings', 'Session\Settings@render')->name('settings');
+  Route::post('settings', 'Session\Settings@postHotel')->name('settings_hotel_post');
+  Route::get('settings/password', 'Session\Settings@account')->name('settings_password');
+  Route::post('settings/password', 'Session\Settings@postAccount')->name('settings_password');
   });
 Route::middleware(['changeTheme','Banned','Maintenance','Findretros'])->group(function () {
   Route::get('community', 'Session\Community@render')->name('community');
