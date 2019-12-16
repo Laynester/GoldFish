@@ -41,8 +41,8 @@
        <div class="form-group">
          <label for="title">Site Theme</label>
          <select name="theme" onkeypress="changePreview(this.value)" onchange="changePreview(this.value)">
-           <option value="goldfish">Goldfish</option>
-           <option value="legacy">Legacy</option>
+           <option value="GoldFish">Goldfish</option>
+           <option value="Legacy">Legacy</option>
          </select>
        </div>
     </div>
