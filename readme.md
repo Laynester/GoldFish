@@ -17,6 +17,7 @@ It offers the features that you'd normally expect from a Habbo retro CMS, the CM
 
 ## Setup guide
 To setup Goldfish CMS you'll need the following:
+- Clone this repository to your wanted destination
 - PHP 7.4
 - Composer
 - NPM
