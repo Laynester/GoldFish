@@ -1,6 +1,6 @@
 <div class="body_content">
   <div class="box_4">
-    <div class="heading">@yield('title')<a class="right" href="{{ route('hk_createnews') }}">Create new article</a></div>
+    <div class="heading">@yield('title')<a class="right" href="{{ route('hk.createnews') }}">Create new article</a></div>
     @if($errors->any())
     <div class="alert alert-success" role="alert">
       {{$errors->first()}}
@@ -18,7 +18,7 @@
         <td style="width:25%;">{{$article->caption}}</td>
         <td style="width:45%;">{{$article->desc}}</td>
         <td style="width:25%;">{{date('F d, Y', $article->date)}}</td>
-        <td style="width:5%;"><button class="link" onclick="window.location.href='{{ route('hk_editnews', [$article->id]) }}'">Edit</button><button onclick="window.location.href='{{ route('hk_newsdelete', [$article->id]) }}'" class="link">Delete</button></td>
+        <td style="width:5%;"><button class="link" onclick="window.location.href='{{ route('hk.editnews', [$article->id]) }}'">Edit</button><button onclick="window.location.href='{{ route('hk.newsdelete', [$article->id]) }}'" class="link">Delete</button></td>
       </tr>
       @endforeach
     </table>

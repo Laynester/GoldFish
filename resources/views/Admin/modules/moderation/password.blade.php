@@ -11,7 +11,7 @@
     @endif
     <div class="box_4">
         <div class="heading">Change a password </div>
-        <form method="post" action="{{ route('hk_users_password') }}">
+        <form method="post" action="{{ route('hk.users-password') }}">
             <div class="content">
                 <div class="row justify-content-center">
                     <div class="col-md-7">

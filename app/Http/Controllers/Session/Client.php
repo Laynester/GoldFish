@@ -7,11 +7,7 @@ use Illuminate\Support\Str;
 
 class Client extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-  public function render()
+  public function index()
   {
     $user = auth()->user();
     $user->auth_ticket = 'GoldFish-' . Str::uuid();

@@ -13,11 +13,7 @@ use Redirect;
 
 class Settings extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-  public function render()
+  public function index()
   {
     $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
     $hview = \File::allFiles(public_path('goldfish/images/me/views'));

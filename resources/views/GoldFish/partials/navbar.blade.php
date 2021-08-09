@@ -12,7 +12,7 @@
           @if(CMSHelper::fuseRights('dashboard'))
             <li><a href="/housekeeping">Housekeeping</a></li>
           @endif
-            <a class="enter_hotel right relative" href="{{ route('client') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}}</a>
+            <a class="enter_hotel right relative" href="{{ route('game.index') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}}</a>
          @endif
       </ul>
    </div>

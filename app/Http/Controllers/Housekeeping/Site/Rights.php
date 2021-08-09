@@ -10,7 +10,7 @@ use App\Models\User\Permissions;
 
 class Rights extends Controller
 {
-    public function render()
+    public function index()
     {
         if (CMS::fuseRights('site_rights')) {
             if (Request::isMethod('post')) {

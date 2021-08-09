@@ -4,10 +4,10 @@
   <div class="heading">Server Settings</div>
   <ul>
     @if(CMSHelper::fuseRights('server_client'))
-    <li><a href="{{ route('hk_server_client') }}">Client</a></li>
+    <li><a href="{{ route('hk.server-client') }}">Client</a></li>
     @endif
     @if(CMSHelper::fuseRights('server_emulator'))
-    <li><a href="{{ route('hk_server_emulator') }}">Emulator</a></li>
+    <li><a href="{{ route('hk.server-emulator') }}">Emulator</a></li>
     @endif
   </ul>
 </div>
@@ -17,10 +17,10 @@
   <div class="heading">Navigation</div>
   <ul>
     @if(CMSHelper::fuseRights('server_publics'))
-    <li><a href="{{ route('hk_server_publics') }}">Public Rooms</a></li>
+    <li><a href="{{ route('hk.server-publics') }}">Public Rooms</a></li>
     @endif
     @if(CMSHelper::fuseRights('server_publiccats'))
-    <li><a href="{{ route('hk_server_publiccats') }}">Public Categories</a></li>
+    <li><a href="{{ route('hk.server-publiccats') }}">Public Categories</a></li>
     @endif
   </ul>
 </div>
@@ -30,13 +30,13 @@
   <div class="heading">Hotel</div>
   <ul>
     @if(CMSHelper::fuseRights('server_vouchers'))
-    <li><a href="{{ route('hk_server_vouchers') }}">Voucher Codes</a></li>
+    <li><a href="{{ route('hk.server-vouchers') }}">Voucher Codes</a></li>
     @endif
     @if(CMSHelper::fuseRights('server_wordfilter'))
-    <li><a href="{{ route('hk_wordfilter') }}">WordFilter</a></li>
+    <li><a href="{{ route('hk.wordfilter') }}">WordFilter</a></li>
     @endif
     @if(CMSHelper::fuseRights('server_rcon'))
-    <li><a href="{{ route('hk_server_rcon') }}">RCON</a></li>
+    <li><a href="{{ route('hk.server-rcon') }}">RCON</a></li>
     @endif
   </ul>
 </div>
@@ -46,10 +46,10 @@
   <div class="heading">Users</div>
   <ul>
     @if(CMSHelper::fuseRights('server_logging'))
-    <li><a href="{{ route('hk_server_logs', ['hk']) }}">Housekeeping</a></li>
+    <li><a href="{{ route('hk.server-logs', ['hk']) }}">Housekeeping</a></li>
     @endif
     @if(CMSHelper::fuseRights('server_logging'))
-    <li><a href="{{ route('hk_server_logs', ['commands']) }}">Commands</a></li>
+    <li><a href="{{ route('hk.server-logs', ['commands']) }}">Commands</a></li>
     @endif
   </ul>
 </div>
@@ -61,13 +61,13 @@
   <div class="heading">Site Settings</div>
   <ul>
     @if(CMSHelper::fuseRights('site_settings_general'))
-    <li><a href="{{ route('hk_settings1') }}">General</a></li>
+    <li><a href="{{ route('hk.settings1') }}">General</a></li>
     @endif
     @if(CMSHelper::fuseRights('site_settings_social'))
-    <li><a href="{{ route('hk_settings2') }}">Social</a></li>
+    <li><a href="{{ route('hk.settings2') }}">Social</a></li>
     @endif
     @if(CMSHelper::fuseRights('site_rights'))
-    <li><a href="{{ route('hk_rights') }}">FuseRights</a></li>
+    <li><a href="{{ route('hk.rights') }}">FuseRights</a></li>
     @endif
   </ul>
 </div>
@@ -77,8 +77,8 @@
   <div class="heading">Content</div>
   <ul>
     @if(CMSHelper::fuseRights('site_news'))
-    <li><a href="{{ route('hk_newslist') }}">News</a></li>
-    <li><a href="{{ route('hk_createnews') }}">Create a News Article</a></li>
+    <li><a href="{{ route('hk.newslist') }}">News</a></li>
+    <li><a href="{{ route('hk.createnews') }}">Create a News Article</a></li>
     @endif
     @if(CMSHelper::fuseRights('site_alert'))
     <li><a href="{{ route('salert') }}">Site Alert</a></li>
@@ -93,16 +93,16 @@
   <div class="heading">Moderation</div>
   <ul>
     @if(CMSHelper::fuseRights('moderation_chatlog'))
-    <li><a href="{{ route('hk_chat_list') }}">Chatlog</a></li>
+    <li><a href="{{ route('hk.chat-list') }}">Chatlog</a></li>
     @endif
     @if(CMSHelper::fuseRights('moderation_user'))
-    <li><a href="{{ route('hk_user_lookup') }}">Lookup User</a></li>
+    <li><a href="{{ route('hk.user-lookup') }}">Lookup User</a></li>
     @endif
     @if(CMSHelper::fuseRights('moderation_banlist'))
-    <li><a href="{{ route('hk_user_bans') }}">Bans</a></li>
+    <li><a href="{{ route('hk.user-bans') }}">Bans</a></li>
     @endif
     @if(CMSHelper::fuseRights('moderation_online'))
-    <li><a href="{{ route('hk_users_online') }}">Online Users</a></li>
+    <li><a href="{{ route('hk.users-online') }}">Online Users</a></li>
     @endif
   </ul>
 </div>
@@ -112,10 +112,10 @@
   <div class="heading">Users</div>
   <ul>
     @if(CMSHelper::fuseRights('moderation_badges'))
-    <li><a href="{{ route('hk_user_badges') }}">Give a Badge</a></li>
+    <li><a href="{{ route('hk.user-badges') }}">Give a Badge</a></li>
     @endif
     @if(CMSHelper::fuseRights('moderation_password'))
-    <li><a href="{{ route('hk_users_password') }}">Reset Password</a></li>
+    <li><a href="{{ route('hk.users-password') }}">Reset Password</a></li>
     @endif
   </ul>
 </div>

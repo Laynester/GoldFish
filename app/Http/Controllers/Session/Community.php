@@ -8,7 +8,7 @@ use App\Models\User\User;
 
 class Community extends Controller
 {
-  public function render()
+  public function index()
   {
     $news = News::orderBy('date', 'DESC')->take(5)->get();
     $users = User::inRandomOrder()->take(16)->get();

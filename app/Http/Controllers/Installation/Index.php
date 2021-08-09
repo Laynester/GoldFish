@@ -18,7 +18,7 @@ class Index extends Controller
   {
     $this->middleware('installer');
   }
-  public function render()
+  public function index()
   {
     if (Request::isMethod('post')) {
       $host = env('DB_HOST');

@@ -9,7 +9,7 @@ use App\Models\Hotel\EmuSettings;
 
 class Emulator extends Controller
 {
-  public function render(Req $request)
+  public function index(Req $request)
   {
     if(CMS::fuseRights('server_emulator')){
       if (Request::isMethod('post'))

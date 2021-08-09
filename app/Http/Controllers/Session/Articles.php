@@ -7,7 +7,7 @@ use App\Models\CMS\News;
 
 class Articles extends Controller
 {
-  public function render()
+  public function index()
   {
     $news = News::orderBy('date', 'DESC')->paginate(5);
     return view('pages.community.articles', [
@@ -16,7 +16,7 @@ class Articles extends Controller
       ]
     );
   }
-  public function renderNews($id)
+  public function show($id)
   {
     if (empty($id)) {
       return redirect()->back();

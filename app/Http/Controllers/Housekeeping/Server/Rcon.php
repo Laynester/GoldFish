@@ -10,7 +10,7 @@ use App\Helpers\Rcon as DoRcon;
 
 class Rcon extends Controller
 {
-  public function render($key = '', Req $request)
+  public function index($key = '', Req $request)
   {
     if (CMS::fuseRights('server_rcon')) {
       if (!empty($key)) {

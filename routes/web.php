@@ -1,95 +1,151 @@
 <?php
 
 // Installer
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Housekeeping\Dashboard;
+use App\Http\Controllers\Housekeeping\Server\Emulator;
+use App\Http\Controllers\Housekeeping\Server\Logs;
+use App\Http\Controllers\Housekeeping\Server\Publics;
+use App\Http\Controllers\Housekeeping\Server\Rcon;
+use App\Http\Controllers\Housekeeping\Server\Vouchers;
+use App\Http\Controllers\Housekeeping\Server\Wordfilter;
+use App\Http\Controllers\Housekeeping\Site\Alert;
+use App\Http\Controllers\Housekeeping\Site\News;
+use App\Http\Controllers\Housekeeping\Site\Rights;
+use App\Http\Controllers\Housekeeping\Site\Settings1;
+use App\Http\Controllers\Housekeeping\Site\Settings2;
+use App\Http\Controllers\Housekeeping\Updater;
+use App\Http\Controllers\Housekeeping\UserMod\Badges;
+use App\Http\Controllers\Housekeeping\UserMod\Bans;
+use App\Http\Controllers\Housekeeping\UserMod\Chatlog;
+use App\Http\Controllers\Housekeeping\UserMod\Password;
+use App\Http\Controllers\Housekeeping\UserMod\User;
+use App\Http\Controllers\Installation\Index;
+use App\Http\Controllers\Session\Articles;
+use App\Http\Controllers\Session\Banned;
+use App\Http\Controllers\Session\Client;
+use App\Http\Controllers\Session\Community;
+use App\Http\Controllers\Session\Home;
+use App\Http\Controllers\Session\Leaderboards;
+use App\Http\Controllers\Session\Maintenance;
+use App\Http\Controllers\Session\Me;
+use App\Http\Controllers\Session\Photos;
+use App\Http\Controllers\Session\Settings;
+use App\Http\Controllers\Session\Staff;
+use App\Http\Controllers\Housekeeping\Server\Client as HousekeepingClient;
+
 Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
-  Route::get('/',function () {return redirect('installer/index');});
-  Route::any('index', 'Installation\Index@render')->name('installer');
-  Route::any('step/{id}', 'Installation\Index@steps')->name('steps');
+  Route::get('/' ,function () {
+        return redirect('installer/index');
+  });
+
+  Route::any('/index', [Index::class, 'index'])->name('installer');
+  Route::any('/step/{id}', [Index::class, 'steps'])->name('steps');
 });
 
 // Guest
-Route::middleware(['installer','changeTheme','Maintenance'])->group(function () {
-    Route::get('/', function () {return redirect('login');});
-    Route::get('index', function () {return redirect('login');})->name('index');
-    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+Route::middleware(['installer','changeTheme','Maintenance', 'guest'])->group(function () {
+    Route::get('/', function () {
+        return redirect('login');
+    });
+    Route::get('index', function () {
+        return redirect('login');
+    })->name('index');
+
     Auth::routes();
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-    Route::get('maintenance','Session\Maintenance@render')->name('maintenance');
-    Route::get('maintenance/login','Session\Maintenance@login')->name('maintenance_login');
-    Route::post('maintenance','Auth\LoginController@login');
-    Route::post('maintenance/login','Auth\LoginController@login');
+
+    // Login routes
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.index');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.store');
+    Route::get('/maintenance', [Maintenance::class, 'index'])->name('maintenance.index');
+    Route::get('/maintenance/login',[Maintenance::class, 'login'])->name('maintenance.login');
+    Route::post('maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
+    Route::post('maintenance/login', [LoginController::class, 'login']);
 });
 
 // Authenticated
-Route::middleware(['changeTheme','auth','Banned','Maintenance','Findretros'])->group(function () {
-  Route::get('banned', 'Session\Banned@render')->name('banned');
-  // Home
-  Route::get('me', 'Session\Me@render')->name('me');
-  Route::post('search', 'Session\Me@search')->name('me_search');
-  Route::get('me/delete/{id}', 'Session\Me@delete')->name('alertdelete');
-  Route::post('home/{username}/note','Session\Home@note')->name('home_note');
-  Route::get('client', 'Session\Client@render')->name('client');
-  Route::get('settings', 'Session\Settings@render')->name('settings');
-  Route::post('settings', 'Session\Settings@postHotel')->name('settings_hotel_post');
-  Route::get('settings/password', 'Session\Settings@account')->name('settings_password');
-  Route::post('settings/password', 'Session\Settings@postAccount')->name('settings_password');
-  });
-Route::middleware(['changeTheme','Banned','Maintenance','Findretros'])->group(function () {
-  Route::get('community', 'Session\Community@render')->name('community');
-  Route::get('community/articles', 'Session\Articles@render')->name('articles');
-  Route::get('community/articles/{id}', 'Session\Articles@renderNews')->name('articles');
-  Route::get('community/staff', 'Session\Staff@render')->name('staff');
-  Route::get('community/leaderboards', 'Session\Leaderboards@render')->name('leaderboards');
-  Route::get('community/photos', 'Session\Photos@render')->name('photos');
+Route::middleware(['changeTheme', 'Banned', 'Maintenance', 'Findretros'])->group(function () {
+    Route::middleware(['auth'])->group(function() {
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+        Route::get('/banned', [Banned::class, 'index'])->name('banned');
+
+        // Me routes
+        Route::get('/me', [Me::class, 'index'])->name('me.index');
+        Route::post('/search', [Me::class, 'search'])->name('me.search');
+        Route::get('/me/delete/{id}', [Me::class, 'destroy'])->name('alert.destroy');
+
+        // Settings routes
+        Route::get('/settings', [Settings::class, 'index'])->name('settings.index');
+        Route::post('/settings', [Settings::class, 'postHotel'])->name('settings.hotel-post');
+        Route::get('/settings/password', [Settings::class, 'account'])->name('settings.password');
+        Route::post('/settings/password', [Settings::class, 'postAccount'])->name('settings.password');
+
+        // User profile routes
+        Route::get('/home/{username}', [Home::class, 'showProfile'])->name('home');
+        Route::post('/home/{username}/note', [Home::class, 'note'])->name('home.note');
+        Route::get('/home/{username}/edit', [Home::class, 'showProfile'])->name('home.edit');
+        Route::post('/home/{username}/save', [Home::class, 'save'])->name('home.save');
+        Route::post('/home/{username}/delete', [Home::class, 'destroy'])->name('home.destroy');
+        Route::post('/home/{username}/add', [Home::class, 'add'])->name('home.add');
+        Route::post('/home/{username}/buy', [Home::class, 'buy'])->name('home.buy');
+        Route::get('/habblet/store', [Home::class, 'store'])->name('home.store');
+
+        // Game routes
+        Route::get('/client', [Client::class, 'index'])->name('game.index');
+    });
+
+    // Community routes
+    Route::get('/community', [Community::class, 'index'])->name('community.index');
+    Route::get('/community/articles', [Articles::class, 'index'])->name('articles.index');
+    Route::get('/community/articles/{id}', [Articles::class, 'show'])->name('articles.show');
+    Route::get('/community/staff', [Staff::class, 'index'])->name('staff.index');
+    Route::get('/community/leaderboards', [Leaderboards::class, 'index'])->name('leaderboards.index');
+    Route::get('/community/photos', [Photos::class, 'index'])->name('photos.index');
 });
-Route::middleware(['changeTheme','auth'])->group(function() {
-  Route::get('home/{username}', 'Session\Home@showProfile')->name('home');
-  Route::get('home/{username}/edit', 'Session\Home@showProfile')->name('home_edit');
-  Route::post('home/{username}/save', 'Session\Home@save')->name('home_save');
-  Route::post('home/{username}/delete', 'Session\Home@delete')->name('home_delete');
-  Route::post('home/{username}/add', 'Session\Home@add')->name('home_add');
-  Route::post('home/{username}/buy', 'Session\Home@buy')->name('home_buy');
-  Route::get('habblet/store','Session\Home@store')->name('home_store');
-});
+
 // Admin
 Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
-  Route::get('/', function () { return redirect('/housekeeping/dashboard'); });
-  Route::any('dashboard', 'Housekeeping\Dashboard@render')->name('dashboard');
-  Route::get('update/check','Housekeeping\Updater@check')->name('update_checker');
-  Route::get('update/update','Housekeeping\Updater@update')->name('updater');
-  Route::get('credits','Housekeeping\Dashboard@credits')->name('credits');
+    Route::get('/', function () {
+        return redirect('/housekeeping/dashboard');
+    });
 
-  //server
-  Route::any('server/client', 'Housekeeping\Server\Client@render')->name('hk_server_client');
-  Route::any('server/emulator', 'Housekeeping\Server\Emulator@render')->name('hk_server_emulator');
-  Route::any('server/publics', 'Housekeeping\Server\Publics@render')->name('hk_server_publics');
-  Route::any('server/publiccats/{id?}', 'Housekeeping\Server\Publics@categories')->name('hk_server_publiccats');
-  Route::any('server/publiccats/delete/{id}', 'Housekeeping\Server\Publics@categoriesremove')->name('hk_server_publiccats_delete');
-  Route::any('server/vouchers', 'Housekeeping\Server\Vouchers@render')->name('hk_server_vouchers');
-  Route::any('server/rcon/{key?}', 'Housekeeping\Server\Rcon@render')->name('hk_server_rcon');
-  Route::any('server/wordfilter', 'Housekeeping\Server\Wordfilter@render')->name('hk_wordfilter');
-  Route::get('server/log/{type}', 'Housekeeping\Server\Logs@render')->name('hk_server_logs');
+    // HK Dashboard
+    Route::any('/dashboard', [Dashboard::class, 'index'])->name('dashboard');
+    Route::get('/credits', [Dashboard::class, 'credits'])->name('credits');
 
-  // user & moderation
-  Route::any('moderation/chatlog/list', 'Housekeeping\UserMod\Chatlog@list')->name('hk_chat_list');
-  Route::get('moderation/chatlog/list/room/{id}', 'Housekeeping\UserMod\Chatlog@room')->name('hk_chat_list_room');
-  Route::get('moderation/chatlog/list/user/{id}', 'Housekeeping\UserMod\Chatlog@user')->name('hk_chat_list_user');
-  Route::any('moderation/lookup/user/{user?}', 'Housekeeping\UserMod\User@render')->name('hk_user_lookup');
-  Route::any('moderation/bans', 'Housekeeping\UserMod\Bans@render')->name('hk_user_bans');
-  Route::any('moderation/badges', 'Housekeeping\UserMod\Badges@render')->name('hk_user_badges');
-  Route::any('moderation/online', 'Housekeeping\UserMod\User@online')->name('hk_users_online');
-  Route::get('moderation/passwords', 'Housekeeping\UserMod\Password@render')->name('hk_users_password');
-  Route::post('moderation/passwords', 'Housekeeping\UserMod\Password@post')->name('hk_users_password');
+    // HK Updater
+    Route::get('/update/check', [Updater::class, 'check'])->name('update_checker');
+    Route::get('/update/update', [Updater::class, 'update'])->name('updater');
 
-  //site and content
-  Route::any('site/settings1', 'Housekeeping\Site\Settings1@render')->name('hk_settings1');
-  Route::any('site/settings2', 'Housekeeping\Site\Settings2@render')->name('hk_settings2');
-  Route::any('site/news/list', 'Housekeeping\Site\News@List')->name('hk_newslist');
-  Route::any('site/news/create', 'Housekeeping\Site\News@Create')->name('hk_createnews');
-  Route::any('site/news/edit/{id}', 'Housekeeping\Site\News@Edit')->name('hk_editnews');
-  Route::any('site/news/delete/{id}', 'Housekeeping\Site\News@Delete')->name('hk_newsdelete');
-  Route::any('site/alert', 'Housekeeping\Site\Alert@render')->name('salert');
-  Route::any('site/rights', 'Housekeeping\Site\Rights@render')->name('hk_rights');
+    // HK Server
+    Route::any('/server/client', [HousekeepingClient::class, 'index'])->name('hk.server-client');
+    Route::any('/server/emulator', [Emulator::class, 'index'])->name('hk.server-emulator');
+    Route::any('/server/publics', [Publics::class, 'index'])->name('hk.server-publics');
+    Route::any('/server/publiccats/{id?}',  [Publics::class, 'categories'])->name('hk.server-publiccats');
+    Route::any('/server/publiccats/destroy/{id}', [Publics::class, 'destroy'])->name('hk.server-publiccats.destroy');
+    Route::any('/server/vouchers', [Vouchers::class, 'index'])->name('hk.server-vouchers');
+    Route::any('/server/rcon/{key?}', [Rcon::class, 'index'])->name('hk.server-rcon');
+    Route::any('/server/wordfilter', [Wordfilter::class, 'index'])->name('hk.wordfilter');
+    Route::get('/server/log/{type}', [Logs::class, 'index'])->name('hk.server-logs');
+
+    // user & moderation
+    Route::any('/moderation/chatlog/list', [Chatlog::class, 'list'])->name('hk.chat-list');
+    Route::get('/moderation/chatlog/list/room/{id}', [Chatlog::class, 'room'])->name('hk.chat-list-room');
+    Route::get('/moderation/chatlog/list/user/{id}', [Chatlog::class, 'user'])->name('hk.chat-list-user');
+    Route::any('/moderation/lookup/user/{user?}', [User::class, 'index'])->name('hk.user-lookup');
+    Route::any('/moderation/online', [User::class, 'online'])->name('hk.users-online');
+    Route::any('/moderation/bans', [Bans::class, 'index'])->name('hk.user-bans');
+    Route::any('/moderation/badges', [Badges::class, 'index'])->name('hk.user-badges');
+    Route::get('/moderation/passwords', [Password::class, 'index'])->name('hk.users-password');
+    Route::post('/moderation/passwords', [Password::class, 'update'])->name('hk.users-password');
+
+    //site and content
+    Route::any('/site/settings1', [Settings1::class, 'index'])->name('hk.settings1');
+    Route::any('/site/settings2', [Settings2::class, 'render'])->name('hk.settings2');
+    Route::any('/site/news/list', [News::class, 'List'])->name('hk.newslist');
+    Route::any('/site/news/create', [News::class, 'Create'])->name('hk.createnews');
+    Route::any('/site/news/edit/{id}', [News::class, 'Edit'])->name('hk.editnews');
+    Route::any('/site/news/delete/{id}', [News::class, 'Delete'])->name('hk.newsdelete');
+    Route::any('/site/alert', [Alert::class, 'index'])->name('salert');
+    Route::any('/site/rights', [Rights::class, 'index'])->name('hk.rights');
 });

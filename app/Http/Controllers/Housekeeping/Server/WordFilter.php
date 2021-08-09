@@ -10,7 +10,7 @@ use App\Models\Hotel\Wordfilter as Insert;
 
 class Wordfilter extends Controller
 {
-  public function render(Req $request)
+  public function index(Req $request)
   {
     if (CMS::fuseRights('server_wordfilter')) {
       if (Request::isMethod('post')) {

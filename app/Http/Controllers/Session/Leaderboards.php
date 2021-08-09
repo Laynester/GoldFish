@@ -10,7 +10,7 @@ use App\Models\User\Achievements;
 
 class Leaderboards extends Controller
 {
-  public function render()
+  public function index()
   {
     $coins       = User::where('rank', '<', 3)->orderBy('credits', 'desc')->take(5)->get();
     $diamonds    = User_Currency::whereHas('habbo', function ($q) {$q->where('rank', '<', '3');})->where('type', 5)->take(5)->orderBy('amount', 'desc')->get();

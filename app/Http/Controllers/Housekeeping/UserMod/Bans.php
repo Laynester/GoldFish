@@ -12,7 +12,7 @@ use App\Helpers\Rcon;
 
 class Bans extends Controller
 {
-  public function render(Req $request)
+  public function index(Req $request)
   {
     if (CMS::fuseRights('moderation_banlist')) {
       if (Request::isMethod('post')) {

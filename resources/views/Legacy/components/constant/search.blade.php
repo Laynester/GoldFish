@@ -6,7 +6,7 @@
             {{$errors->first()}}
         </div>
         @endif
-        <form action="{{ route('me_search') }}" method="post">
+        <form action="{{ route('me.search') }}" method="post">
             <div class="form-group">
                 @csrf
                 <input type="text" name="search" placeholder="Search for a {{CMSHelper::settings('hotelname')}}">

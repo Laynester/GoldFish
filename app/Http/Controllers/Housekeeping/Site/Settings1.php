@@ -10,7 +10,7 @@ use App\Models\User\Permissions;
 
 class Settings1 extends Controller
 {
-  public function render()
+  public function index()
   {
     if (CMS::fuseRights('site_settings_general')) {
       if (isset($_GET['cache'])) {

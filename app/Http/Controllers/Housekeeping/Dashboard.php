@@ -9,7 +9,7 @@ use Request;
 
 class Dashboard extends Controller
 {
-  public function render()
+  public function index()
   {
     if (CMS::fuseRights('dashboard')) {
       if (Request::isMethod('post')) {

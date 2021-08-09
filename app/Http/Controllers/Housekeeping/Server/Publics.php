@@ -13,7 +13,7 @@ use App\Helpers\Rcon;
 
 class Publics extends Controller
 {
-  public function render($id = null, Req $request)
+  public function index($id = null, Req $request)
   {
     if (CMS::fuseRights('server_publics')) {
       if (Request::isMethod('post')) {
@@ -129,7 +129,7 @@ class Publics extends Controller
       return redirect('housekeeping/dashboard');
     }
   }
-  public static function categoriesremove($id)
+  public static function destroy($id)
   {
     if (CMS::fuseRights('server_publiccats')) {
       Navigator_Pubcat::where('id', $id)->delete();

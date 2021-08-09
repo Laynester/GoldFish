@@ -7,7 +7,7 @@ use App\Models\User\User;
 
 class Staff extends Controller
 {
-  public function render()
+  public function index()
   {
     $users = User::where('rank', '>', 3)->get();
     return view('pages.community.staff', [

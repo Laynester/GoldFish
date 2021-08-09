@@ -84,8 +84,8 @@
         </td>
         <td style="width:10%;">{{$row->order_num}}</td>
         <td style="width:10%;">
-          <a href="/housekeeping/server/publiccats/{{$row->id}}">Edit</a></br>
-          <a href="/housekeeping/server/publiccats/delete/{{$row->id}}">Remove</a>
+          <a href="/housekeeping/server/publiccats/{{$row->id}}">Edit</a><br>
+          <a href="{{ route('hk.server-publiccats.destroy', $row->id) }}">Remove</a>
         </td>
       </tr>
       @endforeach

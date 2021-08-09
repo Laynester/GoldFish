@@ -22,16 +22,16 @@
         <ul>
           <li id="dashboard" @if($group == 'dashboard') class="active" @endif><a href="{{ route('dashboard') }}">Dashboard</a></li>
           @if(CMSHelper::fuseRights('server'))
-          <li id="server" @if($group == 'server') class="active" @endif><a href="{{ route('hk_server_client')}}">Server</a></li>
+          <li id="server" @if($group == 'server') class="active" @endif><a href="{{ route('hk.server-client')}}">Server</a></li>
           @endif
           @if(CMSHelper::fuseRights('site'))
-          <li id="site" @if($group == 'site') class="active" @endif><a href="{{ route('hk_newslist') }}">Site & Content</a></li>
+          <li id="site" @if($group == 'site') class="active" @endif><a href="{{ route('hk.newslist') }}">Site & Content</a></li>
           @endif
           @if(CMSHelper::fuseRights('moderation'))
-          <li id="user" @if($group == 'user') class="active" @endif><a href="{{ route('hk_chat_list') }}">Users & Moderation</a></li>
+          <li id="user" @if($group == 'user') class="active" @endif><a href="{{ route('hk.chat-list') }}">Users & Moderation</a></li>
           @endif
           <li id="credits" @if($group == 'credits') class="active" @endif><a href="{{ route('credits') }}">GoldFishCMS</a></li>
-          <li id="back"><a href="{{ route('me') }}">Back to Site</a></li>
+          <li id="back"><a href="{{ route('me.index') }}">Back to Site</a></li>
         </ul>
       </div>
       <div class="hk_welcome">
