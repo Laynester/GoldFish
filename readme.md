@@ -37,4 +37,4 @@ php artisan key:generate
 php artisan migrate
 ```
 
-If all of the above steps has been done correctly / successfully, you should be promped with an easy to follow installation process, once that has been finished, your CMS should be ready to use!
+If all of the above steps has been done correctly / successfully, you should be prompted with an easy to follow installation process, once that has been finished, your CMS should be ready to use!
