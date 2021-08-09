@@ -41,6 +41,8 @@ Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () 
 
   Route::any('/index', [Index::class, 'index'])->name('installer');
   Route::any('/step/{id}', [Index::class, 'steps'])->name('steps');
+
+
 });
 
 // Guest
@@ -51,6 +53,8 @@ Route::middleware(['installer','changeTheme','Maintenance', 'guest'])->group(fun
     Route::get('index', function () {
         return redirect('login');
     })->name('index');
+
+
 
     Auth::routes();
 
@@ -66,6 +70,7 @@ Route::middleware(['installer','changeTheme','Maintenance', 'guest'])->group(fun
 // Authenticated
 Route::middleware(['changeTheme', 'Banned', 'Maintenance', 'Findretros'])->group(function () {
     Route::middleware(['auth'])->group(function() {
+        Route::get('logout', [LoginController::class, 'logout']);
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/banned', [Banned::class, 'index'])->name('banned');
 

@@ -5,7 +5,7 @@
   <div class="legacy-box blue">
     <div class="heading">Sign in</div>
     <div class="content">
-      <form method="POST" id="loginForm"{{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login') : '')}}>
+      <form method="POST" id="loginForm"{{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login.index') : '')}}>
         @csrf
         <div class="form-group">
           <input id="username" placeholder="Username" type="text" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
