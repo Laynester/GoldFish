@@ -3,6 +3,9 @@
 ## What is Goldfish CMS?
 Goldfish CMS is a Habbo retro CMS built to allow you to setup your retro easily but without sacrifising features or the habbo feeling.
 
+## Who made Goldfish CMS?
+Goldfish CMS was originally made by [Laynester](https://github.com/Laynester/GoldFish)
+
 ## What does Goldfish CMS offer?
 Goldfish CMS offers a modern and industry approved backend, featuring the PHP framework Laravel.
 
