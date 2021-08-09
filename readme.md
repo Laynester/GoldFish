@@ -28,13 +28,13 @@ After all of the above has been installed you've to do the following:
 ```
 composer install
 npm install && npm run dev
-php artisan migrate
 ```
 
 Once the above commands has been executed, go to your CMS folder and create a file called .env and copy the content of the .env-example file into your .env file, then edit database details to fit yours. Once that has been done run the following commands:
 
 ```
 php artisan key:generate
+php artisan migrate
 ```
 
 If all of the above steps has been done correctly / successfully, you should be promped with an easy to follow installation process, once that has been finished, your CMS should be ready to use!
