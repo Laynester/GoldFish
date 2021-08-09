@@ -10,7 +10,7 @@ use App\Models\CMS\Settings;
 
 class Client extends Controller
 {
-  public function render(Req $request)
+  public function index(Req $request)
   {
     if (CMS::fuseRights('server_client')) {
       if (Request::isMethod('post')) {
@@ -52,7 +52,7 @@ class Client extends Controller
         ]);
         return redirect()->back()->withSuccess('Updated client settings!');
       }
-      return view('server.client',[ 
+      return view('server.client',[
           'group' => 'server',
         ]
       );

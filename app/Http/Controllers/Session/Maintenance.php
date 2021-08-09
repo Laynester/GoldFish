@@ -8,7 +8,7 @@ use App\Models\CMS\News;
 
 class Maintenance extends Controller
 {
-    public function render()
+    public function index()
     {
         if (CMS::settings('maintenance') == 1) {
             if (Auth()->User() && Auth()->User()->rank >= CMS::settings('maintenance_rank')) {

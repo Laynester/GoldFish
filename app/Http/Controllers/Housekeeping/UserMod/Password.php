@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class Password extends Controller
 {
-  public function render()
+  public function index()
   {
     if (CMS::fuseRights('moderation_password')) {
         return view('usermod.password', [
@@ -19,7 +19,7 @@ class Password extends Controller
         return redirect('housekeeping/dashboard');
     }
   }
-  public function post()
+  public function update()
   {
     if (CMS::fuseRights('moderation_password')) {
         $user = \App\Models\User\User::where('username', request()->get('username'))->first();

@@ -10,7 +10,7 @@ use App\Models\Hotel\Vouchers as Insert;
 
 class Vouchers extends Controller
 {
-  public function render(Req $request)
+  public function index(Req $request)
   {
     if (CMS::fuseRights('server_vouchers')) {
       if (Request::isMethod('post')) {

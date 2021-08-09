@@ -12,7 +12,7 @@ use App\Models\Hotel\Chatlog;
 
 class User extends Controller
 {
-  public function render($user = null, Req $request)
+  public function index($user = null, Req $request)
   {
     if (CMS::fuseRights('moderation_user')) {
       if (Request::isMethod('post')) {

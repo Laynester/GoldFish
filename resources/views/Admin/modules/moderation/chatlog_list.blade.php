@@ -13,7 +13,7 @@
     <div class="col-lg-6">
       <div class="box_4">
         <div class="heading">Lookup by Room</div>
-        <form method="post" action="{{ route('hk_chat_list') }}">
+        <form method="post" action="{{ route('hk.chat-list') }}">
           <div class="content">
             <div class="row justify-content-center">
               <div class="col-md-6">
@@ -35,7 +35,7 @@
     <div class="col-lg-6">
       <div class="box_4">
         <div class="heading">Lookup by Username</div>
-        <form method="post" action="{{ route('hk_chat_list') }}">
+        <form method="post" action="{{ route('hk.chat-list') }}">
           <div class="content">
             <div class="row justify-content-center">
               <div class="col-md-6">

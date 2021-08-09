@@ -9,11 +9,7 @@ use App\Models\Hotel\Friendship;
 
 class Me extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-  public function render()
+  public function index()
   {
     $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->take(32)->get();
     $news = News::orderBy('date', 'DESC')->take(3)->get();
@@ -31,7 +27,7 @@ class Me extends Controller
       ]
     );
   }
-  public function delete($id)
+  public function destroy($id)
   {
     \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id', $id)->delete();
     return redirect()->back();

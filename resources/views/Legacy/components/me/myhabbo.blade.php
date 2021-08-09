@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="col-sm-6">
-        <a class="faux-button green" href="{{ route('client') }}" target="_blank">
+        <a class="faux-button green" href="{{ route('game.index') }}" target="_blank">
           Enter {{CMSHelper::settings('hotelname')}}
         </a>
       </div>

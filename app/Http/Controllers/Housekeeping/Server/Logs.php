@@ -6,7 +6,7 @@ use App\Helpers\CMS;
 
 class Logs extends Controller
 {
-  public function render($type)
+  public function index($type)
   {
     if(CMS::fuseRights('server_logging')){
         switch ($type) {

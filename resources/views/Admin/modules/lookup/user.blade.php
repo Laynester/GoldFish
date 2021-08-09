@@ -96,7 +96,7 @@
       </table>
       <h4>Detected Alts</h4>
       @foreach($alt as $account)
-      <b><a href="{{ route('hk_user_lookup', [$account->username]) }}"> {{$account->username}},</a></b>
+      <b><a href="{{ route('hk.user-lookup', [$account->username]) }}"> {{$account->username}},</a></b>
       @endforeach
     </div>
     <div class="end">

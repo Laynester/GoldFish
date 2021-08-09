@@ -8,7 +8,7 @@ use App\Helpers\CMS;
 
 class Alert extends Controller
 {
-  public function render()
+  public function index()
   {
     if (CMS::fuseRights('site_alert')) {
       if (isset($_GET['delete'])) {

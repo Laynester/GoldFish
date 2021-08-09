@@ -7,7 +7,7 @@ use App\Models\CMS\Camera_web;
 
 class Photos extends Controller
 {
-  public function render()
+  public function index()
   {
     $photos = Camera_web::whereHas('habbo')->orderBy('timestamp', 'DESC')->paginate(16);
     return view('pages.community.photos', [

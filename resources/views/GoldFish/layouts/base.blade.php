@@ -25,7 +25,7 @@
       <div class="login-section">
         <div class="container">
           <div class="login-inputs">
-            <form method="POST" id="loginForm"{{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login') : '')}}>
+            <form method="POST" id="loginForm" {{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login.store') : '')}}>
               @csrf
               <div class="login-input">
               <input id="username" type="text" class="form-control input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -50,7 +50,16 @@
           @if (Auth::user())
             <ul class="header_options">
               <li class="settings left" onclick="window.location.href='/settings'"></li>
-              <li class="logout left" onclick="window.location.href='/logout'"></li>
+
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                  <li class="logout left" id="logout">
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </li>
+                </a>
             </ul>
           <div class="userinfo no-mobile">
             <div class="purse">

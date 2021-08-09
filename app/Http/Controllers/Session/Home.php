@@ -95,7 +95,7 @@ array('user_id' => $user->id,'type' => 's','name' => 'paper_clip_1','z' => 150,'
       ]);
     }
   }
-  public function delete() {
+  public function destroy() {
     $area = Request::json()->all();
     if($area['type'] == 'n') {
       Homes::where('user_id', auth()->user()->id)->where('id',$area['id'])->delete();
