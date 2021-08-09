@@ -239,5 +239,5 @@ return [
         'Maintenance' => App\Http\Middleware\Maintenance::class
 
     ],
-    'version_number' => '1.4.0'
+    'version_number' => '1.4.1'
 ];
