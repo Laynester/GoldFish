@@ -9,17 +9,17 @@ Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () 
 
 // Guest
 Route::middleware(['installer','changeTheme','Maintenance'])->group(function () {
-  Route::get('/', function () {return redirect('login');});
-  Route::get('index', function () {return redirect('login');})->name('index');
-  Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-  Auth::routes();
-  Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-  Route::post('login', 'Auth\LoginController@login');
-  Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-  Route::get('maintenance','Session\Maintenance@render')->name('maintenance');
-  Route::get('maintenance/login','Session\Maintenance@login')->name('maintenance_login');
-  Route::post('maintenance','Auth\LoginController@login');
-  Route::post('maintenance/login','Auth\LoginController@login');
+    Route::get('/', function () {return redirect('login');});
+    Route::get('index', function () {return redirect('login');})->name('index');
+    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+    Auth::routes();
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('maintenance','Session\Maintenance@render')->name('maintenance');
+    Route::get('maintenance/login','Session\Maintenance@login')->name('maintenance_login');
+    Route::post('maintenance','Auth\LoginController@login');
+    Route::post('maintenance/login','Auth\LoginController@login');
 });
 
 // Authenticated
