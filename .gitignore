@@ -1,5 +1,6 @@
 /node_modules
 /public/hot
+/public/client
 /public/storage
 /storage/*.key
 /vendor
@@ -13,4 +14,3 @@ yarn-error.log
 file.tgz
 .idea
 .vscode
-.env

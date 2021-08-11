@@ -21,6 +21,7 @@ use App\Http\Controllers\Housekeeping\UserMod\Chatlog;
 use App\Http\Controllers\Housekeeping\UserMod\Password;
 use App\Http\Controllers\Housekeeping\UserMod\User;
 use App\Http\Controllers\Installation\Index;
+use App\Http\Controllers\NitroController;
 use App\Http\Controllers\Session\Articles;
 use App\Http\Controllers\Session\Banned;
 use App\Http\Controllers\Session\Client;
@@ -97,6 +98,7 @@ Route::middleware(['changeTheme', 'Banned', 'Maintenance', 'Findretros'])->group
 
         // Game routes
         Route::get('/client', [Client::class, 'index'])->name('game.index');
+        Route::get('/nitro', [NitroController::class, 'index'])->name('nitro.index');
     });
 
     // Community routes
