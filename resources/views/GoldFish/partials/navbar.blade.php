@@ -13,6 +13,7 @@
             <li><a href="/housekeeping">Housekeeping</a></li>
           @endif
             <a class="enter_hotel right relative" href="{{ route('game.index') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}}</a>
+            <a class="enter_hotel right relative" href="{{ route('nitro.index') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}} (HTML5)</a>
          @endif
       </ul>
    </div>
