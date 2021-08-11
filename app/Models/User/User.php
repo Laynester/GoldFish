@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\User\Permissions;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'username', 'mail', 'password','last_login', 'ip_register', 'ip_current', 'account_created', 'motto', 'rank'
+        'id', 'username', 'mail', 'password','last_login', 'ip_register', 'ip_current', 'account_created', 'motto', 'rank', 'auth_ticket'
     ];
 
     /**
@@ -53,5 +54,20 @@ class User extends Authenticatable
     public function rank_name()
     {
         return $this->belongsTo(Permissions::class, 'rank');
+    }
+
+    public function ssoTicket()
+    {
+        $sso = 'GoldFish-' . Str::uuid();
+
+        if (User::where('auth_ticket', $sso)->exists()) {
+            return $this->ssoTicket();
+        }
+
+        $this->update([
+           'auth_ticket' => $sso
+        ]);
+
+        return $sso;
     }
 }

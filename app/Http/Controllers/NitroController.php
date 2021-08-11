@@ -8,11 +8,7 @@ class NitroController extends Controller
 {
     public function index()
     {
-        $sso = Str::uuid();
-
-        auth()->user()->update([
-            'auth_ticket' => $sso
-        ]);
+        $sso = auth()->user()->ssoTicket();
 
         return view('nitro', [
             'sso' => $sso
