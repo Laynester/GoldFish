@@ -11,7 +11,7 @@ use App\Models\Hotel\Navigator_Publics;
 use App\Models\Hotel\Room;
 use App\Helpers\Rcon;
 
-class Publics extends Controller
+class PublicsController extends Controller
 {
   public function index($id = null, Req $request)
   {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\News;
 
-class Maintenance extends Controller
+class MaintenanceController extends Controller
 {
     public function index()
     {

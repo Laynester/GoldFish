@@ -8,9 +8,9 @@ use App\Helpers\CMS;
 use App\Models\CMS\FuseRight;
 use App\Models\User\Permissions;
 
-class Rights extends Controller
+class RightsController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         if (CMS::fuseRights('site_rights')) {
             if (Request::isMethod('post')) {

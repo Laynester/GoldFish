@@ -12,6 +12,7 @@
             <p>
                 <h3>@yield('title')</h3>
                 <strong>Laynester</strong> - Main development <br>
+                <strong>Object</strong> - Further updates <br>
                 <strong>Harmony</strong> - Taught Laynester basic Laravel <br>
                 <strong>Leenster</strong> - Taught Laynester PHP/HTML/CSS/JS <br>
                 <strong>Beny</strong> - Loading screen design <br>
@@ -35,11 +36,7 @@
             <p>
                 <h3>Laravel</h3>
                 <span>If you'd like to edit your copy of <strong>GoldFish</strong>, check out Laravel Docs</span><br>
-                <a href="https://laravel.com/docs/5.8/routing">Routes (specify controllers for pages)</a><br>
-                <a href="https://laravel.com/docs/5.8/controllers">Controllers (backend of pages)</a><br>
-                <a href="https://laravel.com/docs/5.8/blade">Blade (pages/components)</a><br>
-                <a href="https://laravel.com/docs/5.8/views">Views (page layouts)</a><br>
-                <a href="https://laravel.com/docs/5.8/eloquent">Eloquent (queries/database)</a>
+                <a href="https://laravel.com/docs/8.x">Laravel documentation</a><br>
             </p>
         </div>
     </div>

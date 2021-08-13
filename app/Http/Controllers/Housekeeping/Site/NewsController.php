@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\News as Insert;
 
-class News extends Controller
+class NewsController extends Controller
 {
   public function Create(Req $request)
   {

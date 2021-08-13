@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\Hotel\Chatlog as Chats;
 
-class Chatlog extends Controller
+class ChatlogController extends Controller
 {
   public function List()
   {

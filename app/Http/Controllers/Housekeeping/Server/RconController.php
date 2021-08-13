@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Helpers\Rcon as DoRcon;
 
-class Rcon extends Controller
+class RconController extends Controller
 {
-  public function index($key = '', Req $request)
+  public function __invoke($key = '', Req $request)
   {
     if (CMS::fuseRights('server_rcon')) {
       if (!empty($key)) {

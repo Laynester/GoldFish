@@ -10,7 +10,7 @@ use App\Models\CMS\Homes;
 use Request;
 use App\Helpers\CMS;
 
-class Home extends Controller
+class HomeController extends Controller
 {
   public function showProfile($username)
   {

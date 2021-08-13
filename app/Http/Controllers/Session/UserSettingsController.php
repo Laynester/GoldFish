@@ -11,7 +11,7 @@ use Illuminate\Http\Request as Req;
 use Validator;
 use Redirect;
 
-class Settings extends Controller
+class UserSettingsController extends Controller
 {
   public function index()
   {

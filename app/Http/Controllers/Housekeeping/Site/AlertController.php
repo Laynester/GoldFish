@@ -6,9 +6,9 @@ use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 
-class Alert extends Controller
+class AlertController extends Controller
 {
-  public function index()
+  public function __invoke()
   {
     if (CMS::fuseRights('site_alert')) {
       if (isset($_GET['delete'])) {

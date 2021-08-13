@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Session;
 use App\Http\Controllers\Controller;
 use App\Models\CMS\News;
 
-class Articles extends Controller
+class ArticlesController extends Controller
 {
   public function index()
   {

@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\Settings;
 
-class Client extends Controller
+class ClientController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if (CMS::fuseRights('server_client')) {
       if (Request::isMethod('post')) {

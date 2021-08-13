@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CMS\News;
 use App\Models\Hotel\Friendship;
 
-class Me extends Controller
+class MeController extends Controller
 {
   public function index()
   {

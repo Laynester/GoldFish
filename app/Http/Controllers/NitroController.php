@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
-
 class NitroController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        $sso = auth()->user()->ssoTicket();
-
         return view('nitro', [
-            'sso' => $sso
+            'sso' => auth()->user()->ssoTicket()
         ]);
     }
 

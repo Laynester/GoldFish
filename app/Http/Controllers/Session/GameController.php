@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
-class Client extends Controller
+class GameController extends Controller
 {
-  public function index()
+  public function __invoke()
   {
-      $sso = auth()->user()->ssoTicket();
-
       return view('pages.client', [
-          'sso' => $sso
+          'sso' => auth()->user()->ssoTicket()
       ]);
   }
 }
