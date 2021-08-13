@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Carbon\Carbon;
 use App\Models\User\User;
 use App\Http\Controllers\Controller;
@@ -44,40 +45,55 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-      return Validator::make($data, [
-          'username' => 'required|max:255|unique:users|alpha_dash',
-          'mail' => 'required|email|max:255|unique:users',
-          'password' => 'required|min:6|confirmed',
-      ]);
+        return Validator::make($data, [
+            'username' => 'required|max:255|unique:users|alpha_dash',
+            'mail' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-      return User::create([
-        'username' => $data['username'],
-        'mail' => $data['mail'],
-        'password' => Hash::make($data['password']),
-        'ip_register' => request()->ip(),
-        'ip_current' => request()->ip(),
-        'last_login' => time(),
-        'account_created' => time(),
-        'motto' => CMS::settings('default_motto')
-      ]);
+        $user = User::create([
+            'username' => $data['username'],
+            'mail' => $data['mail'],
+            'password' => Hash::make($data['password']),
+            'ip_register' => request()->ip(),
+            'ip_current' => request()->ip(),
+            'last_login' => time(),
+            'account_created' => time(),
+            'motto' => CMS::settings('default_motto'),
+            'credits' => CMS::settings('reg_credits'),
+        ]);
+
+        $regCurrency = [
+            ['type' => 0, 'amount' => CMS::settings('reg_duckets')],
+            ['type' => 5, 'amount' => CMS::settings('reg_diamonds')],
+            ['type' => 101, 'amount' => CMS::settings('reg_points')],
+        ];
+
+        foreach ($regCurrency as $currency) {
+            $user->currencies()->create($currency);
+        }
+        
+        return $user;
     }
-    public static function showRegistrationForm() {
-      return view('auth.register',[
-        'group' => 'register',
-      ]);
+
+    public static function showRegistrationForm()
+    {
+        return view('auth.register', [
+            'group' => 'register',
+        ]);
     }
 }

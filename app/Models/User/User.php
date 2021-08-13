@@ -2,6 +2,7 @@
 
 namespace App\Models\User;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'username', 'mail', 'password','last_login', 'ip_register', 'ip_current', 'account_created', 'motto', 'rank', 'auth_ticket'
+        'id', 'username', 'mail', 'password', 'last_login', 'ip_register', 'ip_current', 'account_created', 'credits', 'motto', 'rank', 'auth_ticket'
     ];
 
     /**
@@ -41,11 +42,16 @@ class User extends Authenticatable
     ];
     public function diamonds()
     {
-        return $this->hasOne('App\Models\User\User_Currency', 'user_id', 'id')->where('type', '5');
+        return $this->hasOne(UserCurrency::class, 'user_id', 'id')->where('type', '5');
     }
     public function duckets()
     {
-        return $this->hasOne('App\Models\User\User_Currency', 'user_id', 'id')->where('type', '0');
+        return $this->hasOne(UserCurrency::class, 'user_id', 'id')->where('type', '0');
+    }
+
+    public function points()
+    {
+        return $this->hasOne(UserCurrency::class, 'user_id', 'id')->where('type', '101');
     }
     public function getRouteKeyName()
     {
@@ -69,5 +75,10 @@ class User extends Authenticatable
         ]);
 
         return $sso;
+    }
+
+    public function currencies(): HasMany
+    {
+        return $this->hasMany(UserCurrency::class);
     }
 }
