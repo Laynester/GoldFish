@@ -12,7 +12,7 @@ use App\Helpers\CMS;
 use App\Models\User\Permissions;
 use DB;
 
-class Index extends Controller
+class IndexController extends Controller
 {
   public function __construct()
   {

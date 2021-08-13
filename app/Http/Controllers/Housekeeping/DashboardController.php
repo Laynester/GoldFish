@@ -7,7 +7,7 @@ use App\Helpers\CMS;
 use App\Models\CMS\Settings;
 use Request;
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
   public function index()
   {

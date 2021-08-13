@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Session;
 use App\Http\Controllers\Controller;
 use App\Models\User\Bans;
 
-class Banned extends Controller
+class BannedController extends Controller
 {
     public function index()
     {

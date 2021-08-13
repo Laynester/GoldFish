@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\Hotel\EmuSettings;
 
-class Emulator extends Controller
+class EmulatorController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if(CMS::fuseRights('server_emulator')){
       if (Request::isMethod('post'))

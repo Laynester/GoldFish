@@ -10,7 +10,7 @@ use App\Models\User\User as Users;
 use App\Models\Hotel\Chatlog;
 
 
-class User extends Controller
+class UserController extends Controller
 {
   public function index($user = null, Req $request)
   {

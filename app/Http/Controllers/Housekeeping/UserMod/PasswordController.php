@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use Illuminate\Support\Facades\Hash;
 
-class Password extends Controller
+class PasswordController extends Controller
 {
   public function index()
   {

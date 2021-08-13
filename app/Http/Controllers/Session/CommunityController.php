@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\CMS\News;
 use App\Models\User\User;
 
-class Community extends Controller
+class CommunityController extends Controller
 {
-  public function index()
+  public function __invoke()
   {
     $news = News::orderBy('date', 'DESC')->take(5)->get();
     $users = User::inRandomOrder()->take(16)->get();

@@ -8,9 +8,9 @@ use App\Helpers\CMS;
 use App\Models\CMS\Settings;
 use App\Models\User\Permissions;
 
-class Settings1 extends Controller
+class Settings1Controller extends Controller
 {
-  public function index()
+  public function __invoke()
   {
     if (CMS::fuseRights('site_settings_general')) {
       if (isset($_GET['cache'])) {

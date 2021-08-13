@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Housekeeping\Server;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 
-class Logs extends Controller
+class LogsController extends Controller
 {
-  public function index($type)
+  public function __invoke($type)
   {
     if(CMS::fuseRights('server_logging')){
         switch ($type) {

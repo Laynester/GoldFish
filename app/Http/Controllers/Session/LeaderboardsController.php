@@ -8,9 +8,9 @@ use App\Models\User\User_currency;
 use App\Models\User\User_Setting;
 use App\Models\User\Achievements;
 
-class Leaderboards extends Controller
+class LeaderboardsController extends Controller
 {
-  public function index()
+  public function __invoke()
   {
     $coins       = User::where('rank', '<', 3)->orderBy('credits', 'desc')->take(5)->get();
     $diamonds    = User_Currency::whereHas('habbo', function ($q) {$q->where('rank', '<', '3');})->where('type', 5)->take(5)->orderBy('amount', 'desc')->get();

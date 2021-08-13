@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\Settings;
 
-class Settings2 extends Controller
+class Settings2Controller extends Controller
 {
-  public function render()
+  public function __invoke()
   {
     if (CMS::fuseRights('site_settings_social')) {
       if (Request::isMethod('post')) {

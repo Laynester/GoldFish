@@ -10,9 +10,9 @@ use App\Models\User\Bans as BanList;
 use App\Helpers\Rcon;
 
 
-class Bans extends Controller
+class BansController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if (CMS::fuseRights('moderation_banlist')) {
       if (Request::isMethod('post')) {

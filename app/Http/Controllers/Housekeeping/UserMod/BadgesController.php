@@ -9,9 +9,9 @@ use App\Helpers\CMS;
 use App\Helpers\Rcon;
 
 
-class Badges extends Controller
+class BadgesController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if (CMS::fuseRights('moderation_badges')) {
       if (Request::isMethod('post')) {

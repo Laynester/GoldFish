@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Session;
 use App\Http\Controllers\Controller;
 use App\Models\CMS\Camera_web;
 
-class Photos extends Controller
+class PhotosController extends Controller
 {
-  public function index()
+  public function __invoke()
   {
     $photos = Camera_web::whereHas('habbo')->orderBy('timestamp', 'DESC')->paginate(16);
     return view('pages.community.photos', [

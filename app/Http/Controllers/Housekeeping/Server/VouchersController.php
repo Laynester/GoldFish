@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\Hotel\Vouchers as Insert;
 
-class Vouchers extends Controller
+class VouchersController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if (CMS::fuseRights('server_vouchers')) {
       if (Request::isMethod('post')) {

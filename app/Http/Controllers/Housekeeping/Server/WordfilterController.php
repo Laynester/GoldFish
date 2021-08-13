@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\Hotel\Wordfilter as Insert;
 
-class Wordfilter extends Controller
+class WordfilterController extends Controller
 {
-  public function index(Req $request)
+  public function __invoke(Req $request)
   {
     if (CMS::fuseRights('server_wordfilter')) {
       if (Request::isMethod('post')) {
