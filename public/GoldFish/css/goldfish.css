@@ -1001,3 +1001,13 @@ span.ahabbo:hover .legacy-tooltip {
 .box.news.topStory-slider .desc {
 font-size: 14px;
 }
+
+.article_box {
+    transition: transform .2s;
+    background-size: cover;
+    height: 180px;
+}
+
+.article_box:hover {
+    transform: scale(1.05);
+}
