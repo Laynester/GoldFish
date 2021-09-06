@@ -7,28 +7,24 @@ use App\Models\CMS\News;
 
 class ArticlesController extends Controller
 {
-  public function index()
-  {
-    $news = News::orderBy('date', 'DESC')->paginate(5);
-    return view('pages.community.articles', [
-        'group' => 'community',
-        'news'  => $news
-      ]
-    );
-  }
-  public function show($id)
-  {
-    if (empty($id)) {
-      return redirect()->back();
+    public function index()
+    {
+        $news = News::orderBy('date', 'DESC')->paginate(5);
+        return view('pages.community.articles', [
+                'group' => 'community',
+                'news' => $news
+            ]
+        );
     }
-    $news = News::where('id', $id)->first();
-    if (empty($news)) {
-      return redirect()->back();
+
+    public function show(News $article)
+    {
+        $recentArticles = News::select('id', 'caption')->where('id', '!=', $article->id)->orderByDesc('id')->get();
+
+        return view('pages.community.article', [
+            'group' => 'community',
+            'article' => $article,
+            'recentArticles' => $recentArticles,
+        ]);
     }
-    return view('pages.community.article', [
-        'group' => 'community',
-        'news'  => $news
-      ]
-    );
-  }
 }

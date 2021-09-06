@@ -104,7 +104,7 @@ Route::middleware(['changeTheme', 'Banned', 'Maintenance', 'Findretros'])->group
     // Community routes
     Route::get('/community', CommunityController::class)->name('community.index');
     Route::get('/community/articles', [ArticlesController::class, 'index'])->name('articles.index');
-    Route::get('/community/articles/{id}', [ArticlesController::class, 'show'])->name('articles.show');
+    Route::get('/community/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
     Route::get('/community/staff', StaffController::class)->name('staff.index');
     Route::get('/community/leaderboards', LeaderboardsController::class)->name('leaderboards.index');
     Route::get('/community/photos', PhotosController::class)->name('photos.index');
