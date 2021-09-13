@@ -5250,8 +5250,8 @@ var inlite = (function () {
 
   var AbsoluteLayout = Layout$1.extend({
     Defaults: {
-      containerClass: 'abs-layout',
-      controlClass: 'abs-layout-item'
+      containerClass: 'abs-layouts',
+      controlClass: 'abs-layouts-item'
     },
     recalc: function (container) {
       container.items().filter(':visible').each(function (ctrl) {
@@ -7949,8 +7949,8 @@ var inlite = (function () {
 
   var FlowLayout = Layout$1.extend({
     Defaults: {
-      containerClass: 'flow-layout',
-      controlClass: 'flow-layout-item',
+      containerClass: 'flow-layouts',
+      controlClass: 'flow-layouts-item',
       endClass: 'break'
     },
     recalc: function (container) {
@@ -10346,8 +10346,8 @@ var inlite = (function () {
 
   var StackLayout = FlowLayout.extend({
     Defaults: {
-      containerClass: 'stack-layout',
-      controlClass: 'stack-layout-item',
+      containerClass: 'stack-layouts',
+      controlClass: 'stack-layouts-item',
       endClass: 'break'
     },
     isNative: function () {

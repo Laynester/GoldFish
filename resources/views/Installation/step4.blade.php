@@ -1,6 +1,8 @@
-@extends('layout.master')
-@section('content')
+@extends('Installation.layouts.installation')
+
 @section('step', '4')
+
+@section('content')
 <div class="col-lg-6">
   <div class="box grey">
     <p>This is your hotels configuration, here you can set your swf directories, swf location and other requirements.</p>

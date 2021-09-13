@@ -95,6 +95,14 @@ footer p {
   border-color:#194800;
   left:0;
 }
+
+.controls a.green-step-two,
+.controls button.green-step-two {
+    background: #3ba800;
+    border-color:#194800;
+    width: 100%;
+}
+
 .controls a.red,
 .controls button.red {
   background: #FF0000;

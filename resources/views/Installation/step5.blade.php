@@ -1,6 +1,8 @@
-@extends('layout.master')
-@section('content')
+@extends('Installation.layouts.installation')
+
 @section('step', '5')
+
+@section('content')
 <div class="col-lg-6">
   <div class="box grey">
     <p>Create a new account</p>
@@ -14,7 +16,8 @@
     {{$errors->first()}}
   </div>
   @endif
-  <form method="post">
+  <form method="post" action="{{ route('installation.step.update', 5) }}">
+      @csrf
     <div class="box">
       <h2>Administrator Account</h2>
       <div class="form-group">

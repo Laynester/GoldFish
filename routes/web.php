@@ -1,6 +1,5 @@
 <?php
 
-// Installer
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Housekeeping\DashboardController;
 use App\Http\Controllers\Housekeeping\Server\EmulatorController;
@@ -20,7 +19,7 @@ use App\Http\Controllers\Housekeeping\UserMod\BansController;
 use App\Http\Controllers\Housekeeping\UserMod\ChatlogController;
 use App\Http\Controllers\Housekeeping\UserMod\PasswordController;
 use App\Http\Controllers\Housekeeping\UserMod\UserController;
-use App\Http\Controllers\Installation\IndexController;
+use App\Http\Controllers\Installation\InstallerController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\Session\ArticlesController;
 use App\Http\Controllers\Session\BannedController;
@@ -35,15 +34,16 @@ use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
 
-Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
+Route::middleware(['setTheme:Installation'])->prefix('installation')->group(function () {
   Route::get('/' ,function () {
-        return redirect('installer/index');
+        return redirect('installation/index');
   });
 
-  Route::any('/index', [IndexController::class, 'index'])->name('installer');
-  Route::any('/step/{id}', [IndexController::class, 'steps'])->name('steps');
-
-
+  Route::middleware('installer')->group(function () {
+      Route::any('/index', [InstallerController::class, 'index'])->name('installation.index');
+      Route::get('/step/{step}', [InstallerController::class, 'stepHandler'])->name('installation.step');
+      Route::post('/step/{step}', [InstallerController::class, 'updateStepHandler'])->name('installation.step.update');
+  });
 });
 
 // Guest

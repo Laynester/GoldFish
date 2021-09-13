@@ -1,6 +1,8 @@
-@extends('layout.master')
-@section('content')
+@extends('Installation.layouts.installation')
+
 @section('step', '3')
+
+@section('content')
 <div class="col-lg-6">
   <div class="box grey">
     <p>Fill in your hotels social platform information, this will display tweets from your account, and display a discord widget with your hotel server.</p>
@@ -12,7 +14,8 @@
     {{$errors->first()}}
   </div>
   @endif
-  <form method="post">
+  <form method="post" action="{{ route('installation.step.update', 3) }}">
+      @csrf
     <div class="box">
       <h2>Social Configuration</h2>
       <div class="form-group">
@@ -26,7 +29,7 @@
     </div>
     <span class="controls">
       <button class="green" type="submit">Continue</button>
-      <a class="red" href="/installer/step/2">Back</a>
+      <a class="red" href="{{ route('installation.step', 2) }}">Back</a>
     </span>
     @csrf
   </form>

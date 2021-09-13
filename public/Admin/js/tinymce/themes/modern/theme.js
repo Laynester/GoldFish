@@ -5047,8 +5047,8 @@ var modern = (function () {
 
   var AbsoluteLayout = Layout.extend({
     Defaults: {
-      containerClass: 'abs-layout',
-      controlClass: 'abs-layout-item'
+      containerClass: 'abs-layouts',
+      controlClass: 'abs-layouts-item'
     },
     recalc: function (container) {
       container.items().filter(':visible').each(function (ctrl) {
@@ -7791,8 +7791,8 @@ var modern = (function () {
 
   var FlowLayout = Layout.extend({
     Defaults: {
-      containerClass: 'flow-layout',
-      controlClass: 'flow-layout-item',
+      containerClass: 'flow-layouts',
+      controlClass: 'flow-layouts-item',
       endClass: 'break'
     },
     recalc: function (container) {
@@ -10154,8 +10154,8 @@ var modern = (function () {
 
   var StackLayout = FlowLayout.extend({
     Defaults: {
-      containerClass: 'stack-layout',
-      controlClass: 'stack-layout-item',
+      containerClass: 'stack-layouts',
+      controlClass: 'stack-layouts-item',
       endClass: 'break'
     },
     isNative: function () {
