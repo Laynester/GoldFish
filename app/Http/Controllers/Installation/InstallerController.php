@@ -61,10 +61,6 @@ class InstallerController extends Controller
 
     public function updateStepHandler(Req $request, $step = null)
     {
-        if (!Request::isMethod('post')) {
-            return redirect()->back();
-        }
-
         switch ($step) {
             case 2:
                 return self::updateStepTwo($request);
