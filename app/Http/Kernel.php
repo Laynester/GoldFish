@@ -63,6 +63,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'setTheme' => \Igaster\LaravelTheme\Middleware\setTheme::class,
+        'banned' => Middleware\Banned::class,
+        'findretros' => Middleware\Findretros::class,
+        'installed' => Middleware\InstallationMiddleware::class,
+        'changeTheme' => Middleware\changeTheme::class,
+        'maintenance' => Middleware\Maintenance::class
     ];
 
     /**

@@ -1,6 +1,5 @@
 <?php
 
-// Installer
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Housekeeping\DashboardController;
 use App\Http\Controllers\Housekeeping\Server\EmulatorController;
@@ -20,7 +19,7 @@ use App\Http\Controllers\Housekeeping\UserMod\BansController;
 use App\Http\Controllers\Housekeeping\UserMod\ChatlogController;
 use App\Http\Controllers\Housekeeping\UserMod\PasswordController;
 use App\Http\Controllers\Housekeeping\UserMod\UserController;
-use App\Http\Controllers\Installation\IndexController;
+use App\Http\Controllers\Installation\InstallationController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\Session\ArticlesController;
 use App\Http\Controllers\Session\BannedController;
@@ -35,19 +34,20 @@ use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
 
-Route::middleware(['setTheme:Install'])->prefix('installer')->group(function () {
+Route::middleware(['setTheme:installation'])->prefix('installation')->group(function () {
   Route::get('/' ,function () {
-        return redirect('installer/index');
+        return redirect('installation/index');
   });
 
-  Route::any('/index', [IndexController::class, 'index'])->name('installer');
-  Route::any('/step/{id}', [IndexController::class, 'steps'])->name('steps');
-
-
+  Route::middleware('installed')->group(function () {
+      Route::any('/index', [InstallationController::class, 'index'])->name('installation.index');
+      Route::get('/step/{step}', [InstallationController::class, 'stepHandler'])->name('installation.step');
+      Route::post('/step/{step}', [InstallationController::class, 'updateStepHandler'])->name('installation.step.update');
+  });
 });
 
 // Guest
-Route::middleware(['installer','changeTheme','Maintenance', 'guest'])->group(function () {
+Route::middleware(['installed','changeTheme','maintenance', 'guest'])->group(function () {
     Route::get('/', function () {
         return redirect('login');
     });
@@ -69,7 +69,7 @@ Route::middleware(['installer','changeTheme','Maintenance', 'guest'])->group(fun
 });
 
 // Authenticated
-Route::middleware(['changeTheme', 'Banned', 'Maintenance', 'Findretros'])->group(function () {
+Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group(function () {
     Route::middleware(['auth'])->group(function() {
         Route::get('logout', [LoginController::class, 'logout']);
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

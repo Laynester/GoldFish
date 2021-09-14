@@ -80,6 +80,6 @@
         @yield('content')
     </main>
   </div>
-  @include('partials.footer')
+  <x-footer/>
 </body>
 </html>
