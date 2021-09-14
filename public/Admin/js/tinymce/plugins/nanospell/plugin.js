@@ -5,11 +5,11 @@
  *  License:  http://www.tinymcespellcheck.com/license
  *
  */
-/* 
+/*
  *	# Resources #
  *
  *	Getting Started - http://tinymcespellcheck.com/
- *	Installation - http://tinymcespellcheck.com/installation
+ *	installation - http://tinymcespellcheck.com/installation
  *	Settings - http://tinymcespellcheck.com/settings
  *	Dictionaries - http://tinymcespellcheck.com/dictionaries
  *
@@ -162,7 +162,7 @@
 				var span = editor.getDoc().createElement('span');
 				span.className = "nanospell-typo";
 				span.setAttribute('data-mce-bogus',1);
-				
+
 				var middle = editor.getDoc().createTextNode(matchtext);
 				span.appendChild(middle);
 				currentNode.parentNode.insertBefore(span, newNode);
@@ -277,13 +277,13 @@
 			var cursorPos = doc.body.createTextRange();
 			cursorPos.moveToPoint(clickx, clicky)
 			cursorPos.select();
-			
+
 			if(cursorPos.getBoundingClientRect().top !== clicky && cursorPos.getBoundingClientRect().clickx !== clicky){
 				//IE8 selecing a br moved down 1 line
 				cursorPos.move('character',-1);
 				cursorPos.select();
 			}
-			
+
 		}
 		function getCaretIE() {
 			if (editor.getWin().getSelection) {
@@ -362,7 +362,7 @@
 				sel.addRange(range);
 			}
 		}
-		var caret_marker = String.fromCharCode(8) + String.fromCharCode(127) + String.fromCharCode(1) 
+		var caret_marker = String.fromCharCode(8) + String.fromCharCode(127) + String.fromCharCode(1)
 			function putCursor() {
 				if (!editor.getWin().getSelection) {
 					return null /*IE <=8*/
@@ -488,10 +488,10 @@
 				if(n=="textarea"){return true;}
 				return false;
 			}
-			
+
 			function FindTextNodes(elem) {
 				// recursive but asynchronous so it can not choke
-				
+
 				var textNodes = [];
 				FindTextNodes_r(elem)
 				function FindTextNodes_r(elem) {

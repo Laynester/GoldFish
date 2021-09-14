@@ -14,7 +14,7 @@ use App\Models\User\Permissions;
 use DB;
 use Illuminate\Validation\Rule;
 
-class InstallerController extends Controller
+class InstallationController extends Controller
 {
     public function index()
     {
@@ -55,10 +55,11 @@ class InstallerController extends Controller
                 return self::stepSix();
 
             default:
-                return redirect()->back()->withErrors(__('The step you tried to jump to, does not exists'));
+                return redirect()->back()->withErrors(__('You tried to jump to a setup step that does not exists'));
         }
     }
 
+    // TODO: Add validation to necessary form fields
     public function updateStepHandler(Req $request, $step = null)
     {
         switch ($step) {
@@ -78,13 +79,13 @@ class InstallerController extends Controller
                 return self::updateStepSix();
 
             default:
-                return redirect()->back()->withErrors(__('The step you tried to jump to, does not exists'));
+                return redirect()->back()->withErrors(__('You tried to jump to a setup step that does not exists'));
         }
     }
 
     private static function stepTwo()
     {
-        return view('Installation.step2');
+        return view('installation.step-two');
     }
 
     private static function updateStepTwo($request)
@@ -101,7 +102,7 @@ class InstallerController extends Controller
 
     private static function stepThree()
     {
-        return view('Installation.step3');
+        return view('installation.step-three');
     }
 
     private static function updateStepThree($request)
@@ -114,7 +115,7 @@ class InstallerController extends Controller
 
     private static function stepFour()
     {
-        return view('Installation.step4');
+        return view('installation.step-four');
     }
 
     private static function updateStepFour($request)
@@ -139,7 +140,7 @@ class InstallerController extends Controller
 
     private static function stepFive()
     {
-        return view('Installation.step5');
+        return view('installation.step-five');
     }
 
     private static function updateStepFive($request)
@@ -150,11 +151,9 @@ class InstallerController extends Controller
             'password' => ['required', 'min:6', 'confirmed']
         ]);
 
-        // TODO: Add functionality to give starting currency
-
         $rank = Permissions::orderBy('id', 'DESC')->pluck('id')->first();
 
-        User::create([
+        $user = User::create([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
             'password' => Hash::make($request->input('password')),
@@ -166,12 +165,22 @@ class InstallerController extends Controller
             'rank' => $rank
         ]);
 
+        $regCurrency = [
+            ['type' => 0, 'amount' => CMS::settings('reg_duckets')],
+            ['type' => 5, 'amount' => CMS::settings('reg_diamonds')],
+            ['type' => 101, 'amount' => CMS::settings('reg_points')],
+        ];
+
+        foreach ($regCurrency as $currency) {
+            $user->currencies()->create($currency);
+        }
+
         return redirect()->route('installation.step', 6);
     }
 
     private static function stepSix()
     {
-        return view('step6');
+        return view('installation.step-six');
     }
 
     private static function updateStepSix()

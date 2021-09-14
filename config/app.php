@@ -232,12 +232,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'CMSHelper' => App\Helpers\CMS::class,
         'HKHelper' => App\Helpers\Housekeeping::class,
-        'Banned' => App\Http\Middleware\Banned::class,
-        'Findretros' => App\Http\Middleware\Findretros::class,
-        'installer' => App\Http\Middleware\installer::class,
-        'changeTheme' => App\Http\Middleware\changeTheme::class,
-        'Maintenance' => App\Http\Middleware\Maintenance::class
-
     ],
     'version_number' => '1.4.1'
 ];
