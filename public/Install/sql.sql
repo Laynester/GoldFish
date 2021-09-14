@@ -12,83 +12,83 @@ DROP TABLE IF EXISTS `cms_homes`;
 DROP TABLE IF EXISTS `cms_homes_catalogue`;
 DROP TABLE IF EXISTS `cms_homes_catalogue_cats`;
 CREATE TABLE `cms_fuserights`  (
-  `right` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
-  `min_rank` int(25) NOT NULL,
-  `desc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`right`) USING BTREE
+                                   `right` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+                                   `min_rank` int(25) NOT NULL,
+                                   `desc` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+                                   `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+                                   PRIMARY KEY (`right`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_menu` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `group` varchar(255) DEFAULT '',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `url` varchar(230) NOT NULL DEFAULT '',
-  `order` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+                            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                            `group` varchar(255) DEFAULT '',
+                            `title` varchar(255) NOT NULL DEFAULT '',
+                            `url` varchar(230) NOT NULL DEFAULT '',
+                            `order` int(11) NOT NULL,
+                            PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 CREATE TABLE `cms_news` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `caption` varchar(250) NOT NULL DEFAULT '',
-  `desc` varchar(255) NOT NULL DEFAULT '',
-  `body` text NOT NULL,
-  `image` varchar(255) NOT NULL DEFAULT '',
-  `author` int(11) NOT NULL,
-  `date` varchar(30) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+                            `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                            `caption` varchar(250) NOT NULL DEFAULT '',
+                            `desc` varchar(255) NOT NULL DEFAULT '',
+                            `body` text NOT NULL,
+                            `image` varchar(255) NOT NULL DEFAULT '',
+                            `author` int(11) NOT NULL,
+                            `date` varchar(30) NOT NULL DEFAULT '',
+                            PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 CREATE TABLE `cms_settings`  (
-  `key` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
-  `value` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL
+                                 `key` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
+                                 `value` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_alerts`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `message` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `icon` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'ADM',
-  `userid` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`) USING BTREE
+                               `id` int(11) NOT NULL AUTO_INCREMENT,
+                               `message` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                               `icon` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'ADM',
+                               `userid` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '0',
+                               PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_logins`  (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `user_id` int(255) NOT NULL,
-  `ip` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `timestamp` int(255) NOT NULL,
-  `successful` int(255) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                               `id` int(255) NOT NULL AUTO_INCREMENT,
+                               `user_id` int(255) NOT NULL,
+                               `ip` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                               `timestamp` int(255) NOT NULL,
+                               `successful` int(255) NOT NULL,
+                               PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_hk_logs`  (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `user_id` int(255) NOT NULL,
-  `ip` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `action` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `timestamp` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                                `id` int(255) NOT NULL AUTO_INCREMENT,
+                                `user_id` int(255) NOT NULL,
+                                `ip` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                `action` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                `timestamp` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_homes`  (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `user_id` int(255) NOT NULL,
-  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `z` int(255) NULL DEFAULT NULL,
-  `x` int(255) NULL DEFAULT NULL,
-  `y` int(255) NULL DEFAULT NULL,
-  `skin` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `visible` int(255) NOT NULL DEFAULT 1,
-  `data` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                              `id` int(255) NOT NULL AUTO_INCREMENT,
+                              `user_id` int(255) NOT NULL,
+                              `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                              `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                              `z` int(255) NULL DEFAULT NULL,
+                              `x` int(255) NULL DEFAULT NULL,
+                              `y` int(255) NULL DEFAULT NULL,
+                              `skin` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+                              `visible` int(255) NOT NULL DEFAULT 1,
+                              `data` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+                              PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_homes_catalogue`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 's',
-  `data` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `category` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                                        `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 's',
+                                        `data` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                        `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                        `category` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                        PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2869 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 CREATE TABLE `cms_homes_catalogue_cats`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 's',
-  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                                             `id` int(11) NOT NULL AUTO_INCREMENT,
+                                             `type` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 's',
+                                             `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+                                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1002 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 INSERT INTO `cms_fuserights` VALUES ('dashboard', 5, 'Dashboard tab', '1');
 INSERT INTO `cms_fuserights` VALUES ('moderation', 5, 'Moderation Tab', '1');
@@ -132,7 +132,7 @@ INSERT INTO `cms_menu` VALUES ('7', 'community', 'Leaderboards', 'community/lead
 INSERT INTO `cms_menu` VALUES ('8', 'community', 'News', 'community/articles', '2');
 INSERT INTO `cms_menu` VALUES ('9', 'community', 'Photos', 'community/photos', '3');
 INSERT INTO `cms_menu` VALUES ('10', 'me', 'Settings', 'settings', '2');
-INSERT INTO `cms_news` VALUES ('1', 'GoldFish installation complete', 'GoldFish installation complete', '<p>Welcome to your freshly installed version of GoldFishCMS!</p>', '/images/news/wpid-lpromo_atcg.png', '1', '1563049338');
+INSERT INTO `cms_news` VALUES ('1', 'GoldFish Installation complete', 'GoldFish Installation complete', '<p>Welcome to your freshly installed version of GoldFishCMS!</p>', '/images/news/wpid-lpromo_atcg.png', '1', '1563049338');
 INSERT INTO `cms_settings` VALUES ('hotelname', 'Habbo');
 INSERT INTO `cms_settings` VALUES ('c_images', '/swfs/c_images/');
 INSERT INTO `cms_settings` VALUES ('discord_id', '509801583991848972');
