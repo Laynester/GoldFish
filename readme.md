@@ -1,4 +1,4 @@
-![GoldFish](https://imgur.com/TUv8HNu.png)
+![GoldFish](https://imgur.com/TUv8HNu.png
 
 ## What is Goldfish CMS?
 Goldfish CMS is a Habbo retro CMS built to allow you to setup your retro easily but without sacrifising features or the habbo feeling.
