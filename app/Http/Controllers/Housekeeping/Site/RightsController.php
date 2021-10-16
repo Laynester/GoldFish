@@ -6,7 +6,7 @@ use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\FuseRight;
-use App\Models\User\Permissions;
+use App\Models\User\Permission;
 
 class RightsController extends Controller
 {
@@ -29,7 +29,7 @@ class RightsController extends Controller
             $tabs        = Fuseright::where('type', 1)->get();
             $subnavi     = Fuseright::where('type', 2)->get();
             $links       = Fuseright::where('type', 3)->get();
-            $permissions = Permissions::all();
+            $permissions = Permission::all();
 
             return view('site.rights', [
                     'group'       => 'site',

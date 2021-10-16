@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="col-lg-6">
-              <span><a href="{{ route('home', [$habbo->username]) }}">{{$habbo->username}}</a></span>
+              <span><a href="{{ route('profile.show', [$habbo->username]) }}">{{$habbo->username}}</a></span>
               <span><b>{{$habbo->rank_name->rank_name}}</b></span>
               <span><img src="{{CMSHelper::settings('c_images')}}album1584/{{$habbo->rank_name->badge}}.gif"></span>
             </div>

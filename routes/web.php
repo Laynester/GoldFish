@@ -87,7 +87,7 @@ Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group
         Route::post('/settings/password', [UserSettingsController::class, 'postAccount'])->name('settings.password');
 
         // User profile routes
-        Route::get('/home/{username}', [HomeController::class, 'showProfile'])->name('home');
+        Route::get('/home/{username}', [HomeController::class, 'showProfile'])->name('profile.show');
         Route::post('/home/{username}/note', [HomeController::class, 'note'])->name('home.note');
         Route::get('/home/{username}/edit', [HomeController::class, 'showProfile'])->name('home.edit');
         Route::post('/home/{username}/save', [HomeController::class, 'save'])->name('home.save');

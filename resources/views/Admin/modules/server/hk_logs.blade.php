@@ -10,7 +10,7 @@
             @foreach($logs as $row)
             <tr>
               <td>
-                  <b><a href="{{ route('home', [$row->habbo->username]) }}">{{$row->habbo->username}}</a></b>
+                  <b><a href="{{ route('profile.show', [$row->habbo->username]) }}">{{$row->habbo->username}}</a></b>
                   <small>({{$row->ip}})</small>
               </td>
               <td>{{$row->action}}</td>

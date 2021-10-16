@@ -2,7 +2,7 @@
     <div class="heading">My Online Friends</div>
     <div class="content">
         @forelse($fron as $row)
-        <span class="friend"><a href="{{ route('home', [$row->habbo->username]) }}">{{$row->habbo->username}}</a></span>
+        <span class="friend"><a href="{{ route('profile.show', [$row->habbo->username]) }}">{{$row->habbo->username}}</a></span>
         @empty
         <span class="text-center full">You have no friends online</span>
         @endforelse
@@ -13,4 +13,3 @@
         @endif
     </div>
 </div>
-      
