@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\User\Permissions;
+use App\Models\User\Permission;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
     public function rank_name()
     {
-        return $this->belongsTo(Permissions::class, 'rank');
+        return $this->belongsTo(Permission::class, 'rank');
     }
 
     public function ssoTicket()

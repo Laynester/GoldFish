@@ -1,21 +1,29 @@
-@foreach(App\Models\User\Permissions::where('id', '>=', 3)->orderBy('id','desc')->get() as $rank)
-<div class="box red">
-  <div class="heading">{{$rank->rank_name}}</div>
-    @forelse(App\Models\User\User::where('rank', '=', $rank->id)->get() as $habbo)
-    <a href="/home/{{$habbo->username}}">
-      <div class="staff @if ($habbo->online == '1')online @else offline @endif">
-        <img class="avatar" src="{{CMSHelper::settings('habbo_imager')}}{{$habbo->look}}&headonly=1&head_direction=3"/>
-        <div class="left">
-          <span>{{$habbo->username}}<span class="status"></span></span>
-          <i>{{$habbo->motto}}</i>
-        </div>
-        <div class="right">
-          <img src="{{CMSHelper::settings('c_images')}}album1584/{{$rank->badge}}.gif">
-        </div>
+@foreach($ranks as $rank)
+    <div class="box red">
+        <div class="heading">{{$rank->rank_name}}</div>
+        @forelse($employees->where('rank', '=', $rank->id) as $staff)
+            <a href="{{ route('profile.show', $staff->username) }}">
+                <div class="staff {{ $staff->online == '1' ? 'online' : 'offline' }}">
+                    <img class="avatar"
+                         src="{{ CMSHelper::settings('habbo_imager') }}{{ $staff->look }}&headonly=1&head_direction=3"
+                         alt="{{ $staff->username }}"/>
+
+                    <div class="left staff_info">
+                        <div style="font-weight: bold;">
+                            {{ $staff->username }}
+                            <span class="status"></span>
+                        </div>
+
+                        <i>{{ $staff->motto }}</i>
+                    </div>
+
+                    <div class="right">
+                        <img src="{{ CMSHelper::settings('c_images') }}album1584/{{ $rank->badge }}.gif" alt="{{ $rank->badge }}">
+                    </div>
+                </div>
+            </a>
+        @empty
+            <p class="text-center">There is currently no staff at this position</p>
+        @endforelse
     </div>
-  </a>
-  @empty
-  <p class="text-center">No users</p>
-  @endforelse
-</div>
 @endforeach

@@ -10,7 +10,7 @@ use App\Models\CMS\Settings;
 use App\Models\User\User;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\CMS;
-use App\Models\User\Permissions;
+use App\Models\User\Permission;
 use DB;
 use Illuminate\Validation\Rule;
 
@@ -151,7 +151,7 @@ class InstallationController extends Controller
             'password' => ['required', 'min:6', 'confirmed']
         ]);
 
-        $rank = Permissions::orderBy('id', 'DESC')->pluck('id')->first();
+        $rank = Permission::orderBy('id', 'DESC')->pluck('id')->first();
 
         $user = User::create([
             'username' => $request->input('username'),

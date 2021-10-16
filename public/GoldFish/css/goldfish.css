@@ -238,6 +238,12 @@ p.respects {
 .left {
 	float:left;
 }
+.staff_info {
+	height: 60px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
 footer.home {
     background-color: #b6b6b6;
     background-image: url(/goldfish/images/goldfish.png);

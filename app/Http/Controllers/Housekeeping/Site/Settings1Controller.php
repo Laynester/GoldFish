@@ -6,7 +6,7 @@ use Request;
 use App\Http\Controllers\Controller;
 use App\Helpers\CMS;
 use App\Models\CMS\Settings;
-use App\Models\User\Permissions;
+use App\Models\User\Permission;
 
 class Settings1Controller extends Controller
 {
@@ -36,7 +36,7 @@ class Settings1Controller extends Controller
         ]);
         return redirect()->back()->withErrors(['Saved changes.']);
       }
-      $permissions = Permissions::get();
+      $permissions = Permission::get();
       return view('site.settings1', [
           'group'       => 'site',
           'permissions' => $permissions

@@ -2,7 +2,7 @@
   <div class="heading">Random {{CMSHelper::settings('hotelname')}}</div>
   <div class="content habbogrid">
     @foreach(\App\Models\user\User::inRandomOrder()->take(8)->get() as $habbo)
-    <span onclick="window.location.href='{{ route('home', [$habbo->username]) }}'" class="ahabbo" onmouseover="openMouth('#habbo{{$habbo->id}}')" onmouseout="closeMouth('#habbo{{$habbo->id}}')">
+    <span onclick="window.location.href='{{ route('profile.show', [$habbo->username]) }}'" class="ahabbo" onmouseover="openMouth('#habbo{{$habbo->id}}')" onmouseout="closeMouth('#habbo{{$habbo->id}}')">
       <div class="legacy-tooltip">
         <span>{{$habbo->username}}</span>
         <span>{{$habbo->motto}}</span>
