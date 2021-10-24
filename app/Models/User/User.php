@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function ssoTicket()
     {
-        $sso = 'GoldFish-' . Str::uuid();
+        $sso = 'goldfish-' . Str::uuid();
 
         if (User::where('auth_ticket', $sso)->exists()) {
             return $this->ssoTicket();
