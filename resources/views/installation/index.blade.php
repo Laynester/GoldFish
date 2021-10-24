@@ -20,8 +20,8 @@
             @else
                 <div class="box grey text-center">
                     <p>
-                        {{ __('Welcome to GoldFish! To begin, please press continue, please note, this will not remove any existing
-                        hotel data, this will only insert new database tables relating to GoldFish. If you need some help or are
+                        {{ __('Welcome to goldfish! To begin, please press continue, please note, this will not remove any existing
+                        hotel data, this will only insert new database tables relating to goldfish. If you need some help or are
                         confused, you can join the') }}
                         <a href="https://discordapp.com/invite/eVAYDUp">{{ __('Discord Server') }}</a>
                     </p>
