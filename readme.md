@@ -6,7 +6,7 @@ Goldfish CMS is a Habbo retro CMS built to allow you to setup your retro easily 
 
 * Goldfish refactored is an edit and update of the original Goldfish, with permission from Laynester i decided to start the Goldfish refactored project which is a project that aims to refactor and update the Goldfish cms.
 
-*The project is a side project and I only work on it when I have time, and theres still a lot of code that has been left untouched currently.
+* The project is a side project and I only work on it when I have time, and theres still a lot of code that has been left untouched currently.
 
 ## Who made Goldfish CMS?
 Goldfish CMS was originally made by [Laynester](https://github.com/Laynester/GoldFish)
