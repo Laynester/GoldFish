@@ -13,7 +13,7 @@
                              style="background-image: url({{$article->image}});">
                             <div class="position-absolute h-100 w-100 rounded"
                                  style="background-color: rgba(0,0,0,0.3); left: 0; z-index: 5;"></div>
-                            <div class="text-white position-relative p-1" style="z-index: 10;">
+                            <div class="text-white position-relative p-3" style="z-index: 10;">
                                 <h4>{{$article->caption}}</h4>
                                 <p>{{$article->desc}}</p>
                             </div>
