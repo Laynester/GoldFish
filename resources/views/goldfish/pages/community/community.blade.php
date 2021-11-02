@@ -3,7 +3,7 @@
 @section('title', 'Community')
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-7">
       @include('components.community.randomhabbos')
       @include('components.news')
     </div>

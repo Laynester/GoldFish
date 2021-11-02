@@ -3,7 +3,7 @@
 @section('title', $article->caption)
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <div class="box" style="padding: 0;">
             <div class="d-flex align-items-center justify-content-center relative"
                  style="height: 130px; background-image:url({{$article->image}});">
