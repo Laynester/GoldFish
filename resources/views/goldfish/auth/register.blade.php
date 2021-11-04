@@ -73,7 +73,7 @@
                     </form>
 
                     <div class="d-flex justify-content-end" style="position:absolute; top: 0; left: 200px; z-index: 0;">
-                        <img src="http://goldfish.test/goldfish/images/hotel.png" alt="">
+                        <img src="{{ asset('/goldfish/images/hotel.png') }}" alt="">
                     </div>
                 </div>
             </div>
