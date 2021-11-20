@@ -41,7 +41,7 @@
                 <header class="d-flex justify-content-between" style="background-image:url(/goldfish/images/me/views/{{(Auth()->User() ? Auth()->User()->hotelview  : 'view_ca_wide.png')}});">
                     <a href="/me" class="logo flex-shrink-1">
                         <img src="{{CMSHelper::settings('site_logo')}}"/>
-                        <span class="legacy-online d-none d-md-block">
+                        <span class="legacy-online d-none d-md-inline-block">
                             <span id="onlinecount">{{CMSHelper::online()}}</span>
                             Online Now
                         </span>
