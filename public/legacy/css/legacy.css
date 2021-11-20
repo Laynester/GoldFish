@@ -517,6 +517,7 @@ figure.topStory-slider span.meta a {
     position: relative;
     display: block;
 }
+
 .legacy-body header a span.legacy-online {
     background: #fff;
     color: #000;
@@ -530,7 +531,10 @@ figure.topStory-slider span.meta a {
     float: left;
     border-radius: 5px;
     margin-left: 20px;
+    min-width: 120px;
+    text-align: center;
 }
+
 .legacy-body header a span.legacy-online:before {
     position: absolute;
     left: -15px;
@@ -544,6 +548,7 @@ figure.topStory-slider span.meta a {
 .legacy-body header a span.legacy-online:after {
     position: absolute;
     left: -12px;
+    top: 10px;
     content: "";
     width: 0;
     height: 0;
