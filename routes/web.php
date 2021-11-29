@@ -20,6 +20,7 @@ use App\Http\Controllers\Housekeeping\UserMod\ChatlogController;
 use App\Http\Controllers\Housekeeping\UserMod\PasswordController;
 use App\Http\Controllers\Housekeeping\UserMod\UserController;
 use App\Http\Controllers\Installation\InstallationController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\Session\ArticlesController;
 use App\Http\Controllers\Session\BannedController;
@@ -33,6 +34,10 @@ use App\Http\Controllers\Session\PhotosController;
 use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
+use Illuminate\Support\Facades\App;
+
+// Used to determine CMS language
+Route::get('language/{locale}', LocaleController::class)->name('language');
 
 Route::middleware(['setTheme:installation'])->prefix('installation')->group(function () {
   Route::get('/' ,function () {
@@ -54,8 +59,6 @@ Route::middleware(['installed','changeTheme','maintenance', 'guest'])->group(fun
     Route::get('index', function () {
         return redirect('login');
     })->name('index');
-
-
 
     Auth::routes();
 

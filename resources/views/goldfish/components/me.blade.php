@@ -3,7 +3,7 @@
     <img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}">
   </div>
   <a class="enter_hotel" href="{{ route('game.index') }}" target="_blank">
-    Enter {{CMSHelper::settings('hotelname')}}
+    {{ __('Enter') }} {{CMSHelper::settings('hotelname')}}
   </a>
   <div class="habbo-info">
     <div class="motto"><strong>{{ Auth::user()->username }}:</strong> {{ Auth::user()->motto }}</div>
