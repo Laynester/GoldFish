@@ -5,8 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="plate">
-                        <img src="{{ CMSHelper::settings('habbo_imager') }}
-                        {{ $staff->look }}">
+                        <img src="{{ CMSHelper::settings('habbo_imager') }}{{ $staff->look }}">
                     </div>
                 </div>
                 <div class="col-lg-6">
