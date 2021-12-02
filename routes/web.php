@@ -33,7 +33,6 @@ use App\Http\Controllers\Session\PhotosController;
 use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
-
 // Used to determine CMS language
 Route::get('language/{locale}', LocaleController::class)->name('language');
 
