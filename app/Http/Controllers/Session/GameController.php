@@ -9,7 +9,7 @@ class GameController extends Controller
 {
   public function __invoke()
   {
-      return view('pages.client', [
+      return view('client', [
           'sso' => auth()->user()->ssoTicket()
       ]);
   }

@@ -10,7 +10,7 @@ class PhotosController extends Controller
   public function __invoke()
   {
     $photos = Camera_web::whereHas('habbo')->orderBy('timestamp', 'DESC')->paginate(16);
-    return view('pages.community.photos', [
+    return view('community.photos', [
         'group'  => 'community',
         'photos' => $photos
       ]

@@ -63,7 +63,7 @@ array('user_id' => $user->id,'type' => 's','name' => 'paper_clip_1','z' => 150,'
     $background     = Homes::where('user_id', $user->id)->where('type','b')->where('visible','1')->first();
     $photo = Homes::where('user_id', $user->id)->where('type','w')->where('name','photo')->first();
     $notes = Homes::where('user_id', $user->id)->where('type','n')->get();
-    return view('pages.me.home', [
+    return view('me.home', [
         'background' => $background,
         'user'    => $user,
         'badges'  => $badges,
@@ -71,7 +71,7 @@ array('user_id' => $user->id,'type' => 's','name' => 'paper_clip_1','z' => 150,'
         'friends' => $friend_data,
         'photos'  => $photos,
         'groups'  => $groups,
-        'group'   => 'me',
+        'group'   => 'home',
         'widgets' => $widgets,
         'stickers'=> $stickers,
         'personal' => $personal,
@@ -130,7 +130,7 @@ array('user_id' => $user->id,'type' => 's','name' => 'paper_clip_1','z' => 150,'
     $store_bgs = \App\Models\CMS\Homes_Catalogue::whereNotIn('data', $data)->where('type','b')->get();
     $bgs = Homes::where('user_id', auth()->user()->id)->where('type','b')->where('visible','0')->orderBy('z')->get();
     $widgets = Homes::where('user_id',auth()->user()->id)->where('type','w')->where('visible','0')->get();
-    return view('pages.me.homes.web_store',[
+    return view('me.homes.web_store',[
       'stickers' => $stickers,
       'bgs' => $bgs,
       'store_bgs' => $store_bgs,

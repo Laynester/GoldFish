@@ -10,8 +10,8 @@ class BannedController extends Controller
     public function index()
     {
         $ban = Bans::where('user_id', Auth()->User()->id)->orWhere('ip', Auth()->User()->ip_current)->orderBy('id', 'desc')->first();
-        return view('pages.banned', [
-            'group' => 'me',
+        return view('banned', [
+            'group' => 'home',
             'ban'   => $ban
           ]
         );

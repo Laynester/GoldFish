@@ -25,25 +25,38 @@
 <body>
 <div id="page-wrap">
     <div class="header">
-        @if (!Auth::user())
+        @guest
             <body class="guest">
             <div class="login-section">
                 <div class="container">
                     <div class="login-inputs">
                         <form method="POST"
-                              id="loginForm" {{(CMSHelper::settings('maintenance') == 0 ? 'action='.route('login.store') : '')}}>
+                              id="loginForm" {{ CMSHelper::settings('maintenance') == 0 ? 'action='.route('login.store') : '' }}>
                             @csrf
+
                             <div class="login-input">
-                                <input id="username" type="text"
-                                       class="form-control input @error('username') is-invalid @enderror"
-                                       name="username" value="{{ old('username') }}" required autocomplete="username"
-                                       autofocus>
+                                <input
+                                    id="username"
+                                    type="text"
+                                    name="username"
+                                    class="form-control input @error('username') is-invalid @enderror"
+                                    value="{{ old('username') }}"
+                                    autocomplete="username"
+                                    autofocus
+                                    required
+                                >
                             </div>
                             <div class="login-input">
-                                <input id="password" type="password"
-                                       class="form-control input @error('password') is-invalid @enderror"
-                                       name="password" required autocomplete="current-password">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    class="form-control input @error('password') is-invalid @enderror"
+                                    autocomplete="current-password"
+                                    required
+                                >
                             </div>
+
                             <button type="submit" id="login" class="btn btn-primary">
                                 {{ __('Login') }}
                             </button>
@@ -51,45 +64,55 @@
                     </div>
                 </div>
             </div>
-            @endif
-            <div class="container relative">
-                <div class="logo">
-                    <a href="/me" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
-                    <div class="online no-mobile"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
-                </div>
-                <div class="right @guest regbutton @endguest">
-                    @auth
-                        <ul class="header_options">
-                            <li class="settings left" onclick="window.location.href='/settings'"></li>
-
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                <li class="logout left" id="logout">
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </a>
-                        </ul>
-                        <div class="userinfo no-mobile">
-                            <div class="purse">
-                                <p class="credits currency">{{ Auth()->User()->credits }}</p>
-                                <p class="duckets currency">{{ (!empty(Auth()->User()->duckets->amount) ? Auth()->User()->duckets->amount : '0') }}</p>
-                                <p class="diamonds currency">{{ (!empty(Auth()->User()->diamonds->amount) ? Auth()->User()->diamonds->amount : '0') }}</p>
-                            </div>
-                            <div class="cut_avatar"><img
-                                        src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}&action=wav&direction=3&head_direction=3">
-                            </div>
-                        </div>
-                    @else
-                        <a class="register_button" href="{{ route('register') }}">Join now!</a>
-                    @endauth
-                </div>
+        @endguest
+        <div class="container relative">
+            <div class="logo">
+                <a href="{{ route('me.index') }}" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
+                <div class="online no-mobile"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
             </div>
+            <div class="right @guest regbutton @endguest">
+                @auth
+                    <ul class="header_options">
+                        <li class="settings left" onclick="window.location.href='/user/settings'"></li>
+
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <li class="logout left" id="logout">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </a>
+                    </ul>
+                    <div class="userinfo no-mobile">
+                        <div class="purse">
+                            <p class="credits currency">
+                                {{ auth()->user()->credits ?? 0 }}
+                            </p>
+                            <p class="duckets currency">
+                                {{ auth()->user()->duckets->amount ?? 0 }}
+                            </p>
+                            <p class="diamonds currency">
+                                {{ auth()->user()->diamonds->amount ?? 0 }}
+                            </p>
+                        </div>
+                        <div class="cut_avatar">
+                            <img src="{{ CMSHelper::settings('habbo_imager') }}{{ auth()->user()->look }}&action=wav&direction=3&head_direction=3">
+                        </div>
+                    </div>
+                @else
+                    <a class="register_button" href="{{ route('register') }}">
+                        {{ __('Join now!') }}
+                    </a>
+                @endauth
+            </div>
+        </div>
     </div>
+
     @include('partials.navbar')
+
     <main class="py-4">
         @yield('content')
     </main>

@@ -14,7 +14,7 @@ class MaintenanceController extends Controller
             if (Auth()->User() && Auth()->User()->rank >= CMS::settings('maintenance_rank')) {
                 return redirect('me');
             }
-            return view('pages.maintenance', ['group' => 'home']);
+            return view('maintenance', ['group' => 'home']);
         } else {
             return redirect('me');
         }

@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/me';
+    protected $redirectTo = '/user/me';
 
     /**
      * Create a new controller instance.
@@ -86,7 +86,7 @@ class RegisterController extends Controller
         foreach ($regCurrency as $currency) {
             $user->currencies()->create($currency);
         }
-        
+
         return $user;
     }
 

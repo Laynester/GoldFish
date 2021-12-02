@@ -1,29 +1,118 @@
 <div class="navbar">
-   <div class="container">
-      <ul class="navigation">
-         @if (!Auth::user())
-          <li><a href="/" @if($group == 'home') class="selected" @endif>Home</a></li>
-          <li><a href="/register"  @if($group == 'register') class="selected" @endif>Register</a></li>
-         @endif
-         @foreach(CMSHelper::getMenu() as $menuItem)
-          <li {{ $menuItem->url ? '' : "class=dropdown" }}><a href="/{{$menuItem->url}}" {{ (str_contains(strtolower($menuItem->url), strtolower($group)) ? 'class=selected' : '' ) }}>{{ $menuItem->title }}</a></li>
-         @endforeach
-         @if (Auth::user())
-          @if(CMSHelper::fuseRights('dashboard'))
-            <li><a href="/housekeeping">Housekeeping</a></li>
-          @endif
-            <a class="enter_hotel right relative" href="{{ route('game.index') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}}</a>
-            <a class="enter_hotel right relative" href="{{ route('nitro.index') }}" target="_blank">Enter {{CMSHelper::settings('hotelname')}} (HTML5)</a>
-         @endif
-      </ul>
-   </div>
+    <div class="container">
+        <ul class="navigation">
+            @guest
+                <li>
+                    <a href="/" class="{{ $group == 'home' ? 'selected' : '' }}">
+                        {{ __('Home') }}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('register') }}" class="{{ $group == 'register' ? 'selected' : '' }}">
+                        {{ __('Register') }}
+                    </a>
+                </li>
+            @endguest
+
+            @auth
+                <li>
+                    <a href="{{ route('me.index') }}" class="{{ $group === 'home' ? 'selected' : '' }}">
+                        {{ __('Home') }}
+                    </a>
+                </li>
+            @endauth
+
+            <li>
+                <a href="{{ route('community.index') }}" class="{{ $group === 'community' ? 'selected' : '' }}">
+                    {{ __('Community') }}
+                </a>
+            </li>
+            @auth
+                <li>
+                    <a href="#" class="{{ $group === 'shop' ? 'selected' : '' }}">
+                        {{ __('Shop') }}
+                    </a>
+                </li>
+
+                @if(CMSHelper::fuseRights('dashboard'))
+                    <li>
+                        <a href="{{ route('hk.index') }}">{{ __('Housekeeping') }}</a>
+                    </li>
+                @endif
+
+                <a
+                    class="enter_hotel right relative"
+                    href="{{ route('flash.index') }}"
+                    target="_blank">
+                    {{ __('Flash') }}
+                </a>
+                <a
+                    class="enter_hotel right relative"
+                    href="{{ route('nitro.index') }}"
+                    target="_blank">
+                    {{ __('Nitro') }}
+                </a>
+            @endauth
+        </ul>
+    </div>
 </div>
 <div class="sub-navigation">
-   <div class="container">
-      <ul class="navigation">
-         @foreach(App\Models\CMS\Menu::children(strtolower($group))->orderBy('order','asc')->Get() as $item)
-         <li><a @if (Auth::user()) href="/{!! str_replace('%username%',Auth()->User()->username, $item->url) !!}"@else href="/{{ $item->url }}" @endif {{ (Request::is($item->url) ? 'class=selected' : '') }}>{{ $item->title}}</a></li>
-         @endforeach
-      </ul>
-   </div>
+    <div class="container">
+        <ul class="navigation">
+            @if($group === 'home' && auth()->check())
+                <x-child-navigation
+                    :name="__('Home')"
+                    :url="route('me.index')"
+                    :isActive="Request::is('user/me')"
+                />
+                <x-child-navigation
+                    :name="__('Settings')"
+                    :url="route('settings.index')"
+                    :isActive="Request::is('user/settings*')"
+                />
+                <x-child-navigation
+                    :name="__('My page')"
+                    :url="route('profile.show', auth()->user()->username)"
+                    :isActive="Request::is('user/home*')"
+                />
+            @endif
+
+                @if($group === 'community')
+                    <x-child-navigation
+                            :name="__('Community')"
+                            :url="route('community.index')"
+                            :isActive="Request::is('community')"
+                    />
+                    <x-child-navigation
+                            :name="__('Articles')"
+                            :url="route('articles.index')"
+                            :isActive="Request::is('community/articles*')"
+                    />
+                    <x-child-navigation
+                            :name="__('Leaderboards')"
+                            :url="route('leaderboards.index')"
+                            :isActive="Request::is('community/leaderboards')"
+                    />
+                    <x-child-navigation
+                            :name="__('Staff')"
+                            :url="route('staff.index')"
+                            :isActive="Request::is('community/staff')"
+                    />
+                    <x-child-navigation
+                            :name="__('Photos')"
+                            :url="route('photos.index')"
+                            :isActive="Request::is('community/photos')"
+                    />
+                @endif
+
+                @if($group === 'shop')
+                    <x-child-navigation
+                            :name="__('Shop')"
+                            url="#"
+                            :isActive="Request::is('shop*')"
+                    />
+                @endif
+        </ul>
+    </div>
 </div>

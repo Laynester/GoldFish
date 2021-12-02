@@ -13,10 +13,10 @@
 
                         <div class="d-grid gap-3">
                             <div class="form-group row">
-                                <label for="name">{{ __('Name') }}</label>
+                                <label for="username">{{ __('Username') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="name" autofocus>
+                                    <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" autocomplete="username" autofocus required>
 
                                     @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                 <label for="email">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="mail" type="email" class="form-control @error('mail') is-invalid @enderror" name="mail" value="{{ old('mail') }}" required autocomplete="email">
+                                    <input type="email" id="mail" name="mail" class="form-control @error('mail') is-invalid @enderror" value="{{ old('mail') }}" autocomplete="email" required>
 
                                     @error('mail')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                                 <label for="password">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input type="password" id="password-confirm" name="password_confirmation" class="form-control" required>
                                 </div>
                             </div>
 
@@ -73,12 +73,11 @@
                     </form>
 
                     <div class="d-flex justify-content-end" style="position:absolute; top: 0; left: 200px; z-index: 0;">
-                        <img src="{{ asset('/goldfish/images/hotel.png') }}" alt="">
+                        <img src="{{ asset('goldfish/images/hotel.png') }}" alt="">
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 @endsection

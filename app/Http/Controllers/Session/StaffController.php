@@ -21,7 +21,7 @@ class StaffController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        return view('pages.community.staff', [
+        return view('community.staff', [
             'group' => 'community',
             'employees' => $employees,
             'ranks' => $ranks

@@ -38,23 +38,28 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="legacy-body">
-                <header class="d-flex justify-content-between" style="background-image:url(/goldfish/images/me/views/{{(Auth()->User() ? Auth()->User()->hotelview  : 'view_ca_wide.png')}});">
-                    <a href="/me" class="logo flex-shrink-1">
-                        <img src="{{CMSHelper::settings('site_logo')}}"/>
+                <header class="d-flex justify-content-between"
+                        style="background-image: url({{ asset('goldfish/images/me/views/' . auth()->user()->hotelview ?? 'view_ca_wide.png') }});">
+                    <a href="{{ route('me.index') }}" class="logo flex-shrink-1">
+                        <img src="{{ CMSHelper::settings('site_logo') }}"/>
+
                         <span class="legacy-online d-none d-md-inline-block">
-                            <span id="onlinecount">{{CMSHelper::online()}}</span>
-                            Online Now
+                            <span id="onlinecount">{{ CMSHelper::online() }}</span>
+                            {{ __('Online Now') }}
                         </span>
                     </a>
 
-                    <div class="d-flex flex-column flex-md-row h-full align-items-center mr-4" style="gap: 1rem;">
-                        <a class="faux-button green header-btn d-flex align-items-center" href="{{ route('nitro.index') }}" target="_blank">
-                            Nitro
+                    <div class="position-absolute d-flex px-2 rounded-lg" style="right: 30px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
+                        <a href=" {{ route('language', 'da') }}">
+                            <img src="http://shock.test/images/flags/dk.gif" alt="">
                         </a>
-                        <a class="faux-button green header-btn d-flex align-items-center" href="{{ route('game.index') }}" target="_blank">
-                            Flash
+
+                        <a href="{{ route('language', 'en') }}">
+                            <img src="http://shock.test/images/flags/us.gif" alt="">
                         </a>
                     </div>
+
+                    <x-legacy.client-buttons/>
 
                     @include('components.navbar')
                 </header>

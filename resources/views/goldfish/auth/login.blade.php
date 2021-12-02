@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7">
-                @include('components.news')
+                <x-goldfish.news-slider :news="$news"/>
             </div>
             <div class="col-lg-4">
-                @include('components.discord')
-                @include('components.twitter')
+                <x-goldfish.discord-box/>
+                <x-goldfish.twitter-box/>
             </div>
         </div>
     </div>

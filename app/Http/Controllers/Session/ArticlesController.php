@@ -10,7 +10,8 @@ class ArticlesController extends Controller
     public function index()
     {
         $news = News::orderBy('date', 'DESC')->paginate(5);
-        return view('pages.community.articles', [
+
+        return view('community.articles', [
                 'group' => 'community',
                 'news' => $news
             ]
@@ -19,12 +20,12 @@ class ArticlesController extends Controller
 
     public function show(News $article)
     {
-        $recentArticles = News::select('id', 'caption')->where('id', '!=', $article->id)->orderByDesc('id')->get();
+        $otherArticles = News::select('id', 'caption')->where('id', '!=', $article->id)->orderByDesc('id')->get();
 
-        return view('pages.community.article', [
+        return view('community.article', [
             'group' => 'community',
             'article' => $article,
-            'recentArticles' => $recentArticles,
+            'otherArticles' => $otherArticles,
         ]);
     }
 }

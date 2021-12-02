@@ -13,7 +13,6 @@ use App\Http\Controllers\Housekeeping\Site\NewsController;
 use App\Http\Controllers\Housekeeping\Site\RightsController;
 use App\Http\Controllers\Housekeeping\Site\Settings1Controller;
 use App\Http\Controllers\Housekeeping\Site\Settings2Controller;
-use App\Http\Controllers\Housekeeping\Updater;
 use App\Http\Controllers\Housekeeping\UserMod\BadgesController;
 use App\Http\Controllers\Housekeeping\UserMod\BansController;
 use App\Http\Controllers\Housekeeping\UserMod\ChatlogController;
@@ -34,7 +33,6 @@ use App\Http\Controllers\Session\PhotosController;
 use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
-use Illuminate\Support\Facades\App;
 
 // Used to determine CMS language
 Route::get('language/{locale}', LocaleController::class)->name('language');
@@ -60,6 +58,7 @@ Route::middleware(['installed','changeTheme','maintenance', 'guest'])->group(fun
         return redirect('login');
     })->name('index');
 
+    // Authentication routes
     Auth::routes();
 
     // Login routes
@@ -78,30 +77,34 @@ Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
         Route::get('/banned', [BannedController::class, 'index'])->name('banned');
 
-        // Me routes
-        Route::get('/me', [MeController::class, 'index'])->name('me.index');
-        Route::post('/search', [MeController::class, 'search'])->name('me.search');
-        Route::get('/me/delete/{id}', [MeController::class, 'destroy'])->name('alert.destroy');
+        Route::prefix('user')->group(function() {
+            Route::get('/me', [MeController::class, 'index'])->name('me.index');
+            Route::get('/me/delete/{id}', [MeController::class, 'destroy'])->name('alert.destroy');
 
-        // Settings routes
-        Route::get('/settings', [UserSettingsController::class, 'index'])->name('settings.index');
-        Route::post('/settings', [UserSettingsController::class, 'postHotel'])->name('settings.hotel-post');
-        Route::get('/settings/password', [UserSettingsController::class, 'account'])->name('settings.password');
-        Route::post('/settings/password', [UserSettingsController::class, 'postAccount'])->name('settings.password');
+            Route::post('/search', [MeController::class, 'search'])->name('me.search');
 
-        // User profile routes
-        Route::get('/home/{username}', [HomeController::class, 'showProfile'])->name('profile.show');
-        Route::post('/home/{username}/note', [HomeController::class, 'note'])->name('home.note');
-        Route::get('/home/{username}/edit', [HomeController::class, 'showProfile'])->name('home.edit');
-        Route::post('/home/{username}/save', [HomeController::class, 'save'])->name('home.save');
-        Route::post('/home/{username}/delete', [HomeController::class, 'destroy'])->name('home.destroy');
-        Route::post('/home/{username}/add', [HomeController::class, 'add'])->name('home.add');
-        Route::post('/home/{username}/buy', [HomeController::class, 'buy'])->name('home.buy');
-        Route::get('/habblet/store', [HomeController::class, 'store'])->name('home.store');
+            // Settings routes
+            Route::get('/settings', [UserSettingsController::class, 'index'])->name('settings.index');
+            Route::post('/settings', [UserSettingsController::class, 'postHotel'])->name('settings.hotel-post');
+            Route::get('/settings/password', [UserSettingsController::class, 'account'])->name('settings.password');
+            Route::post('/settings/password', [UserSettingsController::class, 'postAccount'])->name('settings.password');
+
+            // User profile routes
+            Route::get('/home/{username}', [HomeController::class, 'showProfile'])->name('profile.show');
+            Route::post('/home/{username}/note', [HomeController::class, 'note'])->name('home.note');
+            Route::get('/home/{username}/edit', [HomeController::class, 'showProfile'])->name('home.edit');
+            Route::post('/home/{username}/save', [HomeController::class, 'save'])->name('home.save');
+            Route::post('/home/{username}/delete', [HomeController::class, 'destroy'])->name('home.destroy');
+            Route::post('/home/{username}/add', [HomeController::class, 'add'])->name('home.add');
+            Route::post('/home/{username}/buy', [HomeController::class, 'buy'])->name('home.buy');
+            Route::get('/habblet/store', [HomeController::class, 'store'])->name('home.store');
+        });
 
         // Game routes
-        Route::get('/game', GameController::class)->name('game.index');
-        Route::get('/nitro', NitroController::class)->name('nitro.index');
+        Route::prefix('game')->group(function() {
+            Route::get('/flash', GameController::class)->name('flash.index');
+            Route::get('/nitro', NitroController::class)->name('nitro.index');
+        });
     });
 
     // Community routes
@@ -117,7 +120,7 @@ Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group
 Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(function () {
     Route::get('/', function () {
         return redirect('/housekeeping/dashboard');
-    });
+    })->name('hk.index');
 
     // HK Dashboard
     Route::any('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

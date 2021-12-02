@@ -17,8 +17,8 @@ class UserSettingsController extends Controller
   {
     $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
     $hview = \File::allFiles(public_path('goldfish/images/me/views'));
-    return view('pages.me.settings.hotel', [
-        'group' => 'me',
+    return view('me.settings.hotel', [
+        'group' => 'home',
         'pbg'   => $pbg,
         'hview' => $hview,
       ]
@@ -41,7 +41,9 @@ class UserSettingsController extends Controller
   }
   public function account()
   {
-    return view('pages.me.settings.account', ['group' => 'me']);
+    return view('me.settings.account', [
+        'group' => 'home'
+    ]);
   }
   public function postHotel(){
     if (!file_exists(public_path() . '/images/profile_backgrounds/' . request()->get('background'))) {

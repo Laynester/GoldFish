@@ -2,43 +2,61 @@
 
 namespace App\Http\Controllers\Session;
 
+use App\Models\CMS\Alerts;
+use App\Models\User\User;
+use App\Models\User\User_Badges;
 use Auth;
 use App\Http\Controllers\Controller;
 use App\Models\CMS\News;
 use App\Models\Hotel\Friendship;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class MeController extends Controller
 {
-  public function index()
-  {
-    $badges = \App\Models\User\User_Badges::where('user_id', Auth()->User()->id)->take(32)->get();
-    $news = News::orderBy('date', 'DESC')->take(3)->get();
-    $friends = Friendship::where('user_one_id', Auth()->User()->id)->inRandomOrder()->take(5)->get();
-    $friendOnlineCount = Friendship::whereHas('habbo', function ($query){
-      $query->where('online','1');
-    })->where('user_one_id',Auth()->User()->id)->get();
-    return view('pages.me.me', [
-        'badges'   => $badges,
-        'news'     => $news,
-        'currency' => Auth::user()->currency,
-        'group'    => 'me',
-        'friends'  => $friends,
-        'fron' => $friendOnlineCount,
-      ]
-    );
-  }
-  public function destroy($id)
-  {
-    \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id', $id)->delete();
-    return redirect()->back();
-  }
-  public function search()
-  {
-    $user = \App\Models\User\User::where('username', request()->get('search'))->first();
-    if($user) {
-      return redirect('/home/'.request()->get('search'));
-    } else {
-      return redirect()->back()->withErrors('User not Found.');
+    public function index()
+    {
+        $badges = User_Badges::query()->where('user_id', auth()->id())->take(32)->get();
+        $news = News::query()->orderBy('date', 'DESC')->take(3)->get();
+        $otherArticles = News::query()->skip('3')->take('7')->latest('date')->get();
+        $friends = Friendship::query()->where('user_one_id', auth()->id())->inRandomOrder()->take(5)->get();
+        $friendsOnlineCount = Friendship::query()
+            ->whereHas('habbo', function ($query) {
+                $query->where('online', '1');
+            })
+            ->where('user_one_id', auth()->id())
+            ->get();
+        $alerts = Alerts::query()->latest('id')->get();
+
+        return view('me.me', [
+                'group' => 'home',
+                'badges' => $badges,
+                'news' => $news,
+                'otherArticles' => $otherArticles,
+                'currency' => Auth::user()->currency,
+                'friends' => $friends,
+                'onlineFriends' => $friendsOnlineCount,
+                'alerts' => $alerts,
+            ]
+        );
     }
-  }
+
+    public function destroy($id)
+    {
+        \App\Models\CMS\Alerts::where('userid', Auth()->User()->id)->orWhere('id', $id)->delete();
+        return redirect()->back();
+    }
+
+    public function search(Request $request): RedirectResponse
+    {
+        $user = User::query()
+            ->where('username', '=', $request->input('search'))
+            ->first();
+
+        if (!$user) {
+            return redirect()->back()->withErrors('User not Found.');
+        }
+
+        return redirect()->route('profile.show', $user);
+    }
 }
