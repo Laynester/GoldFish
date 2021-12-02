@@ -56,5 +56,15 @@
   ":username groups": ":username groups",
   "No photos posted.": "No photos posted.",
   ":username currently has no groups.": ":username currently has no groups.",
-  ":username currently has no friends.": ":username currently has no friends."
+  ":username currently has no friends.": ":username currently has no friends.",
+  "Search for a :hotelname": "Search for a :hotelname",
+  "Last signed in:": "Last signed in:",
+  "User settings": "User settings",
+  "Other settings": "Other settings",
+  "My Profile": "My Profile",
+  "My Rooms": "My Rooms",
+  "Edit": "Edit",
+  "Read more": "Read more",
+  "There is currently no other articles": "There is currently no other articles",
+  "All articles": "All articles"
 }

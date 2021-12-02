@@ -40,7 +40,7 @@
   "No photos posted.": "Ingen billeder udgivet.",
   "Hotel Settings": "Hotel indstillinger",
   "Site Preferences": "Hotel preferencer",
-  "Password Settings": "Password indstillinger",
+  "Password Settings": "Adgangskode indstillinger",
   "Me page Hotel View": "Hjem hotel udsigt",
   "Profile Background": "Profil baggrund",
   "Save Settings": "Gem indstillinger",
@@ -56,5 +56,15 @@
   ":username groups": ":username Grupper",
   "No photos posted.": "Ingen billeder udgivet.",
   ":username currently has no groups.": ":username har på nuværende tidspunkt ingen grupper",
-  ":username currently has no friends.": ":username har på nuværende tidspunkt ingen venner."
+  ":username currently has no friends.": ":username har på nuværende tidspunkt ingen venner.",
+  "Search for a :hotelname": "Søg efter en :hotelname",
+  "Last signed in:": "Sidst logget ind:",
+  "User settings": "Bruger indstillinger",
+  "Other settings": "Andre indstillinger",
+  "My Profile": "Min profil",
+  "My Rooms": "Mine rum",
+  "Edit": "Rediger",
+  "Read more": "Læs mere",
+  "There is currently no other articles": "Der på nuværende tidspunkt ingen andre nyheder",
+  "All articles": "Alle nyheder"
 }

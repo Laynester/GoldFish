@@ -66,6 +66,16 @@
             </div>
         @endguest
         <div class="container relative">
+            <div class="position-absolute d-flex px-2 rounded-lg" style="left: 15px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
+                <a href=" {{ route('language', 'da') }}">
+                    <img src="{{ asset('images/flags/dk.gif') }}" alt="">
+                </a>
+
+                <a href="{{ route('language', 'en') }}">
+                    <img src="{{ asset('images/flags/us.gif') }}" alt="">
+                </a>
+            </div>
+
             <div class="logo">
                 <a href="{{ route('me.index') }}" class="left">
                     <img src="{{CMSHelper::settings('site_logo')}}"/>

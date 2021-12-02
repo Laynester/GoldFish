@@ -51,11 +51,11 @@
 
                     <div class="position-absolute d-flex px-2 rounded-lg" style="right: 30px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
                         <a href=" {{ route('language', 'da') }}">
-                            <img src="http://shock.test/images/flags/dk.gif" alt="">
+                            <img src="{{ asset('images/flags/dk.gif') }}" alt="">
                         </a>
 
                         <a href="{{ route('language', 'en') }}">
-                            <img src="http://shock.test/images/flags/us.gif" alt="">
+                            <img src="{{ asset('images/flags/us.gif') }}" alt="">
                         </a>
                     </div>
 

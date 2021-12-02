@@ -19,7 +19,7 @@
                 {{ $article->desc }}
             </p>
         </div>
-        <a class="right bottom" href="/community/articles/{{ $article->id }}">{{ __('Read more') }}</a>
+        <a class="right bottom" href="{{ route('articles.show', $article) }}">{{ __('Read more') }}</a>
     </article>
 @endforeach
 {{ $news->links() }}

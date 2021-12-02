@@ -4,7 +4,7 @@
     <div class="heading">
         {{ auth()->user()->username }}
         <small class="right">
-            Last signed in: {{ date('d/m/y h:ia', auth()->user()->last_login) }}
+            {{ __('Last signed in:') }} {{ date('d/m/y h:ia', auth()->user()->last_login) }}
         </small>
     </div>
 

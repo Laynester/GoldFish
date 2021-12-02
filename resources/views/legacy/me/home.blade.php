@@ -68,19 +68,19 @@
                         @endslot
                         @slot('title')
                             @if($row->name == 'myhabbo')
-                                My Profile
+                                {{ __('My Profile') }}
                             @endif
                             @if($row->name == 'rooms')
-                                My Rooms
+                                {{ __('My Rooms') }}
                             @endif
                             @if($row->name == 'mybadges')
-                                My Badges
+                                {{ __('My Badges') }}
                             @endif
                             @if($row->name == 'friends')
-                                My Friends
+                                {{ __('My Friends') }}
                             @endif
                             @if($row->name == 'groups')
-                                My Groups
+                                {{ __('My Groups') }}
                             @endif
                         @endslot
                         @slot('body')
