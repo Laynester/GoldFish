@@ -1,7 +1,7 @@
 @props(['badges'])
 
 <div class="box badges red">
-    <div class="heading">My Badges</div>
+    <div class="heading">{{ __('My Badges') }}</div>
 
     <div class="content">
         @forelse($badges as $badge)
@@ -10,7 +10,7 @@
             </span>
         @empty
             <div class="text-center">
-                You currently got no badges
+                {{ __('You currently got no badges') }}
             </div>
         @endforelse
     </div>

@@ -67,8 +67,14 @@
         @endguest
         <div class="container relative">
             <div class="logo">
-                <a href="{{ route('me.index') }}" class="left"><img src="{{CMSHelper::settings('site_logo')}}"/></a>
-                <div class="online no-mobile"><span id="onlinecount">{{CMSHelper::online()}}</span> Online Now</div>
+                <a href="{{ route('me.index') }}" class="left">
+                    <img src="{{CMSHelper::settings('site_logo')}}"/>
+                </a>
+                <div class="online no-mobile">
+                    <span id="onlinecount">
+                        {{ __(':online Online now', ['online' => CMSHelper::online()]) }}
+                    </span>
+                </div>
             </div>
             <div class="right @guest regbutton @endguest">
                 @auth

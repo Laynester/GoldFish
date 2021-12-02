@@ -1,5 +1,5 @@
 <div class="box">
-    <div class="heading">Search</div>
+    <div class="heading">{{ __('Search') }}</div>
     <div class="content">
         @if($errors->any())
             <div class="alert alert-danger" role="alert">

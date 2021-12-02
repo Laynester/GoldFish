@@ -11,7 +11,7 @@
 
             <div class="col-lg-3">
                 <div class="box black">
-                    <div class="heading">{{ __('$employees') }}</div>
+                    <div class="heading">{{ __('About the team') }}</div>
                     <div class="content">
                         <small>
                             <p>

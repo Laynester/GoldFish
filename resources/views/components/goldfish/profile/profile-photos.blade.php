@@ -2,7 +2,7 @@
 
 @if($photos->isEmpty())
     <hr>
-    <h3 class="center">No photos posted.</h3>
+    <h3 class="center">{{ __('No photos posted.') }}</h3>
     <hr>
 @else
     <hr>

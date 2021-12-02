@@ -19,7 +19,7 @@
             </div>
         @endforeach
         <div class="item login">
-            Last Logged in: {{date('F d, Y h:ia', Auth::user()->last_login)}}
+            {{ __('Last Logged in:') }} {{ date('F d, Y h:ia', Auth::user()->last_login) }}
         </div>
     </div>
 </div>

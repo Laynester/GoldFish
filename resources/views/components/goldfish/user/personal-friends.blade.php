@@ -1,7 +1,7 @@
 @props(['friendsOnline'])
 
 <div class="box blue">
-    <div class="heading">My Online Friends</div>
+    <div class="heading">{{ __('My Online Friends') }}</div>
     <div class="content">
         @forelse($onlineFriends as $friend)
             <span class="friend">
@@ -10,12 +10,12 @@
                 </a>
             </span>
         @empty
-            <div class="text-center">You have no friends online</div>
+            <div class="text-center">{{ __('You have no friends online') }}</div>
         @endforelse
 
         @if($onlineFriends->count() >= 5)
             <div class="text-center">
-                And many others!
+                {{ __('And many others!') }}
             </div>
         @endif
     </div>
