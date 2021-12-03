@@ -7,9 +7,15 @@ use App\Models\User\Bans;
 
 class BannedController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
-        $ban = Bans::where('user_id', Auth()->User()->id)->orWhere('ip', Auth()->User()->ip_current)->orderBy('id', 'desc')->first();
+        $user = auth()->user();
+        $ban = Bans::query()
+            ->where('user_id', $user->id)
+            ->orWhere('ip', $user->ip_current)
+            ->latest('id')
+            ->first();
+
         return view('banned', [
             'group' => 'home',
             'ban'   => $ban

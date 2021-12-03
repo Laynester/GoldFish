@@ -2,6 +2,7 @@
 
 namespace App\Models\User;
 
+use App\Models\CMS\CmsLogin;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,6 +14,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const REDIRECT_HOME = "/user/me";
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -20,7 +23,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'username', 'mail', 'password', 'last_login', 'ip_register', 'ip_current', 'account_created', 'credits', 'motto', 'rank', 'auth_ticket'
+        'id', 'username', 'mail',
+        'password', 'last_login', 'ip_register',
+        'ip_current', 'account_created', 'credits',
+        'motto', 'rank', 'auth_ticket'
     ];
 
     /**
@@ -80,5 +86,10 @@ class User extends Authenticatable
     public function currencies(): HasMany
     {
         return $this->hasMany(UserCurrency::class);
+    }
+
+    public function logins(): HasMany
+    {
+        return $this->hasMany(CmsLogin::class);
     }
 }

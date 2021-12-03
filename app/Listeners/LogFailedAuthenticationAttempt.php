@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Listeners;
 
 use Illuminate\Auth\Events\Failed;
@@ -9,7 +9,7 @@ class LogFailedAuthenticationAttempt {
     public function handle(Failed $event)
     {
         if($event->user) {
-            \App\Models\CMS\Login::create([
+            \App\Models\CMS\CmsLogin::create([
                 'user_id'    => $event->user->id,
                 'ip'         => Request::ip(),
                 'timestamp'  => time(),

@@ -66,7 +66,7 @@
             </div>
         @endguest
         <div class="container relative">
-            <div class="position-absolute d-flex px-2 rounded-lg" style="left: 15px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
+            <div class="position-absolute d-flex px-2 rounded-lg" style="z-index: 5; left: 15px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
                 <a href=" {{ route('language', 'da') }}">
                     <img src="{{ asset('images/flags/dk.gif') }}" alt="">
                 </a>

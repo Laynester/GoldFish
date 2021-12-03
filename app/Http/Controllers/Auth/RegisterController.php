@@ -12,48 +12,21 @@ use App\Helpers\CMS;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/user/me';
+    protected string $redirectTo = self::REDIRECT_HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
-            'username' => 'required|max:255|unique:users|alpha_dash',
-            'mail' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'username' => ['required', 'max:255', 'unique:users', 'alpha_dash'],
+            'mail' => ['required', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -65,14 +38,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $currentTime = time();
+        $ipAddress = request()->ip();
+
         $user = User::create([
             'username' => $data['username'],
             'mail' => $data['mail'],
             'password' => Hash::make($data['password']),
-            'ip_register' => request()->ip(),
-            'ip_current' => request()->ip(),
-            'last_login' => time(),
-            'account_created' => time(),
+            'ip_register' => $ipAddress,
+            'ip_current' => $ipAddress,
+            'last_login' => $currentTime,
+            'account_created' => $currentTime,
             'motto' => CMS::settings('default_motto'),
             'credits' => CMS::settings('reg_credits'),
         ]);

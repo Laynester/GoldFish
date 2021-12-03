@@ -20,6 +20,7 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect()->route('me.index');
         }
+
         return $next($request);
     }
 }

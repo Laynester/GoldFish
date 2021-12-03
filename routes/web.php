@@ -48,8 +48,14 @@ Route::middleware(['setTheme:installation'])->prefix('installation')->group(func
   });
 });
 
+Route::middleware('maintenance')->group(function () {
+    Route::get('/maintenance', MaintenanceController::class)->name('maintenance.index');
+    Route::post('/maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
+});
+
+
 // Guest
-Route::middleware(['installed','changeTheme','maintenance', 'guest'])->group(function () {
+Route::middleware(['installed','changeTheme', 'maintenance', 'guest'])->group(function () {
     Route::get('/', function () {
         return redirect('login');
     });
@@ -63,18 +69,14 @@ Route::middleware(['installed','changeTheme','maintenance', 'guest'])->group(fun
     // Login routes
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.index');
     Route::post('/login', [LoginController::class, 'login'])->name('login.store');
-    Route::get('/maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
-    Route::get('/maintenance/login',[MaintenanceController::class, 'login'])->name('maintenance.login');
-    Route::post('maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
-    Route::post('maintenance/login', [LoginController::class, 'login']);
 });
 
 // Authenticated
 Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group(function () {
     Route::middleware(['auth'])->group(function() {
-        Route::get('logout', [LoginController::class, 'logout']);
-        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-        Route::get('/banned', [BannedController::class, 'index'])->name('banned');
+        Route::get('/logout', [LoginController::class, 'logout'])->withoutMiddleware('maintenance');
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->withoutMiddleware('maintenance');
+        Route::get('/banned', BannedController::class)->name('banned');
 
         Route::prefix('user')->group(function() {
             Route::get('/me', [MeController::class, 'index'])->name('me.index');
