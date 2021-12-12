@@ -26,31 +26,31 @@
                             <div class="form-group">
                                 <label for="hotelview">{{ __('Me page Hotel View') }}</label><br>
                                 <div class="options hotelview">
-                                    @foreach ($hview as $view)
+                                    @foreach ($hotelViews as $hotelview)
                                         <input type="radio"
-                                               id="{{ $view->getFilename() }}"
+                                               id="{{ $hotelview->getFilename() }}"
                                                name="hotelview"
-                                             @if(auth()->user()->hotelview == $view->getFilename()) checked @endif
-                                               value="{{ $view->getFilename() }}"
+                                             @if(auth()->user()->hotelview == $hotelview->getFilename()) checked @endif
+                                               value="{{ $hotelview->getFilename() }}"
                                         />
 
-                                        <label for="{{ $view->getFilename() }}"
-                                               style="background-image:url(/goldfish/images/me/views/{{ $view->getFilename() }});"
+                                        <label for="{{ $hotelview->getFilename() }}"
+                                               style="background-image:url(/goldfish/images/me/views/{{ $hotelview->getFilename() }});"
                                         ></label>
                                     @endforeach
                                 </div>
                                 <label for="hotelview">{{ __('Profile Background') }}</label>
                                 <div class="options hotelview">
                                     {{-- TODO: Refactor weird var names --}}
-                                    @foreach ($pbg as $bg)
+                                    @foreach ($profileBackgrounds as $profileBackground)
                                         <input type="radio"
-                                               id="{{ $bg->getFilename() }}"
+                                               id="{{ $profileBackground->getFilename() }}"
                                                name="background"
-                                               @if( auth()->user()->profile_background == $bg->getFilename()) checked @endif
-                                               value="{{ $bg->getFilename() }}"
+                                               @if( auth()->user()->profile_background == $profileBackground->getFilename()) checked @endif
+                                               value="{{ $profileBackground->getFilename() }}"
                                         />
-                                        <label for="{{ $bg->getFilename() }}"
-                                               style="background-image:url(/images/profile_backgrounds/{{$bg->getFilename()}});"></label>
+                                        <label for="{{ $profileBackground->getFilename() }}"
+                                               style="background-image:url(/images/profile_backgrounds/{{$profileBackground->getFilename()}});"></label>
                                     @endforeach
                                 </div>
                             </div>

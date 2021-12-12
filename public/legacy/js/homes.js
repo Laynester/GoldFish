@@ -6,7 +6,7 @@ $(function() {
     $(document).click(function(evt){
 		console.log($(evt.target).hasClass('icon-edit'))
         if($(evt.target).hasClass('icon-edit') || $(evt.target).hasClass('selectSkin')){
-			
+
         } else {
 			$('.edit-menu').removeClass('show');
 		}
@@ -38,7 +38,7 @@ $("#save").click(function() {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: 'POST',
-		url: '/home/' + username + '/save',
+		url: '/user/home/' + username + '/save',
 		contentType: 'application/json',
 		data: widgets,
 		success: function(result) {
@@ -47,7 +47,7 @@ $("#save").click(function() {
 			$('.store_overlay').append('<div style="" id="habbos_loading"><img src="/legacy/images/progress_habbos.gif"><br><img src="/legacy/images/progress_bar_blue.gif">');
 			$('#habbos_loading').center();
 			setTimeout(function() {
-				window.location.href = "/home/" + username;
+				window.location.href = "/user/home/" + username;
 			}, 1000);
 		}
 	});
@@ -112,7 +112,7 @@ function deleteElement(selector) {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: 'POST',
-		url: '/home/' + username + '/delete',
+		url: '/user/home/' + username + '/delete',
 		contentType: 'application/json',
 		data: value,
 		success: function(result) {
@@ -163,7 +163,7 @@ function openTab(evt, tabName) {
 function openStore(open = '') {
 	$.ajax({
 		type: 'GET',
-		url: '/habblet/store',
+		url: '/user/habblet/store',
 		success: function(data) {
 			$(data).hide().appendTo('body');
 			$(".store").center();
@@ -199,7 +199,7 @@ function placeElement(selector) {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: 'POST',
-		url: '/home/' + username + '/add',
+		url: '/user/home/' + username + '/add',
 		contentType: 'application/json',
 		data: value,
 		success: function(result) {
@@ -315,7 +315,7 @@ function changeBg(selector) {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: 'POST',
-		url: '/home/' + username + '/add',
+		url: '/user/home/' + username + '/add',
 		contentType: 'application/json',
 		data: value,
 		success: function(result) {
@@ -342,7 +342,7 @@ function buyElement(selector) {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: 'POST',
-		url: '/home/' + username + '/buy',
+		url: '/user/home/' + username + '/buy',
 		contentType: 'application/json',
 		data: value,
 		success: function(result) {
@@ -406,7 +406,7 @@ function initNote(){
 		} else {
 			$.ajax({
 				type: "POST",
-				url: '/home/' + username + '/note',
+				url: '/user/home/' + username + '/note',
 				data: form.serialize(),
 				success: function(result) {
 					var data = nl2br(result.data);
