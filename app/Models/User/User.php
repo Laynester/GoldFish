@@ -26,7 +26,8 @@ class User extends Authenticatable
         'id', 'username', 'mail',
         'password', 'last_login', 'ip_register',
         'ip_current', 'account_created', 'credits',
-        'motto', 'rank', 'auth_ticket'
+        'motto', 'rank', 'auth_ticket',
+        'hotelview', 'profile_background'
     ];
 
     /**
@@ -77,7 +78,7 @@ class User extends Authenticatable
         }
 
         $this->update([
-           'auth_ticket' => $sso
+            'auth_ticket' => $sso
         ]);
 
         return $sso;

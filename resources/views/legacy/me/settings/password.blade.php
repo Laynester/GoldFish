@@ -19,34 +19,38 @@
                             </ul>
                         </div>
                     @endif
-                    @if (Session::has('message'))
-                        <div class="alert alert-success">{{ Session::get('message') }}</div>
+
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @endif
+
                     <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <form id="form-change-password" role="form" method="POST" novalidate
-                                  class="form-horizontal">
-                                <label for="current-password">Current Password</label>
+                        <div class="col-lg-12">
+                            <form id="form-change-password" role="form" method="POST" action="{{ route('settings.password.update') }}" class="form-horizontal">
+                                @csrf
+
+                                <label for="current-password">{{ __('Current Password') }}</label>
                                 <div class="form-group">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="password" class="form-control" id="current-password"
-                                           name="current-password"
+                                           name="current_password"
                                            placeholder="Password">
                                 </div>
-                                <label for="password">New Password</label>
+
+                                <label for="password">{{ __('New Password') }}</label>
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="password" name="password"
-                                           placeholder="Password">
+                                           placeholder="{{ __('Password') }}">
                                 </div>
-                                <label for="password_confirmation">Re-enter Password</label>
+
+                                <label for="password_confirmation">{{ __('Confirm new password') }}</label>
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="password_confirmation"
-                                           name="password_confirmation" placeholder="Re-enter Password">
+                                           name="password_confirmation" placeholder="{{ __('Confirm new password') }}">
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit">Submit</button>
+
+                                <div class="form-group d-flex justify-content-end mt-3">
+                                    <button type="submit">{{ __('Update password') }}</button>
                                 </div>
-                                @csrf
                             </form>
                         </div>
                     </div>

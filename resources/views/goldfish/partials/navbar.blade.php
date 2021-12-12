@@ -68,7 +68,7 @@
                 />
                 <x-child-navigation
                     :name="__('Settings')"
-                    :url="route('settings.index')"
+                    :url="route('settings.hotel.edit')"
                     :isActive="Request::is('user/settings*')"
                 />
                 <x-child-navigation

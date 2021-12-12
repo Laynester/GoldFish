@@ -19,31 +19,43 @@
                     </div>
                 @endif
 
-                @if (Session::has('message'))
-                    <div class="alert alert-success">{{ Session::get('message') }}</div>
+                @if (Session::has('success'))
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
                 @endif
 
                 <div class="row">
-                    <form id="form-change-password" role="form" method="POST" novalidate class="form-horizontal">
+                    <form id="form-change-password" role="form" method="POST" action="{{ route('settings.password.update') }}" class="form-horizontal">
                         @csrf
 
                         <div class="d-grid gap-2">
                             <label for="current-password">{{ __('Current Password') }}</label>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="current-password"
-                                       name="current-password" placeholder="{{ __('Password') }}">
+                                <input type="password"
+                                       class="form-control"
+                                       id="current-password"
+                                       name="current_password"
+                                       placeholder="{{ __('Password') }}"
+                                >
                             </div>
 
                             <label for="password">{{ __('New Password') }}</label>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password"
-                                       placeholder="{{ __('Password') }}">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password"
+                                       placeholder="{{ __('Password') }}"
+                                >
                             </div>
 
                             <label for="password_confirmation">{{ __('Re-enter Password') }}</label>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password_confirmation"
-                                       name="password_confirmation" placeholder="{{ __('Re-enter Password') }}">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password_confirmation"
+                                       name="password_confirmation"
+                                       placeholder="{{ __('Re-enter Password') }}"
+                                >
                             </div>
 
                             <div class="form-group">

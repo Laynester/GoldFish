@@ -33,19 +33,21 @@ use App\Http\Controllers\Session\PhotosController;
 use App\Http\Controllers\Session\UserSettingsController;
 use App\Http\Controllers\Session\StaffController;
 use App\Http\Controllers\Housekeeping\Server\ClientController as HousekeepingClientController;
+use App\Http\Controllers\UserPasswordController;
+
 // Used to determine CMS language
 Route::get('language/{locale}', LocaleController::class)->name('language');
 
 Route::middleware(['setTheme:installation'])->prefix('installation')->group(function () {
-  Route::get('/' ,function () {
+    Route::get('/', function () {
         return redirect('installation/index');
-  });
+    });
 
-  Route::middleware('installed')->group(function () {
-      Route::any('/index', [InstallationController::class, 'index'])->name('installation.index');
-      Route::get('/step/{step}', [InstallationController::class, 'stepHandler'])->name('installation.step');
-      Route::post('/step/{step}', [InstallationController::class, 'updateStepHandler'])->name('installation.step.update');
-  });
+    Route::middleware('installed')->group(function () {
+        Route::any('/index', [InstallationController::class, 'index'])->name('installation.index');
+        Route::get('/step/{step}', [InstallationController::class, 'stepHandler'])->name('installation.step');
+        Route::post('/step/{step}', [InstallationController::class, 'updateStepHandler'])->name('installation.step.update');
+    });
 });
 
 Route::middleware('maintenance')->group(function () {
@@ -55,7 +57,7 @@ Route::middleware('maintenance')->group(function () {
 
 
 // Guest
-Route::middleware(['installed','changeTheme', 'maintenance', 'guest'])->group(function () {
+Route::middleware(['installed', 'changeTheme', 'maintenance', 'guest'])->group(function () {
     Route::get('/', function () {
         return redirect('login');
     });
@@ -73,22 +75,25 @@ Route::middleware(['installed','changeTheme', 'maintenance', 'guest'])->group(fu
 
 // Authenticated
 Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group(function () {
-    Route::middleware(['auth'])->group(function() {
+    Route::middleware(['auth'])->group(function () {
         Route::get('/logout', [LoginController::class, 'logout'])->withoutMiddleware('maintenance');
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->withoutMiddleware('maintenance');
         Route::get('/banned', BannedController::class)->name('banned');
 
-        Route::prefix('user')->group(function() {
+        Route::prefix('user')->group(function () {
             Route::get('/me', [MeController::class, 'index'])->name('me.index');
             Route::get('/me/delete/{id}', [MeController::class, 'destroy'])->name('alert.destroy');
 
             Route::post('/search', [MeController::class, 'search'])->name('me.search');
 
             // Settings routes
-            Route::get('/settings', [UserSettingsController::class, 'index'])->name('settings.index');
-            Route::post('/settings', [UserSettingsController::class, 'postHotel'])->name('settings.hotel-post');
-            Route::get('/settings/password', [UserSettingsController::class, 'account'])->name('settings.password');
-            Route::post('/settings/password', [UserSettingsController::class, 'postAccount'])->name('settings.password');
+            Route::prefix('settings')->group(function () {
+                Route::get('/hotel', [UserSettingsController::class, 'edit'])->name('settings.hotel.edit');
+                Route::post('/hotel', [UserSettingsController::class, 'update'])->name('settings.hotel.update');
+
+                Route::get('/password', [UserPasswordController::class, 'edit'])->name('settings.password.edit');
+                Route::post('/password', [UserPasswordController::class, 'update'])->name('settings.password.update');
+            });
 
             // User profile routes
             Route::get('/home/{username}', [HomeController::class, 'showProfile'])->name('profile.show');
@@ -102,7 +107,7 @@ Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group
         });
 
         // Game routes
-        Route::prefix('game')->group(function() {
+        Route::prefix('game')->group(function () {
             Route::get('/flash', GameController::class)->name('flash.index');
             Route::get('/nitro', NitroController::class)->name('nitro.index');
         });
@@ -128,8 +133,8 @@ Route::middleware(['auth', 'setTheme:Admin'])->prefix('housekeeping')->group(fun
     Route::get('/credits', [DashboardController::class, 'credits'])->name('credits');
 
     // HK Updater
-//    Route::get('/update/check', [Updater::class, 'check'])->name('update_checker');
-//    Route::get('/update/update', [Updater::class, 'update'])->name('updater');
+    //    Route::get('/update/check', [Updater::class, 'check'])->name('update_checker');
+    //    Route::get('/update/update', [Updater::class, 'update'])->name('updater');
 
     // HK Server
     Route::any('/server/client', HousekeepingClientController::class)->name('hk.server-client');

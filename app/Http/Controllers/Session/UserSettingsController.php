@@ -2,80 +2,60 @@
 
 namespace App\Http\Controllers\Session;
 
-use Auth;
-use Request;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request as Req;
-use Validator;
-use Redirect;
+use Illuminate\Support\Facades\File;
 
 class UserSettingsController extends Controller
 {
-  public function index()
-  {
-    $pbg = \File::allFiles(public_path('images/profile_backgrounds'));
-    $hview = \File::allFiles(public_path('goldfish/images/me/views'));
-    return view('me.settings.hotel', [
-        'group' => 'home',
-        'pbg'   => $pbg,
-        'hview' => $hview,
-      ]
-    );
-  }
-  public function admin_credential_rules(array $data)
-  {
-    $messages = [
-      'current-password.required' => 'Please enter current password',
-      'password.required'         => 'Please enter password',
-    ];
+    public function edit()
+    {
+        $profileBackgrounds = File::allFiles(public_path('images/profile_backgrounds'));
+        $hotelViews = File::allFiles(public_path('goldfish/images/me/views'));
 
-    $validator = Validator::make($data, [
-      'current-password'      => 'required',
-      'password'              => 'required|same:password',
-      'password_confirmation' => 'required|same:password',
-    ], $messages);
+        return view(
+            'me.settings.hotel',
+            [
+                'group' => 'home',
+                'profileBackgrounds' => $profileBackgrounds,
+                'hotelViews' => $hotelViews,
+            ]
+        );
+    }
 
-    return $validator;
-  }
-  public function account()
-  {
-    return view('me.settings.account', [
-        'group' => 'home'
-    ]);
-  }
-  public function postHotel(){
-    if (!file_exists(public_path() . '/images/profile_backgrounds/' . request()->get('background'))) {
-      return redirect()->back()->withErrors('Selected Background doesnt exist.');
-    }
-    if (!file_exists(public_path() . '/goldfish/images/me/views/' . request()->get('hotelview'))) {
-      return redirect()->back()->withErrors('Selected hotelview doesnt exist.');
-    }
-    User::where('id', Auth()->User()->id)->update([
-      'hotelview'          => request()->get('hotelview'),
-      'profile_background' => request()->get('background')
-    ]);
-    return redirect()->back()->withSuccess('Changed!');
-  }
-  public function postAccount(Req $request){
-    $request_data = $request->All();
-      $validator = $this->admin_credential_rules($request_data);
-      if ($validator->fails()) {
-        return Redirect::back()->withErrors($validator->getMessageBag()->toArray());
-      } else {
-        $current_password = Auth::User()->password;
-        if (Hash::check($request_data['current-password'], $current_password)) {
-          $user_id = Auth::User()->id;
-          $obj_user = User::find($user_id);
-          $obj_user->password = Hash::make($request_data['password']);;
-          $obj_user->save();
-          $request->session()->flash('message', "Password changed!");
-          return redirect()->back();
-        } else {
-          $error = array('current-password' => 'Please enter correct current password');
-          return Redirect::back()->withErrors($error);
+    public function update(Request $request)
+    {
+        if (!$request->input('hotel_view') && !$request->input('profile_background')) {
+            return redirect()->back()->withErrors(__('Please select a background before saving.'));
         }
-      }
-  }
+
+        return $this->updateSetting($request->all());
+    }
+
+    private function updateSetting(array $data)
+    {
+        if (array_key_exists('hotel_view', $data) && !is_null($data['hotel_view'])) {
+            $hotelViewImage = file_exists(public_path('/goldfish/images/me/views/' . $data['hotel_view']));
+            if (!$hotelViewImage) {
+                return redirect()->back()->withErrors(__('The selected hotel view does not exist.'));
+            }
+
+            auth()->user()->update([
+                'hotelview' => $data['hotel_view'],
+            ]);
+
+            return redirect()->back()->withSuccess(__('The hotel view has been changed!'));
+        }
+
+        $profileBgImage = file_exists(public_path('/images/profile_backgrounds/' . $data['profile_background']));
+        if (!$profileBgImage) {
+            return redirect()->back()->withErrors(__('The selected profile background does not exist.'));
+        }
+
+        auth()->user()->update([
+            'profile_background' => $data['profile_background']
+        ]);
+
+        return redirect()->back()->withSuccess(__('The profile background has been changed!'));
+    }
 }
