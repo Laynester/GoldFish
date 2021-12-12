@@ -39,7 +39,7 @@
         <div class="col-lg-10">
             <div class="legacy-body">
                 <header class="d-flex justify-content-between"
-                        style="background-image: url({{ asset('goldfish/images/me/views/' . auth()->user()->hotelview ?? 'view_ca_wide.png') }});">
+                        style="background-image: url({{ asset('goldfish/images/me/views/' . (auth()->check() && auth()->user()->hotelview ? auth()->user()->hotelview : 'view_ca_wide.png')) }});">
                     <a href="{{ route('me.index') }}" class="logo flex-shrink-1">
                         <img src="{{ CMSHelper::settings('site_logo') }}"/>
 
