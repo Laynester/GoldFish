@@ -19,6 +19,8 @@ It offers the features that you'd normally expect from a Habbo retro CMS, the CM
 **What technologies is being used?**
 - Laravel 8.x (Latest as of August 2021)
 [Laravel docs](https://laravel.com/docs/8.x).
+- Bootstrap 5
+[Laravel docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
 
 ## Setup guide
 To setup Goldfish CMS you'll need the following:
@@ -39,7 +41,7 @@ Once the above commands has been executed, go to your CMS folder and create a fi
 
 ```
 php artisan key:generate
-php artisan migrate
+php artisan migrate --seed
 ```
 
 If all of the above steps has been done correctly / successfully, you should be prompted with an easy to follow installation process, once that has been finished, your CMS should be ready to use!
