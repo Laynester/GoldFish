@@ -20,7 +20,7 @@ It offers the features that you'd normally expect from a Habbo retro CMS, the CM
 - Laravel 8.x (Latest as of August 2021)
 [Laravel docs](https://laravel.com/docs/8.x).
 - Bootstrap 5
-[Laravel docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
+[Bootstrap docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
 
 ## Setup guide
 To setup Goldfish CMS you'll need the following:
