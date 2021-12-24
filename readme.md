@@ -16,6 +16,8 @@ Goldfish CMS offers a modern and industry approved backend, featuring the PHP fr
 
 It offers the features that you'd normally expect from a Habbo retro CMS, the CMS also includes a custom built housekeeping, to manage different aspects of your hotel.
 
+Goldfish CMS also includes a theme system, allowing you to switch between different themes or even make your own!
+
 **What technologies is being used?**
 - Laravel 8.x (Latest as of August 2021)
 [Laravel docs](https://laravel.com/docs/8.x).
