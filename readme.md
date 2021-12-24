@@ -27,7 +27,7 @@ Goldfish CMS also includes a theme system, allowing you to switch between differ
 ## Setup guide
 To setup Goldfish CMS you'll need the following:
 - Clone this repository to your wanted destination
-- PHP 7.4
+- PHP 7.4 or above (PHP 8.1 is supported)
 - Composer
 - NPM
 - An Arcturus Morningstar database
