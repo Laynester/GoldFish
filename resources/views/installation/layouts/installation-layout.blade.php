@@ -14,7 +14,7 @@
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
     {{-- Javascript --}}
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('assets/js/app.js') }}" defer></script>
     <script
         src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="

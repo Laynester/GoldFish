@@ -36,7 +36,7 @@
 
 .widget_default_skin .body {
 	background-image:
-  url(/legacy/images/shine.png)
+  url(/assets/legacy/images/shine.png)
   ,linear-gradient(90deg, #d8d8c5 16.67%, #ebebdd 16.67%, #ebebdd 50%, #d8d8c5 50%, #d8d8c5 66.67%, #ebebdd 66.67%, #ebebdd 100%);
 	background-size: contain, 6.00px 6.00px;
 	border: 1px solid #000;
@@ -138,7 +138,7 @@ h2.note_title {
 	width: 100%;
 	padding: 8px;
 	padding-left: 50px;
-	background: url(/legacy/images/room_icon.gif) no-repeat center left;
+	background: url(/assets/legacy/images/room_icon.gif) no-repeat center left;
 	border-bottom: 1px dashed rgba(0, 0, 0, .3);
 	margin-bottom: 5px;
 	z-index: 3;
@@ -176,12 +176,12 @@ h2.note_title {
 	position: relative;
 }
 .widget_metal_skin .heading:after{
-  background: url(/images/skins/metal/Skin_Metal_topLh.png) no-repeat top left;
+  background: url(/assets/images/skins/metal/Skin_Metal_topLh.png) no-repeat top left;
   padding-left: 35px;
   height: 33px;
 }
 .widget_metal_skin .heading {
-  background: url(/images/skins/metal/Skin_Metal_topRh.png) no-repeat top right;
+  background: url(/assets/images/skins/metal/Skin_Metal_topRh.png) no-repeat top right;
   height: 33px;
   margin-left:35px;
   position: relative;
@@ -192,7 +192,7 @@ h2.note_title {
   padding-right:40px
 }
 .widget_metal_skin .body:after {
-  background: url(/images/skins/metal/Skin_Metal_btmL.png) no-repeat bottom left;
+  background: url(/assets/images/skins/metal/Skin_Metal_btmL.png) no-repeat bottom left;
   right:100%;
   content:'';
   position: absolute;
@@ -201,7 +201,7 @@ h2.note_title {
   width: 22px;
 }
 .widget_metal_skin .body{
-  background: url(/images/skins/metal/Skin_Metal_btmR.png) no-repeat bottom right;
+  background: url(/assets/images/skins/metal/Skin_Metal_btmR.png) no-repeat bottom right;
   padding: 1px 26px 23px 7px;
   color: #000;
   margin-left:22px;
@@ -212,7 +212,7 @@ h2.note_title {
   position: relative;
 }
 .widget_golden_skin .heading {
-  background: url(/images/skins/golden/Skin_Goldenframe_topR.png) no-repeat top right;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_topR.png) no-repeat top right;
   height: 31px;
   padding-top: 8px;
   color: #733A00;
@@ -222,12 +222,12 @@ h2.note_title {
   padding-right: 31px;
 }
 .widget_golden_skin .heading:after {
-  background: url(/images/skins/golden/Skin_Goldenframe_topL.png) no-repeat top left;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_topL.png) no-repeat top left;
   height:31px;
   padding-left: 31px;
 }
 .widget_golden_skin .heading span{
-  background: url(/images/skins/golden/Skin_Goldenframe_Header_M.png);
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_Header_M.png);
   height: 21px;
   margin: 0px;
   padding: 3px 2px 5px 2px;
@@ -242,15 +242,15 @@ h2.note_title {
   top:0;
 }
 .widget_golden_skin .heading span:before {
-  background: url(/images/skins/golden/Skin_Goldenframe_Header_L.png) no-repeat;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_Header_L.png) no-repeat;
   right:100%;
 }
 .widget_golden_skin .heading span:after {
-  background: url(/images/skins/golden/Skin_Goldenframe_Header_R.png) no-repeat;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_Header_R.png) no-repeat;
   left:100%;
 }
 .widget_golden_skin .body {
-  background: url(/images/skins/golden/Skin_Goldenframe_btmlR.png) no-repeat bottom right;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_btmlR.png) no-repeat bottom right;
   padding: 4px 35px 35px 4px;
   color: #000;
   margin-left:30px;
@@ -263,7 +263,7 @@ h2.note_title {
   position: absolute;
   top:0;
   right:100%;
-  background: url(/images/skins/golden/Skin_Goldenframe_btmlL.png) no-repeat bottom left;
+  background: url(/assets/images/skins/golden/Skin_Goldenframe_btmlL.png) no-repeat bottom left;
   padding-left: 30px;
 }
 .badge-grid {
@@ -339,25 +339,25 @@ h2.note_title {
   height:100%;
 }
 .widget_notepad_skin .heading {
-  background: url(/images/skins/notepad/Skin_Notepad_topRh.png) no-repeat top right;
+  background: url(/assets/images/skins/notepad/Skin_Notepad_topRh.png) no-repeat top right;
   height: 29px;
   position: relative;
   margin-left:27px
 }
 .widget_notepad_skin .heading:after {
-  background: url(/images/skins/notepad/Skin_Notepad_topLh.png) no-repeat top left;
+  background: url(/assets/images/skins/notepad/Skin_Notepad_topLh.png) no-repeat top left;
   padding-left: 27px;
   height: 29px;
 }
 .widget_notepad_skin .body {
-  background: url(/images/skins/notepad/Skin_Notepad_btmR.png) no-repeat bottom right;
+  background: url(/assets/images/skins/notepad/Skin_Notepad_btmR.png) no-repeat bottom right;
   padding: 2px 7px 18px 2px;
   color: #000;
   margin-left:27px;
   position: relative;
 }
 .widget_notepad_skin .body:before {
-  background: url(/images/skins/notepad/Skin_Notepad_btmL.png) no-repeat bottom left;
+  background: url(/assets/images/skins/notepad/Skin_Notepad_btmL.png) no-repeat bottom left;
   padding-left: 27px;
 }
 .widget_notepad_skin .heading span {
@@ -405,7 +405,7 @@ h2.note_title {
   .widget_golden_skin.groups {
     width: 347px;
   }
-  .widget_metal_skin.myhabbo, 
+  .widget_metal_skin.myhabbo,
   .widget_metal_skin.mybadges,
   .widget_metal_skin.rooms {
     width: 273px;
@@ -610,7 +610,7 @@ h2.note_title {
   border:1px solid #000;
   margin-bottom:5px;
   position: relative;
-  background-image:url(/legacy/images/preview_background.gif);
+  background-image:url(/assets/legacy/images/preview_background.gif);
   background-repeat: no-repeat;
   background-position:center;
 }
@@ -645,7 +645,7 @@ h2.note_title {
 .myPage .btn::after {
   content:'';
   position: absolute;
-  background-image:url(/legacy/images/button_icons2.png);
+  background-image:url(/assets/legacy/images/button_icons2.png);
   background-position: 0px -193px;
   background-repeat: no-repeat;
   height: 16px;
@@ -660,7 +660,7 @@ h2.note_title {
   background-position: 0px -145px;;
 }
 .myPage .col-sm-7 a{
-  background-image:url(/legacy/images/myhabbo_icons.png);
+  background-image:url(/assets/legacy/images/myhabbo_icons.png);
   background-repeat: no-repeat;
   padding: 0 0 3px 18px;
   cursor:pointer;
@@ -784,19 +784,19 @@ h2.note_title {
   background-repeat: no-repeat;
 }
 .store .store_item.widgets .widgets_icon.rooms {
-  background-image:url(/legacy/images/rooms_preview.gif);
+  background-image:url(/assets/legacy/images/rooms_preview.gif);
 }
 .store .store_item.widgets .widgets_icon.mybadges {
-  background-image:url(/legacy/images/badges_preview.gif);
+  background-image:url(/assets/legacy/images/badges_preview.gif);
 }
 .store .store_item.widgets .widgets_icon.friends {
-  background-image:url(/legacy/images/friends_preview.gif);
+  background-image:url(/assets/legacy/images/friends_preview.gif);
 }
 .store .store_item.widgets .widgets_icon.groups {
-  background-image:url(/legacy/images/groupswidget.gif);
+  background-image:url(/assets/legacy/images/groupswidget.gif);
 }
 .store .store_item.widgets .widgets_icon.photo {
-  background-image:url(/legacy/images/photo_preview.gif);
+  background-image:url(/assets/legacy/images/photo_preview.gif);
 }
 .store_item.widgets.selected .widgets_icon{
   box-shadow:inset 0 0 0 1px #FF4500,
@@ -831,50 +831,50 @@ h2.note_title {
 }
 
 .widget_note_skin .heading {
-  background: url(/images/skins/note/Skin_Stickienote_topR.png) no-repeat top right;
+  background: url(/assets/images/skins/note/Skin_Stickienote_topR.png) no-repeat top right;
   height: 29px;
   position: relative;
   margin-left:5px
 }
 .widget_note_skin .heading:after {
-  background: url(/images/skins/note/Skin_Stickienote_topL.png) no-repeat top left;
+  background: url(/assets/images/skins/note/Skin_Stickienote_topL.png) no-repeat top left;
   padding-left: 5px;
   height: 29px;
 }
 .widget_note_skin .body {
-  background: url(/images/skins/note/Skin_Stickienote_btmR.png) no-repeat bottom right;
+  background: url(/assets/images/skins/note/Skin_Stickienote_btmR.png) no-repeat bottom right;
   padding: 7px 9px 30px 9px;
   color: #000;
   margin-left:1px;
   position: relative;
 }
 .widget_note_skin .body:before {
-  background: url(/images/skins/note/Skin_Stickienote_btmL.png) no-repeat bottom left;
+  background: url(/assets/images/skins/note/Skin_Stickienote_btmL.png) no-repeat bottom left;
   padding-left: 1px;
 }
 .widget_note_skin .heading span {
   line-height: 28px;
 }
 .widget_hcm_skin .heading {
-  background: url(/images/skins/hc_machine/Skin_HCmachine_toprh.png) no-repeat top right;
+  background: url(/assets/images/skins/hc_machine/Skin_HCmachine_toprh.png) no-repeat top right;
   height: 42px;
   position: relative;
   margin-left:61px
 }
 .widget_hcm_skin .heading:after {
-  background: url(/images/skins/hc_machine/Skin_HCmachine_topLh.png) no-repeat top left;
+  background: url(/assets/images/skins/hc_machine/Skin_HCmachine_topLh.png) no-repeat top left;
   padding-left: 61px;
   height: 42px;
 }
 .widget_hcm_skin .body {
-  background: url(/images/skins/hc_machine/Skin_HCmachine_btmR.png) no-repeat bottom right;
+  background: url(/assets/images/skins/hc_machine/Skin_HCmachine_btmR.png) no-repeat bottom right;
   padding: 0 46px 31px 0;
   margin-left:49px;
   position: relative;
   color:#fff !important;
 }
 .widget_hcm_skin .body:before {
-  background: url(/images/skins/hc_machine/Skin_HCmachine_btmL.png) no-repeat bottom left;
+  background: url(/assets/images/skins/hc_machine/Skin_HCmachine_btmL.png) no-repeat bottom left;
   padding-left: 49px;
 }
 .widget_hcm_skin .heading span {

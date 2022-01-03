@@ -7,10 +7,10 @@
     <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
-    <link href="{{ asset('legacy/css/legacy.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/legacy/css/legacy.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
+    <script src="{{ asset('assets/js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script
             src="https://code.jquery.com/jquery-3.4.0.min.js"
             integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
@@ -39,7 +39,7 @@
         <div class="col-lg-10">
             <div class="legacy-body">
                 <header class="d-flex justify-content-between"
-                        style="background-image: url({{ asset('goldfish/images/me/views/' . (auth()->check() && auth()->user()->hotelview ? auth()->user()->hotelview : 'view_ca_wide.png')) }});">
+                        style="background-image: url({{ asset('assets/goldfish/images/me/views/' . (auth()->check() && auth()->user()->hotelview ? auth()->user()->hotelview : 'view_ca_wide.png')) }});">
                     <a href="{{ route('me.index') }}" class="logo flex-shrink-1">
                         <img src="{{ CMSHelper::settings('site_logo') }}"/>
 
@@ -51,11 +51,11 @@
 
                     <div class="position-absolute d-flex px-2 rounded-lg" style="right: 30px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
                         <a href=" {{ route('language', 'da') }}">
-                            <img src="{{ asset('images/flags/dk.gif') }}" alt="">
+                            <img src="{{ asset('assets/images/flags/dk.gif') }}" alt="">
                         </a>
 
                         <a href="{{ route('language', 'en') }}">
-                            <img src="{{ asset('images/flags/us.gif') }}" alt="">
+                            <img src="{{ asset('assets/images/flags/us.gif') }}" alt="">
                         </a>
                     </div>
 

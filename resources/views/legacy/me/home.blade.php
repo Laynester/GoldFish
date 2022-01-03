@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-sm-5">
                         @if($edit)
-                            <a href="/home/{{Auth()->User()->username}}" class="btn red right">Cancel editing</a>
+                            <a href="{{ route('profile.show', auth()->user()) }}" class="btn red right">Cancel editing</a>
                             <button id="save" class="btn green right">Save changes</button>
                         @endif
                     </div>
@@ -34,7 +34,7 @@
         @endif
     @endif
     <div class="containment" id="containment-wrapper"
-         style="background-image: url(/images/profile_backgrounds/{{$background->name}});">
+         style="background-image: url(/assets/images/profile_backgrounds/{{$background->name}});">
         <div class="row homepages">
             <div class="col-md-6">
                 @foreach($widgets as $row)
@@ -117,14 +117,14 @@
                          class="sticker @if($edit == 'true') draggable @endif"
                          style="z-index:{{$row->z}};top:{{$row->y}}px;left:{{$row->x}}px;">
                         @if($edit == 'true') <img onclick="showMenu(this)" data-id="{{$row->id}}" class="icon-edit"
-                                                  src="/legacy/images/icon_edit.gif">@endif
+                                                  src="/assets/legacy/images/icon_edit.gif">@endif
                         <div class="edit-menu" id="{{$row->id}}-menu">
                             <b>Settings</b>
                             <button class="deleteElement" data-id="{{$row->id}}" data-type="s"
                                     onclick="deleteElement(this)">Delete
                             </button>
                         </div>
-                        <img src="/images/homestickers/{{$row->name}}.gif">
+                        <img src="/assets/images/homestickers/{{$row->name}}.gif">
                     </div>
                 @endforeach
                 @foreach($notes as $row)
@@ -173,5 +173,5 @@
     </div>
     @endsection
     @section('css')
-        <link href="{{ asset('legacy/css/homes.css') }}?{{time()}}" rel="stylesheet">
+        <link href="{{ asset('assets/legacy/css/homes.css') }}?{{ time() }}" rel="stylesheet">
 @endsection

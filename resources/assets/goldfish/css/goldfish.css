@@ -24,7 +24,7 @@ body {
     height: 132px;
     position: relative;
     overflow: hidden;
-    background-image: url(/goldfish/images/header.gif);
+    background-image: url(/assets/goldfish/images/header.gif);
     animation: slide 60s linear infinite;
 }
 
@@ -176,7 +176,7 @@ p.currency {
     position: relative;
     padding-left: 25px;
     margin: 0;
-    background-image: url(/goldfish/images/icons.png);
+    background-image: url(/assets/goldfish/images/icons.png);
     background-repeat: no-repeat;
 }
 
@@ -196,19 +196,19 @@ p.duckets {
 }
 
 p.achievement {
-    background-image: url(/goldfish/images/achievements.gif);
+    background-image: url(/assets/goldfish/images/achievements.gif);
     background-size: 17px 28px;
     height: 28px;
 }
 
 p.timeon {
-    background-image: url(/goldfish/images/onlinetime.gif);
+    background-image: url(/assets/goldfish/images/onlinetime.gif);
     height: 28px;
     padding-left: 30px;
 }
 
 p.respects {
-    background-image: url(/goldfish/images/respects.gif);
+    background-image: url(/assets/goldfish/images/respects.gif);
     background-position: 5px 5px;
     height: 28px;
 }
@@ -277,12 +277,12 @@ p.respects {
 }
 
 .header .header_options li.logout {
-    background-image: url(/goldfish/images/logout.gif);
+    background-image: url(/assets/goldfish/images/logout.gif);
     border-left: 2px solid #565656;
 }
 
 .header .header_options li.settings {
-    background-image: url(/goldfish/images/settings.png);
+    background-image: url(/assets/goldfish/images/settings.png);
 }
 
 .navigation {
@@ -313,7 +313,7 @@ p.respects {
 
 footer.home {
     background-color: #b6b6b6;
-    background-image: url(/goldfish/images/goldfish.png);
+    background-image: url(/assets/goldfish/images/goldfish.png);
     background-position: 10px center;
     background-repeat: no-repeat;
     padding: 5px;
@@ -350,7 +350,7 @@ footer.home a {
     position: absolute;
     top: 48px;
     left: 15px;
-    background: url(/goldfish/images/me/info_habbo_plate.png) no-repeat 2px -162px;
+    background: url(/assets/goldfish/images/me/info_habbo_plate.png) no-repeat 2px -162px;
     text-align: center;
     height: 138px;
     position: absolute;
@@ -678,11 +678,11 @@ ul.navigation li a.selected {
 }
 
 .staff.online span.status {
-    background-image: url(/goldfish/images/online.gif);
+    background-image: url(/assets/goldfish/images/online.gif);
 }
 
 .staff.offline span.status {
-    background-image: url(/goldfish/images/offline.gif);
+    background-image: url(/assets/goldfish/images/offline.gif);
 }
 
 .staff i {
@@ -841,7 +841,7 @@ ul.navigation li a.selected {
     .header .container.relative:before {
         position: absolute;
         content: '';
-        background-image: url(/goldfish/images/hotel.png);
+        background-image: url(/assets/goldfish/images/hotel.png);
         top: -60px;
         width: 440px;
         height: 500px;
@@ -1006,19 +1006,19 @@ ul.navigation li a.selected {
 }
 
 .box.profile.profile.badges:before {
-    background-image: url(/goldfish/images/profile/badges.png);
+    background-image: url(/assets/goldfish/images/profile/badges.png);
 }
 
 .box.profile.profile.rooms:before {
-    background-image: url(/goldfish/images/profile/rooms.png);
+    background-image: url(/assets/goldfish/images/profile/rooms.png);
 }
 
 .box.profile.profile.friends:before {
-    background-image: url(/goldfish/images/profile/friends.png);
+    background-image: url(/assets/goldfish/images/profile/friends.png);
 }
 
 .box.profile.profile.groups:before {
-    background-image: url(/goldfish/images/profile/groups.png);
+    background-image: url(/assets/goldfish/images/profile/groups.png);
 }
 
 .box.profile.profile {
@@ -1026,7 +1026,7 @@ ul.navigation li a.selected {
 }
 
 figure.room {
-    background-image: url(/goldfish/images/sprite.png);
+    background-image: url(/assets/goldfish/images/sprite.png);
     background-position: -200px -187px;
     margin: 10px 9.8px;
     padding: 5px;

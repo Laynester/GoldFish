@@ -96,7 +96,7 @@ html {
     border: 1px solid #999;
     box-shadow: 0 2px #999, inset 0 0 0 2px #fff;
     border-radius: 5px;
-    background: url(/goldfish/images/me/views/view_br_wide.png) center no-repeat;
+    background: url(/assets/goldfish/images/me/views/view_br_wide.png) center no-repeat;
     height: 431px;
     width: calc(100% - 30px);
     image-rendering: pixelated;
@@ -131,7 +131,7 @@ html {
     width: 100%;
     display: block;
     background-color: #f66200;
-    background-image: url(/legacy/images/content-title.png);
+    background-image: url(/assets/legacy/images/content-title.png);
     background-position: center right;
     color: #fff;
     border-radius: 3px;
@@ -182,7 +182,7 @@ button,
     border: 1px solid #000;
     font-size: 13px;
     padding: 2px 20px;
-    background-image: url(/legacy/images/content-title.png);
+    background-image: url(/assets/legacy/images/content-title.png);
 }
 button.login {
     position: absolute;
@@ -426,13 +426,13 @@ figure.topStory-slider span.meta a {
     text-align: left;
 }
 .legacy-box.grey.preload {
-    background-image: url(/legacy/images/grid.png);
+    background-image: url(/assets/legacy/images/grid.png);
 }
 .legacy-box.meview .plate {
     position: absolute;
     top: 0;
     left: 15px;
-    background: url(/goldfish/images/me/info_habbo_plate.png) no-repeat 2px -162px;
+    background: url(/assets/goldfish/images/me/info_habbo_plate.png) no-repeat 2px -162px;
     text-align: center;
     height: 138px;
     position: absolute;
@@ -866,7 +866,7 @@ p.currency {
     position: relative;
     padding-left: 25px;
     margin: 0;
-    background-image: url(/goldfish/images/icons.png);
+    background-image: url(/assets/goldfish/images/icons.png);
     background-repeat: no-repeat;
 }
 p.credits {
@@ -882,12 +882,12 @@ p.duckets {
     height: 23px;
 }
 p.achievement {
-    background-image: url(/goldfish/images/achievements.gif);
+    background-image: url(/assets/goldfish/images/achievements.gif);
     background-size: 17px 28px;
     height: 28px;
 }
 p.timeon {
-    background-image: url(/goldfish/images/onlinetime.gif);
+    background-image: url(/assets/goldfish/images/onlinetime.gif);
     height: 28px;
     padding-left: 30px;
     font-size: 11px;
@@ -895,7 +895,7 @@ p.timeon {
     width: 80%;
 }
 p.respects {
-    background-image: url(/goldfish/images/respects.gif);
+    background-image: url(/assets/goldfish/images/respects.gif);
     background-position: 5px 5px;
     height: 28px;
 }

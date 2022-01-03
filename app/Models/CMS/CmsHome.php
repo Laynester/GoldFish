@@ -4,7 +4,7 @@ namespace App\Models\CMS;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Homes extends Model
+class CmsHome extends Model
 {
     public $timestamps = false;
     protected $table = 'cms_homes';

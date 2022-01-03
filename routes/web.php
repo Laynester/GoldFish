@@ -50,7 +50,7 @@ Route::middleware(['setTheme:installation'])->prefix('installation')->group(func
     });
 });
 
-Route::middleware('maintenance')->group(function () {
+Route::middleware(['installed', 'maintenance'])->group(function () {
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.index');
     Route::post('/maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
 });
@@ -74,8 +74,8 @@ Route::middleware(['installed', 'changeTheme', 'maintenance', 'guest'])->group(f
 });
 
 // Authenticated
-Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group(function () {
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['changeTheme', 'maintenance', 'findretros'])->group(function () {
+    Route::middleware(['auth', 'banned'])->group(function () {
         Route::get('/logout', [LoginController::class, 'logout'])->withoutMiddleware('maintenance');
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->withoutMiddleware('maintenance');
         Route::get('/banned', BannedController::class)->name('banned');
@@ -113,13 +113,15 @@ Route::middleware(['changeTheme', 'banned', 'maintenance', 'findretros'])->group
         });
     });
 
-    // Community routes
-    Route::get('/community', CommunityController::class)->name('community.index');
-    Route::get('/community/articles', [ArticlesController::class, 'index'])->name('articles.index');
-    Route::get('/community/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
-    Route::get('/community/staff', StaffController::class)->name('staff.index');
-    Route::get('/community/leaderboards', LeaderboardsController::class)->name('leaderboards.index');
-    Route::get('/community/photos', PhotosController::class)->name('photos.index');
+    Route::middleware('banned')->group(function () {
+        // Community routes
+        Route::get('/community', CommunityController::class)->name('community.index');
+        Route::get('/community/articles', [ArticlesController::class, 'index'])->name('articles.index');
+        Route::get('/community/articles/{article}', [ArticlesController::class, 'show'])->name('articles.show');
+        Route::get('/community/staff', StaffController::class)->name('staff.index');
+        Route::get('/community/leaderboards', LeaderboardsController::class)->name('leaderboards.index');
+        Route::get('/community/photos', PhotosController::class)->name('photos.index');
+    });
 });
 
 // Admin

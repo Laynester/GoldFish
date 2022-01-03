@@ -40,7 +40,7 @@
                                         />
 
                                         <label for="{{ $hotelview->getFilename() }}"
-                                               style="background-image:url(/goldfish/images/me/views/{{ $hotelview->getFilename() }});"></label>
+                                               style="background-image:url(/assets/goldfish/images/me/views/{{ $hotelview->getFilename() }});"></label>
                                     @endforeach
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                                value="{{ $profileBackground->getFilename() }}"
                                         />
                                         <label for="{{ $profileBackground->getFilename() }}"
-                                               style="background-image:url(/images/profile_backgrounds/{{$profileBackground->getFilename()}});"></label>
+                                               style="background-image:url(/assets/images/profile_backgrounds/{{$profileBackground->getFilename()}});"></label>
                                     @endforeach
                                 </div>
                             </div>

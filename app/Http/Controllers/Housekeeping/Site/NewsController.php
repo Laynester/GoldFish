@@ -24,7 +24,7 @@ class NewsController extends Controller
           'caption' => request()->get('title'),
           'desc'    => request()->get('short'),
           'body'    => request()->get('long'),
-          'image'   => '/images/news/' . request()->get('image'),
+          'image'   => '/assets/images/news/' . request()->get('image'),
           'author'  => auth()->user()->id,
           'date'    => time()
         ]);
@@ -65,7 +65,7 @@ class NewsController extends Controller
       $news = Insert::where('id', $id)->first();
       if (!empty($news)) {
         if (Request::isMethod('post')) {
-          $image = '/images/news/' . request()->get('image');
+          $image = '/assets/images/news/' . request()->get('image');
           if (request()->get('image') == $news->image) {
             $image = $news->image;
           }

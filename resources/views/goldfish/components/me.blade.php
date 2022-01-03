@@ -1,4 +1,4 @@
-<div class="box meview" style="background-image:url(/goldfish/images/me/views/{{Auth()->User()->hotelview}});">
+<div class="box meview" style="background-image:url(/assets/goldfish/images/me/views/{{Auth()->User()->hotelview}});">
     <div class="plate">
         <img src="{{CMSHelper::settings('habbo_imager')}}{{ Auth::user()->look }}">
     </div>

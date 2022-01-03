@@ -2,12 +2,15 @@
 
 namespace App\Models\User;
 
+use App\Models\CMS\CameraWeb;
+use App\Models\CMS\CmsHome;
 use App\Models\CMS\CmsLogin;
+use App\Models\Hotel\GroupMembership;
+use App\Models\Hotel\Room;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\User\Permission;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable
@@ -92,5 +95,30 @@ class User extends Authenticatable
     public function logins(): HasMany
     {
         return $this->hasMany(CmsLogin::class);
+    }
+
+    public function homes(): HasMany
+    {
+        return $this->hasMany(CmsHome::class, 'user_id');
+    }
+
+    public function badges(): HasMany
+    {
+        return $this->hasMany(UserBadge::class, 'user_id');
+    }
+
+    public function rooms(): HasMany
+    {
+        return $this->hasMany(Room::class, 'owner_id');
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(CameraWeb::class, 'user_id');
+    }
+
+    public function groupMemberships(): HasMany
+    {
+        return $this->hasMany(GroupMembership::class, 'user_id');
     }
 }

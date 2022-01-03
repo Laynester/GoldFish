@@ -1,6 +1,6 @@
 @props(['alerts'])
 
-<div class="box meview" style="background-image:url('/goldfish/images/me/views/{{ auth()->user()->hotelview }}');">
+<div class="box meview" style="background-image:url('/assets/goldfish/images/me/views/{{ auth()->user()->hotelview }}');">
     <div class="plate">
         <img src="{{ CMSHelper::settings('habbo_imager')}}{{ auth()->user()->look }}">
     </div>

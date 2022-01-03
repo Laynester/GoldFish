@@ -10,8 +10,8 @@ class UserSettingsController extends Controller
 {
     public function edit()
     {
-        $profileBackgrounds = File::allFiles(public_path('images/profile_backgrounds'));
-        $hotelViews = File::allFiles(public_path('goldfish/images/me/views'));
+        $profileBackgrounds = File::allFiles(public_path('assets/images/profile_backgrounds'));
+        $hotelViews = File::allFiles(public_path('assets/goldfish/images/me/views'));
 
         return view(
             'me.settings.hotel',
@@ -35,7 +35,7 @@ class UserSettingsController extends Controller
     private function updateSetting(array $data)
     {
         if (array_key_exists('hotel_view', $data) && !is_null($data['hotel_view'])) {
-            $hotelViewImage = file_exists(public_path('/goldfish/images/me/views/' . $data['hotel_view']));
+            $hotelViewImage = file_exists(public_path('/assets/goldfish/images/me/views/' . $data['hotel_view']));
             if (!$hotelViewImage) {
                 return redirect()->back()->withErrors(__('The selected hotel view does not exist.'));
             }
@@ -47,7 +47,7 @@ class UserSettingsController extends Controller
             return redirect()->back()->withSuccess(__('The hotel view has been changed!'));
         }
 
-        $profileBgImage = file_exists(public_path('/images/profile_backgrounds/' . $data['profile_background']));
+        $profileBgImage = file_exists(public_path('/assets/images/profile_backgrounds/' . $data['profile_background']));
         if (!$profileBgImage) {
             return redirect()->back()->withErrors(__('The selected profile background does not exist.'));
         }

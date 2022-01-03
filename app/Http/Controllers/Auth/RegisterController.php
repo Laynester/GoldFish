@@ -16,11 +16,7 @@ class RegisterController extends Controller
 
     protected string $redirectTo = self::REDIRECT_HOME;
 
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
+    // Validates the user inputs
     protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [

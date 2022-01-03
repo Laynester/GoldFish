@@ -16,7 +16,7 @@
 <script type="text/javascript" src="https://unpkg.com/tinymce-emoji"></script>
 <script type="text/javascript">
 function changeTS(image) {
-  $('#topstory').css("background-image", "url('/images/news/"+image+"')");
+  $('#topstory').css("background-image", "url('/assets/images/news/"+image+"')");
 }
 tinymce.init({
 selector: "#editor1",

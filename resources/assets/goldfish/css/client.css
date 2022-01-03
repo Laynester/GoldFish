@@ -30,7 +30,7 @@ position: absolute;
   overflow: hidden;
 }
 .loader:before {
-  background-image: url(/goldfish/images/loading_screen.png);
+  background-image: url(/assets/goldfish/images/loading_screen.png);
   height: 865px;
   width:1027px;
   position: absolute;
@@ -70,7 +70,7 @@ height: 100%;
 transition:all ease 2s;
 }
 .news {
-  background-image: url(/goldfish/images/client/news.png);
+  background-image: url(/assets/goldfish/images/client/news.png);
   height:530px;
   width:530px;
   padding:20px 0 5px 20px;
@@ -85,7 +85,7 @@ transition:all ease 2s;
   font-size: 14px;
 }
 .news .band {
-    background-image: url(/goldfish/images/client/band.png);
+    background-image: url(/assets/goldfish/images/client/band.png);
     background-repeat: no-repeat;
     width:498px;
     height:71px;

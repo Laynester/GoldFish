@@ -31,7 +31,7 @@
                                         data-name="{{$sticker->name}}"
                                         data-type="{{$sticker->type}}-inv"
                                         onclick="storePreview(this)"
-                                        style="background-image:url(/images/homestickers/{{$sticker->name}}.gif);"
+                                        style="background-image:url(/assets/images/homestickers/{{$sticker->name}}.gif);"
                                         >
                                         </div>
                                     @endforeach
@@ -52,7 +52,7 @@
                                         data-name="{{$bg->name}}"
                                         data-type="{{$bg->type}}-inv"
                                         onclick="storePreview(this)"
-                                        style="background-image:url(/images/profile_backgrounds/{{$bg->name}})"
+                                        style="background-image:url(/assets/images/profile_backgrounds/{{$bg->name}})"
                                         >
                                         </div>
                                     @endforeach
@@ -155,7 +155,7 @@
                                     data-name="{{$row->data}}"
                                     data-type="{{$row->type}}-store"
                                     onclick="storePreview(this)"
-                                    style="background-image:url('/images/homestickers/{{$row->data}}.gif');background-repeat:no-repeat;"
+                                    style="background-image:url('/assets/images/homestickers/{{$row->data}}.gif');background-repeat:no-repeat;"
                                     >
                                     </div>
                                     @endforeach
@@ -175,7 +175,7 @@
                                     data-name="{{$row->data}}"
                                     data-type="{{$row->type}}-store"
                                     onclick="storePreview(this)"
-                                    style="background-image:url('/images/profile_backgrounds/{{$row->data}}')"
+                                    style="background-image:url('/assets/images/profile_backgrounds/{{$row->data}}')"
                                     >
                                     </div>
                                     @endforeach

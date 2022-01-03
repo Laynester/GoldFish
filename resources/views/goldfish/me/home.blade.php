@@ -6,7 +6,7 @@
 
     <style>
         body {
-            background-image: url(/images/profile_backgrounds/{{ $user->profile_background }})
+            background-image: url(/assets/images/profile_backgrounds/{{ $user->profile_background }})
         }
     </style>
 

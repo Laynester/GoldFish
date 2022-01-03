@@ -7,15 +7,15 @@
     <title>{{CMSHelper::settings('hotelname')}} - @yield('title')</title>
 
 
-    <link href="{{ asset('goldfish/css/bootstrap.min.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
-    <link href="{{ asset('goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
-    <link href="{{ asset('goldfish/css/goldfish.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
-    <link href="{{ asset('goldfish/css/goldfish_overwrite.css') }}?v={{CMSHelper::settings('cacheVar')}}"
+    <link href="{{ asset('assets/goldfish/css/bootstrap.min.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/goldfish/css/discord.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/goldfish/css/goldfish.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/goldfish/css/goldfish_overwrite.css') }}?v={{CMSHelper::settings('cacheVar')}}"
           rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
-    <script src="{{ asset('goldfish/js/bootstrap.min.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
-    <script src="{{ asset('js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
+    <script src="{{ asset('assets/goldfish/js/bootstrap.min.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
+    <script src="{{ asset('assets/js/app.js') }}?v={{CMSHelper::settings('cacheVar')}}" defer></script>
     <script
             src="https://code.jquery.com/jquery-3.4.0.min.js"
             integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
@@ -68,11 +68,11 @@
         <div class="container relative">
             <div class="position-absolute d-flex px-2 rounded-lg" style="z-index: 5; left: 15px; gap: 10px; background: rgba(0, 0, 0, 0.5)">
                 <a href=" {{ route('language', 'da') }}">
-                    <img src="{{ asset('images/flags/dk.gif') }}" alt="">
+                    <img src="{{ asset('assets/images/flags/dk.gif') }}" alt="">
                 </a>
 
                 <a href="{{ route('language', 'en') }}">
-                    <img src="{{ asset('images/flags/us.gif') }}" alt="">
+                    <img src="{{ asset('assets/images/flags/us.gif') }}" alt="">
                 </a>
             </div>
 

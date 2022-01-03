@@ -44,7 +44,7 @@ $("#save").click(function() {
 		success: function(result) {
 			var overlay = $('<div class="store_overlay">');
 			$('body').append(overlay);
-			$('.store_overlay').append('<div style="" id="habbos_loading"><img src="/legacy/images/progress_habbos.gif"><br><img src="/legacy/images/progress_bar_blue.gif">');
+			$('.store_overlay').append('<div style="" id="habbos_loading"><img src="/assets/legacy/images/progress_habbos.gif"><br><img src="/assets/legacy/images/progress_bar_blue.gif">');
 			$('#habbos_loading').center();
 			setTimeout(function() {
 				window.location.href = "/user/home/" + username;
@@ -205,7 +205,7 @@ function placeElement(selector) {
 		success: function(result) {
 			if (result.type == 's') {
 				var t = $('<div id="' + result.id + '" data-z="' + result.z + '" data-left="' + result.x + '" data-top="' + result.y + '" class="sticker draggable" style="z-index:' + result.z + ';top:' + result.y + 'px;left:' + result.x + 'px;">');
-				var i = $('<img onclick="showMenu(this)" data-id="' + result.id + '" class="icon-edit" src="/legacy/images/icon_edit.gif"><img src="/images/homestickers/' + result.name + '.gif">');
+				var i = $('<img onclick="showMenu(this)" data-id="' + result.id + '" class="icon-edit" src="/assets/legacy/images/icon_edit.gif"><img src="/assets/images/homestickers/' + result.name + '.gif">');
 				var m = $('<div class="edit-menu" id="' + result.id + '-menu"><b>Settings</b><button class="deleteElement" data-id="' + result.id + '" data-type="s" onclick="deleteElement(this)">Delete</button></div>');
 				$('#containment-wrapper .homepages .col-md-6').append(t);
 				$('#' + result.id).hide().append(i, m);
@@ -247,25 +247,25 @@ function storePreview(selector) {
 	switch (type) {
 		case "b-inv":
 			$('.store_image').removeClass('preview_sticker');
-			$('.store_image').css('background-image', 'url(/images/profile_backgrounds/' + name + ')');
+			$('.store_image').css('background-image', 'url(/assets/images/profile_backgrounds/' + name + ')');
 			var c = $('<button onclick="previewBg(this)" data-id="' + id + '" data-name="' + name + '">Preview</button><button onclick="changeBg(this)" data-id="' + id + '" data-name="' + name + '">Change</button>');
 			$('.store_controls').html(c);
 			break;
 		case "s-inv":
 			$('.store_image').addClass('preview_sticker');
-			$('.store_image').css('background-image', 'url(/images/homestickers/' + name + '.gif)');
+			$('.store_image').css('background-image', 'url(/assets/images/homestickers/' + name + '.gif)');
 			var c = $('<button onclick="placeElement(this)" data-name="' + name + '" data-id="' + id + '">Add</button>');
 			$('.store_controls').html(c);
 			break;
 		case "s-store":
 			$('.store_image').addClass('preview_sticker');
-			$('.store_image').css('background-image', 'url(/images/homestickers/' + name + '.gif)');
+			$('.store_image').css('background-image', 'url(/assets/images/homestickers/' + name + '.gif)');
 			var c = $('<button onclick="buyElement(this)" data-name="' + name + '" data-type="s" data-id="' + id + '">Purchase</button>');
 			$('.store_controls').html(c);
 			break;
 		case "b-store":
 			$('.store_image').removeClass('preview_sticker');
-			$('.store_image').css('background-image', 'url(/images/profile_backgrounds/' + name + ')');
+			$('.store_image').css('background-image', 'url(/assets/images/profile_backgrounds/' + name + ')');
 			var c = $('<button onclick="previewBg(this)" data-id="' + id + '" data-name="' + name + '">Preview</button><button onclick="buyElement(this)" data-name="' + name + '" data-type="b" data-id="' + id + '">Purchase</button>');
 			$('.store_controls').html(c);
 			break;
@@ -273,15 +273,15 @@ function storePreview(selector) {
 			console.log('reached here');
 			$('.store_image').addClass('preview_sticker');
 			if (name == 'groups') {
-				$('.store_image').css('background-image', 'url(/legacy/images/groupswidget.gif)');
+				$('.store_image').css('background-image', 'url(/assets/legacy/images/groupswidget.gif)');
 			} else if (name == 'rooms') {
-				$('.store_image').css('background-image', 'url(/legacy/images/rooms_preview.gif)');
+				$('.store_image').css('background-image', 'url(/assets/legacy/images/rooms_preview.gif)');
 			} else if (name == 'mybadges') {
-				$('.store_image').css('background-image', 'url(/legacy/images/badges_preview.gif)');
+				$('.store_image').css('background-image', 'url(/assets/legacy/images/badges_preview.gif)');
 			} else if (name == 'friends') {
-				$('.store_image').css('background-image', 'url(/legacy/images/friends_preview.gif)');
+				$('.store_image').css('background-image', 'url(/assets/legacy/images/friends_preview.gif)');
 			} else if (name == 'photo') {
-				$('.store_image').css('background-image', 'url(/legacy/images/photo_preview.gif)');
+				$('.store_image').css('background-image', 'url(/assets/legacy/images/photo_preview.gif)');
             }
 			var c = $('<button onclick="placeElement(this)" data-id="' + id + '" data-type="w">Place</button>');
 			$('.store_controls').html(c);
@@ -295,9 +295,9 @@ function previewBg(selector) {
 	$('#store_overlay').fadeOut(200);
 	setTimeout(function() {
 		$('#store_overlay').fadeIn(200);
-		$('.containment').css('background-image', 'url(/images/profile_backgrounds/' + originalBackground + ')');
+		$('.containment').css('background-image', 'url(/assets/images/profile_backgrounds/' + originalBackground + ')');
 	}, 4000);
-	$('.containment').css('background-image', 'url(/images/profile_backgrounds/' + name + ')');
+	$('.containment').css('background-image', 'url(/assets/images/profile_backgrounds/' + name + ')');
 }
 
 function changeBg(selector) {
@@ -322,7 +322,7 @@ function changeBg(selector) {
 			$('#store_overlay').fadeOut(200, function() {
 				$(this).remove();
 			});
-			$('.containment').css('background-image', 'url(/images/profile_backgrounds/' + result.name + ')');
+			$('.containment').css('background-image', 'url(/assets/images/profile_backgrounds/' + result.name + ')');
 		}
 	});
 }
@@ -415,7 +415,7 @@ function initNote(){
 					$('#' + result.id).hide();
 					var h = $('<div class="heading"><span></span></div>');
 					var m = $('<div class="edit-menu" id="' + result.id + '-menu"><b>Settings</b></div>');
-					var i = $('<img onclick="showMenu(this)" data-id="' + result.id + '" class="icon-edit" src="/legacy/images/icon_edit.gif">');
+					var i = $('<img onclick="showMenu(this)" data-id="' + result.id + '" class="icon-edit" src="/assets/legacy/images/icon_edit.gif">');
 					var d = $('<div class="body">'+data+'</div>');
 					$(w).append(h,i,m,d);
 					$(m).append('<select class="selectSkin" id="' + result.id + '" data-id="' + result.id + '" onkeypress="changeSkin(this,this.value)" onchange="changeSkin(this,this.value)"><option disabled="" selected="">Choose</option><option value="default_skin">Default</option><option value="bubble_skin">Speech bubble</option><option value="metal_skin">Metal</option><option value="notepad_skin">Notepad</option><option value="note_skin">Sticky Note</option><option value="golden_skin">Golden</option><option value="hcm_skin">HC Machine</option></select><button class="deleteElement" data-id="' + result.id + '" data-type="'+result.type+'" onclick="deleteElement(this)">Delete</button>');

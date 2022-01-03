@@ -11,7 +11,7 @@
     <script src="{{ asset('goldfish/js/flash_detect_min.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script src="{{ asset('goldfish/js/flashclient.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
     <script src="{{ asset('goldfish/js/goldfish.js') }}?v={{CMSHelper::settings('cacheVar')}}"></script>
-    <link href="{{ asset('goldfish/css/client.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
+    <link href="{{ asset('assets/goldfish/css/client.css') }}?v={{CMSHelper::settings('cacheVar')}}" rel="stylesheet">
     <title>{{CMSHelper::settings('hotelname')}} - Hotel</title>
 </head>
 <body>

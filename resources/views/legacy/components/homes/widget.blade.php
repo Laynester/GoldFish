@@ -11,7 +11,7 @@ data-data="{{$data}}">
         <span>{{$title}}</span>
     </div>
     @if($edit == 'true')
-    <img id="{{$id}}-edit" onclick="showMenu(this)" data-id="{{$id}}" class="icon-edit" src="/legacy/images/icon_edit.gif">
+    <img id="{{$id}}-edit" onclick="showMenu(this)" data-id="{{$id}}" class="icon-edit" src="/assets/legacy/images/icon_edit.gif">
     <div class="edit-menu" id="{{$id}}-menu">
         <b>Settings</b>
         @if($name != 'photo')
@@ -28,7 +28,7 @@ data-data="{{$data}}">
         @else
         <select class="selectSkin" data-id="{{$id}}" onkeypress="changePhoto(this,this.value)" onchange="changePhoto(this,this.value)">
             <option disabled selected>Choose</option>
-            @foreach(\App\Models\CMS\Camera_web::where('user_id', auth()->user()->id)->inRandomOrder()->get() as $photo)
+            @foreach(\App\Models\CMS\CameraWeb::where('user_id', auth()->user()->id)->inRandomOrder()->get() as $photo)
             <option value="{{$photo->url}}">{{$photo->room->name}} - {{date('d/m/y h:i', $photo->timestamp)}}</option>
             @endforeach
         </select>
@@ -41,4 +41,4 @@ data-data="{{$data}}">
     <div class="body">
         {{$body}}
     </div>
-</div>  
+</div>
