@@ -1,7 +1,7 @@
 ![GoldFish](https://imgur.com/TUv8HNu.png)
 
 ## What is Goldfish CMS?
-GoldFish is a Content Management System (CMS) imade for Habbo retros. It is built to allow you to set up your retro easily but without sacrificing features or the habbo feeling.
+GoldFish is a Content Management System (CMS) made for Habbo retros. It is built to allow you to set up your retro easily but without sacrificing features or the habbo feeling.
 
 ## Who made Goldfish CMS
 Goldfish CMS was originally made by [Laynester](https://github.com/Laynester/GoldFish)
