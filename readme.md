@@ -11,7 +11,7 @@ Goldfish refactored is an edit and update of the original Goldfish, with permiss
 
 The project is only a side project of mine, and I only work on it when I have the time to do so. There's still a lot of code that has been left untouched currently.
 
-####As the project is still WIP (Work In Progress) some parts may be buggy or not working at all - Once I feel like the project is complete enough, I'll publicly release it. You're ofcourse allowed to use this already, as it's a public repository.
+**As the project is still WIP (Work In Progress) some parts may be buggy or not working at all - Once I feel like the project is complete enough, I'll publicly release it. You're ofcourse allowed to use this already, as it's a public repository.**
 
 ## What does Goldfish CMS offer?
 Goldfish CMS offers a modern and industry approved backend, featuring the PHP framework Laravel and support for the most recent PHP version (PHP 8.1).
