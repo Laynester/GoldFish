@@ -41,8 +41,8 @@ class LoginController extends Controller
             ->where('username', '=', $request->input('username'))
             ->first();
 
-        if (!is_null($user) && $user->rank < CMS::settings('maintenance_rank')) {
-            return redirect()->back()->withErrors('You can not login while the hotel is in maintenance.');
+        if (CMS::settings('maintenance') === '1' && (!is_null($user) && $user->rank < CMS::settings('maintenance_rank'))) {
+            return redirect()->back()->withErrors(__('You can not login while the hotel is in maintenance.'));
         }
 
         if ($this->attemptLogin($request)) {
