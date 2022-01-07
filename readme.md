@@ -39,7 +39,7 @@ cd GoldFish
 For Windows: copy .env.example .env
 For Linux: cp .env.example .env
 composer install
-composer require doctrine/dbal
+
 npm install && npm run dev
 php artisan key:generate
 php artisan migrate --seed
