@@ -25,7 +25,7 @@ class InstallationController extends Controller
         }
 
         if (Request::isMethod('post')) {
-            DB::unprepared(file_get_contents(public_path('/install/sql.sql')));
+            DB::unprepared(file_get_contents(public_path('/assets/install/sql.sql')));
 
             return redirect()->route('installation.step', 2);
         }

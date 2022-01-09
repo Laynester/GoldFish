@@ -10,7 +10,7 @@
     {{-- CSS --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{ asset('install/install.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/install/install.css') }}" rel="stylesheet">
     <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
     {{-- Javascript --}}
