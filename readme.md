@@ -1,5 +1,8 @@
 ![GoldFish](https://imgur.com/TUv8HNu.png)
 
+## This is currently WIP!
+This version of Goldfish CMS is currently a WIP (Work In Progress), unexpected error and bugs may & will occur, use it on your own responsibility.
+
 ## What is Goldfish CMS?
 GoldFish is a Content Management System (CMS) made for Habbo retros. It is built to allow you to set up your retro easily but without sacrificing features or the habbo feeling.
 
