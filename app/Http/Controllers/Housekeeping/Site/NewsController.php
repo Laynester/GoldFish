@@ -36,7 +36,7 @@ class NewsController extends Controller
         ]);
         return redirect('housekeeping/site/news/list')->withErrors(['Created ' . request()->get('title')]);
       }
-      $images = \File::allFiles(public_path('images/news'));
+      $images = \File::allFiles(public_path('assets/images/news'));
       return view('site.createnews', [
           'group'  => 'site',
           'images' => $images
@@ -84,7 +84,7 @@ class NewsController extends Controller
           ]);
           return redirect('housekeeping/site/news/list')->withErrors(['Saved changes.']);
         }
-        $images = \File::allFiles(public_path('images/news'));
+        $images = \File::allFiles(public_path('assets/images/news'));
         return view('site.editnews', [
             'group'  => 'site',
             'news'   => $news,

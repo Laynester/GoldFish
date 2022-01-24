@@ -56,24 +56,24 @@
   top:2px;
 }
 .hk_navigation ul li#dashboard:before {
-  background-image: url(/admin/images/dashboard.png);
+  background-image: url(/assets/admin/images/dashboard.png);
 }
 .hk_navigation ul li#server:before {
-  background-image: url(/admin/images/system.png);
+  background-image: url(/assets/admin/images/system.png);
 }
 .hk_navigation ul li#site:before {
-  background-image: url(/admin/images/tools.png);
+  background-image: url(/assets/admin/images/tools.png);
 }
 .hk_navigation ul li#user:before {
-  background-image: url(/admin/images/admin.png);
+  background-image: url(/assets/admin/images/admin.png);
 }
 .hk_navigation ul li#credits:before {
-  background-image: url(/admin/images/components.png);
+  background-image: url(/assets/admin/images/components.png);
 }
 .hk_navigation ul li#back:before {
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(/admin/images/delete.gif);
+  background-image: url(/assets/admin/images/delete.gif);
 }
 .hk_navigation ul li.active {
   background: #385d88;
@@ -161,7 +161,7 @@ table td:not(:last-child) {
   font-size: 16px;
   color:#334964;
   border-bottom:1px solid rgba(0,0,0,.1);
-  background-image: url(/admin/images/menu_title_bullet.gif);
+  background-image: url(/assets/admin/images/menu_title_bullet.gif);
   background-repeat: no-repeat;
   background-position: 5px center;
   padding-left:20px;
@@ -172,7 +172,7 @@ table td:not(:last-child) {
   margin:0;
 }
 .box_3 ul li {
-  background-image: url(/admin/images/item_bullet.gif);
+  background-image: url(/assets/admin/images/item_bullet.gif);
   background-position: 5px 9px;
   background-repeat: no-repeat;
   border-bottom:1px solid rgba(0,0,0,.1);

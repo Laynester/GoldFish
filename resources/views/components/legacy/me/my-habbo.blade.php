@@ -19,19 +19,19 @@
                 <div class="px-2 py-2 d-flex flex-column rounded text-white"
                      style="font-size: 14px; background: rgba(0,0,0,0.5)">
                     <div>
-                        <img class="w-6 h-6" src="{{ asset('legacy/images/motto.png') }}" alt="{{ __('Motto') }}">
+                        <img class="w-6 h-6" src="{{ asset('assets/legacy/images/motto.png') }}" alt="{{ __('Motto') }}">
                         {{ auth()->user()->motto ?? '' }}
                     </div>
                     <div class="d-flex align-items-center" style="gap: 5px;">
-                        <img class="w-6 h-6" src="{{ asset('legacy/images/credits.png') }}" alt="{{ __('Credits') }}">
+                        <img class="w-6 h-6" src="{{ asset('assets/legacy/images/credits.png') }}" alt="{{ __('Credits') }}">
                         {{ auth()->user()->credits }} {{ __('Credits') }}
                     </div>
                     <div class="d-flex align-items-center" style="gap: 5px;">
-                        <img class="w-6 h-6" src="{{ asset('legacy/images/duckets.png') }}" alt="{{ __('Duckets') }}">
+                        <img class="w-6 h-6" src="{{ asset('assets/legacy/images/duckets.png') }}" alt="{{ __('Duckets') }}">
                         {{ auth()->user()->duckets->amount ?? 0 }} {{ __('Duckets') }}
                     </div>
                     <div class="d-flex align-items-center" style="gap: 5px;">
-                        <img class="w-6 h-6" src="{{ asset('legacy/images/diamonds.png') }}" alt="">
+                        <img class="w-6 h-6" src="{{ asset('assets/legacy/images/diamonds.png') }}" alt="{{ __('Diamonds') }}">
                         {{ auth()->user()->diamonds->amount ?? 0 }} {{ __('Diamonds') }}
                     </div>
                 </div>
