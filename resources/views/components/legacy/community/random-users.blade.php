@@ -15,7 +15,7 @@
                     <span>{{ $user->motto }}</span>
                 </div>
 
-                <img id="habbo{{ $user->id }}" src="{{ CMSHelper::settings('habbo_imager') }}{{ $user->look }}?direction=4"/>
+                <img id="habbo{{ $user->id }}" src="{{ CMSHelper::settings('habbo_imager') }}{{ $user->look }}"/>
             </span>
         @endforeach
     </div>
