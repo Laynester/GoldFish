@@ -3,7 +3,7 @@
 @foreach ($news as $article)
     <article class="newsList relative">
         <div class="legacy-news left">
-            <a href="/{{ route('articles.show', $article) }}">
+            <a href="{{ route('articles.show', $article) }}">
                 <figure class="thumbnail" style="background-image:url({{ $article->image }});"></figure>
             </a>
         </div>
