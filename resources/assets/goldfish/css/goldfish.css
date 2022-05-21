@@ -55,7 +55,7 @@ body {
 .guest .header .login-section .login-inputs {
     padding: 5px;
     text-align: center;
-    width: 545px;
+    min-width: 545px;
     margin: auto;
     float: none;
 }
