@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MessengerFriendship extends Model
 {
-  public $timestamps = false;
+    public $timestamps = false;
 
-  protected $fillable = [];
+    protected $fillable = [];
 
-  public function friend(): BelongsTo
+    public function friend(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_two_id');
     }
