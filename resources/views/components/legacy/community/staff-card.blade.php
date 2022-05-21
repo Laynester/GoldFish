@@ -15,10 +15,10 @@
                         </a>
                     </span>
                     <span>
-                        <b>{{ $staff->rank_name->rank_name }}</b>
+                        <b>{{ $staff->rank_name->rank_name ?? 'Unknown Rank' }}</b>
                     </span>
                     <span>
-                        <img src="{{ CMSHelper::settings('c_images') }}album1584/{{ $staff->rank_name->badge }}.gif">
+                        <img src="{{ CMSHelper::settings('c_images') }}album1584/{{ $staff->rank_name->badge ?? 'ADM' }}.gif" alt="{{ $staff->rank_name->badge ?? 'ADM' }}">
                     </span>
                 </div>
             </div>
