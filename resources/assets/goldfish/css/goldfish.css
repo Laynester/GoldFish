@@ -1216,3 +1216,16 @@ span.ahabbo:hover .legacy-tooltip {
 .article_box:hover {
     transform: scale(1.05);
 }
+
+.settings-nav>a {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    color: #000;
+    text-decoration: none;
+}
+.settings-nav>a:hover {
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #e3e3e3;
+}

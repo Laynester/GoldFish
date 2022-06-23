@@ -10,7 +10,7 @@ class UserPasswordController extends Controller
 {
     public function edit()
     {
-        return view('me.settings.password', [
+        return view('user.settings.password', [
             'group' => 'home'
         ]);
     }

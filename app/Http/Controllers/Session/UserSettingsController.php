@@ -14,7 +14,7 @@ class UserSettingsController extends Controller
         $hotelViews = File::allFiles(public_path('assets/goldfish/images/me/views'));
 
         return view(
-            'me.settings.hotel',
+            'user.settings.hotel',
             [
                 'group' => 'home',
                 'profileBackgrounds' => $profileBackgrounds,
