@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\FortifyServiceProvider;
+
 return [
     'debug_blacklist' => [
         '_COOKIE' => array_keys($_COOKIE),
@@ -179,6 +181,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Igaster\LaravelTheme\themeServiceProvider::class,
+        FortifyServiceProvider::class,
 
     ],
 

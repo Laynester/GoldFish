@@ -52,7 +52,6 @@ Route::middleware(['setTheme:installation'])->prefix('installation')->group(func
 
 Route::middleware(['installed', 'maintenance'])->group(function () {
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.index');
-    Route::post('/maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
 });
 
 // Guest
@@ -63,20 +62,11 @@ Route::middleware(['installed', 'changeTheme', 'maintenance', 'guest'])->group(f
     Route::get('index', function () {
         return redirect('login');
     })->name('index');
-
-    // Authentication routes
-    Auth::routes();
-
-    // Login routes
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.index');
-    Route::post('/login', [LoginController::class, 'login'])->name('login.store');
 });
 
 // Authenticated
 Route::middleware(['changeTheme', 'maintenance', 'findretros'])->group(function () {
     Route::middleware(['auth', 'banned'])->group(function () {
-        Route::get('/logout', [LoginController::class, 'logout'])->withoutMiddleware('maintenance');
-        Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->withoutMiddleware('maintenance');
         Route::get('/banned', BannedController::class)->name('banned');
 
         Route::prefix('user')->group(function () {

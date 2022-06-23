@@ -7,6 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
+    public const HOME = '/user/me';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *

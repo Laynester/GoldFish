@@ -31,7 +31,7 @@
                 <div class="container">
                     <div class="login-inputs">
                         <form method="POST"
-                              id="loginForm" {{ CMSHelper::settings('maintenance') == 0 ? 'action='.route('login.store') : '' }}>
+                              id="loginForm" {{ CMSHelper::settings('maintenance') == 0 ? 'action=/login' : '' }}>
                             @csrf
 
                             <div class="login-input">
