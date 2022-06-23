@@ -16,8 +16,9 @@ class MeController extends Controller
     public function index()
     {
         $badges = UserBadge::query()
+            ->select('badge_code')
             ->where('user_id', auth()->id())
-            ->take(32)
+            ->take(16)
             ->get();
 
         $news = News::query()
@@ -32,6 +33,7 @@ class MeController extends Controller
             ->get();
 
         $onlineFriends = MessengerFriendship::query()
+            ->select('user_one_id', 'user_two_id')
             ->where('user_one_id', '=', auth()->id())
             ->where('user_two_id', '!=', auth()->id())
             ->distinct()
@@ -44,7 +46,7 @@ class MeController extends Controller
             ->latest('id')
             ->get();
 
-        return view('me.me', [
+        return view('user.me', [
                 'group' => 'home',
                 'badges' => $badges,
                 'news' => $news,

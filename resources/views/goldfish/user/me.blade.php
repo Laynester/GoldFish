@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-5">
-            <x-goldfish.user.me-box :alerts="$alerts"/>
+            <x-goldfish.user.me-box :alerts="$alerts"/> {{-- TODO: Potentially remove --}}
             <x-goldfish.find-user/>
             <x-goldfish.user.personal-badges :badges="$badges"/>
             <x-goldfish.user.personal-friends :online-friends="$onlineFriends"/>

@@ -2,6 +2,7 @@
 
 <div class="box blue">
     <div class="heading">{{ __('My Online Friends') }}</div>
+
     <div class="content">
         @forelse($onlineFriends as $friend)
             <span class="friend">

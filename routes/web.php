@@ -55,7 +55,6 @@ Route::middleware(['installed', 'maintenance'])->group(function () {
     Route::post('/maintenance', [LoginController::class, 'login'])->name('maintenance.login.post');
 });
 
-
 // Guest
 Route::middleware(['installed', 'changeTheme', 'maintenance', 'guest'])->group(function () {
     Route::get('/', function () {

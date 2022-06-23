@@ -43,12 +43,7 @@
 
                 <a
                     class="enter_hotel right relative"
-                    href="{{ route('flash.index') }}"
-                    target="_blank">
-                    {{ __('Flash') }}
-                </a>
-                <a
-                    class="enter_hotel right relative"
+                    style="margin-right : 30px;"
                     href="{{ route('nitro.index') }}"
                     target="_blank">
                     {{ __('Nitro') }}

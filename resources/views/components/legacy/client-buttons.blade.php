@@ -3,9 +3,4 @@
        href="{{ route('nitro.index') }}" target="_blank">
         {{ __('Nitro') }}
     </a>
-
-    <a class="faux-button green header-btn d-flex align-items-center"
-       href="{{ route('flash.index') }}" target="_blank">
-        {{ __('Flash') }}
-    </a>
 </div>

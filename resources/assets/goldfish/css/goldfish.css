@@ -135,6 +135,7 @@ a:hover {
 
 .goldfish_green_button:hover {
     background: #47BF0BFF;
+    color: white;
 }
 
 .navbar {
